@@ -38,6 +38,36 @@
                ReferencedContainer = "container:CleanArchitectureRxSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25897B2F1E58BF0D00D3563C"
+               BuildableName = "DomainTests.xctest"
+               BlueprintName = "DomainTests"
+               ReferencedContainer = "container:CleanArchitectureRxSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25897B521E58BF3600D3563C"
+               BuildableName = "CoreDataPlatformTests.xctest"
+               BlueprintName = "CoreDataPlatformTests"
+               ReferencedContainer = "container:CleanArchitectureRxSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "25897B741E58BF4600D3563C"
+               BuildableName = "RealmPlatformTests.xctest"
+               BlueprintName = "RealmPlatformTests"
+               ReferencedContainer = "container:CleanArchitectureRxSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
