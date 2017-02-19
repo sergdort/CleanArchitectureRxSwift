@@ -14,7 +14,7 @@ final class PostsViewModel: ViewModelType {
         let posts: Driver<[Post]>
         let createPost: Driver<Void>
         let selectedPost: Driver<Post>
-        let errors: Driver<Error>
+        let error: Driver<Error>
     }
     
     private let useCase: AllPostsUseCase
@@ -27,15 +27,16 @@ final class PostsViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
-        let postsState = input.trigger.flatMapLatest {
+        let errorTracker = ErrorTracker()
+        let posts = input.trigger.flatMapLatest {
             return self.useCase.posts()
                 .trackActivity(activityIndicator)
-                .toResultDriver()
+                .trackError(errorTracker)
+                .asDriver(onErrorJustReturn: [])
         }
         
         let fetching = activityIndicator.asDriver()
-        let posts = postsState.filterData()
-        let errors = postsState.filterError()
+        let errors = errorTracker.asDriver()
         let selectedPost = input.selection
             .withLatestFrom(posts) { (indexPath, posts) -> Post in
                 return posts[indexPath.row]
@@ -48,6 +49,6 @@ final class PostsViewModel: ViewModelType {
                       posts: posts,
                       createPost: createPost,
                       selectedPost: selectedPost,
-                      errors: errors)
+                      error: errors)
     }
 }
