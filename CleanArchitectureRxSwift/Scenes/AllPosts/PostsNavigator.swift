@@ -28,7 +28,11 @@ class DefaultPostsNavigator: PostsNavigator {
     }
     
     func toCreatePost() {
+        let navigator = DefaultCreatePostNavigator(navigationController: navigationController)
+        let viewModel = CreatePostViewModel(createPostUseCase: services.getCreatePostUseCase(),
+                navigator: navigator)
         let vc = storyBoard.instantiateViewController(ofType: CreatePostViewController.self)
+        vc.viewModel = viewModel
         let nc = UINavigationController(rootViewController: vc)
         navigationController.present(nc, animated: true, completion: nil)
     }

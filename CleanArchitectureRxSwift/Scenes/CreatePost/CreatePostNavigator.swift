@@ -15,12 +15,9 @@ protocol CreatePostNavigator {
 
 final class DefaultCreatePostNavigator: CreatePostNavigator {
     private let navigationController: UINavigationController
-    private let serviceLocator: ServiceLocator
 
-    init(navigationController: UINavigationController,
-         serviceLocator: ServiceLocator) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.serviceLocator = serviceLocator
     }
 
     func toPosts() {

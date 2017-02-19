@@ -2,7 +2,6 @@ import UIKit
 import Domain
 import RxSwift
 import RxCocoa
-import CoreDataPlatform
 
 final class CreatePostViewController: UIViewController {
     private let disposeBag = DisposeBag()
@@ -13,9 +12,7 @@ final class CreatePostViewController: UIViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var detailsTextView: UITextView!
-    
-    let useCase = CoreDataPlatform.ServiceLocator.shared.getCreatePostUseCase()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

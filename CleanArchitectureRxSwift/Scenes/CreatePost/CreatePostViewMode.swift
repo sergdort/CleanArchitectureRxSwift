@@ -7,6 +7,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Domain
 
 final class CreatePostViewModel: ViewModelType {
     private let createPostUseCase: CreatePostUseCase
