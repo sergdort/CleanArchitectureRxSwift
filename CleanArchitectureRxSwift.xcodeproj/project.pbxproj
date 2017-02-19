@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		25897B041E58BD9100D3563C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B031E58BD9100D3563C /* AppDelegate.swift */; };
-		25897B061E58BD9100D3563C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B051E58BD9100D3563C /* ViewController.swift */; };
 		25897B091E58BD9100D3563C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25897B071E58BD9100D3563C /* Main.storyboard */; };
 		25897B0B1E58BD9100D3563C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25897B0A1E58BD9100D3563C /* Assets.xcassets */; };
 		25897B0E1E58BD9100D3563C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25897B0C1E58BD9100D3563C /* LaunchScreen.storyboard */; };
@@ -49,15 +48,27 @@
 		25897BBA1E58C25A00D3563C /* NSManagedObjectContext+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BB21E58C25A00D3563C /* NSManagedObjectContext+Rx.swift */; };
 		25897BBB1E58C25A00D3563C /* AllPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BB41E58C25A00D3563C /* AllPostsUseCase.swift */; };
 		25897BBC1E58C25A00D3563C /* CreatePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BB51E58C25A00D3563C /* CreatePostUseCase.swift */; };
-		25897BBD1E58C25A00D3563C /* SharedServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BB61E58C25A00D3563C /* SharedServices.swift */; };
+		25897BBD1E58C25A00D3563C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BB61E58C25A00D3563C /* ServiceLocator.swift */; };
 		25897BC61E58C42D00D3563C /* AllPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BBF1E58C42D00D3563C /* AllPostsUseCase.swift */; };
-		25897BC71E58C42D00D3563C /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BC01E58C42D00D3563C /* AuthUseCase.swift */; };
 		25897BC81E58C42D00D3563C /* CreatePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BC11E58C42D00D3563C /* CreatePostUseCase.swift */; };
 		25897BC91E58C42D00D3563C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BC31E58C42D00D3563C /* Location.swift */; };
 		25897BCA1E58C42D00D3563C /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BC41E58C42D00D3563C /* Media.swift */; };
 		25897BCB1E58C42D00D3563C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BC51E58C42D00D3563C /* Post.swift */; };
 		25897BCC1E58C74E00D3563C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25897B281E58BF0D00D3563C /* Domain.framework */; };
 		25897BCD1E58C75400D3563C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25897B281E58BF0D00D3563C /* Domain.framework */; };
+		25897BF21E58CB8E00D3563C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BE21E58CB8E00D3563C /* Application.swift */; };
+		25897BF31E58CB8F00D3563C /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BE41E58CB8E00D3563C /* PostsNavigator.swift */; };
+		25897BF41E58CB8F00D3563C /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BE51E58CB8E00D3563C /* PostsViewController.swift */; };
+		25897BF51E58CB8F00D3563C /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BE61E58CB8E00D3563C /* PostsViewModel.swift */; };
+		25897BF61E58CB8F00D3563C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BE71E58CB8E00D3563C /* PostTableViewCell.swift */; };
+		25897BF71E58CB8F00D3563C /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BE91E58CB8E00D3563C /* ActivityIndicator.swift */; };
+		25897BF81E58CB8F00D3563C /* Driver+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BEA1E58CB8E00D3563C /* Driver+Ext.swift */; };
+		25897BF91E58CB8F00D3563C /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BEB1E58CB8E00D3563C /* Observable+Ext.swift */; };
+		25897BFA1E58CB8F00D3563C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BEC1E58CB8E00D3563C /* Result.swift */; };
+		25897BFB1E58CB8F00D3563C /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BED1E58CB8E00D3563C /* Reusable.swift */; };
+		25897BFC1E58CB8F00D3563C /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BEF1E58CB8E00D3563C /* ViewModelType.swift */; };
+		25897BFD1E58CB8F00D3563C /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BF11E58CB8E00D3563C /* CreatePostViewController.swift */; };
+		25897BFF1E58CE8B00D3563C /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897BFE1E58CE8B00D3563C /* ServiceLocator.swift */; };
 		2DEEE5268D97F40515D1C542 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5764703F1E249BEDFC31014 /* Pods_DomainTests.framework */; };
 		4171B21201FC20FD72A143D0 /* Pods_CoreDataPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03758DD874CBFB48A52CE5 /* Pods_CoreDataPlatformTests.framework */; };
 		514BA3A92A644232F50ED1A8 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */; };
@@ -165,7 +176,6 @@
 		0D4A3B45078CD8ACCC1314EC /* Pods-RealmPlatformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests.release.xcconfig"; sourceTree = "<group>"; };
 		25897B001E58BD9100D3563C /* CleanArchitectureRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitectureRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25897B031E58BD9100D3563C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25897B051E58BD9100D3563C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		25897B081E58BD9100D3563C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25897B0A1E58BD9100D3563C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25897B0D1E58BD9100D3563C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -212,13 +222,25 @@
 		25897BB21E58C25A00D3563C /* NSManagedObjectContext+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Rx.swift"; sourceTree = "<group>"; };
 		25897BB41E58C25A00D3563C /* AllPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCase.swift; sourceTree = "<group>"; };
 		25897BB51E58C25A00D3563C /* CreatePostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostUseCase.swift; sourceTree = "<group>"; };
-		25897BB61E58C25A00D3563C /* SharedServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedServices.swift; sourceTree = "<group>"; };
+		25897BB61E58C25A00D3563C /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		25897BBF1E58C42D00D3563C /* AllPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCase.swift; sourceTree = "<group>"; };
-		25897BC01E58C42D00D3563C /* AuthUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		25897BC11E58C42D00D3563C /* CreatePostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostUseCase.swift; sourceTree = "<group>"; };
 		25897BC31E58C42D00D3563C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		25897BC41E58C42D00D3563C /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		25897BC51E58C42D00D3563C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		25897BE21E58CB8E00D3563C /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		25897BE41E58CB8E00D3563C /* PostsNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigator.swift; sourceTree = "<group>"; };
+		25897BE51E58CB8E00D3563C /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		25897BE61E58CB8E00D3563C /* PostsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		25897BE71E58CB8E00D3563C /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		25897BE91E58CB8E00D3563C /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		25897BEA1E58CB8E00D3563C /* Driver+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Driver+Ext.swift"; sourceTree = "<group>"; };
+		25897BEB1E58CB8E00D3563C /* Observable+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
+		25897BEC1E58CB8E00D3563C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		25897BED1E58CB8E00D3563C /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		25897BEF1E58CB8E00D3563C /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		25897BF11E58CB8E00D3563C /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		25897BFE1E58CE8B00D3563C /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		2BBB44DCB902E459F05D68B0 /* Pods-CoreDataPlatformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests.release.xcconfig"; sourceTree = "<group>"; };
 		2C03758DD874CBFB48A52CE5 /* Pods_CoreDataPlatformTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreDataPlatformTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3058945350D99DC786F3CDC3 /* Pods-CoreDataPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataPlatform/Pods-CoreDataPlatform.debug.xcconfig"; sourceTree = "<group>"; };
@@ -366,8 +388,12 @@
 		25897B021E58BD9100D3563C /* CleanArchitectureRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				25897BE11E58CB8E00D3563C /* Application */,
+				25897BE31E58CB8E00D3563C /* AllPosts */,
+				25897BE81E58CB8E00D3563C /* Utility */,
+				25897BEE1E58CB8E00D3563C /* Common */,
+				25897BF01E58CB8E00D3563C /* CreatePost */,
 				25897B031E58BD9100D3563C /* AppDelegate.swift */,
-				25897B051E58BD9100D3563C /* ViewController.swift */,
 				25897B071E58BD9100D3563C /* Main.storyboard */,
 				25897B0A1E58BD9100D3563C /* Assets.xcassets */,
 				25897B0C1E58BD9100D3563C /* LaunchScreen.storyboard */,
@@ -388,6 +414,7 @@
 		25897B291E58BF0D00D3563C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				25897BFE1E58CE8B00D3563C /* ServiceLocator.swift */,
 				25897BBE1E58C42D00D3563C /* UseCases */,
 				25897BC21E58C42D00D3563C /* Entries */,
 				25897B2A1E58BF0D00D3563C /* Domain.h */,
@@ -514,7 +541,7 @@
 			children = (
 				25897BB41E58C25A00D3563C /* AllPostsUseCase.swift */,
 				25897BB51E58C25A00D3563C /* CreatePostUseCase.swift */,
-				25897BB61E58C25A00D3563C /* SharedServices.swift */,
+				25897BB61E58C25A00D3563C /* ServiceLocator.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -523,7 +550,6 @@
 			isa = PBXGroup;
 			children = (
 				25897BBF1E58C42D00D3563C /* AllPostsUseCase.swift */,
-				25897BC01E58C42D00D3563C /* AuthUseCase.swift */,
 				25897BC11E58C42D00D3563C /* CreatePostUseCase.swift */,
 			);
 			path = UseCases;
@@ -537,6 +563,53 @@
 				25897BC51E58C42D00D3563C /* Post.swift */,
 			);
 			path = Entries;
+			sourceTree = "<group>";
+		};
+		25897BE11E58CB8E00D3563C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				25897BE21E58CB8E00D3563C /* Application.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		25897BE31E58CB8E00D3563C /* AllPosts */ = {
+			isa = PBXGroup;
+			children = (
+				25897BE41E58CB8E00D3563C /* PostsNavigator.swift */,
+				25897BE51E58CB8E00D3563C /* PostsViewController.swift */,
+				25897BE61E58CB8E00D3563C /* PostsViewModel.swift */,
+				25897BE71E58CB8E00D3563C /* PostTableViewCell.swift */,
+			);
+			path = AllPosts;
+			sourceTree = "<group>";
+		};
+		25897BE81E58CB8E00D3563C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				25897BE91E58CB8E00D3563C /* ActivityIndicator.swift */,
+				25897BEA1E58CB8E00D3563C /* Driver+Ext.swift */,
+				25897BEB1E58CB8E00D3563C /* Observable+Ext.swift */,
+				25897BEC1E58CB8E00D3563C /* Result.swift */,
+				25897BED1E58CB8E00D3563C /* Reusable.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		25897BEE1E58CB8E00D3563C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				25897BEF1E58CB8E00D3563C /* ViewModelType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		25897BF01E58CB8E00D3563C /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				25897BF11E58CB8E00D3563C /* CreatePostViewController.swift */,
+			);
+			path = CreatePost;
 			sourceTree = "<group>";
 		};
 		A3C0A06A8E4F121C929B96B4 /* Pods */ = {
@@ -1221,8 +1294,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25897B061E58BD9100D3563C /* ViewController.swift in Sources */,
+				25897BFB1E58CB8F00D3563C /* Reusable.swift in Sources */,
+				25897BF61E58CB8F00D3563C /* PostTableViewCell.swift in Sources */,
+				25897BF21E58CB8E00D3563C /* Application.swift in Sources */,
+				25897BF51E58CB8F00D3563C /* PostsViewModel.swift in Sources */,
+				25897BF91E58CB8F00D3563C /* Observable+Ext.swift in Sources */,
+				25897BF71E58CB8F00D3563C /* ActivityIndicator.swift in Sources */,
 				25897B041E58BD9100D3563C /* AppDelegate.swift in Sources */,
+				25897BFD1E58CB8F00D3563C /* CreatePostViewController.swift in Sources */,
+				25897BF81E58CB8F00D3563C /* Driver+Ext.swift in Sources */,
+				25897BF31E58CB8F00D3563C /* PostsNavigator.swift in Sources */,
+				25897BF41E58CB8F00D3563C /* PostsViewController.swift in Sources */,
+				25897BFA1E58CB8F00D3563C /* Result.swift in Sources */,
+				25897BFC1E58CB8F00D3563C /* ViewModelType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,8 +1326,8 @@
 				25897BC81E58C42D00D3563C /* CreatePostUseCase.swift in Sources */,
 				25897BC91E58C42D00D3563C /* Location.swift in Sources */,
 				25897BCB1E58C42D00D3563C /* Post.swift in Sources */,
-				25897BC71E58C42D00D3563C /* AuthUseCase.swift in Sources */,
 				25897BCA1E58C42D00D3563C /* Media.swift in Sources */,
+				25897BFF1E58CE8B00D3563C /* ServiceLocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,7 +1357,7 @@
 				25897BA11E58C24B00D3563C /* CDPost+CoreDataProperties.swift in Sources */,
 				25897B9C1E58C24B00D3563C /* CDLocation+Ext.swift in Sources */,
 				25897BB71E58C25A00D3563C /* Repository.swift in Sources */,
-				25897BBD1E58C25A00D3563C /* SharedServices.swift in Sources */,
+				25897BBD1E58C25A00D3563C /* ServiceLocator.swift in Sources */,
 				25897BB91E58C25A00D3563C /* FetchedResultsControllerEntityObserver.swift in Sources */,
 				25897BA01E58C24B00D3563C /* CDPost+CoreDataClass.swift in Sources */,
 				25897B9F1E58C24B00D3563C /* CDMedia+Ext.swift in Sources */,
