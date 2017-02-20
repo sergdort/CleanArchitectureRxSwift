@@ -1,6 +1,7 @@
 import Foundation
 import Realm
 import RealmSwift
+import RxSwift
 
 extension List {
     func map<U>(_ f: (T) throws -> U) rethrows -> [U]  {

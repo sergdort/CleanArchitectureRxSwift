@@ -12,13 +12,13 @@ public final class ServiceLocator: Domain.ServiceLocator {
         configuration = Realm.Configuration()
     }
 
-    func getAllPostsUseCase() -> Domain.AllPostsUseCase {
-        let repository = Repository(configuration: configuration)
+    public func getAllPostsUseCase() -> Domain.AllPostsUseCase {
+        let repository = Repository<Post>(configuration: configuration)
         return AllPostsUseCase(repository: repository)
     }
 
-    func getCreatePostUseCase() -> Domain.SavePostUseCase {
-        let repository = Repository(configuration: configuration)
+    public func getCreatePostUseCase() -> Domain.SavePostUseCase {
+        let repository = Repository<Post>(configuration: configuration)
         return SavePostUseCase(repository: repository)
     }
 

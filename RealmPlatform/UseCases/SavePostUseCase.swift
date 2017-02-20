@@ -1,5 +1,6 @@
 import Foundation
 import Domain
+import RxSwift
 
 final class SavePostUseCase: Domain.SavePostUseCase {
     private let repository: AbstractRepository<Post>

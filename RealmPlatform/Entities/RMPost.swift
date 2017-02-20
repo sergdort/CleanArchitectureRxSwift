@@ -24,8 +24,8 @@ extension RMPost: DomainConvertibleType {
                 updateDate: updateDate as Date,
                 title: title,
                 content: content,
-                media: media.asDomain(),
-                location: location.asDomain())
+                media: media?.asDomain(),
+                location: location?.asDomain())
     }
 }
 
@@ -36,8 +36,8 @@ extension Post: RealmRepresentable {
             object.createDate = createDate as NSDate
             object.updateDate = updateDate as NSDate
             object.content = content
-            object.media = media.asRealm()
-            object.location = location.asRealm()
+            object.media = media?.asRealm()
+            object.location = location?.asRealm()
         }
     }
 }
