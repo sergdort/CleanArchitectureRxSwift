@@ -9,6 +9,11 @@ func abstractMethod() -> Never {
 }
 
 class AbstractRepository<T> {
+
+    func queryAll() -> Observable<[T]> {
+        abstractMethod()
+    }
+
     func query(with predicate: NSPredicate,
                sortDescriptors: [NSSortDescriptor] = []) -> Observable<[T]> {
         abstractMethod()
@@ -34,6 +39,17 @@ final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T
     init(configuration: Realm.Configuration) {
         self.configuration = configuration
         print("File 📁 url: \(RLMRealmPathForFile("default.realm"))")
+    }
+
+    override func queryAll() -> Observable<[T]> {
+        return Observable.deferred {
+                    let realm = self.realm
+                    let objects = realm.objects(T.RealmType.self)
+
+                    return Observable.array(from: objects)
+                            .mapToDomain()
+                }
+                .subscribeOn(scheduler)
     }
 
     override func query(with predicate: NSPredicate,
