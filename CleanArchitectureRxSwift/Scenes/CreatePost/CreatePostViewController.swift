@@ -15,10 +15,6 @@ final class CreatePostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let title = titleTextField.rx.text.orEmpty
-        let details = detailsTextView.rx.text.orEmpty
-
         let input = CreatePostViewModel.Input(cancelTrigger: cancelButton.rx.tap.asDriver(),
                                               saveTrigger: saveButton.rx.tap.asDriver(),
                                               title: titleTextField.rx.text.orEmpty.asDriver(),
@@ -26,7 +22,9 @@ final class CreatePostViewController: UIViewController {
         
         let output = viewModel.transform(input: input)
         
-        output.dismiss.drive().addDisposableTo(disposeBag)
-        output.saveEnabled.drive(saveButton.rx.isEnabled).addDisposableTo(disposeBag)
+        output.dismiss.drive()
+            .addDisposableTo(disposeBag)
+        output.saveEnabled.drive(saveButton.rx.isEnabled)
+            .addDisposableTo(disposeBag)
     }
 }

@@ -7,6 +7,13 @@ extension ObservableType where E == Bool {
     public func not() -> Observable<Bool> {
         return self.map(!)
     }
+    
+}
+
+extension SharedSequenceConvertibleType {
+    func mapToVoid() -> SharedSequence<SharingStrategy, Void> {
+        return map { _ in }
+    }
 }
 
 extension ObservableType {
@@ -22,5 +29,9 @@ extension ObservableType {
             assertionFailure()
             return Driver.empty()
         }
+    }
+    
+    func mapToVoid() -> Observable<Void> {
+        return map { _ in }
     }
 }

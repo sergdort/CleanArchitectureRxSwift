@@ -39,6 +39,7 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
         return entity.sync(in: context)
             .mapToVoid()
             .concat(context.rx.save())
+            .skip(1) //We dont want to receive event for sync
             .subscribeOn(scheduler)
     }
 }

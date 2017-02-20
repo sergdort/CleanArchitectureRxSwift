@@ -12,5 +12,5 @@ public protocol ServiceLocator {
     
     func getAllPostsUseCase() -> AllPostsUseCase
     
-    func getCreatePostUseCase() -> CreatePostUseCase
+    func getCreatePostUseCase() -> SavePostUseCase
 }

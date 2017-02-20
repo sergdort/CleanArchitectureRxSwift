@@ -1,6 +1,6 @@
 import Foundation
 import RxSwift
 
-public protocol CreatePostUseCase {
-    func create(post: Post) -> Observable<Void>
+public protocol SavePostUseCase {
+    func save(post: Post) -> Observable<Void>
 }

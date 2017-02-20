@@ -15,7 +15,7 @@ public final class ServiceLocator: Domain.ServiceLocator {
         return CDAllPostsUseCase(repository: postRepository)
     }
 
-    public func getCreatePostUseCase() -> CreatePostUseCase {
-        return CDCreatePostUseCase(repository: postRepository)
+    public func getCreatePostUseCase() -> SavePostUseCase {
+        return CDSavePostUseCase(repository: postRepository)
     }
 }

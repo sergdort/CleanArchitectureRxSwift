@@ -38,6 +38,9 @@ class DefaultPostsNavigator: PostsNavigator {
     }
     
     func toPost(_ post: Post) {
-        print("\(#function)\(post)")
+        let vc = storyBoard.instantiateViewController(ofType: EditPostViewController.self)
+        let viewModel = EditPostViewModel(post: post, useCase: services.getCreatePostUseCase())
+        vc.viewModel = viewModel
+        navigationController.pushViewController(vc, animated: true)
     }
 }

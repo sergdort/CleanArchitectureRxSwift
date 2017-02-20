@@ -36,6 +36,7 @@ class PostsViewController: UIViewController {
         }.addDisposableTo(disposeBag)
         //Connect Create Post to UI
         output.createPost.drive().addDisposableTo(disposeBag)
+        output.selectedPost.drive().addDisposableTo(disposeBag)
     }
 }
 
