@@ -67,14 +67,21 @@
 		2DEEE5268D97F40515D1C542 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5764703F1E249BEDFC31014 /* Pods_DomainTests.framework */; };
 		4171B21201FC20FD72A143D0 /* Pods_CoreDataPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03758DD874CBFB48A52CE5 /* Pods_CoreDataPlatformTests.framework */; };
 		514BA3A92A644232F50ED1A8 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */; };
+		515F903E97C00DCE9EAEBF4D /* RMMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93C79FEF71E526BD363E /* RMMedia.swift */; };
 		515F9083DB52FEDFEE97A5E6 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93CEB3B316E01CDACEA7 /* PostsViewModel.swift */; };
 		515F94853EF21BD13D636584 /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C9D806D051CFBCC327 /* PostsNavigator.swift */; };
+		515F9503C6F079D663CD9072 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92C7826B9C51A1FB4BED /* Repository.swift */; };
 		515F9590146BEE2A0626CFF1 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9AF2348793558FE0CAA7 /* PostTableViewCell.swift */; };
 		515F95A32860E22D7CB9563C /* EditPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9ACD2D474324015B691C /* EditPostViewModel.swift */; };
 		515F95CFED58045AB6B168A4 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F948FEF12E0E3120DF351 /* CreatePostViewController.swift */; };
 		515F9625B58BCFB77F4AF678 /* CreatePostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F96DA0B9857BF87D2F2F0 /* CreatePostNavigator.swift */; };
+		515F96794273284723F2848D /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9FD5076F041EE00D7E14 /* DomainConvertibleType.swift */; };
 		515F977483234BB090F6D704 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92B305125A2C9E279E71 /* PostsViewController.swift */; };
 		515F9850E701F4ECCC669D9B /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92E2318F810E8AE29AB7 /* CreatePostViewModel.swift */; };
+		515F9B4D6A3BD831B9D4FB8C /* RealmRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9C13ADD3B42F3CE8A593 /* RealmRepresentable.swift */; };
+		515F9BD6155258BD0C04DF36 /* RMLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F96DF719A053AEF410368 /* RMLocation.swift */; };
+		515F9CD8F2B13D0328B77B6C /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F977CB3763872350F7874 /* Realm+Ext.swift */; };
+		515F9DBB950E2ABDB8D7895B /* RMPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F988220373D06226F4EDE /* RMPost.swift */; };
 		7DFB155E3444551C4DB34AAC /* Pods_CleanArchitectureRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A6B74019E724CAD9CA96DC /* Pods_CleanArchitectureRxSwift.framework */; };
 		8B0507E0C0AB1064B7372844 /* Pods_RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006BDFA0A26FDD0EBA50E777 /* Pods_RealmPlatform.framework */; };
 		9CBC9DB91790C744BC17C099 /* Pods_CleanArchitectureRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550BE321D44EC009D885BBE1 /* Pods_CleanArchitectureRxSwiftTests.framework */; };
@@ -246,13 +253,20 @@
 		3F5B77FEC1EA2332323A0EB9 /* Pods-CleanArchitectureRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitectureRxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4C9D6A2833A962FEF238F391 /* Pods-RealmPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		515F92B305125A2C9E279E71 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		515F92C7826B9C51A1FB4BED /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		515F92E2318F810E8AE29AB7 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
+		515F93C79FEF71E526BD363E /* RMMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMMedia.swift; sourceTree = "<group>"; };
 		515F93CEB3B316E01CDACEA7 /* PostsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		515F948FEF12E0E3120DF351 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		515F94C9D806D051CFBCC327 /* PostsNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigator.swift; sourceTree = "<group>"; };
 		515F96DA0B9857BF87D2F2F0 /* CreatePostNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostNavigator.swift; sourceTree = "<group>"; };
+		515F96DF719A053AEF410368 /* RMLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocation.swift; sourceTree = "<group>"; };
+		515F977CB3763872350F7874 /* Realm+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
+		515F988220373D06226F4EDE /* RMPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPost.swift; sourceTree = "<group>"; };
 		515F9ACD2D474324015B691C /* EditPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewModel.swift; sourceTree = "<group>"; };
 		515F9AF2348793558FE0CAA7 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		515F9C13ADD3B42F3CE8A593 /* RealmRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmRepresentable.swift; sourceTree = "<group>"; };
+		515F9FD5076F041EE00D7E14 /* DomainConvertibleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		550BE321D44EC009D885BBE1 /* Pods_CleanArchitectureRxSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureRxSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C4CC5892A6E3601D801729 /* Pods-CoreDataPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatform.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataPlatform/Pods-CoreDataPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -467,6 +481,9 @@
 			children = (
 				25897B6F1E58BF4600D3563C /* RealmPlatform.h */,
 				25897B701E58BF4600D3563C /* Info.plist */,
+				515F921AB2989DB17DD621B6 /* Entities */,
+				515F96C0E02DA60D7AC0B94B /* Utility */,
+				515F988DB4ECDA46B682145C /* Repository */,
 			);
 			path = RealmPlatform;
 			sourceTree = "<group>";
@@ -607,6 +624,26 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		515F921AB2989DB17DD621B6 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				515F93C28B4316E9B2F00D42 /* Convertion */,
+				515F988220373D06226F4EDE /* RMPost.swift */,
+				515F93C79FEF71E526BD363E /* RMMedia.swift */,
+				515F96DF719A053AEF410368 /* RMLocation.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		515F93C28B4316E9B2F00D42 /* Convertion */ = {
+			isa = PBXGroup;
+			children = (
+				515F9FD5076F041EE00D7E14 /* DomainConvertibleType.swift */,
+				515F9C13ADD3B42F3CE8A593 /* RealmRepresentable.swift */,
+			);
+			path = Convertion;
+			sourceTree = "<group>";
+		};
 		515F9401ED57113EEF898228 /* EditPost */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,6 +664,22 @@
 			path = AllPosts;
 			sourceTree = "<group>";
 		};
+		515F96C0E02DA60D7AC0B94B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				515F9F0B54EB33278403FD4D /* Extensions */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		515F988DB4ECDA46B682145C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				515F92C7826B9C51A1FB4BED /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		515F9B161E41C7D130E180EF /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,6 +688,14 @@
 				515F92E2318F810E8AE29AB7 /* CreatePostViewModel.swift */,
 			);
 			path = CreatePost;
+			sourceTree = "<group>";
+		};
+		515F9F0B54EB33278403FD4D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				515F977CB3763872350F7874 /* Realm+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A3C0A06A8E4F121C929B96B4 /* Pods */ = {
@@ -1408,6 +1469,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515F9B4D6A3BD831B9D4FB8C /* RealmRepresentable.swift in Sources */,
+				515F96794273284723F2848D /* DomainConvertibleType.swift in Sources */,
+				515F9DBB950E2ABDB8D7895B /* RMPost.swift in Sources */,
+				515F903E97C00DCE9EAEBF4D /* RMMedia.swift in Sources */,
+				515F9BD6155258BD0C04DF36 /* RMLocation.swift in Sources */,
+				515F9CD8F2B13D0328B77B6C /* Realm+Ext.swift in Sources */,
+				515F9503C6F079D663CD9072 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
