@@ -30,7 +30,7 @@ class AbstractRepository<T> {
 
 final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T.RealmType.DomainType, T.RealmType: Object {
     private let configuration: Realm.Configuration
-    private let scheduler = SerialDispatchQueueScheduler(internalSerialQueueName: "com.realm.platform.Repository")
+    private let scheduler: RunLoopThreadScheduler
 
     private var realm: Realm {
         return try! Realm(configuration: self.configuration)
@@ -38,6 +38,8 @@ final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T
 
     init(configuration: Realm.Configuration) {
         self.configuration = configuration
+        let name = "com.CleanArchitectureRxSwift.RealmPlatform.Repository"
+        self.scheduler = RunLoopThreadScheduler(threadName: name)
         print("File 📁 url: \(RLMRealmPathForFile("default.realm"))")
     }
 
@@ -75,9 +77,9 @@ final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T
 
     override func delete(entity: T) -> Observable<Void> {
         return Observable.deferred {
-                    return self.realm.rx.delete(entity: entity)
-                }
-                .subscribeOn(scheduler)
+            return self.realm.rx.delete(entity: entity)
+        }
+        .subscribeOn(scheduler)
     }
 
 }

@@ -35,6 +35,7 @@ extension Post: RealmRepresentable {
             object.uid = uid
             object.createDate = createDate as NSDate
             object.updateDate = updateDate as NSDate
+            object.title = title
             object.content = content
             object.media = media?.asRealm()
             object.location = location?.asRealm()
