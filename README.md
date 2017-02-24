@@ -11,20 +11,20 @@ You can do this by:
 
 #### Domain 
 
-`Domain` is basically what is your App about and what it can do (Entities, UseCase etc.) **It does not depend on UIKit or any persistent framework**, it doesn't have implementation apart from entities
+The `Domain` is basically what is your App about and what it can do (Entities, UseCase etc.) **It does not depend on UIKit or any persistent framework**, it doesn't have implementation apart from entities
 
 #### Platform
 
-`Platform` is a concrete implementation of the `Domain`. It does hide all implementation details. For example Database implementation whether it is CoreData, Realm, SQLite etc.
+The `Platform` is a concrete implementation of the `Domain` in a specific platform like iOS. It does hide all implementation details. For example Database implementation whether it is CoreData, Realm, SQLite etc.
 
 #### Application
-`Application` is responsible for delivering information to the user and handling user input. It can be implemented with any delivery pattern e.g (MVVM, MVC, MVP). It is place where you have your `UIView`s and `UIViewController`s. As you will see from the example app `ViewControllers` are completely independant on the `Platform` the only responsobility of view controller is to "bind" UI and Domain to make things happened. In fact in the current example we are using the same view controller for Realm and CoreData.
+The `Application` is responsible for delivering information to the user and handling user input. It can be implemented with any delivery pattern e.g (MVVM, MVC, MVP). It is place where you have your `UIView`s and `UIViewController`s. As you will see from the example app `ViewControllers` are completely independant on the `Platform` the only responsobility of view controller is to "bind" UI and Domain to make things happened. In fact in the current example we are using the same view controller which binds to the Platform with Realm or CoreData storage under the hood.
 
 
 ##Detail overiview
 ![](Architecture/Modules Details.png)
  
-To inforce modules `Domain`, `Platform` and `Aplication` are seperate targets in the App wich gonna help us to take advantage of `internal` access layer in Swift to prevent exposing of types that we dont want to expose
+The `Domain`, `Platform` and `Aplication` modules are enforsed by being seperate targets in the App wich is going to help us take advantage of `internal` access layer in Swift to prevent exposure of types which are not supposed to be exposed. Additionaly, in this way we can be very explicit regarding usage of modules: The Aplication imports the Platform and Domain; the Platform imports the Domain; The Domain doesn't know about the Platform and Application.
 
 #### Domain
 
@@ -40,7 +40,7 @@ public struct Post {
 }
 ```
 
-UseCases are protocols wich do only something specific
+UseCases are protocols which describes very specific functionality.
 
 ```swift
 
@@ -53,11 +53,11 @@ public protocol SavePostUseCase {
 }
 
 ```
-`UseCaseProvider` is a [service locator](https://en.wikipedia.org/wiki/Service_locator_pattern) in current example it helps to hide concrete implementation of use cases
+The `UseCaseProvider` is a [service locator](https://en.wikipedia.org/wiki/Service_locator_pattern) in a current example it helps to hide the concrete implementation of use cases
 
 #### Platform
 
-Sometimes we can't fully go with Swift structs for your domain objects because there are requirements of DB framework (e.g. CoreData, Realm). 
+We have to define Platform level counterparts for out Domain object and usualy we can't use Domain structs directly, due to requirements of DB frameworks: (e.g. CoreData, Realm requires entities to be subclass of their root class). 
 
 ```swift
 final class CDPost: NSManagedObject {
@@ -78,7 +78,7 @@ final class RMPost: Object {
 
 ```
 
-`Platform` also contains concrete implementations of your use cases, repositories or any services that are defined in the `Domain`
+The `Platform` also contains concrete implementations of your use cases, repositories or any services that are defined in the `Domain`
 
 ```swift
 final class SavePostUseCase: Domain.SavePostUseCase {
@@ -122,7 +122,7 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
 }
 
 ```
-As you can see concrete implementations are internal, because we dont want to expose our dependecies. The only thing that exposed in current example from the `Platform` is `ServiceLocator`
+As you can see concrete implementations are internal, because we dont want to expose our dependecies. The only thing we expose in the current example from the `Platform` is the `ServiceLocator`
 
 ```swift
 public final class ServiceLocator: Domain.ServiceLocator {
@@ -147,11 +147,11 @@ public final class ServiceLocator: Domain.ServiceLocator {
 
 ####Aplication
 
-In the current example `Aplication` implemented with [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern with havy use of [RxSwift](https://github.com/ReactiveX/RxSwift).
+In the current example the `Aplication` implemented with [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern with havy use of [RxSwift](https://github.com/ReactiveX/RxSwift), which makes binding very easy.
 
 ![](Architecture/MVVMPattern.png)
 
-Where `ViewModel` is a pure transformation of user `Input` to the `Output`
+Where the `ViewModel` performs pure transformation of a user `Input` to the `Output`
 
 ```swift
 
@@ -192,7 +192,7 @@ final class PostsViewModel: ViewModelType {
     }
 ```
 
-`ViewModel` can be injected into `ViewController` via property injection or initializer. In the current example this is done by `Navigator`.
+The `ViewModel` can be injected into the `ViewController` via a property injection or an initializer. In the current example this is done by the `Navigator`.
 
 ```swift
 
@@ -235,7 +235,7 @@ class PostsViewController: UIViewController {
 
 ###Example
 
-The example app is Post/TODOs app which use `Realm` and `CoreData` at the same time as a prove of concept
+The example app is a Post/TODOs app which uses `Realm` and `CoreData` at the same time as a prove of that the Application level is not dependant on the Platform level implementation details.
 
 | CoreData | Realm |
 | -------- | ----- |
