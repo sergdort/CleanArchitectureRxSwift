@@ -11,13 +11,15 @@ You can do this by:
 
 #### Domain 
 
-`Domain` is basically what your App is about and what it can do (Entities, UseCase etc.) **It does not depend on UIKit or any persistence framework**, and it doesn't have implementations apart from entities.
+
+The `Domain` is basically what is your App about and what it can do (Entities, UseCase etc.) **It does not depend on UIKit or any persistence framework**, and it doesn't have implementations apart from entities
 
 #### Platform
 
-`Platform` is a concrete implementation of the `Domain`. It hides all implementation details. For example, a database implementation -- CoreData, Realm, SQLite etc.
+The `Platform` is a concrete implementation of the `Domain` in a specific platform like iOS. It does hide all implementation details. For example Database implementation whether it is CoreData, Realm, SQLite etc.
 
 #### Application
+The `Application` is responsible for delivering information to the user and handling user input. It can be implemented with any delivery pattern e.g (MVVM, MVC, MVP). It is place where you have your `UIView`s and `UIViewController`s. As you will see from the example app `ViewControllers` are completely independant on the `Platform` the only responsobility of view controller is to "bind" UI and Domain to make things happened. In fact in the current example we are using the same view controller which binds to the Platform with Realm or CoreData storage under the hood.
 
 `Application` is responsible for delivering information to the user and handling user input. It can be implemented with any delivery pattern e.g (MVVM, MVC, MVP). This is the place for your `UIView`s and `UIViewController`s. As you will see from the example app, `ViewControllers` are completely independent of the `Platform`.  The only responsobility of a view controller is to "bind" the UI to the Domain to make things happen. In fact, in the current example we are using the same view controller for Realm and CoreData.
 
@@ -54,6 +56,7 @@ public protocol SavePostUseCase {
 }
 
 ```
+
 `UseCaseProvider` is a [service locator](https://en.wikipedia.org/wiki/Service_locator_pattern).  In the current example, it helps to hide the concrete implementation of use cases.
 
 #### Platform
@@ -79,7 +82,8 @@ final class RMPost: Object {
 
 ```
 
-`Platform` also contains concrete implementations of your use cases, repositories or any services that are defined in the `Domain`.
+
+The `Platform` also contains concrete implementations of your use cases, repositories or any services that are defined in the `Domain`.
 
 ```swift
 final class SavePostUseCase: Domain.SavePostUseCase {
@@ -123,6 +127,7 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
 }
 
 ```
+
 As you can see, concrete implementations are internal, because we don't want to expose our dependecies. The only thing that is exposed in the current example from the `Platform` is `ServiceLocator`.
 
 ```swift
@@ -148,11 +153,11 @@ public final class ServiceLocator: Domain.ServiceLocator {
 
 ####Application
 
-In the current example, `Application` is implemented with the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern and heavy use of [RxSwift](https://github.com/ReactiveX/RxSwift).
+In the current example, `Application` is implemented with the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern and heavy use of [RxSwift](https://github.com/ReactiveX/RxSwift), which makes binding very easy.
 
 ![](Architecture/MVVMPattern.png)
 
-Where `ViewModel` is a pure transformation of user `Input` to the `Output`
+Where the `ViewModel` performs pure transformation of a user `Input` to the `Output`
 
 ```swift
 
@@ -236,7 +241,7 @@ class PostsViewController: UIViewController {
 
 ###Example
 
-The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same time as a proof of concept.
+The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same time as a proof of concept that the `Application` level is not dependant on the Platform level implementation details.
 
 | CoreData | Realm |
 | -------- | ----- |
