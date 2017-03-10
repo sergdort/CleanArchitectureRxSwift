@@ -32,7 +32,7 @@ final class EditPostViewController: UIViewController {
     var postBinding: UIBindingObserver<EditPostViewController, Post> {
         return UIBindingObserver(UIElement: self, binding: { (vc, post) in
             vc.titleTextField.text = post.title
-            vc.detailsTextView.text = post.content
+            vc.detailsTextView.text = post.body
             vc.title = post.title
         })
     }
