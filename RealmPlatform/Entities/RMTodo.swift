@@ -1,42 +1,51 @@
+//
+//  RMTodo.swift
+//  CleanArchitectureRxSwift
+//
+//  Created by Andrey Yastrebov on 10.03.17.
+//  Copyright © 2017 sergdort. All rights reserved.
+//
+
 import QueryKit
 import Domain
 import RealmSwift
 import Realm
 
-final class RMPost: Object {
+final class RMTodo: Object {
+
+    dynamic var completed: Bool = false
+    dynamic var title: String = ""
     dynamic var uid: Int = 0
     dynamic var userId: Int = 0
-    dynamic var title: String = ""
-    dynamic var body: String = ""
-
+    
     override class func primaryKey() -> String? {
         return "uid"
     }
 }
 
-extension RMPost {
+extension RMTodo {
     static var title: Attribute<String> { return Attribute("title")}
-    static var body: Attribute<String> { return Attribute("body")}
+    static var completed: Attribute<Bool> { return Attribute("completed")}
     static var userId: Attribute<Int> { return Attribute("userId")}
     static var uid: Attribute<Int> { return Attribute("uid")}
 }
 
-extension RMPost: DomainConvertibleType {
-    func asDomain() -> Post {
-        return Post(body: body,
+extension RMTodo: DomainConvertibleType {
+    func asDomain() -> Todo {
+        return Todo(completed: completed,
                     title: title,
                     uid: uid,
                     userId: userId)
     }
 }
 
-extension Post: RealmRepresentable {
-    func asRealm() -> RMPost {
-        return RMPost.build { object in
+extension Todo: RealmRepresentable {
+    func asRealm() -> RMTodo {
+        return RMTodo.build { object in
             object.uid = uid
             object.userId = userId
             object.title = title
-            object.body = body
+            object.completed = completed
         }
     }
 }

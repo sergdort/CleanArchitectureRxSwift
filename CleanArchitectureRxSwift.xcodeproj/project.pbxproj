@@ -59,7 +59,6 @@
 		2DEEE5268D97F40515D1C542 /* Pods_DomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5764703F1E249BEDFC31014 /* Pods_DomainTests.framework */; };
 		4171B21201FC20FD72A143D0 /* Pods_CoreDataPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03758DD874CBFB48A52CE5 /* Pods_CoreDataPlatformTests.framework */; };
 		514BA3A92A644232F50ED1A8 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */; };
-		515F903E97C00DCE9EAEBF4D /* RMMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93C79FEF71E526BD363E /* RMMedia.swift */; };
 		515F9083DB52FEDFEE97A5E6 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93CEB3B316E01CDACEA7 /* PostsViewModel.swift */; };
 		515F926E776E33924F53A7F6 /* SavePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9E409750F3D40CB814AE /* SavePostUseCase.swift */; };
 		515F94802804A5FEB69837C8 /* AllPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9359DD575F7E65FE22AF /* AllPostsUseCase.swift */; };
@@ -91,6 +90,13 @@
 		BCD8C8B61E73425500F79E3E /* Photo+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B51E73425500F79E3E /* Photo+Mapping.swift */; };
 		BCD8C8B81E73426200F79E3E /* Todo+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B71E73426200F79E3E /* Todo+Mapping.swift */; };
 		BCD8C8BA1E73426D00F79E3E /* User+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B91E73426D00F79E3E /* User+Mapping.swift */; };
+		BCD8C8BC1E73470000F79E3E /* RMAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8BB1E73470000F79E3E /* RMAddress.swift */; };
+		BCD8C8BE1E73470C00F79E3E /* RMAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8BD1E73470C00F79E3E /* RMAlbum.swift */; };
+		BCD8C8C01E73471A00F79E3E /* RMComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8BF1E73471A00F79E3E /* RMComment.swift */; };
+		BCD8C8C21E73472400F79E3E /* RMCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8C11E73472400F79E3E /* RMCompany.swift */; };
+		BCD8C8C41E73473300F79E3E /* RMPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8C31E73473300F79E3E /* RMPhoto.swift */; };
+		BCD8C8C61E73474600F79E3E /* RMTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8C51E73474600F79E3E /* RMTodo.swift */; };
+		BCD8C8C81E73475000F79E3E /* RMUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8C71E73475000F79E3E /* RMUser.swift */; };
 		BD107F521E7298690043D900 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD107F491E7298690043D900 /* Network.framework */; };
 		BD107F591E72986A0043D900 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F581E72986A0043D900 /* NetworkTests.swift */; };
 		BD107F5B1E72986A0043D900 /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = BD107F4B1E7298690043D900 /* Network.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -319,7 +325,6 @@
 		515F92E2318F810E8AE29AB7 /* CreatePostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewModel.swift; sourceTree = "<group>"; };
 		515F92E54A4D816781F20A3B /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		515F9359DD575F7E65FE22AF /* AllPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCase.swift; sourceTree = "<group>"; };
-		515F93C79FEF71E526BD363E /* RMMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMMedia.swift; sourceTree = "<group>"; };
 		515F93CEB3B316E01CDACEA7 /* PostsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		515F948FEF12E0E3120DF351 /* CreatePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		515F94C9D806D051CFBCC327 /* PostsNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigator.swift; sourceTree = "<group>"; };
@@ -356,6 +361,13 @@
 		BCD8C8B51E73425500F79E3E /* Photo+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+Mapping.swift"; sourceTree = "<group>"; };
 		BCD8C8B71E73426200F79E3E /* Todo+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+Mapping.swift"; sourceTree = "<group>"; };
 		BCD8C8B91E73426D00F79E3E /* User+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8BB1E73470000F79E3E /* RMAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAddress.swift; sourceTree = "<group>"; };
+		BCD8C8BD1E73470C00F79E3E /* RMAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMAlbum.swift; sourceTree = "<group>"; };
+		BCD8C8BF1E73471A00F79E3E /* RMComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMComment.swift; sourceTree = "<group>"; };
+		BCD8C8C11E73472400F79E3E /* RMCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMCompany.swift; sourceTree = "<group>"; };
+		BCD8C8C31E73473300F79E3E /* RMPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPhoto.swift; sourceTree = "<group>"; };
+		BCD8C8C51E73474600F79E3E /* RMTodo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTodo.swift; sourceTree = "<group>"; };
+		BCD8C8C71E73475000F79E3E /* RMUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMUser.swift; sourceTree = "<group>"; };
 		BD107F491E7298690043D900 /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD107F4B1E7298690043D900 /* Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		BD107F4C1E7298690043D900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -654,6 +666,7 @@
 		25897B8D1E58C24B00D3563C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				25897B971E58C24B00D3563C /* Convertion */,
 				BD107FB71E730A1D0043D900 /* CDAddress+CoreDataClass.swift */,
 				BD107FB81E730A1D0043D900 /* CDAddress+CoreDataProperties.swift */,
 				BD107FA11E72DE230043D900 /* CDAddress+Ext.swift */,
@@ -681,7 +694,6 @@
 				BD107FC71E730A1D0043D900 /* CDUser+CoreDataClass.swift */,
 				BD107FC81E730A1D0043D900 /* CDUser+CoreDataProperties.swift */,
 				BD107FAD1E72DE760043D900 /* CDUser+Ext.swift */,
-				25897B971E58C24B00D3563C /* Convertion */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -798,9 +810,15 @@
 			isa = PBXGroup;
 			children = (
 				515F93C28B4316E9B2F00D42 /* Convertion */,
+				BCD8C8BB1E73470000F79E3E /* RMAddress.swift */,
+				BCD8C8BD1E73470C00F79E3E /* RMAlbum.swift */,
+				BCD8C8BF1E73471A00F79E3E /* RMComment.swift */,
+				BCD8C8C11E73472400F79E3E /* RMCompany.swift */,
 				515F96DF719A053AEF410368 /* RMLocation.swift */,
-				515F93C79FEF71E526BD363E /* RMMedia.swift */,
+				BCD8C8C31E73473300F79E3E /* RMPhoto.swift */,
 				515F988220373D06226F4EDE /* RMPost.swift */,
+				BCD8C8C51E73474600F79E3E /* RMTodo.swift */,
+				BCD8C8C71E73475000F79E3E /* RMUser.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1885,17 +1903,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				515F9B4D6A3BD831B9D4FB8C /* RealmRepresentable.swift in Sources */,
+				BCD8C8C61E73474600F79E3E /* RMTodo.swift in Sources */,
+				BCD8C8C41E73473300F79E3E /* RMPhoto.swift in Sources */,
 				515F96794273284723F2848D /* DomainConvertibleType.swift in Sources */,
 				515F9DBB950E2ABDB8D7895B /* RMPost.swift in Sources */,
-				515F903E97C00DCE9EAEBF4D /* RMMedia.swift in Sources */,
 				515F9BD6155258BD0C04DF36 /* RMLocation.swift in Sources */,
 				515F9CD8F2B13D0328B77B6C /* Realm+Ext.swift in Sources */,
 				515F9503C6F079D663CD9072 /* Repository.swift in Sources */,
 				515F94802804A5FEB69837C8 /* AllPostsUseCase.swift in Sources */,
+				BCD8C8C81E73475000F79E3E /* RMUser.swift in Sources */,
 				515F978F1DBE7C45646004F1 /* Observable+Ext.swift in Sources */,
+				BCD8C8C01E73471A00F79E3E /* RMComment.swift in Sources */,
 				515F926E776E33924F53A7F6 /* SavePostUseCase.swift in Sources */,
+				BCD8C8C21E73472400F79E3E /* RMCompany.swift in Sources */,
 				515F973B5AA08DB9C2277A8C /* ServiceLocator.swift in Sources */,
 				515F9A39814357F9E05282CD /* RunLoopThreadScheduler.swift in Sources */,
+				BCD8C8BE1E73470C00F79E3E /* RMAlbum.swift in Sources */,
+				BCD8C8BC1E73470000F79E3E /* RMAddress.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
