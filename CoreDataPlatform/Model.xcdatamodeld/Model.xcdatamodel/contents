@@ -5,7 +5,8 @@
         <attribute name="street" attributeType="String" syncable="YES"/>
         <attribute name="suite" attributeType="String" syncable="YES"/>
         <attribute name="zipcode" attributeType="String" syncable="YES"/>
-        <relationship name="geo" maxCount="1" deletionRule="Nullify" destinationEntity="CDLocation" syncable="YES"/>
+        <relationship name="geo" maxCount="1" deletionRule="Nullify" destinationEntity="CDLocation" inverseName="address" inverseEntity="CDLocation" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="address" inverseEntity="CDUser" syncable="YES"/>
     </entity>
     <entity name="CDAlbum" representedClassName=".CDAlbum" syncable="YES" codeGenerationType="category">
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -23,10 +24,12 @@
         <attribute name="bs" attributeType="String" syncable="YES"/>
         <attribute name="catchPhrase" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="company" inverseEntity="CDUser" syncable="YES"/>
     </entity>
     <entity name="CDLocation" representedClassName=".CDLocation" syncable="YES" codeGenerationType="category">
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="CDAddress" inverseName="geo" inverseEntity="CDAddress" syncable="YES"/>
     </entity>
     <entity name="CDPhoto" representedClassName=".CDPhoto" syncable="YES" codeGenerationType="category">
         <attribute name="albumId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -54,15 +57,15 @@
         <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
         <attribute name="website" attributeType="String" syncable="YES"/>
-        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="CDAddress" syncable="YES"/>
-        <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" syncable="YES"/>
+        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="CDAddress" inverseName="user" inverseEntity="CDAddress" syncable="YES"/>
+        <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="user" inverseEntity="CDCompany" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDAddress" positionX="-45" positionY="18" width="128" height="120"/>
+        <element name="CDAddress" positionX="-45" positionY="18" width="128" height="135"/>
         <element name="CDAlbum" positionX="-36" positionY="27" width="128" height="90"/>
         <element name="CDComment" positionX="-27" positionY="36" width="128" height="120"/>
-        <element name="CDCompany" positionX="-18" positionY="45" width="128" height="90"/>
-        <element name="CDLocation" positionX="-36" positionY="27" width="128" height="75"/>
+        <element name="CDCompany" positionX="-18" positionY="45" width="128" height="105"/>
+        <element name="CDLocation" positionX="-36" positionY="27" width="128" height="90"/>
         <element name="CDPhoto" positionX="0" positionY="54" width="128" height="120"/>
         <element name="CDPost" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="CDTodo" positionX="18" positionY="63" width="128" height="105"/>
