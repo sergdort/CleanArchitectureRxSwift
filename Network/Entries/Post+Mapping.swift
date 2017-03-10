@@ -7,17 +7,15 @@
 //
 
 import Domain
-import JASON
+import ObjectMapper
 
-extension JSONKeys {
-    static let id = JSONKey<Int>("id")
-    static let userId = JSONKey<Int>("userId")
-    static let title = JSONKey<String>("title")
-    static let body = JSONKey<String>("body")
-}
+extension Post: ImmutableMappable {
 
-extension Post {
-
-    init(_ json: JSON) {
+    // JSON -> Object
+    public init(map: Map) throws {
+        body = try map.value("body")
+        title = try map.value("title")
+        uid =  try map.value("id")
+        userId = try map.value("userId")
     }
 }

@@ -11,7 +11,7 @@ import Alamofire
 import Domain
 import RxAlamofire
 import RxSwift
-import JASON
+import ObjectMapper
 
 private let ApiEndpoint = "https://jsonplaceholder.typicode.com"
 
@@ -19,19 +19,39 @@ public final class NetworkModel {
 
     func fetchPosts() -> Observable<[Post]> {
         return RxAlamofire
-            .requestData(.get, ApiEndpoint + "/posts")
+            .request(.get, ApiEndpoint + "/posts")
             .debug()
             .catchError { error in
                 return Observable.never()
             }
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map({ (response, data) -> JSON in
-                let json = JSON(data)
-                return json
+            .flatMap({ (request: DataRequest) -> Observable<DataResponse<[Post]>> in
+                return request.rx_responseArray(type: Post)
             })
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .background))
-            .map({ json -> [Post] in
-                return []
+            .map({ response -> [Post] in
+                guard let posts = response.result.value else {
+                    return []
+                }
+
+                return posts
             })
     }
+
+//    func fetchUsers() -> Observable<[User]> {
+//        return RxAlamofire
+//            .request(.get, ApiEndpoint + "/users")
+//            .debug()
+//            .catchError { error in
+//                return Observable.never()
+//            }
+//            .flatMap({ (request: DataRequest) -> Observable<DataResponse<[User]>> in
+//                return request.responseArray()
+//            })
+//            .map({ response -> [User] in
+//                guard let users = response.result.value else {
+//                    return []
+//                }
+//
+//                return users
+//            })
+//    }
 }

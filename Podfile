@@ -59,7 +59,8 @@ target 'Network' do
     rx_swift
     pod 'Alamofire'
     pod 'RxAlamofire'
-    pod 'JASON'
+    pod 'ObjectMapper'
+    pod 'AlamofireObjectMapper'
 
     target 'NetworkTests' do
         inherit! :search_paths
