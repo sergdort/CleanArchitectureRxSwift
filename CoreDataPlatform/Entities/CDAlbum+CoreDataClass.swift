@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDAlbum: NSManagedObject {
+final class CDAlbum: NSManagedObject {
 
 }

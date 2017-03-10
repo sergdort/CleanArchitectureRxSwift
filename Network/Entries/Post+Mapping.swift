@@ -15,7 +15,7 @@ extension Post: ImmutableMappable {
     public init(map: Map) throws {
         body = try map.value("body")
         title = try map.value("title")
-        uid =  try map.value("id")
+        uid = try map.value("id")
         userId = try map.value("userId")
     }
 }

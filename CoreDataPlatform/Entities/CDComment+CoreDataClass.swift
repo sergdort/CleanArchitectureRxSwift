@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDComment: NSManagedObject {
+final class CDComment: NSManagedObject {
 
 }

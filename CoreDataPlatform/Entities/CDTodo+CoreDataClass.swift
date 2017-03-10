@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDTodo: NSManagedObject {
+final class CDTodo: NSManagedObject {
 
 }

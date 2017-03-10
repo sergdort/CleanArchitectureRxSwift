@@ -12,22 +12,22 @@
 		<key>CoreDataPlatform.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>24</integer>
 		</dict>
 		<key>Domain.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>23</integer>
 		</dict>
 		<key>Network.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>26</integer>
 		</dict>
 		<key>RealmPlatform.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>25</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

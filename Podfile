@@ -60,7 +60,6 @@ target 'Network' do
     pod 'Alamofire'
     pod 'RxAlamofire'
     pod 'ObjectMapper'
-    pod 'AlamofireObjectMapper'
 
     target 'NetworkTests' do
         inherit! :search_paths

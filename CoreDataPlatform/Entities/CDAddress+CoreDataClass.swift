@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDAddress: NSManagedObject {
+final class CDAddress: NSManagedObject {
 
 }

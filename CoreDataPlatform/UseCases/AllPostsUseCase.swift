@@ -10,6 +10,6 @@ final class CDAllPostsUseCase: AllPostsUseCase {
     }
 
     func posts() -> Observable<[Post]> {
-        return repository.query(sortDescriptors: [Post.CoreDataType.createDate.descending()])
+        return repository.query(sortDescriptors: [Post.CoreDataType.uid.descending()])
     }
 }

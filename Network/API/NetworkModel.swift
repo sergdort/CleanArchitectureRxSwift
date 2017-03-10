@@ -19,20 +19,13 @@ public final class NetworkModel {
 
     func fetchPosts() -> Observable<[Post]> {
         return RxAlamofire
-            .request(.get, ApiEndpoint + "/posts")
+            .json(.get, ApiEndpoint + "/posts")
             .debug()
             .catchError { error in
                 return Observable.never()
             }
-            .flatMap({ (request: DataRequest) -> Observable<DataResponse<[Post]>> in
-                return request.rx_responseArray(type: Post)
-            })
-            .map({ response -> [Post] in
-                guard let posts = response.result.value else {
-                    return []
-                }
-
-                return posts
+            .flatMap({ json -> Observable<[Post]> in
+                Observable.just(try Mapper<Post>().mapArray(JSONArray: json as! [[String : Any]]))
             })
     }
 

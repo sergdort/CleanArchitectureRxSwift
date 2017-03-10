@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDPhoto: NSManagedObject {
+final class CDPhoto: NSManagedObject {
 
 }

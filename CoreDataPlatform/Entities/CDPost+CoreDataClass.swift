@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDPost: NSManagedObject {
+final class CDPost: NSManagedObject {
 
 }

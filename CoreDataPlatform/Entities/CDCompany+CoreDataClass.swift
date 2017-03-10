@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDCompany: NSManagedObject {
+final class CDCompany: NSManagedObject {
 
 }

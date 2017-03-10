@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDUser: NSManagedObject {
+final class CDUser: NSManagedObject {
 
 }
