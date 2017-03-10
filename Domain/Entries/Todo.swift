@@ -9,4 +9,27 @@
 import Foundation
 
 public struct Todo {
+    public let completed: Bool
+    public let title: String
+    public let uid: Int
+    public let userId: Int
+
+    public init(completed: Bool,
+                title: String,
+                uid: Int,
+                userId: Int) {
+        self.completed = completed
+        self.title = title
+        self.uid = uid
+        self.userId = userId
+    }
+}
+
+extension Todo: Equatable {
+    public static func == (lhs: Todo, rhs: Todo) -> Bool {
+        return lhs.uid == rhs.uid &&
+            lhs.title == rhs.title &&
+            lhs.completed == rhs.completed &&
+            lhs.userId == rhs.userId
+    }
 }

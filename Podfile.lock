@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.4.0)
-  - Dip (5.0.4)
   - JASON (3.1)
   - Nimble (6.0.1)
   - QueryKit (0.13.0)
@@ -27,7 +26,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - Dip
   - JASON
   - Nimble
   - QueryKit
@@ -42,7 +40,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  Dip: 6460091adcf84ae8765f4927b85b49e6a3b67bfe
   JASON: c1204b01c9979eef35b6948ca939aac5e7bef081
   Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
   QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
@@ -55,6 +52,6 @@ SPEC CHECKSUMS:
   RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
   RxTest: 85fdd6f753e8e62635a58d37bbdd3ce7d5abbef3
 
-PODFILE CHECKSUM: 752788b3d2b813345ec273c4e88775065a9fb33a
+PODFILE CHECKSUM: 53dff5abdaa1e1127be3cdc0ba30714c8d51e471
 
 COCOAPODS: 1.2.0

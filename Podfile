@@ -22,7 +22,6 @@ target 'CleanArchitectureRxSwift' do
   rx_cocoa
   rx_swift
   pod 'QueryKit'
-  pod 'Dip'
   target 'CleanArchitectureRxSwiftTests' do
     inherit! :search_paths
     test_pods
