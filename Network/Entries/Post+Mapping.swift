@@ -12,8 +12,7 @@ import JASON
 extension JSONKeys {
     static let id = JSONKey<Int>("id")
     static let userId = JSONKey<Int>("userId")
-
-    static let title = JSONKey<JSON>("title")
+    static let title = JSONKey<String>("title")
     static let body = JSONKey<String>("body")
 }
 

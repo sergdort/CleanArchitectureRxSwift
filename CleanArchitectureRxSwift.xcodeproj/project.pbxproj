@@ -33,9 +33,6 @@
 		25897B9A1E58C24B00D3563C /* CDLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B8E1E58C24B00D3563C /* CDLocation+CoreDataClass.swift */; };
 		25897B9B1E58C24B00D3563C /* CDLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B8F1E58C24B00D3563C /* CDLocation+CoreDataProperties.swift */; };
 		25897B9C1E58C24B00D3563C /* CDLocation+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B901E58C24B00D3563C /* CDLocation+Ext.swift */; };
-		25897B9D1E58C24B00D3563C /* CDMedia+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B911E58C24B00D3563C /* CDMedia+CoreDataClass.swift */; };
-		25897B9E1E58C24B00D3563C /* CDMedia+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B921E58C24B00D3563C /* CDMedia+CoreDataProperties.swift */; };
-		25897B9F1E58C24B00D3563C /* CDMedia+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B931E58C24B00D3563C /* CDMedia+Ext.swift */; };
 		25897BA01E58C24B00D3563C /* CDPost+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B941E58C24B00D3563C /* CDPost+CoreDataClass.swift */; };
 		25897BA11E58C24B00D3563C /* CDPost+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B951E58C24B00D3563C /* CDPost+CoreDataProperties.swift */; };
 		25897BA21E58C24B00D3563C /* CDPost+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B961E58C24B00D3563C /* CDPost+Ext.swift */; };
@@ -105,6 +102,27 @@
 		BD107F7F1E72B7820043D900 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F7E1E72B7820043D900 /* User.swift */; };
 		BD107F821E72C5640043D900 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F811E72C5640043D900 /* Address.swift */; };
 		BD107F841E72C5740043D900 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F831E72C5740043D900 /* Company.swift */; };
+		BD107F931E72DDE10043D900 /* CDAddress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F851E72DDE10043D900 /* CDAddress+CoreDataClass.swift */; };
+		BD107F941E72DDE10043D900 /* CDAddress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F861E72DDE10043D900 /* CDAddress+CoreDataProperties.swift */; };
+		BD107F951E72DDE10043D900 /* CDAlbum+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F871E72DDE10043D900 /* CDAlbum+CoreDataClass.swift */; };
+		BD107F961E72DDE10043D900 /* CDAlbum+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F881E72DDE10043D900 /* CDAlbum+CoreDataProperties.swift */; };
+		BD107F971E72DDE10043D900 /* CDComment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F891E72DDE10043D900 /* CDComment+CoreDataClass.swift */; };
+		BD107F981E72DDE10043D900 /* CDComment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F8A1E72DDE10043D900 /* CDComment+CoreDataProperties.swift */; };
+		BD107F991E72DDE10043D900 /* CDCompany+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F8B1E72DDE10043D900 /* CDCompany+CoreDataClass.swift */; };
+		BD107F9A1E72DDE10043D900 /* CDCompany+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F8C1E72DDE10043D900 /* CDCompany+CoreDataProperties.swift */; };
+		BD107F9B1E72DDE10043D900 /* CDPhoto+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F8D1E72DDE10043D900 /* CDPhoto+CoreDataClass.swift */; };
+		BD107F9C1E72DDE10043D900 /* CDPhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F8E1E72DDE10043D900 /* CDPhoto+CoreDataProperties.swift */; };
+		BD107F9D1E72DDE10043D900 /* CDTodo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F8F1E72DDE10043D900 /* CDTodo+CoreDataClass.swift */; };
+		BD107F9E1E72DDE10043D900 /* CDTodo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F901E72DDE10043D900 /* CDTodo+CoreDataProperties.swift */; };
+		BD107F9F1E72DDE10043D900 /* CDUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F911E72DDE10043D900 /* CDUser+CoreDataClass.swift */; };
+		BD107FA01E72DDE10043D900 /* CDUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F921E72DDE10043D900 /* CDUser+CoreDataProperties.swift */; };
+		BD107FA21E72DE230043D900 /* CDAddress+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FA11E72DE230043D900 /* CDAddress+Ext.swift */; };
+		BD107FA41E72DE320043D900 /* CDAlbum+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FA31E72DE320043D900 /* CDAlbum+Ext.swift */; };
+		BD107FA61E72DE400043D900 /* CDComment+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FA51E72DE400043D900 /* CDComment+Ext.swift */; };
+		BD107FA81E72DE4F0043D900 /* CDCompany+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FA71E72DE4F0043D900 /* CDCompany+Ext.swift */; };
+		BD107FAA1E72DE5C0043D900 /* CDPhoto+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FA91E72DE5B0043D900 /* CDPhoto+Ext.swift */; };
+		BD107FAC1E72DE6B0043D900 /* CDTodo+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FAB1E72DE6B0043D900 /* CDTodo+Ext.swift */; };
+		BD107FAE1E72DE760043D900 /* CDUser+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107FAD1E72DE760043D900 /* CDUser+Ext.swift */; };
 		DE96287CF168CFC64A0DE642 /* Pods_RealmPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0D3602A9ABB65C8AF19365 /* Pods_RealmPlatformTests.framework */; };
 		E7CC1C376C9850FDBA8F3DE1 /* Pods_NetworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691DFEEB0D7480A716D51CF9 /* Pods_NetworkTests.framework */; };
 		F19EF3D1A8721CEAEA65EE12 /* Pods_CoreDataPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9A3A93769D5899CBDCA89F /* Pods_CoreDataPlatform.framework */; };
@@ -260,9 +278,6 @@
 		25897B8E1E58C24B00D3563C /* CDLocation+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		25897B8F1E58C24B00D3563C /* CDLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		25897B901E58C24B00D3563C /* CDLocation+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDLocation+Ext.swift"; sourceTree = "<group>"; };
-		25897B911E58C24B00D3563C /* CDMedia+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDMedia+CoreDataClass.swift"; sourceTree = "<group>"; };
-		25897B921E58C24B00D3563C /* CDMedia+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDMedia+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		25897B931E58C24B00D3563C /* CDMedia+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDMedia+Ext.swift"; sourceTree = "<group>"; };
 		25897B941E58C24B00D3563C /* CDPost+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPost+CoreDataClass.swift"; sourceTree = "<group>"; };
 		25897B951E58C24B00D3563C /* CDPost+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		25897B961E58C24B00D3563C /* CDPost+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPost+Ext.swift"; sourceTree = "<group>"; };
@@ -280,7 +295,7 @@
 		25897BB61E58C25A00D3563C /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		25897BBF1E58C42D00D3563C /* AllPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCase.swift; sourceTree = "<group>"; };
 		25897BC11E58C42D00D3563C /* SavePostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavePostUseCase.swift; sourceTree = "<group>"; };
-		25897BC31E58C42D00D3563C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Location.swift; sourceTree = "<group>"; };
+		25897BC31E58C42D00D3563C /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		25897BC51E58C42D00D3563C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		25897BE21E58CB8E00D3563C /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		25897BE91E58CB8E00D3563C /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -344,6 +359,27 @@
 		BD107F7E1E72B7820043D900 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BD107F811E72C5640043D900 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		BD107F831E72C5740043D900 /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		BD107F851E72DDE10043D900 /* CDAddress+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAddress+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F861E72DDE10043D900 /* CDAddress+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAddress+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107F871E72DDE10043D900 /* CDAlbum+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAlbum+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F881E72DDE10043D900 /* CDAlbum+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAlbum+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107F891E72DDE10043D900 /* CDComment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDComment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F8A1E72DDE10043D900 /* CDComment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDComment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107F8B1E72DDE10043D900 /* CDCompany+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDCompany+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F8C1E72DDE10043D900 /* CDCompany+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDCompany+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107F8D1E72DDE10043D900 /* CDPhoto+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F8E1E72DDE10043D900 /* CDPhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107F8F1E72DDE10043D900 /* CDTodo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDTodo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F901E72DDE10043D900 /* CDTodo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDTodo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107F911E72DDE10043D900 /* CDUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BD107F921E72DDE10043D900 /* CDUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BD107FA11E72DE230043D900 /* CDAddress+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAddress+Ext.swift"; sourceTree = "<group>"; };
+		BD107FA31E72DE320043D900 /* CDAlbum+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAlbum+Ext.swift"; sourceTree = "<group>"; };
+		BD107FA51E72DE400043D900 /* CDComment+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDComment+Ext.swift"; sourceTree = "<group>"; };
+		BD107FA71E72DE4F0043D900 /* CDCompany+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDCompany+Ext.swift"; sourceTree = "<group>"; };
+		BD107FA91E72DE5B0043D900 /* CDPhoto+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPhoto+Ext.swift"; sourceTree = "<group>"; };
+		BD107FAB1E72DE6B0043D900 /* CDTodo+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDTodo+Ext.swift"; sourceTree = "<group>"; };
+		BD107FAD1E72DE760043D900 /* CDUser+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDUser+Ext.swift"; sourceTree = "<group>"; };
 		CF6E48F9E3D9085D854008BE /* Pods-Network.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Network.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Network/Pods-Network.debug.xcconfig"; sourceTree = "<group>"; };
 		D28BD18435DE56EF95FB0E9D /* Pods-NetworkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkTests/Pods-NetworkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1F89859FF9197F25DB915C7 /* Pods-CoreDataPlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -603,15 +639,33 @@
 			isa = PBXGroup;
 			children = (
 				25897B971E58C24B00D3563C /* Convertion */,
+				BD107F851E72DDE10043D900 /* CDAddress+CoreDataClass.swift */,
+				BD107F861E72DDE10043D900 /* CDAddress+CoreDataProperties.swift */,
+				BD107FA11E72DE230043D900 /* CDAddress+Ext.swift */,
+				BD107F871E72DDE10043D900 /* CDAlbum+CoreDataClass.swift */,
+				BD107F881E72DDE10043D900 /* CDAlbum+CoreDataProperties.swift */,
+				BD107FA31E72DE320043D900 /* CDAlbum+Ext.swift */,
+				BD107F891E72DDE10043D900 /* CDComment+CoreDataClass.swift */,
+				BD107F8A1E72DDE10043D900 /* CDComment+CoreDataProperties.swift */,
+				BD107FA51E72DE400043D900 /* CDComment+Ext.swift */,
+				BD107F8B1E72DDE10043D900 /* CDCompany+CoreDataClass.swift */,
+				BD107F8C1E72DDE10043D900 /* CDCompany+CoreDataProperties.swift */,
+				BD107FA71E72DE4F0043D900 /* CDCompany+Ext.swift */,
 				25897B8E1E58C24B00D3563C /* CDLocation+CoreDataClass.swift */,
 				25897B8F1E58C24B00D3563C /* CDLocation+CoreDataProperties.swift */,
 				25897B901E58C24B00D3563C /* CDLocation+Ext.swift */,
-				25897B911E58C24B00D3563C /* CDMedia+CoreDataClass.swift */,
-				25897B921E58C24B00D3563C /* CDMedia+CoreDataProperties.swift */,
-				25897B931E58C24B00D3563C /* CDMedia+Ext.swift */,
+				BD107F8D1E72DDE10043D900 /* CDPhoto+CoreDataClass.swift */,
+				BD107F8E1E72DDE10043D900 /* CDPhoto+CoreDataProperties.swift */,
+				BD107FA91E72DE5B0043D900 /* CDPhoto+Ext.swift */,
 				25897B941E58C24B00D3563C /* CDPost+CoreDataClass.swift */,
 				25897B951E58C24B00D3563C /* CDPost+CoreDataProperties.swift */,
 				25897B961E58C24B00D3563C /* CDPost+Ext.swift */,
+				BD107F8F1E72DDE10043D900 /* CDTodo+CoreDataClass.swift */,
+				BD107F901E72DDE10043D900 /* CDTodo+CoreDataProperties.swift */,
+				BD107FAB1E72DE6B0043D900 /* CDTodo+Ext.swift */,
+				BD107F911E72DDE10043D900 /* CDUser+CoreDataClass.swift */,
+				BD107F921E72DDE10043D900 /* CDUser+CoreDataProperties.swift */,
+				BD107FAD1E72DE760043D900 /* CDUser+Ext.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1753,25 +1807,43 @@
 			files = (
 				25897BBA1E58C25A00D3563C /* NSManagedObjectContext+Rx.swift in Sources */,
 				25897BB81E58C25A00D3563C /* ContextScheduler.swift in Sources */,
-				25897B9E1E58C24B00D3563C /* CDMedia+CoreDataProperties.swift in Sources */,
+				BD107F9D1E72DDE10043D900 /* CDTodo+CoreDataClass.swift in Sources */,
 				25897B8C1E58C24500D3563C /* CoreDataStack.swift in Sources */,
+				BD107F9A1E72DDE10043D900 /* CDCompany+CoreDataProperties.swift in Sources */,
 				25897BAC1E58C25500D3563C /* Model.xcdatamodeld in Sources */,
 				25897BA21E58C24B00D3563C /* CDPost+Ext.swift in Sources */,
+				BD107FAC1E72DE6B0043D900 /* CDTodo+Ext.swift in Sources */,
 				25897B9A1E58C24B00D3563C /* CDLocation+CoreDataClass.swift in Sources */,
 				25897B9B1E58C24B00D3563C /* CDLocation+CoreDataProperties.swift in Sources */,
-				25897B9D1E58C24B00D3563C /* CDMedia+CoreDataClass.swift in Sources */,
+				BD107FA41E72DE320043D900 /* CDAlbum+Ext.swift in Sources */,
+				BD107F9B1E72DDE10043D900 /* CDPhoto+CoreDataClass.swift in Sources */,
+				BD107F941E72DDE10043D900 /* CDAddress+CoreDataProperties.swift in Sources */,
+				BD107FA61E72DE400043D900 /* CDComment+Ext.swift in Sources */,
 				25897BA81E58C25000D3563C /* NSManagedObjectContext+Ext.swift in Sources */,
 				25897BA41E58C24B00D3563C /* Persistable.swift in Sources */,
+				BD107FAE1E72DE760043D900 /* CDUser+Ext.swift in Sources */,
+				BD107F9C1E72DDE10043D900 /* CDPhoto+CoreDataProperties.swift in Sources */,
 				25897BA11E58C24B00D3563C /* CDPost+CoreDataProperties.swift in Sources */,
+				BD107F9F1E72DDE10043D900 /* CDUser+CoreDataClass.swift in Sources */,
 				25897B9C1E58C24B00D3563C /* CDLocation+Ext.swift in Sources */,
 				25897BB71E58C25A00D3563C /* Repository.swift in Sources */,
+				BD107F991E72DDE10043D900 /* CDCompany+CoreDataClass.swift in Sources */,
+				BD107FAA1E72DE5C0043D900 /* CDPhoto+Ext.swift in Sources */,
 				25897BBD1E58C25A00D3563C /* ServiceLocator.swift in Sources */,
 				25897BB91E58C25A00D3563C /* FetchedResultsControllerEntityObserver.swift in Sources */,
+				BD107F9E1E72DDE10043D900 /* CDTodo+CoreDataProperties.swift in Sources */,
+				BD107F951E72DDE10043D900 /* CDAlbum+CoreDataClass.swift in Sources */,
+				BD107F981E72DDE10043D900 /* CDComment+CoreDataProperties.swift in Sources */,
+				BD107F971E72DDE10043D900 /* CDComment+CoreDataClass.swift in Sources */,
+				BD107FA21E72DE230043D900 /* CDAddress+Ext.swift in Sources */,
+				BD107FA01E72DDE10043D900 /* CDUser+CoreDataProperties.swift in Sources */,
 				25897BA01E58C24B00D3563C /* CDPost+CoreDataClass.swift in Sources */,
-				25897B9F1E58C24B00D3563C /* CDMedia+Ext.swift in Sources */,
+				BD107FA81E72DE4F0043D900 /* CDCompany+Ext.swift in Sources */,
 				25897BA91E58C25000D3563C /* Observable+Ext.swift in Sources */,
 				25897BA31E58C24B00D3563C /* DomainConvertibleType.swift in Sources */,
 				25897BBC1E58C25A00D3563C /* SavePostUseCase.swift in Sources */,
+				BD107F931E72DDE10043D900 /* CDAddress+CoreDataClass.swift in Sources */,
+				BD107F961E72DDE10043D900 /* CDAlbum+CoreDataProperties.swift in Sources */,
 				25897BBB1E58C25A00D3563C /* AllPostsUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

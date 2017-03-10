@@ -1,5 +1,5 @@
 //
-//  CDPost+CoreDataProperties.swift
+//  CDAlbum+CoreDataProperties.swift
 //  
 //
 //  Created by Andrey Yastrebov on 10.03.17.
@@ -11,15 +11,14 @@ import Foundation
 import CoreData
 
 
-extension CDPost {
+extension CDAlbum {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CDPost> {
-        return NSFetchRequest<CDPost>(entityName: "CDPost");
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CDAlbum> {
+        return NSFetchRequest<CDAlbum>(entityName: "CDAlbum");
     }
 
     @NSManaged public var uid: Int64
     @NSManaged public var userId: Int64
     @NSManaged public var title: String?
-    @NSManaged public var body: String?
 
 }

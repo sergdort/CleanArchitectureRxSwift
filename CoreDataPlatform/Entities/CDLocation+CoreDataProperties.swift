@@ -1,9 +1,10 @@
 //
 //  CDLocation+CoreDataProperties.swift
-//  NetworkAndSecurity
+//  
 //
-//  Created by sergdort on 07/01/2017.
-//  Copyright © 2017 sergdort. All rights reserved.
+//  Created by Andrey Yastrebov on 10.03.17.
+//
+//  This file was automatically generated and should not be edited.
 //
 
 import Foundation
@@ -18,8 +19,6 @@ extension CDLocation {
 
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
-    @NSManaged public var name: String?
-    @NSManaged public var uid: String?
-    @NSManaged public var post: CDPost?
+    @NSManaged public var address: CDAddress?
 
 }

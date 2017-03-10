@@ -1,5 +1,5 @@
 //
-//  CDPost+CoreDataClass.swift
+//  CDTodo+CoreDataClass.swift
 //  
 //
 //  Created by Andrey Yastrebov on 10.03.17.
@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class CDPost: NSManagedObject {
+public class CDTodo: NSManagedObject {
 
 }
