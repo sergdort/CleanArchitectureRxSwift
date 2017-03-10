@@ -96,6 +96,8 @@
 		BD107F5B1E72986A0043D900 /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = BD107F4B1E7298690043D900 /* Network.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD107F5E1E72986A0043D900 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD107F491E7298690043D900 /* Network.framework */; };
 		BD107F5F1E72986A0043D900 /* Network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD107F491E7298690043D900 /* Network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD107F661E72A0D20043D900 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25897B281E58BF0D00D3563C /* Domain.framework */; };
+		BD107F691E72A0EF0043D900 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F681E72A0EF0043D900 /* NetworkModel.swift */; };
 		DE96287CF168CFC64A0DE642 /* Pods_RealmPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0D3602A9ABB65C8AF19365 /* Pods_RealmPlatformTests.framework */; };
 		E7CC1C376C9850FDBA8F3DE1 /* Pods_NetworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691DFEEB0D7480A716D51CF9 /* Pods_NetworkTests.framework */; };
 		F19EF3D1A8721CEAEA65EE12 /* Pods_CoreDataPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9A3A93769D5899CBDCA89F /* Pods_CoreDataPlatform.framework */; };
@@ -327,6 +329,7 @@
 		BD107F511E7298690043D900 /* NetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD107F581E72986A0043D900 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		BD107F5A1E72986A0043D900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD107F681E72A0EF0043D900 /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		CF6E48F9E3D9085D854008BE /* Pods-Network.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Network.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Network/Pods-Network.debug.xcconfig"; sourceTree = "<group>"; };
 		D28BD18435DE56EF95FB0E9D /* Pods-NetworkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkTests/Pods-NetworkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1F89859FF9197F25DB915C7 /* Pods-CoreDataPlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -411,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD107F661E72A0D20043D900 /* Domain.framework in Frameworks */,
 				8E549C0D492F9142D1CF88F2 /* Pods_Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,17 +453,17 @@
 			children = (
 				25897B021E58BD9100D3563C /* CleanArchitectureRxSwift */,
 				25897B171E58BD9100D3563C /* CleanArchitectureRxSwiftTests */,
-				25897B291E58BF0D00D3563C /* Domain */,
-				25897B361E58BF0D00D3563C /* DomainTests */,
 				25897B4C1E58BF3600D3563C /* CoreDataPlatform */,
 				25897B591E58BF3600D3563C /* CoreDataPlatformTests */,
-				25897B6E1E58BF4600D3563C /* RealmPlatform */,
-				25897B7B1E58BF4600D3563C /* RealmPlatformTests */,
+				25897B291E58BF0D00D3563C /* Domain */,
+				25897B361E58BF0D00D3563C /* DomainTests */,
+				23C0DA07B3F46EB59E072F7E /* Frameworks */,
 				BD107F4A1E7298690043D900 /* Network */,
 				BD107F571E72986A0043D900 /* NetworkTests */,
-				25897B011E58BD9100D3563C /* Products */,
 				A3C0A06A8E4F121C929B96B4 /* Pods */,
-				23C0DA07B3F46EB59E072F7E /* Frameworks */,
+				25897B011E58BD9100D3563C /* Products */,
+				25897B6E1E58BF4600D3563C /* RealmPlatform */,
+				25897B7B1E58BF4600D3563C /* RealmPlatformTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -484,14 +488,14 @@
 			isa = PBXGroup;
 			children = (
 				25897BE11E58CB8E00D3563C /* Application */,
-				25897BE81E58CB8E00D3563C /* Utility */,
 				25897BEE1E58CB8E00D3563C /* Common */,
-				25897B031E58BD9100D3563C /* AppDelegate.swift */,
-				25897B071E58BD9100D3563C /* Main.storyboard */,
-				25897B0A1E58BD9100D3563C /* Assets.xcassets */,
-				25897B0C1E58BD9100D3563C /* LaunchScreen.storyboard */,
-				25897B0F1E58BD9100D3563C /* Info.plist */,
 				515F903025B664C6A43D7962 /* Scenes */,
+				25897BE81E58CB8E00D3563C /* Utility */,
+				25897B031E58BD9100D3563C /* AppDelegate.swift */,
+				25897B0A1E58BD9100D3563C /* Assets.xcassets */,
+				25897B0F1E58BD9100D3563C /* Info.plist */,
+				25897B0C1E58BD9100D3563C /* LaunchScreen.storyboard */,
+				25897B071E58BD9100D3563C /* Main.storyboard */,
 			);
 			path = CleanArchitectureRxSwift;
 			sourceTree = "<group>";
@@ -508,11 +512,11 @@
 		25897B291E58BF0D00D3563C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				25897BFE1E58CE8B00D3563C /* ServiceLocator.swift */,
-				25897BBE1E58C42D00D3563C /* UseCases */,
 				25897BC21E58C42D00D3563C /* Entries */,
+				25897BBE1E58C42D00D3563C /* UseCases */,
 				25897B2A1E58BF0D00D3563C /* Domain.h */,
 				25897B2B1E58BF0D00D3563C /* Info.plist */,
+				25897BFE1E58CE8B00D3563C /* ServiceLocator.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -529,15 +533,15 @@
 		25897B4C1E58BF3600D3563C /* CoreDataPlatform */ = {
 			isa = PBXGroup;
 			children = (
-				25897BA51E58C25000D3563C /* Extensions */,
-				25897B8D1E58C24B00D3563C /* Entities */,
 				25897B8A1E58C24500D3563C /* CoreDataStack */,
+				25897B8D1E58C24B00D3563C /* Entities */,
+				25897BA51E58C25000D3563C /* Extensions */,
 				25897BAD1E58C25A00D3563C /* Repository */,
 				25897BAF1E58C25A00D3563C /* RxCoreData */,
 				25897BB31E58C25A00D3563C /* UseCases */,
-				25897BAA1E58C25500D3563C /* Model.xcdatamodeld */,
 				25897B4D1E58BF3600D3563C /* CoreDataPlatform.h */,
 				25897B4E1E58BF3600D3563C /* Info.plist */,
+				25897BAA1E58C25500D3563C /* Model.xcdatamodeld */,
 			);
 			path = CoreDataPlatform;
 			sourceTree = "<group>";
@@ -554,12 +558,12 @@
 		25897B6E1E58BF4600D3563C /* RealmPlatform */ = {
 			isa = PBXGroup;
 			children = (
-				25897B6F1E58BF4600D3563C /* RealmPlatform.h */,
-				25897B701E58BF4600D3563C /* Info.plist */,
 				515F921AB2989DB17DD621B6 /* Entities */,
-				515F96C0E02DA60D7AC0B94B /* Utility */,
 				515F988DB4ECDA46B682145C /* Repository */,
 				515F94D09679E59029EB0F24 /* UseCases */,
+				515F96C0E02DA60D7AC0B94B /* Utility */,
+				25897B701E58BF4600D3563C /* Info.plist */,
+				25897B6F1E58BF4600D3563C /* RealmPlatform.h */,
 			);
 			path = RealmPlatform;
 			sourceTree = "<group>";
@@ -567,8 +571,8 @@
 		25897B7B1E58BF4600D3563C /* RealmPlatformTests */ = {
 			isa = PBXGroup;
 			children = (
-				25897B7C1E58BF4600D3563C /* RealmPlatformTests.swift */,
 				25897B7E1E58BF4600D3563C /* Info.plist */,
+				25897B7C1E58BF4600D3563C /* RealmPlatformTests.swift */,
 			);
 			path = RealmPlatformTests;
 			sourceTree = "<group>";
@@ -584,6 +588,7 @@
 		25897B8D1E58C24B00D3563C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				25897B971E58C24B00D3563C /* Convertion */,
 				25897B8E1E58C24B00D3563C /* CDLocation+CoreDataClass.swift */,
 				25897B8F1E58C24B00D3563C /* CDLocation+CoreDataProperties.swift */,
 				25897B901E58C24B00D3563C /* CDLocation+Ext.swift */,
@@ -593,7 +598,6 @@
 				25897B941E58C24B00D3563C /* CDPost+CoreDataClass.swift */,
 				25897B951E58C24B00D3563C /* CDPost+CoreDataProperties.swift */,
 				25897B961E58C24B00D3563C /* CDPost+Ext.swift */,
-				25897B971E58C24B00D3563C /* Convertion */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -674,8 +678,8 @@
 		25897BE81E58CB8E00D3563C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				2526A7131E59F8260078870E /* ErrorTracker.swift */,
 				25897BE91E58CB8E00D3563C /* ActivityIndicator.swift */,
+				2526A7131E59F8260078870E /* ErrorTracker.swift */,
 				25897BEB1E58CB8E00D3563C /* Observable+Ext.swift */,
 				25897BED1E58CB8E00D3563C /* Reusable.swift */,
 			);
@@ -704,9 +708,9 @@
 			isa = PBXGroup;
 			children = (
 				515F93C28B4316E9B2F00D42 /* Convertion */,
-				515F988220373D06226F4EDE /* RMPost.swift */,
-				515F93C79FEF71E526BD363E /* RMMedia.swift */,
 				515F96DF719A053AEF410368 /* RMLocation.swift */,
+				515F93C79FEF71E526BD363E /* RMMedia.swift */,
+				515F988220373D06226F4EDE /* RMPost.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -732,10 +736,10 @@
 		515F94479B9C0EF5329F9428 /* AllPosts */ = {
 			isa = PBXGroup;
 			children = (
+				515F9AF2348793558FE0CAA7 /* PostTableViewCell.swift */,
 				515F94C9D806D051CFBCC327 /* PostsNavigator.swift */,
 				515F92B305125A2C9E279E71 /* PostsViewController.swift */,
 				515F93CEB3B316E01CDACEA7 /* PostsViewModel.swift */,
-				515F9AF2348793558FE0CAA7 /* PostTableViewCell.swift */,
 			);
 			path = AllPosts;
 			sourceTree = "<group>";
@@ -778,8 +782,8 @@
 		515F9B161E41C7D130E180EF /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
-				515F948FEF12E0E3120DF351 /* CreatePostViewController.swift */,
 				515F96DA0B9857BF87D2F2F0 /* CreatePostNavigator.swift */,
+				515F948FEF12E0E3120DF351 /* CreatePostViewController.swift */,
 				515F92E2318F810E8AE29AB7 /* CreatePostViewModel.swift */,
 			);
 			path = CreatePost;
@@ -788,8 +792,8 @@
 		515F9F0B54EB33278403FD4D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				515F977CB3763872350F7874 /* Realm+Ext.swift */,
 				515F955A785CC73C958268BC /* Observable+Ext.swift */,
+				515F977CB3763872350F7874 /* Realm+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -824,8 +828,9 @@
 		BD107F4A1E7298690043D900 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BD107F4B1E7298690043D900 /* Network.h */,
+				BD107F671E72A0DC0043D900 /* API */,
 				BD107F4C1E7298690043D900 /* Info.plist */,
+				BD107F4B1E7298690043D900 /* Network.h */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -833,10 +838,19 @@
 		BD107F571E72986A0043D900 /* NetworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				BD107F581E72986A0043D900 /* NetworkTests.swift */,
 				BD107F5A1E72986A0043D900 /* Info.plist */,
+				BD107F581E72986A0043D900 /* NetworkTests.swift */,
 			);
 			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		BD107F671E72A0DC0043D900 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BD107F681E72A0EF0043D900 /* NetworkModel.swift */,
+			);
+			name = API;
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1139,6 +1153,7 @@
 					};
 					BD107F481E7298690043D900 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					BD107F501E7298690043D900 = {
@@ -1766,6 +1781,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD107F691E72A0EF0043D900 /* NetworkModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1854,6 +1870,7 @@
 				25897B081E58BD9100D3563C /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		25897B0C1E58BD9100D3563C /* LaunchScreen.storyboard */ = {
@@ -1862,6 +1879,7 @@
 				25897B0D1E58BD9100D3563C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2242,6 +2260,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF6E48F9E3D9085D854008BE /* Pods-Network.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2254,6 +2273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.Network;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2265,6 +2285,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6FC0A7F85D212DE861F0D4F5 /* Pods-Network.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2405,6 +2426,7 @@
 				BD107F611E72986A0043D900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BD107F651E72986A0043D900 /* Build configuration list for PBXNativeTarget "NetworkTests" */ = {
 			isa = XCConfigurationList;
@@ -2413,6 +2435,7 @@
 				BD107F631E72986A0043D900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
