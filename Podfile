@@ -60,7 +60,7 @@ target 'Network' do
     rx_swift
     pod 'Alamofire'
     pod 'RxAlamofire'
-    pod 'Alamofire-SwiftyJSON', :git => 'https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git'
+    pod 'JASON'
 
     target 'NetworkTests' do
         inherit! :search_paths

@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "JASON.h"
 
-FOUNDATION_EXPORT double SwiftyJSONVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftyJSONVersionString[];
+FOUNDATION_EXPORT double JASONVersionNumber;
+FOUNDATION_EXPORT const unsigned char JASONVersionString[];
 
