@@ -1039,6 +1039,11 @@ inline bool SharedGroup::do_advance_read(O* observer, VersionID version_id, _imp
         version_type new_version = new_read_lock.m_version;
         size_t new_file_size = new_read_lock.m_file_size;
         ref_type new_top_ref = new_read_lock.m_top_ref;
+
+        // Synchronize readers view of the file
+        SlabAlloc& alloc = m_group.m_alloc;
+        alloc.update_reader_view(new_file_size);
+
         hist.update_early_from_top_ref(new_version, new_file_size, new_top_ref); // Throws
     }
 

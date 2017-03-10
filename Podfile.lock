@@ -1,44 +1,73 @@
 PODS:
+  - Alamofire (4.4.0)
+  - Alamofire-SwiftyJSON (2.0.0-beta.1):
+    - Alamofire (~> 4.0)
+    - SwiftyJSON (~> 3.0)
+  - Dip (5.0.4)
   - Nimble (6.0.1)
   - QueryKit (0.13.0)
-  - Realm (2.4.2):
-    - Realm/Headers (= 2.4.2)
-  - Realm/Headers (2.4.2)
-  - RealmSwift (2.4.2):
-    - Realm (= 2.4.2)
+  - Realm (2.4.3):
+    - Realm/Headers (= 2.4.3)
+  - Realm/Headers (2.4.3)
+  - RealmSwift (2.4.3):
+    - Realm (= 2.4.3)
+  - RxAlamofire (3.0.2):
+    - RxAlamofire/Core (= 3.0.2)
+  - RxAlamofire/Core (3.0.2):
+    - Alamofire (~> 4.0)
+    - RxSwift (~> 3.0)
   - RxBlocking (3.2.0):
     - RxSwift (~> 3.1)
   - RxCocoa (3.2.0):
     - RxSwift (~> 3.1)
-  - RxRealm (0.5.1):
-    - RealmSwift (~> 2.2)
+  - RxRealm (0.5.2):
+    - RealmSwift (~> 2.4)
     - RxSwift (~> 3.1)
   - RxSwift (3.2.0)
   - RxTest (3.2.0):
     - RxSwift (~> 3.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
+  - Alamofire
+  - Alamofire-SwiftyJSON (from `https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git`)
+  - Dip
   - Nimble
   - QueryKit
   - Realm
   - RealmSwift
+  - RxAlamofire
   - RxBlocking (~> 3.0)
   - RxCocoa (~> 3.0)
   - RxRealm
   - RxSwift (~> 3.0)
   - RxTest (~> 3.0)
 
+EXTERNAL SOURCES:
+  Alamofire-SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  Alamofire-SwiftyJSON:
+    :commit: c93900855ee292dfbf93285fe79b90fb58ec6e80
+    :git: https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git
+
 SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire-SwiftyJSON: 0a9e28b43e448ee58d11e41f8ddda52f17be90b2
+  Dip: 6460091adcf84ae8765f4927b85b49e6a3b67bfe
   Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
   QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
-  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
-  RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
+  Realm: e08d60b0048ccccd3949c8c28a92c4db5712d7e9
+  RealmSwift: 30d49739ccb3385d201242736ca4dda56aec9dfc
+  RxAlamofire: bc53604b29fd2d220cfaa490c736cc4500819f34
   RxBlocking: ec8ed471ba77b4fb98a2d60f1f8419b0b46eaa23
   RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
-  RxRealm: c80d17d42fc362f4d8af4ac62de360b014be5c3f
+  RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
   RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
   RxTest: 85fdd6f753e8e62635a58d37bbdd3ce7d5abbef3
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 44b58a7705c97e5d8788cf48eeb29b9dd4bcb205
+PODFILE CHECKSUM: 9a0735a936cdbdcb880a1bd789e86a3a66cdf439
 
 COCOAPODS: 1.2.0

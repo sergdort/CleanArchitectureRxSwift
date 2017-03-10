@@ -30,6 +30,7 @@
 #include <realm/util/logger.hpp>
 #include <realm/util/network.hpp>
 #include <realm/impl/continuous_transactions_history.hpp>
+#include <realm/sync/history.hpp>
 
 namespace realm {
 namespace sync {
@@ -110,9 +111,9 @@ public:
         /// Create a separate connection for each session. For testing purposes
         /// only.
         ///
-        // FIXME: This setting defaults to true now, due to limitations in the
-        // load balancer. Do not set it to false in production.
-        bool one_connection_per_session = true;
+        // FIXME: This setting is ignored for now, due to limitations in the
+        // load balancer.
+        bool one_connection_per_session = false;
 
         /// Do not access the local file system. Sessions will act as if
         /// initiated on behalf of an empty (or nonexisting) local Realm
@@ -120,12 +121,18 @@ public:
         /// ignored. No UPLOAD messages will be generated. For testing purposes
         /// only.
         bool dry_run = false;
+
+        /// The default changeset cooker to be used by new sessions. Can be
+        /// overridden by Session::Config::changeset_cooker.
+        ///
+        /// \sa make_sync_history(), TrivialChangesetCooker.
+        SyncHistory::ChangesetCooker* changeset_cooker = nullptr;
     };
 
     /// \throw util::EventLoop::Implementation::NotAvailable if no event loop
     /// implementation was specified, and
     /// util::EventLoop::Implementation::get_default() throws it.
-    Client(Config = Config());
+    Client(Config = {});
     Client(Client&&) noexcept;
     ~Client() noexcept;
 
@@ -169,12 +176,33 @@ enum class Protocol {
 class BadServerUrl; // Exception
 
 
-/// Session objects must be destroyed before the Client object with which they
-/// are assocoated is destroyed.
+/// \brief Client-side representation of a Realm file synchronization session.
 ///
-/// It is an error to create two Session objects for a particular Realm file if
-/// those Session objects overlap in time, or if they are associated with two
-/// different Client objects that overlap in time.
+/// A synchronization session deals with precisely one local Realm file. To
+/// synchronize multiple local Realm files, you need multiple sessions.
+///
+/// A session object is always associated with a particular client object (\ref
+/// Client). The application must ensure that the destruction of the associated
+/// client object never happens before the destruction of the session
+/// object. The consequences of a violation are unspecified.
+///
+/// A session object is always associated with a particular local Realm file,
+/// however, a session object does not represent a session until it is bound to
+/// a server side Realm, i.e., until bind() is called. From the point of view of
+/// the thread that calls bind(), the session starts precisely when the
+/// execution of bind() starts, i.e., before bind() returns.
+///
+/// At most one session is allowed to exist for a particular local Realm file
+/// (file system inode) at any point in time. Multiple objects may coexists, as
+/// long as bind() has been called on at most one of them. Additionally, two
+/// sessions are allowed to exist at different times, and with no overlap in
+/// time, as long as they are associated with the same client object, or with
+/// two different client objects that do not overlap in time. This means, in
+/// particular, that it is an error to create two nonoverlapping sessions for
+/// the same local Realm file, it they are associated with two different client
+/// objects that overlap in time. It is the responsibility of the application to
+/// ensure that these rules are adhered to. The consequences of a violation are
+/// unspecified.
 ///
 /// Thread-safety: It is safe for multiple threads to construct, use (with some
 /// exceptions), and destroy session objects concurrently, regardless of whether
@@ -186,9 +214,31 @@ public:
     using port_type = util::network::Endpoint::port_type;
     using version_type = _impl::History::version_type;
     using SyncTransactCallback = void(VersionID old_version, VersionID new_version);
-    using ProgressHandler = void(uint_fast64_t downloaded_bytes, uint_fast64_t downloadable_bytes,
-                                 uint_fast64_t uploaded_bytes, uint_fast64_t uploadable_bytes);
+    using ProgressHandler = void(std::uint_fast64_t downloaded_bytes,
+                                 std::uint_fast64_t downloadable_bytes,
+                                 std::uint_fast64_t uploaded_bytes,
+                                 std::uint_fast64_t uploadable_bytes);
     using WaitOperCompletionHandler = std::function<void(std::error_code)>;
+
+    class Config {
+    public:
+        Config() {}
+
+        /// If not null, overrides whatever is specified by
+        /// Client::Config::changeset_cooker.
+        ///
+        /// CAUTION: The ChangesetCooker::cook_changeset() may be called on the
+        /// specified object before the call to bind() returns, and it may be
+        /// called (or continue to execute) after the session object is
+        /// destroyed. The application must specify an object for which that
+        /// function can be safely be called, and continue to execute from the
+        /// point in time where bind() starts executing, and up until the point
+        /// in time where the last invocation of `clint.run()` returns. Here,
+        /// `client` refers to the associated Client object.
+        ///
+        /// \sa make_sync_history(), TrivialChangesetCooker.
+        SyncHistory::ChangesetCooker* changeset_cooker = nullptr;
+    };
 
     /// \brief Start a new session for the specified client-side Realm.
     ///
@@ -198,7 +248,7 @@ public:
     ///
     /// \param realm_path The file-system path of a local client-side Realm
     /// file.
-    Session(Client&, std::string realm_path);
+    Session(Client&, std::string realm_path, Config = {});
 
     Session(Session&&) noexcept;
 

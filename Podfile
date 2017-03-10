@@ -22,6 +22,7 @@ target 'CleanArchitectureRxSwift' do
   rx_cocoa
   rx_swift
   pod 'QueryKit'
+  pod 'Dip'
   target 'CleanArchitectureRxSwiftTests' do
     inherit! :search_paths
     test_pods
@@ -51,6 +52,21 @@ target 'Domain' do
     test_pods
   end
 
+end
+
+target 'Network' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    rx_swift
+    pod 'Alamofire'
+    pod 'RxAlamofire'
+    pod 'Alamofire-SwiftyJSON', :git => 'https://github.com/SwiftyJSON/Alamofire-SwiftyJSON.git'
+
+    target 'NetworkTests' do
+        inherit! :search_paths
+        test_pods
+    end
+    
 end
 
 target 'RealmPlatform' do

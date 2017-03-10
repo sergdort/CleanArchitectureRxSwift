@@ -302,7 +302,7 @@ public final class Realm {
         if update && schema[typeName]?.primaryKeyProperty == nil {
             throwRealmException("'\(typeName)' does not have a primary key and can not be updated")
         }
-        return unsafeBitCast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: T.self)
+        return unsafeDowncast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: T.self)
     }
 
     /**
@@ -340,7 +340,8 @@ public final class Realm {
         if update && schema[typeName]?.primaryKeyProperty == nil {
             throwRealmException("'\(typeName)' does not have a primary key and can not be updated")
         }
-        return unsafeBitCast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update), to: DynamicObject.self)
+        return noWarnUnsafeBitCast(RLMCreateObjectInRealmWithValue(rlmRealm, typeName, value, update),
+                                   to: DynamicObject.self)
     }
 
     // MARK: Deleting objects
@@ -359,10 +360,17 @@ public final class Realm {
     /**
      Deletes zero or more objects from the Realm.
 
+     Do not pass in a slice to a `Results` or any other auto-updating Realm collection
+     type (for example, the type returned by the Swift `suffix(_:)` standard library
+     method). Instead, make a copy of the objects to delete using `Array()`, and pass
+     that instead. Directly passing in a view into an auto-updating collection may
+     result in 'index out of bounds' exceptions being thrown.
+
      - warning: This method may only be called during a write transaction.
 
-     - parameter objects:   The objects to be deleted. This can be a `List<Object>`, `Results<Object>`, or any other
-                            Swift `Sequence` whose elements are `Object`s.
+     - parameter objects:   The objects to be deleted. This can be a `List<Object>`,
+                            `Results<Object>`, or any other Swift `Sequence` whose
+                            elements are `Object`s (subject to the caveats above).
      */
     public func delete<S: Sequence>(_ objects: S) where S.Iterator.Element: Object {
         for obj in objects {
@@ -616,7 +624,7 @@ public final class Realm {
 
 extension Realm: Equatable {
     /// Returns whether two `Realm` isntances are equal.
-    public static func == (lhs: Realm, rhs: Realm) -> Bool { // swiftlint:disable:this valid_docs
+    public static func == (lhs: Realm, rhs: Realm) -> Bool {
         return lhs.rlmRealm == rhs.rlmRealm
     }
 }

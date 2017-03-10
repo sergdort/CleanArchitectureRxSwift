@@ -73,6 +73,14 @@ public typealias UserCompletionBlock = RLMUserCompletionBlock
  */
 public typealias SyncError = RLMSyncError
 
+
+/**
+ An error associated with the authentication to the Realm Object Server.
+
+ - see: `RLMSyncAuthError`
+ */
+public typealias SyncAuthError = RLMSyncAuthError
+
 /**
  An enum which can be used to specify the level of logging.
 
@@ -558,8 +566,12 @@ public extension SyncSession {
         public let transferrableBytes: Int
 
         /// The fraction of bytes transferred out of all transferrable bytes. If this value is 1,
-        /// no bytes are waiting to be transferred.
+        /// no bytes are waiting to be transferred (either all bytes have already been transferred,
+        /// or there are no bytes to be transferred in the first place).
         public var fractionTransferred: Double {
+            if transferrableBytes == 0 {
+                return 1
+            }
             let percentage = Double(transferredBytes) / Double(transferrableBytes)
             return percentage > 1 ? 1 : percentage
         }
@@ -578,12 +590,12 @@ public extension SyncSession {
     /**
      Register a progress notification block.
 
+     If the session has already received progress information from the
+     synchronization subsystem, the block will be called immediately. Otherwise, it
+     will be called as soon as progress information becomes available.
+
      Multiple blocks can be registered with the same session at once. Each block
-     will be invoked from the runloop of the thread on which it was registered,
-     creating a new runloop if none exists. If the session has already received
-     progress information from the synchronization subsystem, the block will be
-     called immediately. Otherwise, it will be called as soon as progress
-     information becomes available.
+     will be invoked on a side queue devoted to progress notifications.
 
      The token returned by this method must be retained as long as progress
      notifications are desired, and the `stop()` method should be called on it

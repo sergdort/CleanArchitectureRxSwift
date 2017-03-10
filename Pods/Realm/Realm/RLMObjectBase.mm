@@ -189,7 +189,7 @@ id RLMCreateManagedAccessor(Class cls, __unsafe_unretained RLMRealm *realm, RLMC
         if (property.type == RLMPropertyTypeArray && [value conformsToProtocol:@protocol(NSFastEnumeration)]) {
             RLMArray *array = [object_getIvar(self, ivar) _rlmArray];
             [array removeAllObjects];
-            [array addObjects:value];
+            [array addObjects:validatedObjectForProperty(value, property, RLMSchema.partialSharedSchema)];
         }
         else if (property.optional) {
             RLMOptionalBase *optional = object_getIvar(self, ivar);
@@ -331,9 +331,9 @@ id RLMCreateManagedAccessor(Class cls, __unsafe_unretained RLMRealm *realm, RLMC
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key {
     const char *className = class_getName(self);
-    const char accessorClassPrefix[] = "RLMAccessor_";
+    const char accessorClassPrefix[] = "RLM:Managed";
     if (!strncmp(className, accessorClassPrefix, sizeof(accessorClassPrefix) - 1)) {
-        if (self.sharedSchema[key]) {
+        if ([class_getSuperclass(self.class) sharedSchema][key]) {
             return NO;
         }
     }
