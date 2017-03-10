@@ -1,28 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CDAddress" representedClassName=".CDAddress" syncable="YES" codeGenerationType="category"/>
-    <entity name="CDAlbum" representedClassName=".CDAlbum" syncable="YES" codeGenerationType="category"/>
-    <entity name="CDComment" representedClassName=".CDComment" syncable="YES" codeGenerationType="category"/>
-    <entity name="CDCompany" representedClassName=".CDCompany" syncable="YES" codeGenerationType="category"/>
+    <entity name="CDAddress" representedClassName=".CDAddress" syncable="YES" codeGenerationType="category">
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="street" attributeType="String" syncable="YES"/>
+        <attribute name="suite" attributeType="String" syncable="YES"/>
+        <attribute name="zipcode" attributeType="String" syncable="YES"/>
+        <relationship name="geo" maxCount="1" deletionRule="Nullify" destinationEntity="CDLocation" syncable="YES"/>
+    </entity>
+    <entity name="CDAlbum" representedClassName=".CDAlbum" syncable="YES" codeGenerationType="category">
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="userId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CDComment" representedClassName=".CDComment" syncable="YES" codeGenerationType="category">
+        <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="postId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="CDCompany" representedClassName=".CDCompany" syncable="YES" codeGenerationType="category">
+        <attribute name="bs" attributeType="String" syncable="YES"/>
+        <attribute name="catchPhrase" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="CDLocation" representedClassName=".CDLocation" syncable="YES" codeGenerationType="category">
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
-    <entity name="CDPhoto" representedClassName=".CDPhoto" syncable="YES" codeGenerationType="category"/>
-    <entity name="CDPost" representedClassName=".CDPost" syncable="YES" codeGenerationType="category">
-        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="CDPhoto" representedClassName=".CDPhoto" syncable="YES" codeGenerationType="category">
+        <attribute name="albumId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="thumbnailUrl" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="CDTodo" representedClassName=".CDTodo" syncable="YES" codeGenerationType="category"/>
-    <entity name="CDUser" representedClassName=".CDUser" syncable="YES" codeGenerationType="category"/>
+    <entity name="CDPost" representedClassName=".CDPost" syncable="YES" codeGenerationType="category">
+        <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="userId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CDTodo" representedClassName=".CDTodo" syncable="YES" codeGenerationType="category">
+        <attribute name="completed" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="userId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CDUser" representedClassName=".CDUser" syncable="YES" codeGenerationType="category">
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="phone" attributeType="String" syncable="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" indexed="YES" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+        <attribute name="website" attributeType="String" syncable="YES"/>
+        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="CDAddress" syncable="YES"/>
+        <relationship name="company" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="CDAddress" positionX="-45" positionY="18" width="128" height="120"/>
+        <element name="CDAlbum" positionX="-36" positionY="27" width="128" height="90"/>
+        <element name="CDComment" positionX="-27" positionY="36" width="128" height="120"/>
+        <element name="CDCompany" positionX="-18" positionY="45" width="128" height="90"/>
         <element name="CDLocation" positionX="-36" positionY="27" width="128" height="75"/>
-        <element name="CDPost" positionX="-63" positionY="-18" width="128" height="60"/>
-        <element name="CDAddress" positionX="-45" positionY="18" width="128" height="45"/>
-        <element name="CDAlbum" positionX="-36" positionY="27" width="128" height="45"/>
-        <element name="CDComment" positionX="-27" positionY="36" width="128" height="45"/>
-        <element name="CDCompany" positionX="-18" positionY="45" width="128" height="45"/>
-        <element name="CDPhoto" positionX="0" positionY="54" width="128" height="45"/>
-        <element name="CDTodo" positionX="18" positionY="63" width="128" height="45"/>
-        <element name="CDUser" positionX="36" positionY="81" width="128" height="45"/>
+        <element name="CDPhoto" positionX="0" positionY="54" width="128" height="120"/>
+        <element name="CDPost" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="CDTodo" positionX="18" positionY="63" width="128" height="105"/>
+        <element name="CDUser" positionX="36" positionY="81" width="128" height="165"/>
     </elements>
 </model>
