@@ -1,10 +1,9 @@
 //
 //  CDPhoto+CoreDataProperties.swift
-//  
+//  CleanArchitectureRxSwift
 //
 //  Created by Andrey Yastrebov on 10.03.17.
-//
-//  This file was automatically generated and should not be edited.
+//  Copyright © 2017 sergdort. All rights reserved.
 //
 
 import Foundation
@@ -17,10 +16,10 @@ extension CDPhoto {
         return NSFetchRequest<CDPhoto>(entityName: "CDPhoto");
     }
 
-    @NSManaged public var uid: Int64
     @NSManaged public var albumId: Int64
-    @NSManaged public var title: String?
-    @NSManaged public var url: String?
     @NSManaged public var thumbnailUrl: String?
+    @NSManaged public var title: String?
+    @NSManaged public var uid: Int64
+    @NSManaged public var url: String?
 
 }

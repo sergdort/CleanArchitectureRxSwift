@@ -7,3 +7,43 @@
 //
 
 import Foundation
+import CoreData
+import Domain
+import QueryKit
+import RxSwift
+
+extension CDComment {
+    static var body: Attribute<String> { return Attribute("body")}
+    static var email: Attribute<String> { return Attribute("email")}
+    static var name: Attribute<String> { return Attribute("name")}
+    static var postId: Attribute<Int> { return Attribute("postId")}
+    static var uid: Attribute<Int> { return Attribute("uid")}
+}
+
+extension CDComment: DomainConvertibleType {
+    func asDomain() -> Comment {
+        return Comment(body: body!,
+                       email: email!,
+                       name: name!,
+                       postId: Int(postId),
+                       uid: Int(uid))
+    }
+}
+
+extension CDComment: Persistable {
+    static var entityName: String {
+        return "CDComment"
+    }
+}
+
+extension Comment: CoreDataRepresentable {
+    typealias CoreDataType = CDComment
+    
+    func update(entity: CDComment) {
+        entity.uid = Int64(uid)
+        entity.name = name
+        entity.body = body
+        entity.email = email
+        entity.postId = Int64(postId)
+    }
+}

@@ -12,7 +12,8 @@ extension CDLocation {
 
 extension CDLocation: DomainConvertibleType {
     func asDomain() -> Location {
-        return Location(latitude: latitude, longitude: longitude)
+        return Location(latitude: latitude,
+                        longitude: longitude)
     }
 }
 

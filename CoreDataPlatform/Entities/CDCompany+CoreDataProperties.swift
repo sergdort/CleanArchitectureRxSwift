@@ -1,10 +1,9 @@
 //
 //  CDCompany+CoreDataProperties.swift
-//  
+//  CleanArchitectureRxSwift
 //
 //  Created by Andrey Yastrebov on 10.03.17.
-//
-//  This file was automatically generated and should not be edited.
+//  Copyright © 2017 sergdort. All rights reserved.
 //
 
 import Foundation
@@ -17,9 +16,9 @@ extension CDCompany {
         return NSFetchRequest<CDCompany>(entityName: "CDCompany");
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var catchPhrase: String?
     @NSManaged public var bs: String?
+    @NSManaged public var catchPhrase: String?
+    @NSManaged public var name: String?
     @NSManaged public var user: CDUser?
 
 }

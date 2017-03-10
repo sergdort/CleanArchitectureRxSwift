@@ -1,10 +1,9 @@
 //
 //  CDComment+CoreDataProperties.swift
-//  
+//  CleanArchitectureRxSwift
 //
 //  Created by Andrey Yastrebov on 10.03.17.
-//
-//  This file was automatically generated and should not be edited.
+//  Copyright © 2017 sergdort. All rights reserved.
 //
 
 import Foundation
@@ -17,10 +16,10 @@ extension CDComment {
         return NSFetchRequest<CDComment>(entityName: "CDComment");
     }
 
-    @NSManaged public var uid: Int64
-    @NSManaged public var postId: Int64
-    @NSManaged public var name: String?
-    @NSManaged public var email: String?
     @NSManaged public var body: String?
+    @NSManaged public var email: String?
+    @NSManaged public var name: String?
+    @NSManaged public var postId: Int64
+    @NSManaged public var uid: Int64
 
 }
