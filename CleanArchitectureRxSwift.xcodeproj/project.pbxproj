@@ -83,6 +83,14 @@
 		8B0507E0C0AB1064B7372844 /* Pods_RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006BDFA0A26FDD0EBA50E777 /* Pods_RealmPlatform.framework */; };
 		8E549C0D492F9142D1CF88F2 /* Pods_Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5EFC85E3DC2D413D89C8F9 /* Pods_Network.framework */; };
 		9CBC9DB91790C744BC17C099 /* Pods_CleanArchitectureRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550BE321D44EC009D885BBE1 /* Pods_CleanArchitectureRxSwiftTests.framework */; };
+		BCD8C8AC1E73421300F79E3E /* Address+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AB1E73421300F79E3E /* Address+Mapping.swift */; };
+		BCD8C8AE1E73421E00F79E3E /* Album+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AD1E73421E00F79E3E /* Album+Mapping.swift */; };
+		BCD8C8B01E73423100F79E3E /* Comment+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AF1E73423100F79E3E /* Comment+Mapping.swift */; };
+		BCD8C8B21E73423D00F79E3E /* Company+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B11E73423D00F79E3E /* Company+Mapping.swift */; };
+		BCD8C8B41E73424900F79E3E /* Location+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B31E73424900F79E3E /* Location+Mapping.swift */; };
+		BCD8C8B61E73425500F79E3E /* Photo+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B51E73425500F79E3E /* Photo+Mapping.swift */; };
+		BCD8C8B81E73426200F79E3E /* Todo+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B71E73426200F79E3E /* Todo+Mapping.swift */; };
+		BCD8C8BA1E73426D00F79E3E /* User+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8B91E73426D00F79E3E /* User+Mapping.swift */; };
 		BD107F521E7298690043D900 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD107F491E7298690043D900 /* Network.framework */; };
 		BD107F591E72986A0043D900 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD107F581E72986A0043D900 /* NetworkTests.swift */; };
 		BD107F5B1E72986A0043D900 /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = BD107F4B1E7298690043D900 /* Network.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -340,6 +348,14 @@
 		B0092014AEC057C48B9745EA /* Pods-DomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B5764703F1E249BEDFC31014 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0D3602A9ABB65C8AF19365 /* Pods_RealmPlatformTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmPlatformTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD8C8AB1E73421300F79E3E /* Address+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Address+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8AD1E73421E00F79E3E /* Album+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8AF1E73423100F79E3E /* Comment+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Comment+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8B11E73423D00F79E3E /* Company+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Company+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8B31E73424900F79E3E /* Location+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8B51E73425500F79E3E /* Photo+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8B71E73426200F79E3E /* Todo+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+Mapping.swift"; sourceTree = "<group>"; };
+		BCD8C8B91E73426D00F79E3E /* User+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+Mapping.swift"; sourceTree = "<group>"; };
 		BD107F491E7298690043D900 /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD107F4B1E7298690043D900 /* Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
 		BD107F4C1E7298690043D900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -930,7 +946,15 @@
 		BD107F731E72B1790043D900 /* Entries */ = {
 			isa = PBXGroup;
 			children = (
+				BCD8C8AB1E73421300F79E3E /* Address+Mapping.swift */,
+				BCD8C8AD1E73421E00F79E3E /* Album+Mapping.swift */,
+				BCD8C8AF1E73423100F79E3E /* Comment+Mapping.swift */,
+				BCD8C8B11E73423D00F79E3E /* Company+Mapping.swift */,
+				BCD8C8B31E73424900F79E3E /* Location+Mapping.swift */,
+				BCD8C8B51E73425500F79E3E /* Photo+Mapping.swift */,
 				BD107F741E72B1E20043D900 /* Post+Mapping.swift */,
+				BCD8C8B71E73426200F79E3E /* Todo+Mapping.swift */,
+				BCD8C8B91E73426D00F79E3E /* User+Mapping.swift */,
 			);
 			path = Entries;
 			sourceTree = "<group>";
@@ -1887,8 +1911,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD8C8B81E73426200F79E3E /* Todo+Mapping.swift in Sources */,
+				BCD8C8BA1E73426D00F79E3E /* User+Mapping.swift in Sources */,
+				BCD8C8B21E73423D00F79E3E /* Company+Mapping.swift in Sources */,
 				BD107F751E72B1E20043D900 /* Post+Mapping.swift in Sources */,
+				BCD8C8B01E73423100F79E3E /* Comment+Mapping.swift in Sources */,
+				BCD8C8B41E73424900F79E3E /* Location+Mapping.swift in Sources */,
+				BCD8C8AC1E73421300F79E3E /* Address+Mapping.swift in Sources */,
+				BCD8C8AE1E73421E00F79E3E /* Album+Mapping.swift in Sources */,
 				BD107F691E72A0EF0043D900 /* NetworkModel.swift in Sources */,
+				BCD8C8B61E73425500F79E3E /* Photo+Mapping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

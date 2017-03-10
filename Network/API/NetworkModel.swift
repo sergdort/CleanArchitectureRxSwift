@@ -25,26 +25,19 @@ public final class NetworkModel {
                 return Observable.never()
             }
             .flatMap({ json -> Observable<[Post]> in
-                Observable.just(try Mapper<Post>().mapArray(JSONArray: json as! [[String : Any]]))
+                Observable.just(try Mapper<Post>().mapArray(JSONObject: json))
             })
     }
 
-//    func fetchUsers() -> Observable<[User]> {
-//        return RxAlamofire
-//            .request(.get, ApiEndpoint + "/users")
-//            .debug()
-//            .catchError { error in
-//                return Observable.never()
-//            }
-//            .flatMap({ (request: DataRequest) -> Observable<DataResponse<[User]>> in
-//                return request.responseArray()
-//            })
-//            .map({ response -> [User] in
-//                guard let users = response.result.value else {
-//                    return []
-//                }
-//
-//                return users
-//            })
-//    }
+    func fetchUser(userId: Int) -> Observable<User> {
+        return RxAlamofire
+            .request(.get, ApiEndpoint + "/users/\(userId)")
+            .debug()
+            .catchError { error in
+                return Observable.never()
+            }
+            .flatMap({ json -> Observable<User> in
+                Observable.just(try Mapper<User>().map(JSONObject: json))
+            })
+    }
 }
