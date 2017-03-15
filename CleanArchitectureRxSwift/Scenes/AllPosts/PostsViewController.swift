@@ -6,7 +6,7 @@ import RxCocoa
 class PostsViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
-    var viewModel: PostsViewModelType!
+    var viewModel: PostsViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var createPostButton: UIBarButtonItem!
 

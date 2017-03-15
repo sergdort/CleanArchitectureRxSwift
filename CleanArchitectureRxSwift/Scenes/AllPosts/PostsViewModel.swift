@@ -3,11 +3,7 @@ import Domain
 import RxSwift
 import RxCocoa
 
-protocol PostsViewModelType: ViewModelType {
-
-}
-
-final class PostsViewModel: PostsViewModelType {
+final class PostsViewModel: ViewModelType {
 
     struct Input {
         let trigger: Driver<Void>
