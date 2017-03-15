@@ -315,7 +315,7 @@ public:
     /// SyncHistory::integrate_remote_changesets() will pass each incoming
     /// changeset to the cooker after operational transformation; that is, when
     /// the chageset is ready to be applied to the local Realm state.
-    ChangesetCooker* changeset_cooker = nullptr;
+    std::shared_ptr<ChangesetCooker> changeset_cooker;
 };
 
 /// \brief Create a "sync history" implementation of the realm::Replication

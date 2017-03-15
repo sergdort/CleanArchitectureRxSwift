@@ -63,6 +63,7 @@ public:
     void copy_table_columns_from(Schema const&);
 
     friend bool operator==(Schema const&, Schema const&);
+    friend bool operator!=(Schema const& a, Schema const& b) { return !(a == b); }
 
     using base::iterator;
     using base::const_iterator;

@@ -108,11 +108,11 @@ private:
 #ifdef REALM_CONDVAR_EMULATION
     // keep the path to allocated system resource so we can remove them again
     std::string m_resource_path;
-    // pipe used for emulation
-    int m_fd_read;
-    int m_fd_write;
+    // pipe used for emulation. When using a named pipe, m_fd_read is read-write and m_fd_write is unused.
+    // When using an anonymous pipe (currently only for tvOS) m_fd_read is read-only and m_fd_write is write-only.
+    int m_fd_read = -1;
+    int m_fd_write = -1;
 #endif
-    bool uses_emulation = false;
 };
 
 

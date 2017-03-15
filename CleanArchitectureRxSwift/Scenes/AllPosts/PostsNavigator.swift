@@ -26,7 +26,7 @@ class DefaultPostsNavigator: PostsNavigator {
                                       navigator: self)
         navigationController.pushViewController(vc, animated: true)
     }
-    
+
     func toCreatePost() {
         let navigator = DefaultCreatePostNavigator(navigationController: navigationController)
         let viewModel = CreatePostViewModel(createPostUseCase: services.getCreatePostUseCase(),

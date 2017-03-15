@@ -10,7 +10,8 @@ fileprivate final class ShareReplay1WhileConnectedConnection<Element>
     : ObserverType
     , SynchronizedUnsubscribeType {
     typealias E = Element
-    typealias DisposeKey = Bag<(Event<Element>) -> ()>.KeyType
+    typealias Observers = AnyObserver<Element>.s
+    typealias DisposeKey = Observers.KeyType
 
     typealias Parent = ShareReplay1WhileConnected<Element>
     private let _parent: Parent
@@ -18,12 +19,16 @@ fileprivate final class ShareReplay1WhileConnectedConnection<Element>
 
     private let _lock: RecursiveLock
     private var _disposed: Bool = false
-    fileprivate var _observers = Bag<(Event<Element>) -> ()>()
+    fileprivate var _observers = Observers()
     fileprivate var _element: Element?
 
     init(parent: Parent, lock: RecursiveLock) {
         _parent = parent
         _lock = lock
+
+        #if TRACE_RESOURCES
+            _ = Resources.incrementTotal()
+        #endif
     }
 
     final func on(_ event: Event<E>) {
@@ -33,9 +38,9 @@ fileprivate final class ShareReplay1WhileConnectedConnection<Element>
         dispatch(observers, event)
     }
 
-    final private func _synchronized_on(_ event: Event<E>) -> Bag<(Event<Element>) -> ()> {
+    final private func _synchronized_on(_ event: Event<E>) -> Observers {
         if _disposed {
-            return Bag()
+            return Observers()
         }
 
         switch event {
@@ -69,7 +74,7 @@ fileprivate final class ShareReplay1WhileConnectedConnection<Element>
         if _parent._connection === self {
             _parent._connection = nil
         }
-        _observers = Bag()
+        _observers = Observers()
         _subscription.dispose()
     }
 
@@ -90,6 +95,12 @@ fileprivate final class ShareReplay1WhileConnectedConnection<Element>
             _synchronized_dispose()
         }
     }
+
+    #if TRACE_RESOURCES
+        deinit {
+            _ = Resources.decrementTotal()
+        }
+    #endif
 }
 
 // optimized version of share replay for most common case

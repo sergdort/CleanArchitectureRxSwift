@@ -3,7 +3,12 @@ import Domain
 import RxSwift
 import RxCocoa
 
-final class PostsViewModel: ViewModelType {
+protocol PostsViewModelType: ViewModelType {
+
+}
+
+final class PostsViewModel: PostsViewModelType {
+
     struct Input {
         let trigger: Driver<Void>
         let createPostTrigger: Driver<Void>
@@ -16,7 +21,7 @@ final class PostsViewModel: ViewModelType {
         let selectedPost: Driver<Post>
         let error: Driver<Error>
     }
-    
+
     private let useCase: AllPostsUseCase
     private let navigator: PostsNavigator
     
