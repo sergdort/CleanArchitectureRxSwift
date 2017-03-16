@@ -13,8 +13,6 @@ import RxAlamofire
 import RxSwift
 import ObjectMapper
 
-// "https://jsonplaceholder.typicode.com"
-
 public final class Network<T: BaseMappable> {
 
     private let endPoint: String

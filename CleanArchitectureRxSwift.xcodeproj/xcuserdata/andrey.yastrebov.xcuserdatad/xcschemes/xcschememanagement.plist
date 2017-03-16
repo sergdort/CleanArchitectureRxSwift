@@ -7,7 +7,7 @@
 		<key>CleanArchitectureRxSwift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>22</integer>
 		</dict>
 		<key>CoreDataPlatform.xcscheme</key>
 		<dict>
@@ -68,11 +68,6 @@
 			<true/>
 		</dict>
 		<key>25897B741E58BF4600D3563C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BD107F371E7298380043D900</key>
 		<dict>
 			<key>primary</key>
 			<true/>
