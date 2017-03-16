@@ -21,23 +21,13 @@ public final class NetworkModel {
         return RxAlamofire
             .json(.get, ApiEndpoint + "/posts")
             .debug()
-            .catchError { error in
-                return Observable.never()
-            }
-            .flatMap({ json -> Observable<[Post]> in
-                Observable.just(try Mapper<Post>().mapArray(JSONObject: json))
-            })
+            .map(Mapper<Post>().mapArray)
     }
 
     func fetchUser(userId: Int) -> Observable<User> {
         return RxAlamofire
             .request(.get, ApiEndpoint + "/users/\(userId)")
             .debug()
-            .catchError { error in
-                return Observable.never()
-            }
-            .flatMap({ json -> Observable<User> in
-                Observable.just(try Mapper<User>().map(JSONObject: json))
-            })
+            .map(Mapper<User>().map)
     }
 }
