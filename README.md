@@ -151,7 +151,7 @@ public final class ServiceLocator: Domain.ServiceLocator {
 }
 ```
 
-####Application
+#### Application
 
 In the current example, `Application` is implemented with the [MVVM](https://en.wikipedia.org/wiki/Model–view–viewmodel) pattern and heavy use of [RxSwift](https://github.com/ReactiveX/RxSwift), which makes binding very easy.
 
@@ -239,7 +239,7 @@ class PostsViewController: UIViewController {
 }
 ```
 
-###Example
+### Example
 
 The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same time as a proof of concept that the `Application` level is not dependant on the Platform level implementation details.
 
@@ -248,18 +248,18 @@ The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same 
 |![](Architecture/CoreData.gif) | ![](Architecture/Realm.gif) |
 
 
-###TODO:
+### TODO:
 
 * add tests 
 * add [MVP](https://en.wikipedia.org/wiki/Model–view–presenter) example
 * [Redux](http://redux.js.org) example??
 
-###Links
+### Links
 * [RxSwift](https://github.com/ReactiveX/RxSwift)
 * [Robert C Martin - Clean Architecture and Design](https://www.youtube.com/watch?v=Nsjsiz2A9mg)
 * [Cycle.js](https://cycle.js.org)
 * [ViewModel](https://medium.com/@SergDort/viewmodel-in-rxswift-world-13d39faa2cf5#.qse37r6jw) in Rx world
 
-###Any questions?
+### Any questions?
 
 * ping me on [Twitter](https://twitter.com/SergDort)
