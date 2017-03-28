@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.4.0)
-  - Nimble (6.0.1)
+  - Nimble (6.1.0)
   - ObjectMapper (2.2.5)
   - QueryKit (0.13.0)
   - Realm (2.4.4):
@@ -40,7 +40,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  Nimble: c53e6903fee94041b90ded74f135820437d8bf59
   ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
   QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
   Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
