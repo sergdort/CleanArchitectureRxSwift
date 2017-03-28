@@ -99,7 +99,7 @@ Observable.arrayWithChangeset(from: laps)
 
 ## Observing a single object
 
-There's a separate API to make it easier to observe a single object (it creates `Results` behind the scenes):
+There's a separate API to make it easier to observe a single object:
 
 ```swift
 Observable.from(object: ticker)
@@ -109,7 +109,15 @@ Observable.from(object: ticker)
     .bindTo(footer.rx.text)
 ```
 
-This API uses the primary key of the object to query the database for it and observe for change notifications. Observing objects without a primary key does not work.
+This API uses the [Realm object notifications](https://realm.io/news/realm-objc-swift-2.4/) under the hood to listen for changes.
+
+This method will by default emit the object initial state as its first `next` event. You can disable this behavior by using the `emitInitialValue` parameter and setting it to `false`.
+
+Finally you can set changes to which properties constitute an object change you'd like to observe for:
+
+```swift
+Observable.from(object: ticker, properties: ["name", "id", "family"]) ...
+```
 
 ## Write transactions
 

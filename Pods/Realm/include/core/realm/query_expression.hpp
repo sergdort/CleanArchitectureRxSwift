@@ -206,9 +206,10 @@ int no_timestamp(const Timestamp&)
     REALM_ASSERT(false);
     return 0;
 }
-#endif // REALM_OLDQUERY_FALLBACK
 
 } // anonymous namespace
+
+#endif // REALM_OLDQUERY_FALLBACK
 
 template <class T>
 struct Plus {

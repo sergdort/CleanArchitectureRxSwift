@@ -123,7 +123,7 @@ public:
         std::string ssl_certificate_key_path;
     };
 
-    Server(const std::string& root_dir, util::Optional<PKey> public_key, Config = Config());
+    Server(const std::string& root_dir, util::Optional<PKey> public_key, Config = {});
     Server(Server&&) noexcept;
     ~Server() noexcept;
 

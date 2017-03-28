@@ -525,7 +525,7 @@ static void apply_pre_migration_changes(Group& group, std::vector<SchemaChange> 
         void operator()(ChangePropertyType op) { replace_column(group, table(op.object), *op.old_property, *op.new_property); }
         void operator()(MakePropertyNullable op) { make_property_optional(group, table(op.object), *op.property); }
         void operator()(MakePropertyRequired op) { make_property_required(group, table(op.object), *op.property); }
-        void operator()(ChangePrimaryKey op) { ObjectStore::set_primary_key_for_object(group, op.object->name, op.property ? op.property->name : ""); }
+        void operator()(ChangePrimaryKey op) { ObjectStore::set_primary_key_for_object(group, op.object->name.c_str(), op.property ? op.property->name.c_str() : ""); }
         void operator()(AddIndex op) { add_index(table(op.object), op.property->table_column); }
         void operator()(RemoveIndex op) { table(op.object).remove_search_index(op.property->table_column); }
     } applier{group};

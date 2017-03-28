@@ -57,6 +57,10 @@ public:
     template <class T, class A>
     explicit BinaryData(const std::basic_string<char, T, A>&);
 
+    // BinaryData does not store data, callers must manage their own strings.
+    template <class T, class A>
+    BinaryData(const std::basic_string<char, T, A>&&) = delete;
+
     template <class T, class A>
     explicit operator std::basic_string<char, T, A>() const;
 

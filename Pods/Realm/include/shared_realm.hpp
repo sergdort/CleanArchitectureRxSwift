@@ -48,12 +48,6 @@ typedef BasicRow<Table> Row;
 typedef std::shared_ptr<Realm> SharedRealm;
 typedef std::weak_ptr<Realm> WeakRealm;
 
-// Sets a path to a directory where Realm can write temporary files and named pipes.
-// This string should include a trailing slash '/'.
-void set_temporary_directory(std::string directory_path);
-
-const std::string& get_temporary_directory() noexcept;
-
 namespace _impl {
     class AnyHandover;
     class CollectionNotifier;
@@ -268,7 +262,7 @@ public:
 
         // ResultsNotifier and ListNotifier need access to the SharedGroup
         // to be able to call the handover functions, which are not very wrappable
-        static SharedGroup& get_shared_group(Realm& realm) { return *realm.m_shared_group; }
+        static const std::unique_ptr<SharedGroup>& get_shared_group(Realm& realm) { return realm.m_shared_group; }
 
         // CollectionNotifier needs to be able to access the owning
         // coordinator to wake up the worker thread when a callback is
@@ -325,6 +319,8 @@ public:
 
     // FIXME private
     Group& read_group();
+
+    Replication *history() { return m_history.get(); }
 
     friend class _impl::RealmFriend;
 };

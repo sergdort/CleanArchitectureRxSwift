@@ -103,10 +103,14 @@ inline void EncryptedFileMapping::read_barrier(const void* addr, size_t size, Un
     size_t first_idx = first_accessed_page - m_first_page;
 
     // make sure the first page is available
+    // Checking before taking the lock is important to performance.
     if (!m_up_to_date_pages[first_idx]) {
         if (!lock.holds_lock())
             lock.lock();
-        refresh_page(first_idx);
+        // after taking the lock, we must repeat the check so that we never
+        // call refresh_page() on a page which is already up to date.
+        if (!m_up_to_date_pages[first_idx])
+            refresh_page(first_idx);
     }
 
     if (header_to_size) {
@@ -122,7 +126,10 @@ inline void EncryptedFileMapping::read_barrier(const void* addr, size_t size, Un
         if (!m_up_to_date_pages[idx]) {
             if (!lock.holds_lock())
                 lock.lock();
-            refresh_page(idx);
+            // after taking the lock, we must repeat the check so that we never
+            // call refresh_page() on a page which is already up to date.
+            if (!m_up_to_date_pages[idx])
+                refresh_page(idx);
         }
     }
 }

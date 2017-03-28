@@ -49,7 +49,7 @@ struct SyncProgress {
     version_type scan_server_version = 0;
     version_type scan_client_version = 0;
     version_type latest_server_version = 0;
-    int_fast64_t latest_server_session_ident = 0;
+    std::int_fast64_t latest_server_session_ident = 0;
     version_type latest_client_version = 0;
     int_fast64_t downloadable_bytes = 0;
 };
@@ -62,7 +62,8 @@ public:
     using file_ident_type = HistoryEntry::file_ident_type;
     using SyncTransactCallback = void(VersionID old_version, VersionID new_version);
 
-    SyncHistory(const std::string& realm_path);
+    class ChangesetCooker;
+    class Config;
 
     /// Get the version of the latest snapshot of the associated Realm, as well
     /// as the file identifier pair and the synchronization progress pair as
@@ -82,7 +83,7 @@ public:
     virtual void get_status(version_type& current_client_version,
                             file_ident_type& server_file_ident,
                             file_ident_type& client_file_ident,
-                            int_fast64_t& client_file_ident_secret,
+                            std::int_fast64_t& client_file_ident_secret,
                             SyncProgress& progress) = 0;
 
     /// Stores the server assigned file identifier pair (server, client) in the
@@ -114,7 +115,7 @@ public:
     /// file when engaging in future synchronization sessions.
     virtual void set_file_ident_pair(file_ident_type server_file_ident,
                                      file_ident_type client_file_ident,
-                                     int_fast64_t client_file_ident_secret) = 0;
+                                     std::int_fast64_t client_file_ident_secret) = 0;
 
     /// Stores the SyncProgress progress in the associated Realm file in a way
     /// that makes it available via get_status() during future synchronization
@@ -191,7 +192,7 @@ public:
     /// transformed changeset.
     virtual version_type integrate_remote_changesets(SyncProgress progress,
                                                      const RemoteChangeset* changesets,
-                                                     size_t num_changesets,
+                                                     std::size_t num_changesets,
                                                      util::Logger* replay_logger,
                                                      std::function<SyncTransactCallback>& callback) = 0;
 
@@ -200,24 +201,130 @@ public:
                                            uint_fast64_t& downloadable_bytes,
                                            uint_fast64_t& uploaded_bytes,
                                            uint_fast64_t& uploadable_bytes) = 0;
+
+    /// See set_cooked_progress().
+    struct CookedProgress {
+        std::int_fast64_t changeset_index = 0;
+        std::int_fast64_t intrachangeset_progress = 0;
+    };
+
+    /// Returns the persisted progress that was last stored by
+    /// set_cooked_progress().
+    ///
+    /// Initially, until explicitly modified, both
+    /// `CookedProgress::changeset_index` and
+    /// `CookedProgress::intrachangeset_progress` are zero.
+    virtual CookedProgress get_cooked_progress() const = 0;
+
+    /// Persistently stores the point of progress of the consumer of cooked
+    /// changesets.
+    ///
+    /// As well as allowing for later retrieval, the specification of the point
+    /// of progress of the consumer of cooked changesets also has the effect of
+    /// trimming obsolete cooked changesets from the Realm file. Indeed, if this
+    /// function is never called, but cooked changesets are continually being
+    /// produced, then the Realm file will grow without bounds.
+    ///
+    /// Behavior is undefined if the specified index
+    /// (CookedProgress::changeset_index) is lower than the index returned by
+    /// get_cooked_progress().
+    ///
+    /// The intrachangeset progress field
+    /// (CookedProgress::intrachangeset_progress) will be faithfully persisted,
+    /// but will otherwise be treated as an opaque object by the history
+    /// internals.
+    virtual void set_cooked_progress(CookedProgress) = 0;
+
+    /// Get the number of cooked changesets so far produced for this Realm. This
+    /// is the number of cooked changesets that are currently in the Realm file
+    /// plus the number of cooked changesets that have been trimmed off so far.
+    virtual std::int_fast64_t get_num_cooked_changesets() const = 0;
+
+    /// Fetch the cooked changeset at the specified index.
+    ///
+    /// Cooked changesets are made available in the order they are produced by
+    /// the changeset cooker (ChangesetCooker).
+    ///
+    /// Behaviour is undefined if the specified index is less than the index
+    /// (CookedProgress::changeset_index) returned by get_cooked_progress(), or
+    /// if it is greater than, or equal to the toal number of cooked changesets
+    /// (as returned by get_num_cooked_changesets()).
+    ///
+    /// The callee must append the bytes of the located cooked changeset to the
+    /// specified buffer, which does not have to be empty initially.
+    virtual void get_cooked_changeset(std::int_fast64_t index,
+                                      util::AppendBuffer<char>&) const = 0;
+
+protected:
+    SyncHistory(const std::string& realm_path);
 };
 
+
+/// \brief Abstract interface for changeset cookers.
+///
+/// Note, it is completely up to the application to decide what a cooked
+/// changeset is. History objects (instances of SyncHistory) are required to
+/// treat cooked changesets as opaque entities. For an example of a concrete
+/// changeset cooker, see TrivialChangesetCooker which defines the cooked
+/// changesets to be identical copies of the raw changesets.
+class SyncHistory::ChangesetCooker {
+public:
+    /// \brief An opportunity to produce a cooked changeset.
+    ///
+    /// When the implementation chooses to produce a cooked changeset, it must
+    /// write the cooked changeset to the specified buffer, and return
+    /// true. When the implementation chooses not to produce a cooked changeset,
+    /// it must return false. The implementation is allowed to write to the
+    /// buffer, and return false, and in that case, the written data will be
+    /// ignored.
+    ///
+    /// \param prior_state The state of the local Realm on which the specified
+    /// raw changeset is based.
+    ///
+    /// \param changeset, changeset_size The raw changeset.
+    ///
+    /// \param buffer The buffer to which the cooked changeset must be written.
+    ///
+    /// \return True if a cooked changeset was produced. Otherwise false.
+    virtual bool cook_changeset(const Group& prior_state,
+                                const char* changeset, std::size_t changeset_size,
+                                util::AppendBuffer<char>& buffer) = 0;
+};
+
+
+class SyncHistory::Config {
+public:
+    Config() {}
+
+    /// Must be set to true if, and only if the created history object
+    /// represents (is owned by) the sync agent of the specified Realm file. At
+    /// most one such instance is allowed to participate in a Realm file access
+    /// session at any point in time. Ordinarily the sync agent is encapsulated
+    /// by the sync::Client class, and the history instance representing the
+    /// agent is created transparently by sync::Client (one history instance per
+    /// sync::Session object).
+    bool owner_is_sync_agent = false;
+
+    /// If a changeset cooker is specified, then the created history object will
+    /// allow for a cooked changeset to be produced for each changeset of remote
+    /// origin; that is, for each changeset that is integrated during the
+    /// execution of SyncHistory::integrate_remote_changesets(). If no changeset
+    /// cooker is specified, then no cooked changesets will be produced on
+    /// behalf of the created history object.
+    ///
+    /// SyncHistory::integrate_remote_changesets() will pass each incoming
+    /// changeset to the cooker after operational transformation; that is, when
+    /// the chageset is ready to be applied to the local Realm state.
+    std::shared_ptr<ChangesetCooker> changeset_cooker;
+};
 
 /// \brief Create a "sync history" implementation of the realm::Replication
 /// interface.
 ///
-/// The main function of such an object is as a plugin for new
+/// The intended role for such an object is as a plugin for new
 /// realm::SharedGroup objects.
-///
-/// \param owner_is_sync_agent Must be set to true if, and only if the created
-/// history object represents (is owned by) the sync agent of the specified
-/// Realm file. At most one such instance is allowed to participate in a Realm
-/// file access session at any point in time. Ordinarily the sync agent is
-/// encapsulated by the sync::Client class, and the history instance
-/// representing the agent is created transparently by sync::Client (one history
-/// instance per sync::Session object).
 std::unique_ptr<SyncHistory> make_sync_history(const std::string& realm_path,
-                                               bool owner_is_sync_agent = false);
+                                               SyncHistory::Config = {});
 
 
 
@@ -231,4 +338,4 @@ inline SyncHistory::SyncHistory(const std::string& realm_path):
 } // namespace sync
 } // namespace realm
 
-#endif // REALM_SYNC_SYNC_HPP
+#endif // REALM_SYNC_HISTORY_HPP

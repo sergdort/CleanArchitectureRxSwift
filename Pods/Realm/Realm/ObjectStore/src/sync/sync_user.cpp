@@ -118,7 +118,7 @@ void SyncUser::update_refresh_token(std::string token)
     // Note that we do this after releasing the lock, since the session may
     // need to access protected User state in the process of binding itself.
     for (auto& session : sessions_to_revive) {
-        SyncSession::revive_if_needed(session);
+        session->revive_if_needed();
     }
 }
 
@@ -181,7 +181,7 @@ void SyncUser::register_session(std::shared_ptr<SyncSession> session)
                 session->bind_with_admin_token(m_refresh_token, session->config().realm_url);
             } else {
                 lock.unlock();
-                SyncSession::revive_if_needed(std::move(session));
+                session->revive_if_needed();
             }
             break;
         case State::LoggedOut:

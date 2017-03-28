@@ -1693,7 +1693,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84A5797E91E6FA5FA24A4896 /* Pods-CleanArchitectureRxSwift.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CleanArchitectureRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1707,7 +1706,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F5B77FEC1EA2332323A0EB9 /* Pods-CleanArchitectureRxSwift.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CleanArchitectureRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1721,7 +1719,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3D9EA43A0DD207CAFEADD07C /* Pods-CleanArchitectureRxSwiftTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CleanArchitectureRxSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1736,7 +1733,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6A063DE6BDC13E3B800BB80 /* Pods-CleanArchitectureRxSwiftTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CleanArchitectureRxSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1797,7 +1793,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B0092014AEC057C48B9745EA /* Pods-DomainTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DomainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.DomainTests;
@@ -1811,7 +1806,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B6A26BB04BBAABE85CB9EDC /* Pods-DomainTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DomainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.DomainTests;
@@ -1871,7 +1865,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F1F89859FF9197F25DB915C7 /* Pods-CoreDataPlatformTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CoreDataPlatformTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CoreDataPlatformTests;
@@ -1885,7 +1878,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2BBB44DCB902E459F05D68B0 /* Pods-CoreDataPlatformTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CoreDataPlatformTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CoreDataPlatformTests;
@@ -1945,7 +1937,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8E1F5AE93A531609690A036 /* Pods-RealmPlatformTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RealmPlatformTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.RealmPlatformTests;
@@ -1959,7 +1950,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0D4A3B45078CD8ACCC1314EC /* Pods-RealmPlatformTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RealmPlatformTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.RealmPlatformTests;

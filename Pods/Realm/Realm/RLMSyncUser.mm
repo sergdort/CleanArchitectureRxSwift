@@ -72,6 +72,7 @@ using namespace realm;
 - (instancetype)initWithAuthServer:(nullable NSURL *)authServer {
     if (self = [super init]) {
         self.authenticationServer = authServer;
+        self.refreshHandles = [NSMutableDictionary dictionary];
         return self;
     }
     return nil;
@@ -130,7 +131,10 @@ using namespace realm;
         return nil;
     }
     auto path = SyncManager::shared().path_for_realm(_user->identity(), [url.absoluteString UTF8String]);
-    return [[RLMSyncSession alloc] initWithSyncSession:_user->session_for_on_disk_path(path)];
+    if (auto session = _user->session_for_on_disk_path(path)) {
+        return [[RLMSyncSession alloc] initWithSyncSession:session];
+    }
+    return nil;
 }
 
 - (NSArray<RLMSyncSession *> *)allSessions {
@@ -168,6 +172,10 @@ using namespace realm;
 
 - (RLMRealm *)managementRealmWithError:(NSError **)error {
     return [RLMRealm realmWithConfiguration:[RLMRealmConfiguration managementConfigurationForUser:self] error:error];
+}
+
+- (RLMRealm *)permissionRealmWithError:(NSError **)error {
+    return [RLMRealm realmWithConfiguration:[RLMRealmConfiguration permissionConfigurationForUser:self] error:error];
 }
 
 #pragma mark - Private API

@@ -153,9 +153,17 @@ using namespace realm;
 
 /// Handler for network requests that failed before the JSON parsing stage.
 - (BOOL)_handleFailedRequest:(NSError *)error strongUser:(RLMSyncUser *)user {
-    NSError *syncError = [NSError errorWithDomain:RLMSyncErrorDomain
-                                             code:RLMSyncErrorBadResponse
-                                         userInfo:@{kRLMSyncUnderlyingErrorKey: error}];
+    NSError *syncError;
+    if ([error.domain isEqualToString:RLMSyncErrorDomain]) {
+        // Network client may return sync related error
+        syncError = error;
+    } else {
+        // Something else went wrong
+        syncError = [NSError errorWithDomain:RLMSyncErrorDomain
+                                        code:RLMSyncErrorBadResponse
+                                    userInfo:@{kRLMSyncUnderlyingErrorKey: error}];
+    }
+
     if (self.completionBlock) {
         self.completionBlock(syncError);
     }
@@ -240,8 +248,9 @@ using namespace realm;
                            kRLMSyncAppIDKey: [RLMSyncManager sharedManager].appID,
                            };
 
+    __weak RLMSyncSessionRefreshHandle *weakSelf = self;
     RLMSyncCompletionBlock handler = ^(NSError *error, NSDictionary *json) {
-        [self _onRefreshCompletionWithError:error json:json];
+        [weakSelf _onRefreshCompletionWithError:error json:json];
     };
     [RLMNetworkClient postRequestToEndpoint:RLMServerEndpointAuth
                                      server:user.authenticationServer

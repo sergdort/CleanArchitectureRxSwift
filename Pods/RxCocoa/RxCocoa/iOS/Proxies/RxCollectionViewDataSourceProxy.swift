@@ -26,7 +26,7 @@ final class CollectionViewDataSourceNotSet
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        rxAbstractMethodWithMessage(dataSourceNotSet)
+        rxAbstractMethod(message: dataSourceNotSet)
     }
     
 }
@@ -72,7 +72,7 @@ public class RxCollectionViewDataSourceProxy
 
     /// For more information take a look at `DelegateProxyType`.
     public override class func delegateAssociatedObjectTag() -> UnsafeRawPointer {
-        return _pointer(&dataSourceAssociatedTag)
+        return dataSourceAssociatedTag
     }
 
     /// For more information take a look at `DelegateProxyType`.
@@ -97,9 +97,11 @@ public class RxCollectionViewDataSourceProxy
 
     private func refreshCollectionViewDataSource() {
         if self.collectionView?.dataSource === self {
-            self.collectionView?.dataSource = nil
             if _requiredMethodsDataSource != nil && _requiredMethodsDataSource !== collectionViewDataSourceNotSet {
                 self.collectionView?.dataSource = self
+            }
+            else {
+                self.collectionView?.dataSource = nil
             }
         }
     }

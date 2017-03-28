@@ -257,7 +257,7 @@ public:
 
     /// Get the size of the attached database file or buffer in number
     /// of bytes. This size is not affected by new allocations. After
-    /// attachment, it can only be modified by a call to remap().
+    /// attachment, it can only be modified by a call to update_reader_view().
     ///
     /// It is an error to call this function on a detached allocator,
     /// or one that was attached using attach_empty(). Doing so will
@@ -275,6 +275,8 @@ public:
     /// space.
     void reset_free_space_tracking();
 
+    /// Update the readers view of the file:
+    ///
     /// Remap the attached file such that a prefix of the specified
     /// size becomes available in memory. If sucessfull,
     /// get_baseline() will return the specified new file size.
@@ -288,7 +290,10 @@ public:
     /// guaranteed to be mapped as a contiguous address range. The allocation
     /// of memory in the file must ensure that no allocation crosses the
     /// boundary between two sections.
-    void remap(size_t file_size);
+    ///
+    /// Clears any allocator specicific caching of address translations
+    /// and force any later address translations to trigger decryption if required.
+    void update_reader_view(size_t file_size);
 
     /// Returns true initially, and after a call to reset_free_space_tracking()
     /// up until the point of the first call to SlabAlloc::alloc(). Note that a
@@ -324,9 +329,9 @@ protected:
     // FIXME: It would be very nice if we could detect an invalid free operation in debug mode
     void do_free(ref_type, const char*) noexcept override;
     char* do_translate(ref_type) const noexcept override;
-    void invalidate_cache() noexcept;
 
 private:
+    void internal_invalidate_cache() noexcept;
     enum AttachMode {
         attach_None,        // Nothing is attached
         attach_OwnedBuffer, // We own the buffer (m_data = nullptr for empty buffer)
@@ -489,10 +494,11 @@ private:
     size_t find_section_in_range(size_t start_pos, size_t free_chunk_size, size_t request_size) const noexcept;
 
     friend class Group;
+    friend class SharedGroup;
     friend class GroupWriter;
 };
 
-inline void SlabAlloc::invalidate_cache() noexcept
+inline void SlabAlloc::internal_invalidate_cache() noexcept
 {
     ++version;
 }

@@ -1,21 +1,21 @@
 PODS:
-  - Nimble (6.0.1)
+  - Nimble (6.1.0)
   - QueryKit (0.13.0)
-  - Realm (2.4.2):
-    - Realm/Headers (= 2.4.2)
-  - Realm/Headers (2.4.2)
-  - RealmSwift (2.4.2):
-    - Realm (= 2.4.2)
-  - RxBlocking (3.2.0):
+  - Realm (2.4.4):
+    - Realm/Headers (= 2.4.4)
+  - Realm/Headers (2.4.4)
+  - RealmSwift (2.4.4):
+    - Realm (= 2.4.4)
+  - RxBlocking (3.3.1):
+    - RxSwift (~> 3.3)
+  - RxCocoa (3.3.1):
+    - RxSwift (~> 3.3)
+  - RxRealm (0.5.2):
+    - RealmSwift (~> 2.4)
     - RxSwift (~> 3.1)
-  - RxCocoa (3.2.0):
-    - RxSwift (~> 3.1)
-  - RxRealm (0.5.1):
-    - RealmSwift (~> 2.2)
-    - RxSwift (~> 3.1)
-  - RxSwift (3.2.0)
-  - RxTest (3.2.0):
-    - RxSwift (~> 3.0)
+  - RxSwift (3.3.1)
+  - RxTest (3.3.1):
+    - RxSwift (~> 3.3)
 
 DEPENDENCIES:
   - Nimble
@@ -29,15 +29,15 @@ DEPENDENCIES:
   - RxTest (~> 3.0)
 
 SPEC CHECKSUMS:
-  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  Nimble: c53e6903fee94041b90ded74f135820437d8bf59
   QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
-  Realm: d27b758e12d62a3371879a065d4c40aa212c5a54
-  RealmSwift: 9556c0fe0f0cfecacfb755ae9e68ff379fc6bead
-  RxBlocking: ec8ed471ba77b4fb98a2d60f1f8419b0b46eaa23
-  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
-  RxRealm: c80d17d42fc362f4d8af4ac62de360b014be5c3f
-  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
-  RxTest: 85fdd6f753e8e62635a58d37bbdd3ce7d5abbef3
+  Realm: 5a280a1f5a9a3c267bebf4f41ee47911137703d7
+  RealmSwift: 0c02b9f2d4be4301c497ed10e53a0580584eb1dd
+  RxBlocking: c5918ecb86b8c205a8ccc6d1ff2abb338ddc50a0
+  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
+  RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
+  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
+  RxTest: f4e7360033fafa743f2f85097efa958402ed442a
 
 PODFILE CHECKSUM: 44b58a7705c97e5d8788cf48eeb29b9dd4bcb205
 
