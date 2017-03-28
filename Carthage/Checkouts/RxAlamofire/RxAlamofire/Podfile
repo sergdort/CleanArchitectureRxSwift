@@ -1,0 +1,34 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+def common
+    pod 'Alamofire', '~> 4.0'
+    pod 'RxSwift', :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'master'
+    pod 'RxCocoa', :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'master'
+end
+
+target 'RxAlamofire-iOS-Example' do
+    #platform :ios, '9.0'
+    common
+end
+
+target 'RxAlamofire-tvOS-Example' do
+    #platform :tvos, '9.0'
+    common
+end
+
+target 'RxAlamofire-iOS' do
+   common
+end
+
+target 'RxAlamofireTests' do
+    common
+    pod 'OHHTTPStubs', '~> 5.0'
+    pod 'OHHTTPStubs/Swift', '~> 5.0'
+    pod 'RxBlocking', :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'master'
+end
+
+target 'RxAlamofire-tvOS' do
+    common
+end
