@@ -1,0 +1,6 @@
+framework module RxBlocking {
+  umbrella header "RxBlocking-umbrella.h"
+
+  export *
+  module * { export * }
+}

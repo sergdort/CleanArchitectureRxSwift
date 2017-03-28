@@ -1,7 +1,0 @@
-osx_image: xcode8
-language: objective-c
-notifications:
-  email: false
-script: 
-  - set -o pipefail && xcodebuild -workspace 'RxAlamofire/RxAlamofire.xcworkspace' -scheme 'RxAlamofireTests' -configuration 'Debug' -sdk iphonesimulator -destination platform='iOS Simulator',OS='10.0',name='iPhone 7' build test  | xcpretty -c --test
-
