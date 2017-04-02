@@ -118,12 +118,10 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
     override func save(entity: T) -> Observable<Void> {
         return entity.sync(in: context)
             .mapToVoid()
-            .concat(context.rx.save())
-            .skip(1) // We don't want to receive event for sync
+            .flatMapLatest(context.rx.save)
             .subscribeOn(scheduler)
     }
 }
-
 ```
 
 As you can see, concrete implementations are internal, because we don't want to expose our dependecies. The only thing that is exposed in the current example from the `Platform` is a concrete implementation of the `UseCaseProvider`.
