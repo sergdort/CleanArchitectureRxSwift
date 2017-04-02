@@ -128,24 +128,22 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
 
 ```
 
-As you can see, concrete implementations are internal, because we don't want to expose our dependecies. The only thing that is exposed in the current example from the `Platform` is `ServiceLocator`.
+As you can see, concrete implementations are internal, because we don't want to expose our dependecies. The only thing that is exposed in the current example from the `Platform` is a concrete implementation of the `UseCaseProvider`.
 
 ```swift
-public final class ServiceLocator: Domain.ServiceLocator {
-    public static let shared = ServiceLocator()
-
+public final class UseCaseProvider: Domain.UseCaseProvider {
     private let coreDataStack = CoreDataStack()
     private let postRepository: Repository<Post>
 
-    private init() {
+    public init() {
         postRepository = Repository<Post>(context: coreDataStack.context)
     }
 
-    public func getAllPostsUseCase() -> Domain.AllPostsUseCase {
+    public func getAllPostsUseCase() -> AllPostsUseCase {
         return CDAllPostsUseCase(repository: postRepository)
     }
 
-    public func getCreatePostUseCase() -> Domain.SavePostUseCase {
+    public func getCreatePostUseCase() -> SavePostUseCase {
         return CDSavePostUseCase(repository: postRepository)
     }
 }

@@ -1,13 +1,11 @@
 import Foundation
 import Domain
 
-public final class ServiceLocator: Domain.ServiceLocator {
-    public static let shared = ServiceLocator()
-
+public final class UseCaseProvider: Domain.UseCaseProvider {
     private let coreDataStack = CoreDataStack()
     private let postRepository: Repository<Post>
 
-    private init() {
+    public init() {
         postRepository = Repository<Post>(context: coreDataStack.context)
     }
 
