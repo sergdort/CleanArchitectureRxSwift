@@ -27,7 +27,7 @@ final class RunLoopThreadScheduler: ImmediateSchedulerType {
         action?.perform(#selector(Action.performAction),
                         on: thread,
                         with: nil,
-                        waitUntilDone: true,
+                        waitUntilDone: false,
                         modes: [RunLoopMode.defaultRunLoopMode.rawValue])
         
         let actionDisposable = Disposables.create {
