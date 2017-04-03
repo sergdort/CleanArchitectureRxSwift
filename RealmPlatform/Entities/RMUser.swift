@@ -18,7 +18,7 @@ final class RMUser: Object {
     dynamic var email: String = ""
     dynamic var name: String = ""
     dynamic var phone: String = ""
-    dynamic var uid: Int = 0
+    dynamic var uid: String = ""
     dynamic var username: String = ""
     dynamic var website: String = ""
     
@@ -33,7 +33,7 @@ extension RMUser {
     static var name: Attribute<String> { return Attribute("name")}
     static var phone: Attribute<String> { return Attribute("phone")}
     static var username: Attribute<String> { return Attribute("username")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var uid: Attribute<String> { return Attribute("uid")}
     static var address: Attribute<RMAddress> { return Attribute("address")}
     static var company: Attribute<RMCompany> { return Attribute("company")}
 }

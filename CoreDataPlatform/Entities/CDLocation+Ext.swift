@@ -24,8 +24,8 @@ extension CDLocation: Persistable {
 }
 
 extension Location: CoreDataRepresentable {
-    internal var uid: Int {
-        return 0;
+    internal var uid: String {
+        return "";
     }
 
     typealias CoreDataType = CDLocation

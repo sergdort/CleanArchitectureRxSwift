@@ -15,8 +15,8 @@ final class RMTodo: Object {
 
     dynamic var completed: Bool = false
     dynamic var title: String = ""
-    dynamic var uid: Int = 0
-    dynamic var userId: Int = 0
+    dynamic var uid: String = ""
+    dynamic var userId: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"
@@ -26,8 +26,8 @@ final class RMTodo: Object {
 extension RMTodo {
     static var title: Attribute<String> { return Attribute("title")}
     static var completed: Attribute<Bool> { return Attribute("completed")}
-    static var userId: Attribute<Int> { return Attribute("userId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var userId: Attribute<String> { return Attribute("userId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension RMTodo: DomainConvertibleType {

@@ -20,7 +20,7 @@ public final class TodosNetwork {
         return network.getItems("todos")
     }
 
-    func fetchTodo(todoId: Int) -> Observable<Todo> {
+    func fetchTodo(todoId: String) -> Observable<Todo> {
         return network.getItem("todos", itemId: todoId)
     }
 }

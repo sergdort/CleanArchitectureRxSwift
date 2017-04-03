@@ -34,7 +34,7 @@ public final class Network<T: BaseMappable> {
             })
     }
 
-    func getItem(_ path: String, itemId: Int) -> Observable<T> {
+    func getItem(_ path: String, itemId: String) -> Observable<T> {
         let absolutePath = endPoint.appendingFormat("/%s/%d", path, itemId)
         return RxAlamofire
             .request(.get, absolutePath)
@@ -56,7 +56,7 @@ public final class Network<T: BaseMappable> {
             })
     }
 
-    func updateItem(_ path: String, itemId: Int, parameters: [String: Any]) -> Observable<T> {
+    func updateItem(_ path: String, itemId: String, parameters: [String: Any]) -> Observable<T> {
         let absolutePath = endPoint.appendingFormat("/%s/%d", path, itemId)
         return RxAlamofire
             .request(.put, absolutePath, parameters: parameters)
@@ -67,7 +67,7 @@ public final class Network<T: BaseMappable> {
             })
     }
 
-    func deleteItem(_ path: String, itemId: Int) -> Observable<T> {
+    func deleteItem(_ path: String, itemId: String) -> Observable<T> {
         let absolutePath = endPoint.appendingFormat("/%s/%d", path, itemId)
         return RxAlamofire
             .request(.delete, absolutePath)

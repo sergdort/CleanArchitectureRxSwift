@@ -19,7 +19,7 @@ extension CDUser {
     @NSManaged public var email: String?
     @NSManaged public var name: String?
     @NSManaged public var phone: String?
-    @NSManaged public var uid: Int64
+    @NSManaged public var uid: String
     @NSManaged public var username: String?
     @NSManaged public var website: String?
     @NSManaged public var address: CDAddress?

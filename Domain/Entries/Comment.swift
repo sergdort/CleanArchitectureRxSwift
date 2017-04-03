@@ -12,14 +12,14 @@ public struct Comment {
     public let body: String
     public let email: String
     public let name: String
-    public let postId: Int
-    public let uid: Int
+    public let postId: String
+    public let uid: String
 
     public init(body: String,
                 email: String,
                 name: String,
-                postId: Int,
-                uid: Int) {
+                postId: String,
+                uid: String) {
         self.body = body
         self.email = email
         self.name = name

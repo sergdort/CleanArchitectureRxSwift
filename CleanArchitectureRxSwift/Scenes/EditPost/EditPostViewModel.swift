@@ -24,7 +24,7 @@ final class EditPostViewModel: ViewModelType {
             $0
         }
         let post = Driver.combineLatest(Driver.just(self.post), titleAndDetails) { (post, titleAndDetails) -> Post in
-            return Post(body: titleAndDetails.1, title: titleAndDetails.0, uid: 7, userId: 8)
+            return Post(body: titleAndDetails.1, title: titleAndDetails.0, uid: "7", userId: "8")
         }.startWith(self.post)
         let editButtonTitle = editing.map { editing -> String in
             return editing == true ? "Save" : "Edit"

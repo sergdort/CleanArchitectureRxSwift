@@ -10,12 +10,12 @@ import Foundation
 
 public struct Album {
     public let title: String
-    public let uid: Int
-    public let userId: Int
+    public let uid: String
+    public let userId: String
 
     public init(title: String,
-                uid: Int,
-                userId: Int) {
+                uid: String,
+                userId: String) {
         self.title = title
         self.uid = uid
         self.userId = userId

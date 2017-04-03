@@ -16,8 +16,8 @@ final class RMComment: Object {
     dynamic var body: String = ""
     dynamic var email: String = ""
     dynamic var name: String = ""
-    dynamic var postId: Int = 0
-    dynamic var uid: Int = 0
+    dynamic var postId: String = ""
+    dynamic var uid: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"
@@ -28,8 +28,8 @@ extension RMComment {
     static var body: Attribute<String> { return Attribute("body")}
     static var email: Attribute<String> { return Attribute("email")}
     static var name: Attribute<String> { return Attribute("name")}
-    static var postId: Attribute<Int> { return Attribute("postId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var postId: Attribute<String> { return Attribute("postId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension RMComment: DomainConvertibleType {

@@ -33,8 +33,8 @@ extension CDCompany: Persistable {
 }
 
 extension Company: CoreDataRepresentable {
-    internal var uid: Int {
-        return 0
+    internal var uid: String {
+        return ""
     }
 
     typealias CoreDataType = CDCompany

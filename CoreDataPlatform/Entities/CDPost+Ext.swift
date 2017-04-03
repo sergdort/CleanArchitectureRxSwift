@@ -16,16 +16,16 @@ import RxSwift
 extension CDPost {
     static var title: Attribute<String> { return Attribute("title")}
     static var body: Attribute<String> { return Attribute("body")}
-    static var userId: Attribute<Int> { return Attribute("userId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var userId: Attribute<String> { return Attribute("userId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension CDPost: DomainConvertibleType {
     func asDomain() -> Post {
         return Post(body: body!,
                     title: title!,
-                    uid: Int(uid),
-                    userId: Int(userId))
+                    uid: String(uid),
+                    userId: String(userId))
     }
 }
 
@@ -39,9 +39,9 @@ extension Post: CoreDataRepresentable {
     typealias CoreDataType = CDPost
     
     func update(entity: CDPost) {
-        entity.uid = Int64(uid)
+        entity.uid = uid
         entity.title = title
         entity.body = body
-        entity.userId = Int64(userId)
+        entity.userId = userId
     }
 }

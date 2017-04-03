@@ -20,7 +20,7 @@ public final class AlbumsNetwork {
         return network.getItems("albums")
     }
 
-    func fetchAlbum(albumId: Int) -> Observable<Album> {
+    func fetchAlbum(albumId: String) -> Observable<Album> {
         return network.getItem("albums", itemId: albumId)
     }
 }

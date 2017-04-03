@@ -39,8 +39,8 @@ extension RMAddress: DomainConvertibleType {
 }
 
 extension Address: RealmRepresentable {
-    internal var uid: Int {
-        return 0
+    internal var uid: String {
+        return ""
     }
     
     func asRealm() -> RMAddress {

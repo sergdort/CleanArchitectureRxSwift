@@ -20,7 +20,7 @@ public final class UsersNetwork {
         return network.getItems("users")
     }
 
-    func fetchUser(userId: Int) -> Observable<User> {
+    func fetchUser(userId: String) -> Observable<User> {
         return network.getItem("users", itemId: userId)
     }
 }

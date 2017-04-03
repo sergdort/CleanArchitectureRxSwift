@@ -14,8 +14,8 @@ import Realm
 final class RMAlbum: Object {
 
     dynamic var title: String = ""
-    dynamic var uid: Int = 0
-    dynamic var userId: Int = 0
+    dynamic var uid: String = ""
+    dynamic var userId: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"
@@ -24,8 +24,8 @@ final class RMAlbum: Object {
 
 extension RMAlbum {
     static var title: Attribute<String> { return Attribute("title")}
-    static var userId: Attribute<Int> { return Attribute("userId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var userId: Attribute<String> { return Attribute("userId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension RMAlbum: DomainConvertibleType {

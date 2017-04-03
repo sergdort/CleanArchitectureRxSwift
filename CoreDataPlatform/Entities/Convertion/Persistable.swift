@@ -9,7 +9,7 @@ protocol Persistable: NSFetchRequestResult, DomainConvertibleType {
 }
 
 extension Persistable {
-    static var primaryAttribute: Attribute<Int> {
+    static var primaryAttribute: Attribute<String> {
         return Attribute("uid")
     }
 }

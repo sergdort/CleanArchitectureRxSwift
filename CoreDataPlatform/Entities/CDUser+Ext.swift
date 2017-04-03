@@ -18,7 +18,7 @@ extension CDUser {
     static var name: Attribute<String> { return Attribute("name")}
     static var phone: Attribute<String> { return Attribute("phone")}
     static var username: Attribute<String> { return Attribute("username")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var uid: Attribute<String> { return Attribute("uid")}
     static var address: Attribute<CDAddress> { return Attribute("address")}
     static var company: Attribute<CDCompany> { return Attribute("company")}
 }
@@ -30,7 +30,7 @@ extension CDUser: DomainConvertibleType {
                     email: email!,
                     name: name!,
                     phone: phone!,
-                    uid: Int(uid),
+                    uid: String(uid),
                     username: username!,
                     website: website!)
     }
@@ -59,7 +59,7 @@ extension User: CoreDataRepresentable {
     }
     
     func update(entity: CDUser) {
-        entity.uid = Int64(uid)
+        entity.uid = uid
         entity.website = website
         entity.email = email
         entity.phone = phone

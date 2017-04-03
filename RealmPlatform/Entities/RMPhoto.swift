@@ -12,10 +12,10 @@ import RealmSwift
 import Realm
 
 final class RMPhoto: Object {
-    dynamic var albumId: Int = 0
+    dynamic var albumId: String = ""
     dynamic var thumbnailUrl: String = ""
     dynamic var title: String = ""
-    dynamic var uid: Int = 0
+    dynamic var uid: String = ""
     dynamic var url: String = ""
     
     override class func primaryKey() -> String? {
@@ -27,8 +27,8 @@ extension RMPhoto {
     static var title: Attribute<String> { return Attribute("title")}
     static var thumbnailUrl: Attribute<String> { return Attribute("thumbnailUrl")}
     static var url: Attribute<String> { return Attribute("url")}
-    static var albumId: Attribute<Int> { return Attribute("albumId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var albumId: Attribute<String> { return Attribute("albumId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension RMPhoto: DomainConvertibleType {

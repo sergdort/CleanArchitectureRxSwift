@@ -14,15 +14,15 @@ import RxSwift
 
 extension CDAlbum {
     static var title: Attribute<String> { return Attribute("title")}
-    static var userId: Attribute<Int> { return Attribute("userId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var userId: Attribute<String> { return Attribute("userId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension CDAlbum: DomainConvertibleType {
     func asDomain() -> Album {
         return Album(title: title!,
-                     uid: Int(uid),
-                     userId: Int(userId))
+                     uid: String(uid),
+                     userId: String(userId))
     }
 }
 
@@ -36,8 +36,8 @@ extension Album: CoreDataRepresentable {
     typealias CoreDataType = CDAlbum
     
     func update(entity: CDAlbum) {
-        entity.uid = Int64(uid)
+        entity.uid = uid
         entity.title = title
-        entity.userId = Int64(userId)
+        entity.userId = userId
     }
 }

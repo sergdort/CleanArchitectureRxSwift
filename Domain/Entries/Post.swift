@@ -3,13 +3,13 @@ import Foundation
 public struct Post {
     public let body: String
     public let title: String
-    public let uid: Int
-    public let userId: Int
+    public let uid: String
+    public let userId: String
 
     public init(body: String,
                 title: String,
-                uid: Int,
-                userId: Int) {
+                uid: String,
+                userId: String) {
         self.body = body
         self.title = title
         self.uid = uid

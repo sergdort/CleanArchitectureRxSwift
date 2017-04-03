@@ -20,7 +20,7 @@ public final class PhotosNetwork {
         return network.getItems("photos")
     }
 
-    func fetchPhoto(photoId: Int) -> Observable<Photo> {
+    func fetchPhoto(photoId: String) -> Observable<Photo> {
         return network.getItem("photos", itemId: photoId)
     }
 }

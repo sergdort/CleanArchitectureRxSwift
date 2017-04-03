@@ -4,8 +4,8 @@ import RealmSwift
 import Realm
 
 final class RMPost: Object {
-    dynamic var uid: Int = 0
-    dynamic var userId: Int = 0
+    dynamic var uid: String = ""
+    dynamic var userId: String = ""
     dynamic var title: String = ""
     dynamic var body: String = ""
 
@@ -17,8 +17,8 @@ final class RMPost: Object {
 extension RMPost {
     static var title: Attribute<String> { return Attribute("title")}
     static var body: Attribute<String> { return Attribute("body")}
-    static var userId: Attribute<Int> { return Attribute("userId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var userId: Attribute<String> { return Attribute("userId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension RMPost: DomainConvertibleType {

@@ -16,16 +16,16 @@ extension CDPhoto {
     static var title: Attribute<String> { return Attribute("title")}
     static var thumbnailUrl: Attribute<String> { return Attribute("thumbnailUrl")}
     static var url: Attribute<String> { return Attribute("url")}
-    static var albumId: Attribute<Int> { return Attribute("albumId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var albumId: Attribute<String> { return Attribute("albumId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension CDPhoto: DomainConvertibleType {
     func asDomain() -> Photo {
-        return Photo(albumId: Int(albumId),
+        return Photo(albumId: String(albumId),
                      thumbnailUrl: thumbnailUrl!,
                      title: title!,
-                     uid: Int(uid),
+                     uid: String(uid),
                      url: url!)
     }
 }
@@ -40,10 +40,10 @@ extension Photo: CoreDataRepresentable {
     typealias CoreDataType = CDPhoto
     
     func update(entity: CDPhoto) {
-        entity.uid = Int64(uid)
+        entity.uid = uid
         entity.title = title
         entity.url = url
         entity.thumbnailUrl = thumbnailUrl
-        entity.albumId = Int64(albumId)
+        entity.albumId = albumId
     }
 }

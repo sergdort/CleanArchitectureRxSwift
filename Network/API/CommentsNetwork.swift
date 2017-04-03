@@ -20,7 +20,7 @@ public final class CommentsNetwork {
         return network.getItems("comments")
     }
 
-    func fetchComment(commentId: Int) -> Observable<Comment> {
+    func fetchComment(commentId: String) -> Observable<Comment> {
         return network.getItem("comments", itemId: commentId)
     }
 }

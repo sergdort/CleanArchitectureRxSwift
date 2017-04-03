@@ -9,16 +9,16 @@
 import Foundation
 
 public struct Photo {
-    public let albumId: Int
+    public let albumId: String
     public let thumbnailUrl: String
     public let title: String
-    public let uid: Int
+    public let uid: String
     public let url: String
 
-    public init(albumId: Int,
+    public init(albumId: String,
                 thumbnailUrl: String,
                 title: String,
-                uid: Int,
+                uid: String,
                 url: String) {
         self.albumId = albumId
         self.thumbnailUrl = thumbnailUrl

@@ -11,13 +11,13 @@ import Foundation
 public struct Todo {
     public let completed: Bool
     public let title: String
-    public let uid: Int
-    public let userId: Int
+    public let uid: String
+    public let userId: String
 
     public init(completed: Bool,
                 title: String,
-                uid: Int,
-                userId: Int) {
+                uid: String,
+                userId: String) {
         self.completed = completed
         self.title = title
         self.uid = uid

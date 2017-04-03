@@ -16,8 +16,8 @@ extension CDComment {
     static var body: Attribute<String> { return Attribute("body")}
     static var email: Attribute<String> { return Attribute("email")}
     static var name: Attribute<String> { return Attribute("name")}
-    static var postId: Attribute<Int> { return Attribute("postId")}
-    static var uid: Attribute<Int> { return Attribute("uid")}
+    static var postId: Attribute<String> { return Attribute("postId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
 }
 
 extension CDComment: DomainConvertibleType {
@@ -25,8 +25,8 @@ extension CDComment: DomainConvertibleType {
         return Comment(body: body!,
                        email: email!,
                        name: name!,
-                       postId: Int(postId),
-                       uid: Int(uid))
+                       postId: String(postId),
+                       uid: String(uid))
     }
 }
 
@@ -40,10 +40,10 @@ extension Comment: CoreDataRepresentable {
     typealias CoreDataType = CDComment
     
     func update(entity: CDComment) {
-        entity.uid = Int64(uid)
+        entity.uid = uid
         entity.name = name
         entity.body = body
         entity.email = email
-        entity.postId = Int64(postId)
+        entity.postId = postId
     }
 }

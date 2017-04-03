@@ -42,8 +42,8 @@ extension CDAddress: Persistable {
 }
 
 extension Address: CoreDataRepresentable {
-    internal var uid: Int {
-        return 0
+    internal var uid: String {
+        return ""
     }
     
     typealias CoreDataType = CDAddress

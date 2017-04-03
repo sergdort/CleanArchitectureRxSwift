@@ -20,7 +20,7 @@ public final class PostsNetwork {
         return network.getItems("posts")
     }
 
-    func fetchPost(postId: Int) -> Observable<Post> {
+    func fetchPost(postId: String) -> Observable<Post> {
         return network.getItem("posts", itemId: postId)
     }
 
@@ -28,7 +28,7 @@ public final class PostsNetwork {
         return network.postItem("posts", parameters: post.toJSON())
     }
 
-    func deletePost(postId: Int) -> Observable<Post> {
+    func deletePost(postId: String) -> Observable<Post> {
         return network.deleteItem("posts", itemId: postId)
     }
 }
