@@ -23,8 +23,8 @@ extension CDTodo: DomainConvertibleType {
     func asDomain() -> Todo {
         return Todo(completed: completed,
                     title: title!,
-                    uid: String(uid),
-                    userId: String(userId))
+                    uid: uid,
+                    userId: userId)
     }
 }
 

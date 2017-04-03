@@ -22,10 +22,10 @@ extension CDPhoto {
 
 extension CDPhoto: DomainConvertibleType {
     func asDomain() -> Photo {
-        return Photo(albumId: String(albumId),
+        return Photo(albumId: albumId,
                      thumbnailUrl: thumbnailUrl!,
                      title: title!,
-                     uid: String(uid),
+                     uid: uid,
                      url: url!)
     }
 }

@@ -30,7 +30,7 @@ extension CDUser: DomainConvertibleType {
                     email: email!,
                     name: name!,
                     phone: phone!,
-                    uid: String(uid),
+                    uid: uid,
                     username: username!,
                     website: website!)
     }

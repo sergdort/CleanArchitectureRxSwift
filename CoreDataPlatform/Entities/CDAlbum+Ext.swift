@@ -21,8 +21,8 @@ extension CDAlbum {
 extension CDAlbum: DomainConvertibleType {
     func asDomain() -> Album {
         return Album(title: title!,
-                     uid: String(uid),
-                     userId: String(userId))
+                     uid: uid,
+                     userId: userId)
     }
 }
 

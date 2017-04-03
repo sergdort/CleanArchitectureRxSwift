@@ -24,8 +24,8 @@ extension CDPost: DomainConvertibleType {
     func asDomain() -> Post {
         return Post(body: body!,
                     title: title!,
-                    uid: String(uid),
-                    userId: String(userId))
+                    uid: uid,
+                    userId: userId)
     }
 }
 

@@ -1,9 +1,9 @@
 //
 //  CDCompany+CoreDataProperties.swift
-//  CleanArchitectureRxSwift
+//  
 //
-//  Created by Andrey Yastrebov on 10.03.17.
-//  Copyright © 2017 sergdort. All rights reserved.
+//  Created by Andrey Yastrebov on 04.04.17.
+//
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import CoreData
 extension CDCompany {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDCompany> {
-        return NSFetchRequest<CDCompany>(entityName: "CDCompany");
+        return NSFetchRequest<CDCompany>(entityName: "CDCompany")
     }
 
     @NSManaged public var bs: String?
