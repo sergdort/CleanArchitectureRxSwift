@@ -10,9 +10,9 @@ protocol PostsNavigator {
 class DefaultPostsNavigator: PostsNavigator {
     private let storyBoard: UIStoryboard
     private let navigationController: UINavigationController
-    private let services: ServiceLocator
+    private let services: UseCaseProvider
     
-    init(services: ServiceLocator,
+    init(services: UseCaseProvider,
          navigationController: UINavigationController,
          storyBoard: UIStoryboard) {
         self.services = services

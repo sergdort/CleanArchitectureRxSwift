@@ -3,13 +3,11 @@ import Domain
 import Realm
 import RealmSwift
 
-public final class ServiceLocator: Domain.ServiceLocator {
-    public static let shared = ServiceLocator()
-
+public final class UseCaseProvider: Domain.UseCaseProvider {
     private let configuration: Realm.Configuration
 
-    private init() {
-        configuration = Realm.Configuration()
+    public init(configuration: Realm.Configuration = Realm.Configuration()) {
+        self.configuration = configuration
     }
 
     public func getAllPostsUseCase() -> Domain.AllPostsUseCase {

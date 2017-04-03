@@ -1,5 +1,5 @@
 //
-//  ServiceLocator.swift
+//  UseCaseProvider.swift
 //  CleanArchitectureRxSwift
 //
 //  Created by sergdort on 18/02/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ServiceLocator {
+public protocol UseCaseProvider {
     
     func getAllPostsUseCase() -> AllPostsUseCase
     

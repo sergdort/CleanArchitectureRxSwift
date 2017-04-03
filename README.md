@@ -6,7 +6,7 @@ You can do this by:
 - opening an issue to discuss the current solution, ask a question, propose your solution etc. (also English is not my native language so if you think that something can be corrected please open a PR 😊)
 - opening a PR if you want to fix bugs or improve something
 
-##High level overview
+## High level overview
 ![](Architecture/Modules.png)
 
 #### Domain 
@@ -19,12 +19,10 @@ The `Domain` is basically what is your App about and what it can do (Entities, U
 The `Platform` is a concrete implementation of the `Domain` in a specific platform like iOS. It does hide all implementation details. For example Database implementation whether it is CoreData, Realm, SQLite etc.
 
 #### Application
-The `Application` is responsible for delivering information to the user and handling user input. It can be implemented with any delivery pattern e.g (MVVM, MVC, MVP). It is place where you have your `UIView`s and `UIViewController`s. As you will see from the example app `ViewControllers` are completely independant on the `Platform` the only responsobility of view controller is to "bind" UI and Domain to make things happened. In fact in the current example we are using the same view controller which binds to the Platform with Realm or CoreData storage under the hood.
-
 `Application` is responsible for delivering information to the user and handling user input. It can be implemented with any delivery pattern e.g (MVVM, MVC, MVP). This is the place for your `UIView`s and `UIViewController`s. As you will see from the example app, `ViewControllers` are completely independent of the `Platform`.  The only responsobility of a view controller is to "bind" the UI to the Domain to make things happen. In fact, in the current example we are using the same view controller for Realm and CoreData.
 
 
-##Detail overview
+## Detail overview
 ![](Architecture/Modules Details.png)
  
 To enforce modularity, `Domain`, `Platform` and `Application` are separate targets in the App, which allows us to take advantage of the `internal` access layer in Swift to prevent exposing of types that we don't want to expose.
@@ -120,32 +118,28 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
     override func save(entity: T) -> Observable<Void> {
         return entity.sync(in: context)
             .mapToVoid()
-            .concat(context.rx.save())
-            .skip(1) // We don't want to receive event for sync
+            .flatMapLatest(context.rx.save)
             .subscribeOn(scheduler)
     }
 }
-
 ```
 
-As you can see, concrete implementations are internal, because we don't want to expose our dependecies. The only thing that is exposed in the current example from the `Platform` is `ServiceLocator`.
+As you can see, concrete implementations are internal, because we don't want to expose our dependecies. The only thing that is exposed in the current example from the `Platform` is a concrete implementation of the `UseCaseProvider`.
 
 ```swift
-public final class ServiceLocator: Domain.ServiceLocator {
-    public static let shared = ServiceLocator()
-
+public final class UseCaseProvider: Domain.UseCaseProvider {
     private let coreDataStack = CoreDataStack()
     private let postRepository: Repository<Post>
 
-    private init() {
+    public init() {
         postRepository = Repository<Post>(context: coreDataStack.context)
     }
 
-    public func getAllPostsUseCase() -> Domain.AllPostsUseCase {
+    public func getAllPostsUseCase() -> AllPostsUseCase {
         return CDAllPostsUseCase(repository: postRepository)
     }
 
-    public func getCreatePostUseCase() -> Domain.SavePostUseCase {
+    public func getCreatePostUseCase() -> SavePostUseCase {
         return CDSavePostUseCase(repository: postRepository)
     }
 }
@@ -256,6 +250,7 @@ The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same 
 
 ### Links
 * [RxSwift](https://github.com/ReactiveX/RxSwift)
+* [RxSwift Book](https://store.raywenderlich.com/products/rxswift)
 * [Robert C Martin - Clean Architecture and Design](https://www.youtube.com/watch?v=Nsjsiz2A9mg)
 * [Cycle.js](https://cycle.js.org)
 * [ViewModel](https://medium.com/@SergDort/viewmodel-in-rxswift-world-13d39faa2cf5#.qse37r6jw) in Rx world

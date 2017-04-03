@@ -38,8 +38,7 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
     override func save(entity: T) -> Observable<Void> {
         return entity.sync(in: context)
             .mapToVoid()
-            .concat(context.rx.save())
-            .skip(1) //We dont want to receive event for sync
+            .flatMapLatest(context.rx.save)
             .subscribeOn(scheduler)
     }
 }
