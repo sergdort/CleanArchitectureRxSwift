@@ -16,11 +16,11 @@ public final class AlbumsNetwork {
         self.network = network
     }
 
-    func fetchAlbums() -> Observable<[Album]> {
+    public func fetchAlbums() -> Observable<[Album]> {
         return network.getItems("albums")
     }
 
-    func fetchAlbum(albumId: String) -> Observable<Album> {
+    public func fetchAlbum(albumId: String) -> Observable<Album> {
         return network.getItem("albums", itemId: albumId)
     }
 }

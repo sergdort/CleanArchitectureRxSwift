@@ -16,19 +16,19 @@ public final class PostsNetwork {
         self.network = network
     }
 
-    func fetchPosts() -> Observable<[Post]> {
+    public func fetchPosts() -> Observable<[Post]> {
         return network.getItems("posts")
     }
 
-    func fetchPost(postId: String) -> Observable<Post> {
+    public func fetchPost(postId: String) -> Observable<Post> {
         return network.getItem("posts", itemId: postId)
     }
 
-    func createPost(post: Post) -> Observable<Post> {
+    public func createPost(post: Post) -> Observable<Post> {
         return network.postItem("posts", parameters: post.toJSON())
     }
 
-    func deletePost(postId: String) -> Observable<Post> {
+    public func deletePost(postId: String) -> Observable<Post> {
         return network.deleteItem("posts", itemId: postId)
     }
 }

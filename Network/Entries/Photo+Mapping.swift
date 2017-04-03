@@ -13,10 +13,10 @@ extension Photo: ImmutableMappable {
     
     // JSON -> Object
     public init(map: Map) throws {
-        albumId = try map.value("albumId")
+        albumId = try map.value("albumId", using: UidTransform())
         thumbnailUrl = try map.value("thumbnailUrl")
         title = try map.value("title")
-        uid = try map.value("id")
+        uid = try map.value("id", using: UidTransform())
         url = try map.value("url")
     }
 }

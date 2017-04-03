@@ -19,7 +19,7 @@ extension User: ImmutableMappable {
         email = try map.value("email")
         name = try map.value("name")
         phone = try map.value("phone")
-        uid = try map.value("id")
+        uid = try map.value("id", using: UidTransform())
         username = try map.value("username")
         website = try map.value("website")
     }

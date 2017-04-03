@@ -16,11 +16,11 @@ public final class PhotosNetwork {
         self.network = network
     }
 
-    func fetchPhotos() -> Observable<[Photo]> {
+    public func fetchPhotos() -> Observable<[Photo]> {
         return network.getItems("photos")
     }
 
-    func fetchPhoto(photoId: String) -> Observable<Photo> {
+    public func fetchPhoto(photoId: String) -> Observable<Photo> {
         return network.getItem("photos", itemId: photoId)
     }
 }

@@ -15,7 +15,7 @@ extension Todo: ImmutableMappable {
     public init(map: Map) throws {
         completed = try map.value("completed")
         title = try map.value("title")
-        uid = try map.value("id")
-        userId = try map.value("userId")
+        uid = try map.value("id", using: UidTransform())
+        userId = try map.value("userId", using: UidTransform())
     }
 }

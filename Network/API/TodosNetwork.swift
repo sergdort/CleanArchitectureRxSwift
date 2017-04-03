@@ -16,11 +16,11 @@ public final class TodosNetwork {
         self.network = network
     }
 
-    func fetchTodos() -> Observable<[Todo]> {
+    public func fetchTodos() -> Observable<[Todo]> {
         return network.getItems("todos")
     }
 
-    func fetchTodo(todoId: String) -> Observable<Todo> {
+    public func fetchTodo(todoId: String) -> Observable<Todo> {
         return network.getItem("todos", itemId: todoId)
     }
 }

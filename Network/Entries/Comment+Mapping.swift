@@ -16,7 +16,7 @@ extension Comment: ImmutableMappable {
         body = try map.value("body")
         email = try map.value("email")
         name = try map.value("name")
-        postId = try map.value("postId")
-        uid = try map.value("id")
+        postId = try map.value("postId", using: UidTransform())
+        uid = try map.value("id", using: UidTransform())
     }
 }

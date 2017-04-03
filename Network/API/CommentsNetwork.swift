@@ -16,11 +16,11 @@ public final class CommentsNetwork {
         self.network = network
     }
 
-    func fetchComments() -> Observable<[Comment]> {
+    public func fetchComments() -> Observable<[Comment]> {
         return network.getItems("comments")
     }
 
-    func fetchComment(commentId: String) -> Observable<Comment> {
+    public func fetchComment(commentId: String) -> Observable<Comment> {
         return network.getItem("comments", itemId: commentId)
     }
 }

@@ -82,6 +82,7 @@
 		8B0507E0C0AB1064B7372844 /* Pods_RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006BDFA0A26FDD0EBA50E777 /* Pods_RealmPlatform.framework */; };
 		8E549C0D492F9142D1CF88F2 /* Pods_Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5EFC85E3DC2D413D89C8F9 /* Pods_Network.framework */; };
 		9CBC9DB91790C744BC17C099 /* Pods_CleanArchitectureRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550BE321D44EC009D885BBE1 /* Pods_CleanArchitectureRxSwiftTests.framework */; };
+		BC8D07731E9309D000B4D96A /* UidTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D07721E9309D000B4D96A /* UidTransform.swift */; };
 		BCD8C8AC1E73421300F79E3E /* Address+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AB1E73421300F79E3E /* Address+Mapping.swift */; };
 		BCD8C8AE1E73421E00F79E3E /* Album+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AD1E73421E00F79E3E /* Album+Mapping.swift */; };
 		BCD8C8B01E73423100F79E3E /* Comment+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AF1E73423100F79E3E /* Comment+Mapping.swift */; };
@@ -360,6 +361,7 @@
 		B0092014AEC057C48B9745EA /* Pods-DomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B5764703F1E249BEDFC31014 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0D3602A9ABB65C8AF19365 /* Pods_RealmPlatformTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmPlatformTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC8D07721E9309D000B4D96A /* UidTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UidTransform.swift; sourceTree = "<group>"; };
 		BCD8C8AB1E73421300F79E3E /* Address+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Address+Mapping.swift"; sourceTree = "<group>"; };
 		BCD8C8AD1E73421E00F79E3E /* Album+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+Mapping.swift"; sourceTree = "<group>"; };
 		BCD8C8AF1E73423100F79E3E /* Comment+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Comment+Mapping.swift"; sourceTree = "<group>"; };
@@ -750,9 +752,9 @@
 		25897BB31E58C25A00D3563C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				256289FB1E91829500A7731C /* UseCaseProvider.swift */,
 				25897BB41E58C25A00D3563C /* AllPostsUseCase.swift */,
 				25897BB51E58C25A00D3563C /* SavePostUseCase.swift */,
+				256289FB1E91829500A7731C /* UseCaseProvider.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -869,9 +871,9 @@
 		515F94D09679E59029EB0F24 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				256289FD1E9182A100A7731C /* UseCaseProvider.swift */,
 				515F9359DD575F7E65FE22AF /* AllPostsUseCase.swift */,
 				515F9E409750F3D40CB814AE /* SavePostUseCase.swift */,
+				256289FD1E9182A100A7731C /* UseCaseProvider.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -947,12 +949,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BC8D07711E9309B200B4D96A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BC8D07721E9309D000B4D96A /* UidTransform.swift */,
+			);
+			name = Utils;
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		BD107F4A1E7298690043D900 /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				BD107F671E72A0DC0043D900 /* API */,
 				BD107F731E72B1790043D900 /* Entries */,
 				BD50EEF31E7AD99400CBEBD4 /* Network */,
+				BC8D07711E9309B200B4D96A /* Utils */,
 				BD107F4C1E7298690043D900 /* Info.plist */,
 				BD107F4B1E7298690043D900 /* Network.h */,
 			);
@@ -1977,6 +1989,7 @@
 				BD50EEFD1E7ADDC000CBEBD4 /* TodosNetwork.swift in Sources */,
 				BCD8C8AC1E73421300F79E3E /* Address+Mapping.swift in Sources */,
 				BCD8C8AE1E73421E00F79E3E /* Album+Mapping.swift in Sources */,
+				BC8D07731E9309D000B4D96A /* UidTransform.swift in Sources */,
 				BD107F691E72A0EF0043D900 /* PostsNetwork.swift in Sources */,
 				BCD8C8B61E73425500F79E3E /* Photo+Mapping.swift in Sources */,
 				BD50EF011E7AF37C00CBEBD4 /* NetworkProvider.swift in Sources */,
