@@ -78,22 +78,33 @@ namespace sync {
 //
 //   9 New format of the DOWNLOAD message to support progress reporting on the
 //     client
+//
 //  10 Error codes reordered (now categorized as either connection or session
 //     level errors).
+//
 //  11 Bugfixes in Link List and ChangeLinkTargets merge rules, that
-//    make previous versions incompatible.
+//     make previous versions incompatible.
+//
 //  12 FIXME What was 12?
+//
 //  13 Bugfixes in Link List and ChangeLinkTargets merge rules, that
 //     make previous versions incompatible.
+//
 //  14 Further bugfixes related to primary keys and link lists. Add support for
 //     LinkListSwap.
+//
 //  15 Deleting an object with a primary key deletes all objects on other
 //     with the same primary key.
+//
 //  16 Downloadable bytes added to DOWNLOAD message. It is used for download progress
 //     by the client
+//
+//  17 Added PING and PONG messages. It is used for rtt monitoring and dead
+//     connection detection by both the client and the server.
+
 constexpr int get_current_protocol_version() noexcept
 {
-    return 16;
+    return 17;
 }
 
 /// \brief Protocol errors discovered by the server, and reported to the client
@@ -116,6 +127,7 @@ enum class ProtocolError {
     reuse_of_session_ident       = 107, // Overlapping reuse of session identifier (BIND)
     bound_in_other_session       = 108, // Client file bound in other session (IDENT)
     bad_message_order            = 109, // Bad input message order
+    pong_timeout                 = 110, // Pong timeout
 
     // Session level errors
     session_closed               = 200, // Session closed (no error)
@@ -218,9 +230,38 @@ public:
     void make_mark_message(OutputBuffer& out, session_ident_type session_ident,
                            request_ident_type request_ident);
 
+    void make_ping(OutputBuffer& out, uint_fast64_t timestamp, uint_fast64_t rtt);
 
 
     // Messages received by the client.
+
+    // parse_pong_received takes a (WebSocket) pong and parses it.
+    // The result of the parsing is handled by an object of type Connection.
+    // Typically, Connection would be the Connection class from client.cpp
+    template <typename Connection>
+    void parse_pong_received(Connection& connection, const char* data, size_t size)
+    {
+        util::MemoryInputStream in;
+        in.set_buffer(data, data + size);
+        in.unsetf(std::ios_base::skipws);
+
+        uint_fast64_t timestamp;
+
+        char newline;
+        in >> timestamp >> newline;
+        bool good_syntax = in && size_t(in.tellg()) == size && newline == '\n';
+        if (!good_syntax)
+            goto bad_syntax;
+
+        connection.receive_pong(timestamp);
+        return;
+
+    bad_syntax:
+        logger.error("Bad syntax in input message '%1'",
+                     StringData(data, size));
+        connection.handle_protocol_error(Error::bad_syntax); // Throws
+        return;
+    }
 
     // parse_message_received takes a (WebSocket) message and parses it.
     // The result of the parsing is handled by an object of type Connection.
@@ -499,7 +540,38 @@ public:
     void make_mark_message(OutputBuffer& out, session_ident_type session_ident,
                            request_ident_type request_ident);
 
+    void make_pong(OutputBuffer& out, uint_fast64_t timestamp);
+
     // Messages received by the server.
+
+    // parse_ping_received takes a (WebSocket) ping and parses it.
+    // The result of the parsing is handled by an object of type Connection.
+    // Typically, Connection would be the Connection class from server.cpp
+    template <typename Connection>
+    void parse_ping_received(Connection& connection, const char* data, size_t size)
+    {
+        util::MemoryInputStream in;
+        in.set_buffer(data, data + size);
+        in.unsetf(std::ios_base::skipws);
+
+        int_fast64_t timestamp, rtt;
+
+        char sp_1, newline;
+        in >> timestamp >> sp_1 >> rtt >> newline;
+        bool good_syntax = in && size_t(in.tellg()) == size && sp_1 == ' ' &&
+            newline == '\n';
+        if (!good_syntax)
+            goto bad_syntax;
+
+        connection.receive_ping(timestamp, rtt);
+        return;
+
+    bad_syntax:
+        logger.error("Bad syntax in ping message '%1'",
+                     StringData(data, size));
+        connection.handle_protocol_error(Error::bad_syntax);
+        return;
+    }
 
     // parse_message_received takes a (WebSocket) message and parses it.
     // The result of the parsing is handled by an object of type Connection.

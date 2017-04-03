@@ -54,9 +54,10 @@ struct IncompatibleLockFile : std::runtime_error {
     }
 };
 
-/// Thrown by SharedGroup::open() if the realm database was generated with
-/// a format for Realm Mobile Platform but is being opened as a Realm
-/// Mobile Database or vice versa.
+/// Thrown by SharedGroup::open() if the realm database was generated with a
+/// format for Realm Mobile Platform but is being opened as a Realm Mobile
+/// Database or vice versa, or of the history schema in the Realm file could not
+/// be upgraded to the needed version.
 struct IncompatibleHistories : util::File::AccessError {
     IncompatibleHistories(const std::string& msg, const std::string& path)
         : util::File::AccessError("Incompatible histories. " + msg, path)
@@ -170,6 +171,11 @@ public:
     SharedGroup(unattached_tag) noexcept;
 
     ~SharedGroup() noexcept;
+
+    // Disable copying to prevent accessor errors. If you really want another
+    // instance, open another SharedGroup object on the same file.
+    SharedGroup(const SharedGroup&) = delete;
+    SharedGroup& operator=(const SharedGroup&) = delete;
 
     /// Attach this SharedGroup instance to the specified database file.
     ///
@@ -555,6 +561,7 @@ private:
     util::InterprocessCondVar m_daemon_becomes_ready;
 #endif
     util::InterprocessCondVar m_new_commit_available;
+    util::InterprocessCondVar m_pick_next_writer;
 #endif
     std::function<void(int, int)> m_upgrade_callback;
 
@@ -615,7 +622,9 @@ private:
 
     void do_async_commits();
 
-    void upgrade_file_format(bool allow_file_format_upgrade, int target_file_format_version);
+    /// Upgrade file format and/or history schema
+    void upgrade_file_format(bool allow_file_format_upgrade, int target_file_format_version,
+                             int current_hist_schema_version, int target_hist_schema_version);
 
     //@{
     /// See LangBindHelper.
@@ -678,12 +687,6 @@ public:
         return get_group().get_table(name); // Throws
     }
 
-    template <class T>
-    BasicTableRef<const T> get_table(StringData name) const
-    {
-        return get_group().get_table<T>(name); // Throws
-    }
-
     const Group& get_group() const noexcept;
 
     /// Get the version of the snapshot to which this read transaction is bound.
@@ -731,24 +734,6 @@ public:
     TableRef get_or_add_table(StringData name, bool* was_added = nullptr) const
     {
         return get_group().get_or_add_table(name, was_added); // Throws
-    }
-
-    template <class T>
-    BasicTableRef<T> get_table(StringData name) const
-    {
-        return get_group().get_table<T>(name); // Throws
-    }
-
-    template <class T>
-    BasicTableRef<T> add_table(StringData name, bool require_unique_name = true) const
-    {
-        return get_group().add_table<T>(name, require_unique_name); // Throws
-    }
-
-    template <class T>
-    BasicTableRef<T> get_or_add_table(StringData name, bool* was_added = nullptr) const
-    {
-        return get_group().get_or_add_table<T>(name, was_added); // Throws
     }
 
     Group& get_group() const noexcept;

@@ -52,6 +52,8 @@ private:
     };
     std::vector<ListInfo> m_lists;
     VersionID m_version;
+
+    size_t new_table_ndx(size_t ndx) const { return ndx < table_indices.size() ? table_indices[ndx] : ndx; }
 };
 
 KVOAdapter::KVOAdapter(std::vector<BindingContext::ObserverState>& observers, BindingContext* context)
@@ -103,9 +105,7 @@ void KVOAdapter::before(SharedGroup& sg)
         return;
 
     for (auto& observer : m_observers) {
-        size_t table_ndx = observer.table_ndx;
-        if (table_ndx < table_indices.size())
-            table_ndx = table_indices[table_ndx];
+        size_t table_ndx = new_table_ndx(observer.table_ndx);
         if (table_ndx >= tables.size())
             continue;
 
@@ -143,7 +143,12 @@ void KVOAdapter::before(SharedGroup& sg)
     for (auto& list : m_lists) {
         if (list.builder.empty())
             continue;
-        // column should have been marked as modified and thus already exist in `changes`
+        // If the containing row was deleted then changes will be empty
+        if (list.observer->changes.empty()) {
+            REALM_ASSERT_DEBUG(tables[new_table_ndx(list.observer->table_ndx)].deletions.contains(list.observer->row_ndx));
+            continue;
+        }
+        // otherwise the column should have been marked as modified
         REALM_ASSERT(list.col < list.observer->changes.size());
         auto& builder = list.builder;
         auto& changes = list.observer->changes[list.col];

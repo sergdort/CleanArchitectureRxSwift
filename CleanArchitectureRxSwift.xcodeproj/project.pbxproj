@@ -604,12 +604,10 @@
 		25897B291E58BF0D00D3563C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				25897BBE1E58C42D00D3563C /* UseCases */,
 				25897BC21E58C42D00D3563C /* Entries */,
 				25897BBE1E58C42D00D3563C /* UseCases */,
 				25897B2A1E58BF0D00D3563C /* Domain.h */,
 				25897B2B1E58BF0D00D3563C /* Info.plist */,
-				25897BFE1E58CE8B00D3563C /* ServiceLocator.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1314,7 +1312,6 @@
 					};
 					BD107F501E7298690043D900 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = BU4T5Z97JD;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
@@ -1859,12 +1856,10 @@
 				BD107F771E72B71E0043D900 /* Comment.swift in Sources */,
 				25897BCB1E58C42D00D3563C /* Post.swift in Sources */,
 				BD107F821E72C5640043D900 /* Address.swift in Sources */,
-				25897BFF1E58CE8B00D3563C /* ServiceLocator.swift in Sources */,
 				BD107F791E72B7320043D900 /* Album.swift in Sources */,
 				BD107F7D1E72B7750043D900 /* Todo.swift in Sources */,
 				BD107F841E72C5740043D900 /* Company.swift in Sources */,
 				BD107F7F1E72B7820043D900 /* User.swift in Sources */,
-				25897BCA1E58C42D00D3563C /* Media.swift in Sources */,
 				515F953C72C69919A1104FE7 /* UseCaseProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1906,7 +1901,6 @@
 				25897BB71E58C25A00D3563C /* Repository.swift in Sources */,
 				BD107FAA1E72DE5C0043D900 /* CDPhoto+Ext.swift in Sources */,
 				BD107FCF1E730A1D0043D900 /* CDCompany+CoreDataClass.swift in Sources */,
-				25897BBD1E58C25A00D3563C /* ServiceLocator.swift in Sources */,
 				BD107FD31E730A1D0043D900 /* CDPhoto+CoreDataClass.swift in Sources */,
 				256289FC1E91829500A7731C /* UseCaseProvider.swift in Sources */,
 				25897BB91E58C25A00D3563C /* FetchedResultsControllerEntityObserver.swift in Sources */,
@@ -1942,7 +1936,6 @@
 				BCD8C8C41E73473300F79E3E /* RMPhoto.swift in Sources */,
 				515F96794273284723F2848D /* DomainConvertibleType.swift in Sources */,
 				515F9DBB950E2ABDB8D7895B /* RMPost.swift in Sources */,
-				515F903E97C00DCE9EAEBF4D /* RMMedia.swift in Sources */,
 				256289FE1E9182A100A7731C /* UseCaseProvider.swift in Sources */,
 				515F9BD6155258BD0C04DF36 /* RMLocation.swift in Sources */,
 				515F9CD8F2B13D0328B77B6C /* Realm+Ext.swift in Sources */,
@@ -1953,7 +1946,6 @@
 				BCD8C8C01E73471A00F79E3E /* RMComment.swift in Sources */,
 				515F926E776E33924F53A7F6 /* SavePostUseCase.swift in Sources */,
 				BCD8C8C21E73472400F79E3E /* RMCompany.swift in Sources */,
-				515F973B5AA08DB9C2277A8C /* ServiceLocator.swift in Sources */,
 				515F9A39814357F9E05282CD /* RunLoopThreadScheduler.swift in Sources */,
 				BCD8C8BE1E73470C00F79E3E /* RMAlbum.swift in Sources */,
 				BCD8C8BC1E73470000F79E3E /* RMAddress.swift in Sources */,
@@ -2509,7 +2501,7 @@
 			baseConfigurationReference = D28BD18435DE56EF95FB0E9D /* Pods-NetworkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = BU4T5Z97JD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NetworkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.NetworkTests;
@@ -2524,7 +2516,7 @@
 			baseConfigurationReference = 92BD9FF4B0878F787003D01E /* Pods-NetworkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = BU4T5Z97JD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NetworkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.NetworkTests;

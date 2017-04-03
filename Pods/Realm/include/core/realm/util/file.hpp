@@ -115,6 +115,11 @@ public:
     File(File&&) noexcept;
     File& operator=(File&&) noexcept;
 
+    // Disable copying by l-value. Copying an open file will create a scenario
+    // where the same file descriptor will be opened once but closed twice.
+    File(const File&) = delete;
+    File& operator=(const File&) = delete;
+
     /// Calling this function on an instance that is already attached
     /// to an open file has undefined behavior.
     ///
@@ -524,6 +529,11 @@ private:
         MapBase() noexcept;
         ~MapBase() noexcept;
 
+        // Disable copying. Copying an opened MapBase will create a scenario
+        // where the same memory will be mapped once but unmapped twice.
+        MapBase(const MapBase&) = delete;
+        MapBase& operator=(const MapBase&) = delete;
+
         void map(const File&, AccessMode, size_t size, int map_flags, size_t offset = 0);
         void remap(const File&, AccessMode, size_t size, int map_flags);
         void unmap() noexcept;
@@ -555,6 +565,9 @@ public:
     {
         m_file.unlock();
     }
+    // Disable copying. It is not how this class should be used.
+    ExclusiveLock(const ExclusiveLock&) = delete;
+    ExclusiveLock& operator=(const ExclusiveLock&) = delete;
 
 private:
     File& m_file;
@@ -571,6 +584,9 @@ public:
     {
         m_file.unlock();
     }
+    // Disable copying. It is not how this class should be used.
+    SharedLock(const SharedLock&) = delete;
+    SharedLock& operator=(const SharedLock&) = delete;
 
 private:
     File& m_file;
@@ -606,6 +622,11 @@ public:
     Map() noexcept;
 
     ~Map() noexcept;
+
+    // Disable copying. Copying an opened Map will create a scenario
+    // where the same memory will be mapped once but unmapped twice.
+    Map(const Map&) = delete;
+    Map& operator=(const Map&) = delete;
 
     /// Move the mapping from another Map object to this Map object
     File::Map<T>& operator=(File::Map<T>&& other)
@@ -702,6 +723,11 @@ public:
     {
         m_file = nullptr;
     }
+    // Disallow the default implementation of copy/assign, this is not how this
+    // class is intended to be used. For example we could get unexpected
+    // behaviour if one CloseGuard is copied and released but the other is not.
+    CloseGuard(const CloseGuard&) = delete;
+    CloseGuard& operator=(const CloseGuard&) = delete;
 
 private:
     File* m_file;
@@ -723,6 +749,11 @@ public:
     {
         m_file = nullptr;
     }
+    // Disallow the default implementation of copy/assign, this is not how this
+    // class is intended to be used. For example we could get unexpected
+    // behaviour if one UnlockGuard is copied and released but the other is not.
+    UnlockGuard(const UnlockGuard&) = delete;
+    UnlockGuard& operator=(const UnlockGuard&) = delete;
 
 private:
     File* m_file;
@@ -745,6 +776,11 @@ public:
     {
         m_map = nullptr;
     }
+    // Disallow the default implementation of copy/assign, this is not how this
+    // class is intended to be used. For example we could get unexpected
+    // behaviour if one UnmapGuard is copied and released but the other is not.
+    UnmapGuard(const UnmapGuard&) = delete;
+    UnmapGuard& operator=(const UnmapGuard&) = delete;
 
 private:
     MapBase* m_map;
@@ -757,6 +793,10 @@ public:
     explicit Streambuf(File*);
     ~Streambuf() noexcept;
 
+    // Disable copying
+    Streambuf(const Streambuf&) = delete;
+    Streambuf& operator=(const Streambuf&) = delete;
+
 private:
     static const size_t buffer_size = 4096;
 
@@ -767,10 +807,6 @@ private:
     int sync() override;
     pos_type seekpos(pos_type, std::ios_base::openmode) override;
     void flush();
-
-    // Disable copying
-    Streambuf(const Streambuf&);
-    Streambuf& operator=(const Streambuf&);
 };
 
 

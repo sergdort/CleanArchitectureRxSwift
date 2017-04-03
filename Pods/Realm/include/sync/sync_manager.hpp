@@ -86,6 +86,9 @@ public:
     /// Control whether the sync client validates SSL certificates. Should *always* be `true` in production use.
     void set_client_should_validate_ssl(bool validate_ssl);
     bool client_should_validate_ssl() const noexcept;
+    
+    /// Force sync client to reconnect immediately if the connection was lost.
+    void reconnect();
 
     util::Logger::Level log_level() const noexcept;
 

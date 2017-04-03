@@ -267,6 +267,14 @@ bool SyncManager::client_should_validate_ssl() const noexcept
     return m_client_validate_ssl;
 }
 
+void SyncManager::reconnect()
+{
+    std::lock_guard<std::mutex> lock(m_mutex);
+    if (m_sync_client) {
+        m_sync_client->cancel_reconnect_delay();
+    }
+}
+
 util::Logger::Level SyncManager::log_level() const noexcept
 {
     std::lock_guard<std::mutex> lock(m_mutex);

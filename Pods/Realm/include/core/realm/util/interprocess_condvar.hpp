@@ -52,6 +52,11 @@ public:
     InterprocessCondVar();
     ~InterprocessCondVar() noexcept;
 
+    // Disable copying. Copying an open file will create a scenario
+    // where the same file descriptor will be opened once but closed twice.
+    InterprocessCondVar(const InterprocessCondVar&) = delete;
+    InterprocessCondVar& operator=(const InterprocessCondVar&) = delete;
+
 /// To use the InterprocessCondVar, you also must place a structure of type
 /// InterprocessCondVar::SharedPart in memory shared by multiple processes
 /// or in a memory mapped file, and use set_shared_part() to associate

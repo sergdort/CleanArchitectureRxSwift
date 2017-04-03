@@ -188,6 +188,12 @@ public:
                        MigrationFunction migration_function=nullptr,
                        bool in_transaction=false);
 
+    // Set the schema used for this Realm, but do not update the file's schema
+    // if it is not compatible (and instead throw an error).
+    // Cannot be called multiple times on a single Realm instance or an instance
+    // which has already had update_schema() called on it.
+    void set_schema_subset(Schema schema);
+
     // Read the schema version from the file specified by the given config, or
     // ObjectStore::NotVersioned if it does not exist
     static uint64_t get_schema_version(Config const& config);
@@ -259,6 +265,7 @@ public:
         friend class _impl::ResultsNotifier;
         friend class ThreadSafeReferenceBase;
         friend class GlobalNotifier;
+        friend class TestHelper;
 
         // ResultsNotifier and ListNotifier need access to the SharedGroup
         // to be able to call the handover functions, which are not very wrappable
@@ -294,7 +301,12 @@ private:
 
     uint64_t m_schema_version;
     Schema m_schema;
+    util::Optional<Schema> m_new_schema;
     uint64_t m_schema_transaction_version = -1;
+
+    // FIXME: this should be a Dynamic schema mode instead, but only once
+    // that's actually fully working
+    bool m_dynamic_schema = true;
 
     std::shared_ptr<_impl::RealmCoordinator> m_coordinator;
 
@@ -305,14 +317,19 @@ private:
     // transaction version, to avoid recursive notifications where possible
     bool m_is_sending_notifications = false;
 
-    void set_schema(Schema schema, uint64_t version);
-    bool reset_file_if_needed(Schema& schema, uint64_t version, std::vector<SchemaChange>& changes_required);
+    void begin_read(VersionID);
+
+    void set_schema(Schema const& reference, Schema schema);
+    bool reset_file(Schema& schema, std::vector<SchemaChange>& changes_required);
+    bool schema_change_needs_write_transaction(Schema& schema, std::vector<SchemaChange>& changes, uint64_t version);
+    Schema get_full_schema();
 
     // Ensure that m_schema and m_schema_version match that of the current
-    // version of the file, and return true if it changed
-    bool read_schema_from_group_if_needed();
+    // version of the file
+    void read_schema_from_group_if_needed();
 
     void add_schema_change_handler();
+    void cache_new_schema();
 
 public:
     std::unique_ptr<BindingContext> m_binding_context;
@@ -397,7 +414,7 @@ public:
 class _impl::RealmFriend {
 public:
     static SharedGroup& get_shared_group(Realm& realm);
-    static Group& read_group_to(Realm& realm, VersionID& version);
+    static Group& read_group_to(Realm& realm, VersionID version);
 };
 
 } // namespace realm

@@ -467,16 +467,8 @@ inline void MixedColumn::refresh_accessor_tree(size_t col_ndx, const Spec& spec)
     get_root_array()->init_from_parent();
     m_types->refresh_accessor_tree(col_ndx, spec); // Throws
     m_data->refresh_accessor_tree(col_ndx, spec);  // Throws
-    if (m_binary_data) {
-        REALM_ASSERT_3(get_root_array()->size(), >=, 3);
-        m_binary_data->refresh_accessor_tree(col_ndx, spec); // Throws
-    }
-    if (m_timestamp_data) {
-        REALM_ASSERT_3(get_root_array()->size(), >=, 4);
-        m_timestamp_data->refresh_accessor_tree(col_ndx, spec); // Throws
-    }
 
-
+    m_binary_data.reset();
     // See if m_binary_data needs to be created.
     if (get_root_array()->size() >= 3) {
         ref_type ref = get_root_array()->get_as_ref(2);
@@ -484,6 +476,7 @@ inline void MixedColumn::refresh_accessor_tree(size_t col_ndx, const Spec& spec)
         m_binary_data->set_parent(get_root_array(), 2);
     }
 
+    m_timestamp_data.reset();
     // See if m_timestamp_data needs to be created.
     if (get_root_array()->size() >= 4) {
         ref_type ref = get_root_array()->get_as_ref(3);
@@ -492,6 +485,15 @@ inline void MixedColumn::refresh_accessor_tree(size_t col_ndx, const Spec& spec)
         // publicly supported
         m_timestamp_data.reset(new TimestampColumn(true /*fixme*/, get_alloc(), ref)); // Throws
         m_timestamp_data->set_parent(get_root_array(), 3);
+    }
+
+    if (m_binary_data) {
+        REALM_ASSERT_3(get_root_array()->size(), >=, 3);
+        m_binary_data->refresh_accessor_tree(col_ndx, spec); // Throws
+    }
+    if (m_timestamp_data) {
+        REALM_ASSERT_3(get_root_array()->size(), >=, 4);
+        m_timestamp_data->refresh_accessor_tree(col_ndx, spec); // Throws
     }
 }
 
