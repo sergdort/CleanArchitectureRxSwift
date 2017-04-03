@@ -1,5 +1,5 @@
 //
-//  ServiceLocator.swift
+//  NetworkProvider.swift
 //  CleanArchitectureRxSwift
 //
 //  Created by Andrey Yastrebov on 16.03.17.
@@ -8,12 +8,10 @@
 
 import Domain
 
-public final class ServiceLocator {
-    public static let shared = ServiceLocator()
-
+public final class NetworkProvider {
     private let APIendPoint: String
 
-    private init() {
+    public init() {
         APIendPoint = "https://jsonplaceholder.typicode.com"
     }
 

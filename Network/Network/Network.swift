@@ -13,12 +13,12 @@ import RxAlamofire
 import RxSwift
 import ObjectMapper
 
-public final class Network<T: BaseMappable> {
+final class Network<T: BaseMappable> {
 
     private let endPoint: String
     private let scheduler: ConcurrentDispatchQueueScheduler
 
-    required public init(_ endPoint: String) {
+    init(_ endPoint: String) {
         self.endPoint = endPoint
         self.scheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))
     }
