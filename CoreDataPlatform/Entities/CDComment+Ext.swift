@@ -25,8 +25,8 @@ extension CDComment: DomainConvertibleType {
         return Comment(body: body!,
                        email: email!,
                        name: name!,
-                       postId: postId,
-                       uid: uid)
+                       postId: postId!,
+                       uid: uid!)
     }
 }
 

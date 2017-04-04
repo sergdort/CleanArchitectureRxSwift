@@ -8,159 +8,125 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
+		</dict>
+		<key>AlamofireObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Nimble.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-CleanArchitectureRxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-CleanArchitectureRxSwiftTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-CoreDataPlatform.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>Pods-CoreDataPlatformTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Pods-Domain.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-DomainTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>Pods-Network.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>Pods-NetworkTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>Pods-RealmPlatform.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 		<key>Pods-RealmPlatformTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>12</integer>
 		</dict>
 		<key>QueryKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
 		</dict>
 		<key>RxAlamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
 		</dict>
 		<key>RxBlocking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
 		</dict>
 		<key>RxCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
 		</dict>
 		<key>RxRealm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>19</integer>
 		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>20</integer>
 		</dict>
 		<key>RxTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>21</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>016B9ACF223853F0BF64492F604A1AD8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>03A506DBFFF8FEBA1FB66506FF90E480</key>
 		<dict>
 			<key>primary</key>
@@ -171,17 +137,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0921CC2F4398BE9A4F1CEACB30684B56</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>0E1E0B9BDFF1FFD9C90A6AD30C84DF5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0F3A851DB6888C799670048B91F20502</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -196,22 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>212F7F192717F49C6135806890EE5129</key>
+		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>22D88AA7E0F0B96EB2EFF056AF85B974</key>
+		<key>5EAD26FEFD7C04C3E2C7218C2145C13E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>50258DC98A5E8D6F04D7F18F6A167EF8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>599E230407E19B8CD2B4EFB61AC6307E</key>
+		<key>61AACC5A28716F02B18A8DF107025BAD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -221,7 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>86310960B603CBD77D7C70A67FFBD0BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B6C1D1D26C4C5027ED7980B63CB5544</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -231,7 +192,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9DEB50A066BFBB12CDF59ABB409B84D6</key>
+		<key>9502FB01641FBABB78522037E882757B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A145CC0D57FDB7246C3B10C8314EF371</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A55B2C54462C11B038EADB43EC1EE523</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -241,7 +212,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD61500DE390C0B1A10A6E4BEE0D64F2</key>
+		<key>B17B9AEB4E059D0B13E75937F1D42C0C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7AB6253EDFC6AC6CB29DA7DB6AEFA69</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -251,22 +227,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD6C9FB6B052E1CF663F8A56041EA163</key>
+		<key>F824FCA9991C7AAE6B092615A70207F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D26625360764D618748976F51AD4BC47</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DC4A15F4D2E8A03786D3094824A0EB5B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FF71E560BA99AF2D4EB9B3490FF405CE</key>
+		<key>FE948151D142F7C9017F6CF5592587BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
