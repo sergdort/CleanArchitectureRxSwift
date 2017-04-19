@@ -23,7 +23,7 @@ The `Platform` is a concrete implementation of the `Domain` in a specific platfo
 
 
 ## Detail overview
-![](Architecture/Modules Details.png)
+![](Architecture/ModulesDetails.png)
  
 To enforce modularity, `Domain`, `Platform` and `Application` are separate targets in the App, which allows us to take advantage of the `internal` access layer in Swift to prevent exposing of types that we don't want to expose.
 
