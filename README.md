@@ -250,6 +250,7 @@ The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same 
 
 ### Links
 * [RxSwift](https://github.com/ReactiveX/RxSwift)
+* [RxSwift Book](https://store.raywenderlich.com/products/rxswift)
 * [Robert C Martin - Clean Architecture and Design](https://www.youtube.com/watch?v=Nsjsiz2A9mg)
 * [Cycle.js](https://cycle.js.org)
 * [ViewModel](https://medium.com/@SergDort/viewmodel-in-rxswift-world-13d39faa2cf5#.qse37r6jw) in Rx world
