@@ -1,39 +1,27 @@
 import Foundation
 
 public struct Post {
-    public let uid: String
-    public let createDate: Date
-    public let updateDate: Date
+    public let body: String
     public let title: String
-    public let content: String
-    public let media: Media?
-    public let location: Location?
-    
-    public init(uid: String,
-                createDate: Date,
-                updateDate: Date,
+    public let uid: String
+    public let userId: String
+
+    public init(body: String,
                 title: String,
-                content: String,
-                media: Media? = nil,
-                location: Location? = nil) {
-        self.uid = uid
-        self.createDate = createDate
-        self.updateDate = updateDate
+                uid: String,
+                userId: String) {
+        self.body = body
         self.title = title
-        self.content = content
-        self.media = media
-        self.location = location
+        self.uid = uid
+        self.userId = userId
     }
 }
 
 extension Post: Equatable {
     public static func == (lhs: Post, rhs: Post) -> Bool {
             return lhs.uid == rhs.uid &&
-                lhs.createDate == rhs.createDate &&
-                lhs.updateDate == rhs.updateDate && 
                 lhs.title == rhs.title && 
-                lhs.content == rhs.content && 
-                lhs.media == rhs.media && 
-                lhs.location == rhs.location
+                lhs.body == rhs.body &&
+                lhs.userId == rhs.userId
     }
 }

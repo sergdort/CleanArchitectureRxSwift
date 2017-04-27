@@ -125,8 +125,17 @@ public:
         /// The default changeset cooker to be used by new sessions. Can be
         /// overridden by Session::Config::changeset_cooker.
         ///
-        /// \sa make_sync_history(), TrivialChangesetCooker.
-        std::shared_ptr<SyncHistory::ChangesetCooker> changeset_cooker;
+        /// \sa make_client_history(), TrivialChangesetCooker.
+        std::shared_ptr<ClientHistory::ChangesetCooker> changeset_cooker;
+
+        /// The number of ms between periodic keep-alive pings.
+        uint_fast64_t ping_keepalive_period_ms = 600000;
+
+        /// The number of ms to wait for keep-alive pongs.
+        uint_fast64_t pong_keepalive_timeout_ms = 300000;
+
+        /// The number of ms to wait for urgent pongs.
+        uint_fast64_t pong_urgent_timeout_ms = 5000;
     };
 
     /// \throw util::EventLoop::Implementation::NotAvailable if no event loop
@@ -241,8 +250,11 @@ public:
         /// in time where the last invocation of `client.run()` returns. Here,
         /// `client` refers to the associated Client object.
         ///
-        /// \sa make_sync_history(), TrivialChangesetCooker.
-        std::shared_ptr<SyncHistory::ChangesetCooker> changeset_cooker;
+        /// \sa make_client_history(), TrivialChangesetCooker.
+        std::shared_ptr<ClientHistory::ChangesetCooker> changeset_cooker;
+
+        /// The encryption key the SharedGroup will be opened with.
+        Optional<std::array<char, 64>> encryption_key;
     };
 
     /// \brief Start a new session for the specified client-side Realm.
@@ -657,6 +669,7 @@ enum class Client::Error {
     bad_request_ident           = 113, ///< Bad request identifier (MARK)
     bad_error_code              = 114, ///< Bad error code (ERROR),
     bad_compression             = 115, ///< Bad compression (DOWNLOAD)
+    bad_client_version          = 116, ///< Bad last integrated client version in changeset header (DOWNLOAD)
 };
 
 const std::error_category& client_error_category() noexcept;

@@ -32,7 +32,7 @@ class PostsViewController: UIViewController {
         //Bind Posts to UITableView
         output.posts.drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { tv, item, cell in
             cell.titleLabel.text = item.title
-            cell.detailsLabel.text = item.content
+            cell.detailsLabel.text = item.body
         }.addDisposableTo(disposeBag)
         //Connect Create Post to UI
         output.createPost.drive().addDisposableTo(disposeBag)

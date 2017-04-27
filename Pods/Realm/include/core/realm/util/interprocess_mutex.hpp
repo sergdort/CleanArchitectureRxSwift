@@ -50,6 +50,11 @@ public:
     InterprocessMutex();
     ~InterprocessMutex() noexcept;
 
+    // Disable copying. Copying a locked Mutex will create a scenario
+    // where the same file descriptor will be locked once but unlocked twice.
+    InterprocessMutex(const InterprocessMutex&) = delete;
+    InterprocessMutex& operator=(const InterprocessMutex&) = delete;
+
 #ifdef REALM_ROBUST_MUTEX_EMULATION
     struct SharedPart {
     };
@@ -90,7 +95,11 @@ private:
     struct LockInfo {
         File m_file;
         Mutex m_local_mutex;
+        LockInfo() {}
         ~LockInfo() noexcept;
+        // Disable copying.
+        LockInfo(const LockInfo&) = delete;
+        LockInfo& operator=(const LockInfo&) = delete;
     };
     /// InterprocessMutex created on the same file (same inode on POSIX) share the same LockInfo.
     /// LockInfo will be saved in a static map as a weak ptr and use the UniqueID as the key.
@@ -146,7 +155,7 @@ inline InterprocessMutex::LockInfo::~LockInfo() noexcept
 
 inline void InterprocessMutex::free_lock_info()
 {
-    // It has not been inited yet.
+    // It has not been initialized yet.
     if (!m_lock_info)
         return;
 

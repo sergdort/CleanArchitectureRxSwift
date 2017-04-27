@@ -71,6 +71,10 @@ public:
     using base::end;
     using base::empty;
     using base::size;
+
+private:
+    template<typename T, typename U, typename Func>
+    static void zip_matching(T&& a, U&& b, Func&& func);
 };
 
 namespace schema_change {

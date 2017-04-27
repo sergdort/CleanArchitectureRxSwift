@@ -115,7 +115,7 @@ AggregateState      State of the aggregate - contains a state variable that stor
 
 #include <map>
 
-#if defined(_MSC_FULL_VER) && _MSC_FULL_VER >= 160040219
+#if REALM_X86_OR_X64_TRUE && defined(_MSC_FULL_VER) && _MSC_FULL_VER >= 160040219
 #include <immintrin.h>
 #endif
 
@@ -170,8 +170,12 @@ public:
 
     virtual void init()
     {
+        // Verify that the cached column accessor is still valid
+        verify_column(); // throws
+
         if (m_child)
             m_child->init();
+
         m_column_action_specializer = nullptr;
     }
 
@@ -261,6 +265,8 @@ public:
             m_child->apply_handover_patch(patches, group);
     }
 
+    virtual void verify_column() const = 0;
+
     std::unique_ptr<ParentNode> m_child;
     std::vector<ParentNode*> m_children;
     size_t m_condition_column_idx = npos; // Column of search criteria
@@ -308,13 +314,21 @@ protected:
         }
     }
 
+    void do_verify_column(const ColumnBase* col, size_t col_ndx = npos) const
+    {
+        if (col_ndx == npos)
+            col_ndx = m_condition_column_idx;
+        if (m_table && col_ndx != npos) {
+            m_table->verify_column(col_ndx, col);
+        }
+    }
+
 private:
     virtual void table_changed() = 0;
 };
 
 // For conditions on a subtable (encapsulated in subtable()...end_subtable()). These return the parent row as match if
-// and
-// only if one or more subtable rows match the condition.
+// and only if one or more subtable rows match the condition.
 class SubtableNode : public ParentNode {
 public:
     SubtableNode(size_t column, std::unique_ptr<ParentNode> condition)
@@ -326,6 +340,8 @@ public:
 
     void init() override
     {
+        ParentNode::init();
+
         m_dD = 10.0;
 
         // m_condition is first node in condition of subtable query.
@@ -335,10 +351,6 @@ public:
             std::vector<ParentNode*> v;
             m_condition->gather_children(v);
         }
-
-        // m_child is next node of parent query
-        if (m_child)
-            m_child->init();
     }
 
     void table_changed() override
@@ -349,6 +361,12 @@ public:
             m_column = &m_table->get_column_table(m_condition_column_idx);
         else // Mixed
             m_column = &m_table->get_column_mixed(m_condition_column_idx);
+    }
+
+    void verify_column() const override
+    {
+        if (m_table)
+            m_table->verify_column(m_condition_column_idx, m_column);
     }
 
     std::string validate() override
@@ -615,6 +633,11 @@ protected:
         m_condition_column = &get_column<ColType>(m_condition_column_idx);
     }
 
+    void verify_column() const override
+    {
+        do_verify_column(m_condition_column);
+    }
+
     void init() override
     {
         ColumnNodeBase::init();
@@ -626,9 +649,6 @@ protected:
         m_leaf_end = 0;
         m_array_ptr.reset(); // Explicitly destroy the old one first, because we're reusing the memory.
         m_array_ptr.reset(new (&m_leaf_cache_storage) LeafType(m_table->get_alloc()));
-
-        if (m_child)
-            m_child->init();
     }
 
     void get_leaf(const ColType& col, size_t ndx)
@@ -840,6 +860,11 @@ public:
         m_condition_column.init(&get_column<ColType>(m_condition_column_idx));
     }
 
+    void verify_column() const override
+    {
+        do_verify_column(m_condition_column.m_column);
+    }
+
     void init() override
     {
         ParentNode::init();
@@ -885,6 +910,64 @@ protected:
     SequentialGetter<ColType> m_condition_column;
 };
 
+template <class ColType, class TConditionFunction>
+class SizeNode : public ParentNode {
+public:
+    SizeNode(int64_t v, size_t column)
+        : m_value(v)
+    {
+        m_condition_column_idx = column;
+    }
+
+    void table_changed() override
+    {
+        m_condition_column = &get_column<ColType>(m_condition_column_idx);
+    }
+
+    void verify_column() const override
+    {
+        do_verify_column(m_condition_column);
+    }
+
+    void init() override
+    {
+        ParentNode::init();
+        m_dD = 10.0;
+    }
+
+    size_t find_first_local(size_t start, size_t end) override
+    {
+        for (size_t s = start; s < end; ++s) {
+            TConditionValue v = m_condition_column->get(s);
+            int64_t sz = m_size_operator(v);
+            if (TConditionFunction()(sz, m_value, !bool(v)))
+                return s;
+        }
+        return not_found;
+    }
+
+    std::unique_ptr<ParentNode> clone(QueryNodeHandoverPatches* patches) const override
+    {
+        return std::unique_ptr<ParentNode>(new SizeNode(*this, patches));
+    }
+
+    SizeNode(const SizeNode& from, QueryNodeHandoverPatches* patches)
+        : ParentNode(from, patches)
+        , m_value(from.m_value)
+        , m_condition_column(from.m_condition_column)
+    {
+        if (m_condition_column && patches)
+            m_condition_column_idx = m_condition_column->get_column_index();
+    }
+
+private:
+    using TConditionValue = typename ColType::value_type;
+
+    int64_t m_value;
+    const ColType* m_condition_column = nullptr;
+    Size<TConditionValue> m_size_operator;
+};
+
 
 template <class TConditionFunction>
 class BinaryNode : public ParentNode {
@@ -909,12 +992,16 @@ public:
         m_condition_column = &get_column<BinaryColumn>(m_condition_column_idx);
     }
 
+    void verify_column() const override
+    {
+        do_verify_column(m_condition_column);
+    }
+
     void init() override
     {
-        m_dD = 100.0;
+        ParentNode::init();
 
-        if (m_child)
-            m_child->init();
+        m_dD = 100.0;
     }
 
     size_t find_first_local(size_t start, size_t end) override
@@ -970,12 +1057,16 @@ public:
         m_condition_column = &get_column<TimestampColumn>(m_condition_column_idx);
     }
 
+    void verify_column() const override
+    {
+        do_verify_column(m_condition_column);
+    }
+
     void init() override
     {
-        m_dD = 100.0;
+        ParentNode::init();
 
-        if (m_child)
-            m_child->init();
+        m_dD = 100.0;
     }
 
     size_t find_first_local(size_t start, size_t end) override
@@ -1020,8 +1111,15 @@ public:
         m_column_type = get_real_column_type(m_condition_column_idx);
     }
 
+    void verify_column() const override
+    {
+        do_verify_column(m_condition_column);
+    }
+
     void init() override
     {
+        ParentNode::init();
+
         m_dT = 10.0;
         m_probes = 0;
         m_matches = 0;
@@ -1122,9 +1220,6 @@ public:
         m_dD = 100.0;
 
         StringNodeBase::init();
-
-        if (m_child)
-            m_child->init();
     }
 
 
@@ -1187,9 +1282,6 @@ public:
         m_dD = 100.0;
         
         StringNodeBase::init();
-        
-        if (m_child)
-            m_child->init();
     }
     
     
@@ -1263,9 +1355,6 @@ public:
         m_dD = 100.0;
         
         StringNodeBase::init();
-        
-        if (m_child)
-            m_child->init();
     }
     
     
@@ -1318,7 +1407,7 @@ public:
 
     void deallocate() noexcept
     {
-        // Must be called after each query execution too free temporary resources used by the execution. Run in
+        // Must be called after each query execution to free temporary resources used by the execution. Run in
         // destructor, but also in Init because a user could define a query once and execute it multiple times.
         clear_leaf_state();
 
@@ -1395,9 +1484,6 @@ public:
             REALM_ASSERT_DEBUG(dynamic_cast<const StringEnumColumn*>(m_condition_column));
             m_cse.init(static_cast<const StringEnumColumn*>(m_condition_column));
         }
-
-        if (m_child)
-            m_child->init();
     }
 
     size_t find_first_local(size_t start, size_t end) override
@@ -1555,8 +1641,17 @@ public:
         }
     }
 
+    void verify_column() const override
+    {
+        for (auto& condition : m_conditions) {
+            condition->verify_column();
+        }
+    }
+
     void init() override
     {
+        ParentNode::init();
+
         m_dD = 10.0;
 
         m_start.clear();
@@ -1574,9 +1669,6 @@ public:
             v.clear();
             condition->gather_children(v);
         }
-
-        if (m_child)
-            m_child->init();
     }
 
     size_t find_first_local(size_t start, size_t end) override
@@ -1673,8 +1765,15 @@ public:
         m_condition->set_table(*m_table);
     }
 
+    void verify_column() const override
+    {
+        m_condition->verify_column();
+    }
+
     void init() override
     {
+        ParentNode::init();
+
         m_dD = 10.0;
 
         std::vector<ParentNode*> v;
@@ -1687,9 +1786,6 @@ public:
         m_known_range_start = 0;
         m_known_range_end = 0;
         m_first_in_known_range = not_found;
-
-        if (m_child)
-            m_child->init();
     }
 
     size_t find_first_local(size_t start, size_t end) override;
@@ -1774,12 +1870,16 @@ public:
         m_getter2.init(&get_column<ColType>(m_condition_column_idx2));
     }
 
+    void verify_column() const override
+    {
+        do_verify_column(m_getter1.m_column, m_condition_column_idx1);
+        do_verify_column(m_getter2.m_column, m_condition_column_idx2);
+    }
+
     void init() override
     {
+        ParentNode::init();
         m_dD = 100.0;
-
-        if (m_child)
-            m_child->init();
     }
 
     size_t find_first_local(size_t start, size_t end) override
@@ -1840,6 +1940,8 @@ public:
         , m_value(from.m_value)
         , m_condition_column(from.m_condition_column)
         , m_column_type(from.m_column_type)
+        , m_condition_column_idx1(from.m_condition_column_idx1)
+        , m_condition_column_idx2(from.m_condition_column_idx2)
     {
         if (m_condition_column)
             m_condition_column_idx = m_condition_column->get_column_index();
@@ -1874,6 +1976,11 @@ public:
     void table_changed() override
     {
         m_expression->set_base_table(m_table.get());
+    }
+
+    void verify_column() const override
+    {
+        m_expression->verify_column();
     }
 
     size_t find_first_local(size_t start, size_t end) override
@@ -1923,6 +2030,11 @@ public:
         m_column_type = m_table->get_column_type(m_origin_column);
         m_column = &const_cast<Table*>(m_table.get())->get_column_link_base(m_origin_column);
         REALM_ASSERT(m_column_type == type_Link || m_column_type == type_LinkList);
+    }
+
+    void verify_column() const override
+    {
+        do_verify_column(m_column, m_origin_column);
     }
 
     size_t find_first_local(size_t start, size_t end) override

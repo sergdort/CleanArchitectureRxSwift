@@ -12,9 +12,8 @@ extension CDLocation {
 
 extension CDLocation: DomainConvertibleType {
     func asDomain() -> Location {
-        return Location(uid: uid!, latitude: latitude,
-        longitude: longitude,
-        name: name ?? "")
+        return Location(latitude: latitude,
+                        longitude: longitude)
     }
 }
 
@@ -25,10 +24,13 @@ extension CDLocation: Persistable {
 }
 
 extension Location: CoreDataRepresentable {
+    internal var uid: String {
+        return "";
+    }
+
     typealias CoreDataType = CDLocation
     
     func update(entity: CDLocation) {
-        entity.uid = uid
         entity.latitude = latitude
         entity.longitude = longitude
     }

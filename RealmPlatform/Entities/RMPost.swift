@@ -5,27 +5,28 @@ import Realm
 
 final class RMPost: Object {
     dynamic var uid: String = ""
-    dynamic var createDate: NSDate = NSDate()
-    dynamic var updateDate: NSDate = NSDate()
+    dynamic var userId: String = ""
     dynamic var title: String = ""
-    dynamic var content: String = ""
-    dynamic var media: RMMedia? = nil
-    dynamic var location: RMLocation? = nil
+    dynamic var body: String = ""
 
     override class func primaryKey() -> String? {
         return "uid"
     }
 }
 
+extension RMPost {
+    static var title: Attribute<String> { return Attribute("title")}
+    static var body: Attribute<String> { return Attribute("body")}
+    static var userId: Attribute<String> { return Attribute("userId")}
+    static var uid: Attribute<String> { return Attribute("uid")}
+}
+
 extension RMPost: DomainConvertibleType {
     func asDomain() -> Post {
-        return Post(uid: uid,
-                createDate: createDate as Date,
-                updateDate: updateDate as Date,
-                title: title,
-                content: content,
-                media: media?.asDomain(),
-                location: location?.asDomain())
+        return Post(body: body,
+                    title: title,
+                    uid: uid,
+                    userId: userId)
     }
 }
 
@@ -33,12 +34,9 @@ extension Post: RealmRepresentable {
     func asRealm() -> RMPost {
         return RMPost.build { object in
             object.uid = uid
-            object.createDate = createDate as NSDate
-            object.updateDate = updateDate as NSDate
+            object.userId = userId
             object.title = title
-            object.content = content
-            object.media = media?.asRealm()
-            object.location = location?.asRealm()
+            object.body = body
         }
     }
 }

@@ -53,6 +53,22 @@ target 'Domain' do
 
 end
 
+target 'Network' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    rx_swift
+    pod 'Alamofire'
+    pod 'RxAlamofire'
+    pod 'ObjectMapper'
+    pod 'AlamofireObjectMapper'
+
+    target 'NetworkTests' do
+        inherit! :search_paths
+        test_pods
+    end
+    
+end
+
 target 'RealmPlatform' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!

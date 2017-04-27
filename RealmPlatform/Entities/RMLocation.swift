@@ -5,14 +5,8 @@ import RealmSwift
 import Realm
 
 final class RMLocation: Object {
-    dynamic  var latitude: Double = 0
-    dynamic  var longitude: Double = 0
-    dynamic  var uid: String = ""
-    dynamic  var name: String = ""
-
-    override class func primaryKey() -> String? {
-        return "uid"
-    }
+    dynamic var latitude: Double = 0
+    dynamic var longitude: Double = 0
 }
 
 extension RMLocation {
@@ -20,23 +14,22 @@ extension RMLocation {
     static var longitude: Attribute<Double> { return Attribute("longitude")}
 }
 
-
 extension RMLocation: DomainConvertibleType {
     func asDomain() -> Location {
-        return Location(uid: uid,
-                latitude: latitude,
-                longitude: longitude,
-                name: name)
+        return Location(latitude: latitude,
+                        longitude: longitude)
     }
 }
 
 extension Location: RealmRepresentable {
+    internal var uid: String {
+        return ""
+    }
+
     func asRealm() -> RMLocation {
         return RMLocation.build { object in
-            object.uid = uid
             object.latitude = latitude
             object.longitude = longitude
-            object.name = name
         }
     }
 }

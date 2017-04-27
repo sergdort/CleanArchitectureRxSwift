@@ -137,12 +137,22 @@ NSData *RLMRealmValidatedEncryptionKey(NSData *key) {
     RLMSendAnalytics();
 }
 
+- (instancetype)initPrivate {
+    self = [super init];
+    return self;
+}
+
 - (BOOL)isEmpty {
     return realm::ObjectStore::is_empty(self.group);
 }
 
 - (void)verifyThread {
-    _realm->verify_thread();
+    try {
+        _realm->verify_thread();
+    }
+    catch (std::exception const& e) {
+        @throw RLMException(e);
+    }
 }
 
 - (BOOL)inWriteTransaction {
@@ -173,21 +183,17 @@ NSData *RLMRealmValidatedEncryptionKey(NSData *key) {
 // ARC tries to eliminate calls to autorelease when the value is then immediately
 // returned, but this results in significantly different semantics between debug
 // and release builds for RLMRealm, so force it to always autorelease.
-static id RLMAutorelease(id value) {
+static id RLMAutorelease(__unsafe_unretained id value) {
     // +1 __bridge_retained, -1 CFAutorelease
     return value ? (__bridge id)CFAutorelease((__bridge_retained CFTypeRef)value) : nil;
 }
 
-static void RLMRealmSetSchemaAndAlign(RLMRealm *realm, RLMSchema *targetSchema) {
-    realm.schema = targetSchema;
-    realm->_info = RLMSchemaInfo(realm, targetSchema, realm->_realm->schema());
-}
-
 + (instancetype)realmWithSharedRealm:(SharedRealm)sharedRealm schema:(RLMSchema *)schema {
-    RLMRealm *realm = [RLMRealm new];
+    RLMRealm *realm = [[RLMRealm alloc] initPrivate];
     realm->_realm = sharedRealm;
     realm->_dynamic = YES;
-    RLMRealmSetSchemaAndAlign(realm, schema);
+    realm->_schema = schema;
+    realm->_info = RLMSchemaInfo(realm);
     return RLMAutorelease(realm);
 }
 
@@ -283,7 +289,7 @@ REALM_NOINLINE void RLMRealmTranslateException(NSError **error) {
     configuration = [configuration copy];
     Realm::Config& config = configuration.config;
 
-    RLMRealm *realm = [RLMRealm new];
+    RLMRealm *realm = [[RLMRealm alloc] initPrivate];
     realm->_dynamic = dynamic;
 
     // protects the realm cache and accessors cache
@@ -298,18 +304,21 @@ REALM_NOINLINE void RLMRealmTranslateException(NSError **error) {
         return nil;
     }
 
-    RLMSchema *cachedRealmSchema;
+    // if we have a cached realm on another thread we can skip a few steps and
+    // just grab its schema
     @autoreleasepool {
         // ensure that cachedRealm doesn't end up in this thread's autorelease pool
-        cachedRealmSchema = RLMGetAnyCachedRealmForPath(config.path).schema;
+        if (auto cachedRealm = RLMGetAnyCachedRealmForPath(config.path)) {
+            realm->_realm->set_schema_subset(cachedRealm->_realm->schema());
+            realm->_schema = cachedRealm.schema;
+            realm->_info = cachedRealm->_info.clone(cachedRealm->_realm->schema(), realm);
+        }
     }
 
-    // if we have a cached realm on another thread, copy without a transaction
-    if (cachedRealmSchema) {
-        RLMRealmSetSchemaAndAlign(realm, cachedRealmSchema);
-    }
+    if (realm->_schema) { }
     else if (dynamic) {
-        RLMRealmSetSchemaAndAlign(realm, [RLMSchema dynamicSchemaFromObjectStoreSchema:realm->_realm->schema()]);
+        realm->_schema = [RLMSchema dynamicSchemaFromObjectStoreSchema:realm->_realm->schema()];
+        realm->_info = RLMSchemaInfo(realm);
     }
     else {
         // set/align schema or perform migration if needed
@@ -344,7 +353,8 @@ REALM_NOINLINE void RLMRealmTranslateException(NSError **error) {
             return nil;
         }
 
-        RLMRealmSetSchemaAndAlign(realm, schema);
+        realm->_schema = schema;
+        realm->_info = RLMSchemaInfo(realm);
         RLMRealmCreateAccessors(realm.schema);
 
         if (!readOnly) {

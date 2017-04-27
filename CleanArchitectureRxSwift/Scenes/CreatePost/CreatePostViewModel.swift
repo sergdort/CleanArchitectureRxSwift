@@ -31,11 +31,7 @@ final class CreatePostViewModel: ViewModelType {
 
         let save = input.saveTrigger.withLatestFrom(titleAndDetails)
                 .map { (title, content) in
-                    return Post(uid: UUID().uuidString,
-                            createDate: Date(),
-                            updateDate: Date(),
-                            title: title,
-                            content: content)
+                    return Post(body: content, title: title, uid: "5", userId: "7")
                 }
                 .flatMapLatest { [unowned self] in
                     return self.createPostUseCase.save(post: $0)

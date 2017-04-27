@@ -52,6 +52,10 @@ struct SyncClient {
     }) // Throws
     {
     }
+    
+    void cancel_reconnect_delay() {
+        client.cancel_reconnect_delay();
+    }
 
     void stop()
     {

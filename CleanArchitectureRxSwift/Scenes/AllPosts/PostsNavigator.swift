@@ -1,5 +1,6 @@
 import UIKit
 import Domain
+import Network
 
 protocol PostsNavigator {
     func toCreatePost()
@@ -11,11 +12,14 @@ class DefaultPostsNavigator: PostsNavigator {
     private let storyBoard: UIStoryboard
     private let navigationController: UINavigationController
     private let services: UseCaseProvider
+    private let network: NetworkProvider
     
     init(services: UseCaseProvider,
+         network: NetworkProvider,
          navigationController: UINavigationController,
          storyBoard: UIStoryboard) {
         self.services = services
+        self.network = network
         self.navigationController = navigationController
         self.storyBoard = storyBoard
     }
@@ -26,7 +30,7 @@ class DefaultPostsNavigator: PostsNavigator {
                                       navigator: self)
         navigationController.pushViewController(vc, animated: true)
     }
-    
+
     func toCreatePost() {
         let navigator = DefaultCreatePostNavigator(navigationController: navigationController)
         let viewModel = CreatePostViewModel(createPostUseCase: services.getCreatePostUseCase(),

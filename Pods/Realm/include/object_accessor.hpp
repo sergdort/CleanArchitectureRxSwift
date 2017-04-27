@@ -1,3 +1,4 @@
+
 ////////////////////////////////////////////////////////////////////////////
 //
 // Copyright 2016 Realm Inc.
@@ -222,6 +223,7 @@ ValueType Object::get_property_value_impl(ContextType ctx, const Property &prope
             return Accessor::from_results(ctx, Results(m_realm, std::move(tv)));
         }
     }
+    REALM_UNREACHABLE();
 }
 
 template<typename ValueType, typename ContextType>

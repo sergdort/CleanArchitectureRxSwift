@@ -42,26 +42,6 @@ public:
     /// time at the point when the local transaction was committed. For changes
     /// of remote origin, it is the remote time of origin at the client
     /// identified by `origin_client_file_ident`.
-    ///
-    /// All clients that will be, or are already participating in
-    /// synchronization must guarantee that their local history is causally
-    /// consistent. The convergence guarantee offered by the merge system relies
-    /// strongly on this.
-    ///
-    /// FIXME: In its current form, the merge algorithm seems to achieve
-    /// convergence even without causal consistency. Figure out whether we still
-    /// want to require it, and if so, why.
-    ///
-    /// **Definition:** The local history is *causally consistent* if, and only
-    /// if every entry, referring to changes of local origin, has an effective
-    /// timestamp, which is greater than, or equal to the effective timestamp of
-    /// all preceding entries in the local history.
-    ///
-    /// **Definition:** The *effective timestamp* of a history entry is the pair
-    /// `(origin_timestamp, origin_client_file_ident)` endowed with the standard
-    /// lexicographic order. Note that this implies that it is impossible for
-    /// two entries to have equal effective timestamps if they originate from
-    /// different clients.
     timestamp_type origin_timestamp;
 
     /// For changes of local origin, `origin_client_file_ident` is always
@@ -201,13 +181,6 @@ public:
                                             const char* data, size_t size) = 0;
 
     virtual ~TransformHistory() noexcept {}
-
-protected:
-    static bool register_local_time(timestamp_type local_timestamp,
-                                    timestamp_type& timestamp_threshold) noexcept;
-
-    static bool register_remote_time(timestamp_type remote_timestamp,
-                                     timestamp_type& timestamp_threshold) noexcept;
 };
 
 
@@ -317,34 +290,6 @@ std::unique_ptr<Transformer> make_transformer(Transformer::file_ident_type local
 
 
 // Implementation
-
-inline bool TransformHistory::register_local_time(timestamp_type local_timestamp,
-                                                  timestamp_type& timestamp_threshold) noexcept
-{
-    // Needed to ensure causal consistency. This also guards against
-    // nonmonotonic local time.
-    if (timestamp_threshold < local_timestamp) {
-        timestamp_threshold = local_timestamp;
-        return true;
-    }
-    return false;
-}
-
-inline bool TransformHistory::register_remote_time(timestamp_type remote_timestamp,
-                                                   timestamp_type& timestamp_threshold) noexcept
-{
-    // To ensure causal consistency, we need to know the latest remote (or
-    // local) timestamp seen so far. Adding one to the incoming remote
-    // timestamp, before using it to bump the `timestamp_threshold`, is a
-    // simple way of ensuring not only proper ordering among timestamps, but
-    // also among 'effective timestamps' (which is required), regardless of the
-    // values of the assiciated client file identifiers.
-    if (timestamp_threshold < remote_timestamp + 1) {
-        timestamp_threshold = remote_timestamp + 1;
-        return true;
-    }
-    return false;
-}
 
 class TransformError: public std::runtime_error {
 public:

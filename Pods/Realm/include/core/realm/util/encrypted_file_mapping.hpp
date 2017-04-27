@@ -41,6 +41,10 @@ public:
     EncryptedFileMapping(SharedFileInfo& file, size_t file_offset, void* addr, size_t size, File::AccessMode access);
     ~EncryptedFileMapping();
 
+    // Default implementations of copy/assign can trigger multiple destructions
+    EncryptedFileMapping(const EncryptedFileMapping&) = delete;
+    EncryptedFileMapping& operator=(const EncryptedFileMapping&) = delete;
+
     // Write all dirty pages to disk and mark them read-only
     // Does not call fsync
     void flush() noexcept;
