@@ -60,6 +60,7 @@
 		4171B21201FC20FD72A143D0 /* Pods_CoreDataPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03758DD874CBFB48A52CE5 /* Pods_CoreDataPlatformTests.framework */; };
 		514BA3A92A644232F50ED1A8 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */; };
 		515F9083DB52FEDFEE97A5E6 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F93CEB3B316E01CDACEA7 /* PostsViewModel.swift */; };
+		515F9256E79E1689380314E5 /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F987F4A5AF48B9A5451F3 /* UseCaseProvider.swift */; };
 		515F926E776E33924F53A7F6 /* SavePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9E409750F3D40CB814AE /* SavePostUseCase.swift */; };
 		515F94802804A5FEB69837C8 /* AllPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9359DD575F7E65FE22AF /* AllPostsUseCase.swift */; };
 		515F94853EF21BD13D636584 /* PostsNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F94C9D806D051CFBCC327 /* PostsNavigator.swift */; };
@@ -74,10 +75,12 @@
 		515F978F1DBE7C45646004F1 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F955A785CC73C958268BC /* Observable+Ext.swift */; };
 		515F9850E701F4ECCC669D9B /* CreatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92E2318F810E8AE29AB7 /* CreatePostViewModel.swift */; };
 		515F9A39814357F9E05282CD /* RunLoopThreadScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F92201894E6338A4BABFA /* RunLoopThreadScheduler.swift */; };
+		515F9B3211E68A262C6DFEF5 /* SavePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9D40AE1A43F698E0FB90 /* SavePostUseCase.swift */; };
 		515F9B4D6A3BD831B9D4FB8C /* RealmRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9C13ADD3B42F3CE8A593 /* RealmRepresentable.swift */; };
 		515F9BD6155258BD0C04DF36 /* RMLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F96DF719A053AEF410368 /* RMLocation.swift */; };
 		515F9CD8F2B13D0328B77B6C /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F977CB3763872350F7874 /* Realm+Ext.swift */; };
 		515F9DBB950E2ABDB8D7895B /* RMPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F988220373D06226F4EDE /* RMPost.swift */; };
+		515F9EA01C8D63D03B41FF8F /* AllPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9DAA48376FC95A9D91B5 /* AllPostsUseCase.swift */; };
 		7DFB155E3444551C4DB34AAC /* Pods_CleanArchitectureRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A6B74019E724CAD9CA96DC /* Pods_CleanArchitectureRxSwift.framework */; };
 		8B0507E0C0AB1064B7372844 /* Pods_RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006BDFA0A26FDD0EBA50E777 /* Pods_RealmPlatform.framework */; };
 		8E549C0D492F9142D1CF88F2 /* Pods_Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C5EFC85E3DC2D413D89C8F9 /* Pods_Network.framework */; };
@@ -339,11 +342,14 @@
 		515F96DA0B9857BF87D2F2F0 /* CreatePostNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostNavigator.swift; sourceTree = "<group>"; };
 		515F96DF719A053AEF410368 /* RMLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMLocation.swift; sourceTree = "<group>"; };
 		515F977CB3763872350F7874 /* Realm+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
+		515F987F4A5AF48B9A5451F3 /* UseCaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
 		515F988220373D06226F4EDE /* RMPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPost.swift; sourceTree = "<group>"; };
 		515F9ACD2D474324015B691C /* EditPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewModel.swift; sourceTree = "<group>"; };
 		515F9AF2348793558FE0CAA7 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		515F9C13ADD3B42F3CE8A593 /* RealmRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmRepresentable.swift; sourceTree = "<group>"; };
 		515F9C31AF4C4644DBDAE735 /* UseCaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		515F9D40AE1A43F698E0FB90 /* SavePostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavePostUseCase.swift; sourceTree = "<group>"; };
+		515F9DAA48376FC95A9D91B5 /* AllPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCase.swift; sourceTree = "<group>"; };
 		515F9E409750F3D40CB814AE /* SavePostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavePostUseCase.swift; sourceTree = "<group>"; };
 		515F9FD5076F041EE00D7E14 /* DomainConvertibleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		550BE321D44EC009D885BBE1 /* Pods_CleanArchitectureRxSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureRxSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -868,6 +874,16 @@
 			path = AllPosts;
 			sourceTree = "<group>";
 		};
+		515F94BB8B79F597BACF0614 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				515F9DAA48376FC95A9D91B5 /* AllPostsUseCase.swift */,
+				515F9D40AE1A43F698E0FB90 /* SavePostUseCase.swift */,
+				515F987F4A5AF48B9A5451F3 /* UseCaseProvider.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		515F94D09679E59029EB0F24 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -954,7 +970,6 @@
 			children = (
 				BC8D07721E9309D000B4D96A /* UidTransform.swift */,
 			);
-			name = Utils;
 			path = Utils;
 			sourceTree = "<group>";
 		};
@@ -967,6 +982,7 @@
 				BC8D07711E9309B200B4D96A /* Utils */,
 				BD107F4C1E7298690043D900 /* Info.plist */,
 				BD107F4B1E7298690043D900 /* Network.h */,
+				515F94BB8B79F597BACF0614 /* UseCases */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1994,6 +2010,9 @@
 				BCD8C8B61E73425500F79E3E /* Photo+Mapping.swift in Sources */,
 				BD50EF011E7AF37C00CBEBD4 /* NetworkProvider.swift in Sources */,
 				BD50EEFB1E7ADDAF00CBEBD4 /* PhotosNetwork.swift in Sources */,
+				515F9EA01C8D63D03B41FF8F /* AllPostsUseCase.swift in Sources */,
+				515F9B3211E68A262C6DFEF5 /* SavePostUseCase.swift in Sources */,
+				515F9256E79E1689380314E5 /* UseCaseProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2196,8 +2215,10 @@
 				DEVELOPMENT_TEAM = BU4T5Z97JD;
 				INFOPLIST_FILE = CleanArchitectureRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -2210,8 +2231,10 @@
 				DEVELOPMENT_TEAM = BU4T5Z97JD;
 				INFOPLIST_FILE = CleanArchitectureRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -2477,7 +2500,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.Network;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
