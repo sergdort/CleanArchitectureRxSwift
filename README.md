@@ -235,7 +235,7 @@ class PostsViewController: UIViewController {
 
 ### Example
 
-The example app is Post/TODOs app which uses `Realm` and `CoreData` at the same time as a proof of concept that the `Application` level is not dependant on the Platform level implementation details.
+The example app is Post/TODOs app which uses `Realm`, `CoreData` and `Network` at the same time as a proof of concept that the `Application` level is not dependant on the Platform level implementation details.
 
 | CoreData | Realm | Network |
 | -------- | ----- | ------- |
