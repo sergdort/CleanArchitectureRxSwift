@@ -33,7 +33,7 @@ final class PostsViewModel: ViewModelType {
             return self.useCase.posts()
                 .trackActivity(activityIndicator)
                 .trackError(errorTracker)
-                .asDriver(onErrorJustReturn: [])
+                .asDriverOnErrorJustComplete()
         }
         
         let fetching = activityIndicator.asDriver()

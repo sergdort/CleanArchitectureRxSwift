@@ -24,8 +24,14 @@ class PostsViewController: UIViewController {
     
     private func bindViewModel() {
         assert(viewModel != nil)
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        let pull = tableView.refreshControl!.rx
+            .controlEvent(.valueChanged)
+            .asDriver()
         
-        let input = PostsViewModel.Input(trigger: Driver.just(),
+        let input = PostsViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
                                        createPostTrigger: createPostButton.rx.tap.asDriver(),
                                        selection: tableView.rx.itemSelected.asDriver())
         let output = viewModel.transform(input: input)
@@ -35,8 +41,16 @@ class PostsViewController: UIViewController {
             cell.detailsLabel.text = item.body
         }.addDisposableTo(disposeBag)
         //Connect Create Post to UI
-        output.createPost.drive().addDisposableTo(disposeBag)
-        output.selectedPost.drive().addDisposableTo(disposeBag)
+        
+        output.fetching
+            .drive(tableView.refreshControl!.rx.isRefreshing)
+            .disposed(by: disposeBag)
+        output.createPost
+            .drive()
+            .disposed(by: disposeBag)
+        output.selectedPost
+            .drive()
+            .disposed(by: disposeBag)
     }
 }
 
