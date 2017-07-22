@@ -9,7 +9,7 @@
 import Domain
 import ObjectMapper
 
-extension Post: ImmutableMappable {
+extension Post: ImmutableMappable, Identifiable {
 
     // JSON -> Object
     public init(map: Map) throws {

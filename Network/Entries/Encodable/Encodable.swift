@@ -1,12 +1,16 @@
 protocol DomainConvertibleType {
-    associatedtype DomainType
+    associatedtype DomainType: Identifiable
     
     init(with domain: DomainType)
     
     func asDomain() -> DomainType
 }
 
-typealias DomainConvertibleCoding = NSCoding & DomainConvertibleType
+protocol Identifiable {
+    var uid: String { get }
+}
+
+typealias DomainConvertibleCoding = DomainConvertibleType
 
 protocol Encodable {
     associatedtype Encoder: DomainConvertibleCoding

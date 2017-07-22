@@ -5,7 +5,7 @@ func abstractMethod() -> Never {
     fatalError("abstract method")
 }
 
-class AbstractChache<T> {
+class AbstractCache<T> {
     func save(object: T) -> Completable {
         abstractMethod()
     }
@@ -13,7 +13,7 @@ class AbstractChache<T> {
         abstractMethod()
     }
 
-    func fetchObject() -> Maybe<T> {
+    func fetch(withID id: String) -> Maybe<T> {
         abstractMethod()
     }
 
@@ -22,7 +22,7 @@ class AbstractChache<T> {
     }
 }
 
-final class Cache<T: Encodable>: AbstractChache<T> where T == T.Encoder.DomainType {
+final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainType {
     enum Error: Swift.Error {
         case saveObject(T)
         case saveObjects([T])
@@ -38,23 +38,22 @@ final class Cache<T: Encodable>: AbstractChache<T> where T == T.Encoder.DomainTy
         }
     }
 
-    private let objectPath: String
-    private let objectsPath: String
+    private let path: String
     private let chacheScheduler = SerialDispatchQueueScheduler(internalSerialQueueName: "com.CleanAchitecture.Network.Cache.queue")
 
-    init(objectPath: String, objectsPath: String) {
-        self.objectPath = objectsPath
-        self.objectsPath = objectsPath
+    init(path: String) {
+        self.path = path
     }
 
     override func save(object: T) -> Completable {
         return Completable.create { (observer) -> Disposable in
             guard let url = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first else {
-                    observer(.error(Error.saveObject(object)))
+                    observer(.completed)
                     return Disposables.create()
                 }
-            let path = url.appendingPathComponent(self.objectPath)
+            let path = url.appendingPathComponent(self.path)
+                .appendingPathComponent("\(object.uid)")
                 .appendingPathComponent(FileNames.objectFileName)
                 .absoluteString
             
@@ -70,33 +69,34 @@ final class Cache<T: Encodable>: AbstractChache<T> where T == T.Encoder.DomainTy
 
     override func save(objects: [T]) -> Completable {
         return Completable.create { (observer) -> Disposable in
-            guard let url = FileManager.default
-                .urls(for: .documentDirectory, in: .userDomainMask).first else {
-                    observer(.error(Error.saveObjects(objects)))
-                    return Disposables.create()
-            }
-            let path = url.appendingPathComponent(self.objectsPath)
-                .appendingPathComponent(FileNames.objectsFileName)
-                .absoluteString
-            
-            if NSKeyedArchiver.archiveRootObject(objects.map{ $0.encoder } , toFile: path) {
+            guard let directoryURL = self.directoryURL() else {
                 observer(.completed)
-            } else {
-                observer(.error(Error.saveObjects(objects)))
+                return Disposables.create()
+            }
+            let path = directoryURL
+                .appendingPathComponent(FileNames.objectsFileName)
+            self.createDirectoryIfNeeded(at: directoryURL)
+            do {
+                try NSKeyedArchiver.archivedData(withRootObject: objects.map{ $0.encoder })
+                    .write(to: path)
+                observer(.completed)
+            } catch {
+                observer(.error(error))
             }
             
             return Disposables.create()
         }.subscribeOn(chacheScheduler)
     }
 
-    override func fetchObject() -> Maybe<T> {
+    override func fetch(withID id: String) -> Maybe<T> {
         return Maybe<T>.create { (observer) -> Disposable in
             guard let url = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first else {
                     observer(.completed)
                     return Disposables.create()
             }
-            let path = url.appendingPathComponent(self.objectPath)
+            let path = url.appendingPathComponent(self.path)
+                .appendingPathComponent("\(id)")
                 .appendingPathComponent(FileNames.objectFileName)
                 .absoluteString
             
@@ -111,21 +111,39 @@ final class Cache<T: Encodable>: AbstractChache<T> where T == T.Encoder.DomainTy
 
     override func fetchObjects() -> Maybe<[T]> {
         return Maybe<[T]>.create { (observer) -> Disposable in
-            guard let url = FileManager.default
-                .urls(for: .documentDirectory, in: .userDomainMask).first else {
-                    observer(.completed)
-                    return Disposables.create()
-            }
-            let path = url.appendingPathComponent(self.objectPath)
-                .appendingPathComponent(FileNames.objectFileName)
-                .absoluteString
-            
-            guard let objects = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [T.Encoder] else {
+            guard let directoryURL = self.directoryURL() else {
                 observer(.completed)
                 return Disposables.create()
             }
-            observer(MaybeEvent.success(objects.map { $0.asDomain() }))
+            let fileURL = directoryURL
+                .appendingPathComponent(FileNames.objectsFileName)
+            guard let objects = NSKeyedUnarchiver.unarchiveObject(withFile: fileURL.path) as? [T.Encoder] else {
+                observer(.completed)
+                return Disposables.create()
+            }
+            let domainObjects = objects.map { obj in
+                return obj.asDomain()
+            }
+            observer(MaybeEvent.success(domainObjects))
             return Disposables.create()
-        }.subscribeOn(chacheScheduler)
+            }.subscribeOn(chacheScheduler)
+    }
+    
+    private func directoryURL() -> URL? {
+        return FileManager.default
+            .urls(for: .documentDirectory,
+                  in: .userDomainMask)
+            .first?
+            .appendingPathComponent(path)
+    }
+    
+    private func createDirectoryIfNeeded(at url: URL) {
+        do {
+            try FileManager.default.createDirectory(at: url,
+                                                    withIntermediateDirectories: true,
+                                                    attributes: nil)
+        } catch {
+            print("Cache Error createDirectoryIfNeeded \(error)")
+        }
     }
 }
