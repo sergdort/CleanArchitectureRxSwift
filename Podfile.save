@@ -84,3 +84,12 @@ target 'RealmPlatform' do
   end
 
 end
+ost_install do |installer|
+    installer.pods_project.targets.each do |target|
+            target.build_configurations.each do |config|
+                if config.name == 'Debug' || target.name == 'RxSwift'
+                    config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['-D', 'TRACE_RESOURCES']
+                end
+        end
+    end
+end

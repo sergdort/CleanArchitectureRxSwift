@@ -5295,6 +5295,45 @@
 			};
 			name = Release;
 		};
+		163D2C0AA233713A45E65BF9488C4F2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 354F73962E920D1FFFC01DEF466ED849 /* Pods-RealmPlatformTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-RealmPlatformTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RealmPlatformTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		166E2CAC58E8608AD59A6F0B71C9C3E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5343,9 +5382,9 @@
 			};
 			name = Debug;
 		};
-		286DADB63A9FA83ECB40616BEC95A938 /* Debug */ = {
+		1CD0E7E92B68EDB296AE8E42F4AE4399 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25EE4EBEA13E2F61540F74A2E29F8700 /* Realm.xcconfig */;
+			baseConfigurationReference = 6C890E098E1F9E80B5238E8FEB547700 /* RxRealm.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5359,17 +5398,57 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Realm/Realm-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Realm/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/RxRealm/RxRealm-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RxRealm/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Realm/Realm.modulemap";
+				MODULEMAP_FILE = "Target Support Files/RxRealm/RxRealm.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = Realm;
+				PRODUCT_NAME = RxRealm;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		223E3C0488C378AD8CB09EEA56223B37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 401681AC4E74CAAED853FA3CB6F50486 /* Pods-Domain.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Domain/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Domain/Pods-Domain.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Domain;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5415,9 +5494,9 @@
 			};
 			name = Release;
 		};
-		31E36313926C52D08292C242C735AD00 /* Debug */ = {
+		30086AFDC60BD7EB868F4ADF40488D16 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF71866B281EF5E3AA57670BB8B8A304 /* RxCocoa.xcconfig */;
+			baseConfigurationReference = DA09AC54C5885A58682069025C31C4B6 /* Pods-DomainTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5431,15 +5510,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RxCocoa/RxCocoa-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RxCocoa/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-DomainTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RxCocoa/RxCocoa.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DomainTests/Pods-DomainTests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RxCocoa;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_DomainTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -5484,42 +5566,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		3B3C78DC0B44735A305E9AC3032774F2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68BFADCB1B18CA2808FC50138A5D9C57 /* RxBlocking.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RxBlocking/RxBlocking-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RxBlocking/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RxBlocking/RxBlocking.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RxBlocking;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		3C7A31B9DAD8D38CBFC6D53F0E3CE283 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -5630,9 +5676,9 @@
 			};
 			name = Release;
 		};
-		50BB6028C2B2C109BBB1548FEEA2C034 /* Debug */ = {
+		3FB895B06898D7663F632392F6B4E3E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 525762DB7955B702EC8D97336C28B9A6 /* Nimble.xcconfig */;
+			baseConfigurationReference = E1C34B5E9E54B250A4DE9867BD18B4B1 /* Pods-CleanArchitectureRxSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5646,15 +5692,92 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CleanArchitectureRxSwiftTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CleanArchitectureRxSwiftTests/Pods-CleanArchitectureRxSwiftTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CleanArchitectureRxSwiftTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		41238CDEAB5E5622033C6156CDEDF5B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9175B603A947B2366DACE68930073BC /* RxTest.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RxTest/RxTest-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RxTest/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
+				MODULEMAP_FILE = "Target Support Files/RxTest/RxTest.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = Nimble;
+				PRODUCT_NAME = RxTest;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		427F66D75C9625B20B5ACEE19C6C0515 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70CA86C5892E1AEA9AFCE618AF4F5EB8 /* Pods-CoreDataPlatformTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CoreDataPlatformTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CoreDataPlatformTests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -5700,42 +5823,6 @@
 			};
 			name = Release;
 		};
-		5C59EDFE6437D63D080923AEB5E10FEB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C890E098E1F9E80B5238E8FEB547700 /* RxRealm.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RxRealm/RxRealm-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RxRealm/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RxRealm/RxRealm.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RxRealm;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5E3A2FBFE0E6AF48D3158570CD7F446D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 38D7F90FB592D95EFF46278125DFB74C /* Pods-RealmPlatformTests.release.xcconfig */;
@@ -5774,6 +5861,39 @@
 			};
 			name = Release;
 		};
+		5F44FFE8808BDEFEEC166F87A26390E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25EE4EBEA13E2F61540F74A2E29F8700 /* Realm.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Realm/Realm-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Realm/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Realm/Realm.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Realm;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		5F4BB85B35670C53E82013C40A1042E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0848F67720265D7CCDE56422331F7BC0 /* ObjectMapper.xcconfig */;
@@ -5808,9 +5928,9 @@
 			};
 			name = Release;
 		};
-		6CBB7B9A3380C2C8794ADD000D15565F /* Debug */ = {
+		7391300233B4A066A746C5EAABB06C36 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C250519D8ABE5CC1793BF79E8A8DFEFB /* AlamofireObjectMapper.xcconfig */;
+			baseConfigurationReference = 38BCC85034AB5B182150869A557D3BC7 /* Pods-CleanArchitectureRxSwift.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5824,91 +5944,53 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AlamofireObjectMapper/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = AlamofireObjectMapper;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		76DEB85E50BEE55A29B2C1336F7DFD65 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0848F67720265D7CCDE56422331F7BC0 /* ObjectMapper.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ObjectMapper/ObjectMapper-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ObjectMapper/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ObjectMapper/ObjectMapper.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = ObjectMapper;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7CB04A5E0A5807CE01DEBF9B39ED6709 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA09AC54C5885A58682069025C31C4B6 /* Pods-DomainTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-DomainTests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CleanArchitectureRxSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-DomainTests/Pods-DomainTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_DomainTests;
+				PRODUCT_NAME = Pods_CleanArchitectureRxSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7BFC36FB038E2F3A05FA35C11F997484 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F30B282D1DCE4FEA2E1D011C2952C73E /* RxSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RxSwift/RxSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RxSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RxSwift/RxSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RxSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -5954,9 +6036,9 @@
 			};
 			name = Release;
 		};
-		894A7D9EF609783E5C0FCD9A5AAD862D /* Debug */ = {
+		7D8EE37148A47EEA48D1A43DB2A172BB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CED96402657DDCB4F067EDDD305F638 /* Alamofire.xcconfig */;
+			baseConfigurationReference = 116B205466C30CB5A307C21A7838ADB1 /* Pods-NetworkTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5970,15 +6052,197 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-NetworkTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NetworkTests/Pods-NetworkTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NetworkTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7DDA0EC054A3452B1060381847AD62CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68BFADCB1B18CA2808FC50138A5D9C57 /* RxBlocking.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RxBlocking/RxBlocking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RxBlocking/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MODULEMAP_FILE = "Target Support Files/RxBlocking/RxBlocking.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = Alamofire;
+				PRODUCT_NAME = RxBlocking;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8498AB073C5C300F0AF8AEC53624E3CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0848F67720265D7CCDE56422331F7BC0 /* ObjectMapper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ObjectMapper/ObjectMapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ObjectMapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ObjectMapper/ObjectMapper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ObjectMapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		867B48A287F1C7A1098F3E147B28AE26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AD9238CC5374164BD6B506D1E96FFD6 /* Pods-Network.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Network/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Network/Pods-Network.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Network;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		889DD03015F7A6BA0B8084AF65153132 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDA4012080753C38050062F69655DDF7 /* QueryKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/QueryKit/QueryKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QueryKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QueryKit/QueryKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = QueryKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8ADF7FBE266546CFD04C79921009C6C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 778E2986C571CC64CF7ACEF5E35301E8 /* RealmSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RealmSwift/RealmSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RealmSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RealmSwift/RealmSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RealmSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6062,9 +6326,9 @@
 			};
 			name = Release;
 		};
-		9E7E785984BAA9A25797BE84156A5D8D /* Debug */ = {
+		924EC7857D7DC07A62A4F014928C73DA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67649C87D03A3FF3F6A9E5052A0EAA73 /* RxAlamofire.xcconfig */;
+			baseConfigurationReference = C250519D8ABE5CC1793BF79E8A8DFEFB /* AlamofireObjectMapper.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -6078,15 +6342,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RxAlamofire/RxAlamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RxAlamofire/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AlamofireObjectMapper/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RxAlamofire/RxAlamofire.modulemap";
+				MODULEMAP_FILE = "Target Support Files/AlamofireObjectMapper/AlamofireObjectMapper.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RxAlamofire;
+				PRODUCT_NAME = AlamofireObjectMapper;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6098,7 +6361,7 @@
 			};
 			name = Debug;
 		};
-		A2279EF5403AEC4B875253A6FF27AFA4 /* Debug */ = {
+		933C0D3356BEA46C025E1D45165C7CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F9D09FE4C36E7C4E731FCB223D37086 /* Pods-CoreDataPlatform.debug.xcconfig */;
 			buildSettings = {
@@ -6123,10 +6386,44 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_CoreDataPlatform;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		94E8A0B87B846CFDB3D07C6ED84E89C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF71866B281EF5E3AA57670BB8B8A304 /* RxCocoa.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RxCocoa/RxCocoa-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RxCocoa/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RxCocoa/RxCocoa.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RxCocoa;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6216,9 +6513,9 @@
 			};
 			name = Release;
 		};
-		B3F5C17EE83FE77C4A92A8E479A51459 /* Debug */ = {
+		B3FF0F75230540926FFC0F9380006B61 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AD9238CC5374164BD6B506D1E96FFD6 /* Pods-Network.debug.xcconfig */;
+			baseConfigurationReference = 67649C87D03A3FF3F6A9E5052A0EAA73 /* RxAlamofire.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -6232,55 +6529,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Network/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Network/Pods-Network.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Network;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B9144CC5ECCE0C77132BAEF64F7E20E3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9175B603A947B2366DACE68930073BC /* RxTest.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RxTest/RxTest-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RxTest/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/RxAlamofire/RxAlamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RxAlamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RxTest/RxTest.modulemap";
+				MODULEMAP_FILE = "Target Support Files/RxAlamofire/RxAlamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RxTest;
+				PRODUCT_NAME = RxAlamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6292,9 +6548,9 @@
 			};
 			name = Debug;
 		};
-		BE9539B6F716E89D10907D54C32629F0 /* Debug */ = {
+		B55AB32F5C7DA642FB609F5AE763C155 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70CA86C5892E1AEA9AFCE618AF4F5EB8 /* Pods-CoreDataPlatformTests.debug.xcconfig */;
+			baseConfigurationReference = F4DBADAD9B57996717DF8B8AC470E7E8 /* Pods-RealmPlatform.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -6308,19 +6564,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CoreDataPlatformTests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-RealmPlatform/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CoreDataPlatformTests;
+				PRODUCT_NAME = Pods_RealmPlatform;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6332,9 +6587,9 @@
 			};
 			name = Debug;
 		};
-		C177D4D08A1D020A10FFF4E54F71E022 /* Debug */ = {
+		C9660A42FEDD040185578ADA021EC8E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 401681AC4E74CAAED853FA3CB6F50486 /* Pods-Domain.debug.xcconfig */;
+			baseConfigurationReference = 4CED96402657DDCB4F067EDDD305F638 /* Alamofire.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -6348,135 +6603,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Domain/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Domain/Pods-Domain.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Domain;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C7810562D86D4F55B6FAC41EA70C757C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDA4012080753C38050062F69655DDF7 /* QueryKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/QueryKit/QueryKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/QueryKit/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/QueryKit/QueryKit.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = QueryKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CCEECC2958911D9E7A94D352D433F21C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 116B205466C30CB5A307C21A7838ADB1 /* Pods-NetworkTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-NetworkTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-NetworkTests/Pods-NetworkTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_NetworkTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DB6E688E826C14622CCC279A8B785C03 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38BCC85034AB5B182150869A557D3BC7 /* Pods-CleanArchitectureRxSwift.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CleanArchitectureRxSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CleanArchitectureRxSwift;
+				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6525,46 +6659,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		E5158263B733B2E0C755742C3A7E088C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 354F73962E920D1FFFC01DEF466ED849 /* Pods-RealmPlatformTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-RealmPlatformTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RealmPlatformTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		E7AEC91BECCE037FED753EB5C7B88CD9 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -6706,42 +6800,6 @@
 			};
 			name = Release;
 		};
-		F3BED61FD8E4DF37C9B28658A626026F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 778E2986C571CC64CF7ACEF5E35301E8 /* RealmSwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RealmSwift/RealmSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RealmSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RealmSwift/RealmSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RealmSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		F5F56A5CB9364647FE8EA1A28514A8DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F30B282D1DCE4FEA2E1D011C2952C73E /* RxSwift.xcconfig */;
@@ -6814,9 +6872,9 @@
 			};
 			name = Release;
 		};
-		FBB36D5D014B21C93EAEC2970C5EF9EE /* Debug */ = {
+		FF2E959C56F73D64BA78EAE7B55A097C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1C34B5E9E54B250A4DE9867BD18B4B1 /* Pods-CleanArchitectureRxSwiftTests.debug.xcconfig */;
+			baseConfigurationReference = 525762DB7955B702EC8D97336C28B9A6 /* Nimble.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -6830,95 +6888,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CleanArchitectureRxSwiftTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CleanArchitectureRxSwiftTests/Pods-CleanArchitectureRxSwiftTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CleanArchitectureRxSwiftTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FC3031EF9EDA578F79A07F76073F6ADF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4DBADAD9B57996717DF8B8AC470E7E8 /* Pods-RealmPlatform.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-RealmPlatform/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RealmPlatform;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FFC2FA855282FC1AD60AB723C86E9F49 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F30B282D1DCE4FEA2E1D011C2952C73E /* RxSwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/RxSwift/RxSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/RxSwift/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Nimble/Nimble-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Nimble/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/RxSwift/RxSwift.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Nimble/Nimble.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_SWIFT_FLAGS = "-D TRACE_RESOURCES";
-				PRODUCT_NAME = RxSwift;
+				PRODUCT_NAME = Nimble;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -6936,7 +6913,7 @@
 		042F983ECD8F525339DB96FECAA0340D /* Build configuration list for PBXNativeTarget "QueryKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C7810562D86D4F55B6FAC41EA70C757C /* Debug */,
+				889DD03015F7A6BA0B8084AF65153132 /* Debug */,
 				54F91A2086767835A94361D2F3046CEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6945,7 +6922,7 @@
 		0C06F9336C093F49992677A644F510CC /* Build configuration list for PBXNativeTarget "Realm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				286DADB63A9FA83ECB40616BEC95A938 /* Debug */,
+				5F44FFE8808BDEFEEC166F87A26390E4 /* Debug */,
 				3F5A831AEA6EC740AB00DA535D78F506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6954,7 +6931,7 @@
 		0D1198A6080B8E571358113FD54EC7FE /* Build configuration list for PBXNativeTarget "Pods-Domain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C177D4D08A1D020A10FFF4E54F71E022 /* Debug */,
+				223E3C0488C378AD8CB09EEA56223B37 /* Debug */,
 				3F079D33094FBC7DC55A243242813804 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6972,7 +6949,7 @@
 		419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				894A7D9EF609783E5C0FCD9A5AAD862D /* Debug */,
+				C9660A42FEDD040185578ADA021EC8E0 /* Debug */,
 				7D072D0D174F12EAACC1862DA756E67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6981,7 +6958,7 @@
 		439502BDB29394EE0D69336E69C8494C /* Build configuration list for PBXNativeTarget "Nimble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				50BB6028C2B2C109BBB1548FEEA2C034 /* Debug */,
+				FF2E959C56F73D64BA78EAE7B55A097C /* Debug */,
 				F0BE9F21CC451E6E481AD11ECB9F4CFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6990,7 +6967,7 @@
 		43C6ABABB44056A4540B258D533FFF11 /* Build configuration list for PBXNativeTarget "RxBlocking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3B3C78DC0B44735A305E9AC3032774F2 /* Debug */,
+				7DDA0EC054A3452B1060381847AD62CC /* Debug */,
 				AAA8516A02E6D4BD140EA73013F64418 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -6999,7 +6976,7 @@
 		446F52133A05F82618370E12DB02B412 /* Build configuration list for PBXNativeTarget "RxTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B9144CC5ECCE0C77132BAEF64F7E20E3 /* Debug */,
+				41238CDEAB5E5622033C6156CDEDF5B6 /* Debug */,
 				0218AA1F8B3683C6A6DD21EEFFE12151 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7008,7 +6985,7 @@
 		48DC0F4BA97ABB79249C49D2ED18B2CB /* Build configuration list for PBXNativeTarget "Pods-RealmPlatform" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FC3031EF9EDA578F79A07F76073F6ADF /* Debug */,
+				B55AB32F5C7DA642FB609F5AE763C155 /* Debug */,
 				F80884956496BD1FAF01360DAE07E0D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7017,7 +6994,7 @@
 		4E0C118033929928733CEF604D8F00AE /* Build configuration list for PBXNativeTarget "RxCocoa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				31E36313926C52D08292C242C735AD00 /* Debug */,
+				94E8A0B87B846CFDB3D07C6ED84E89C7 /* Debug */,
 				E7AEC91BECCE037FED753EB5C7B88CD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7026,7 +7003,7 @@
 		5D90285FCF9D046BBF19950063284E7A /* Build configuration list for PBXNativeTarget "Pods-CoreDataPlatformTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE9539B6F716E89D10907D54C32629F0 /* Debug */,
+				427F66D75C9625B20B5ACEE19C6C0515 /* Debug */,
 				3C7A31B9DAD8D38CBFC6D53F0E3CE283 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7035,7 +7012,7 @@
 		748C1D60E8156AB4BC909444A7F8F18F /* Build configuration list for PBXNativeTarget "RxAlamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E7E785984BAA9A25797BE84156A5D8D /* Debug */,
+				B3FF0F75230540926FFC0F9380006B61 /* Debug */,
 				0AEB6BBE601E2C8C3246C889CEC353BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7044,7 +7021,7 @@
 		8870980672A17A235A7CD3A1C3DE4A51 /* Build configuration list for PBXNativeTarget "Pods-NetworkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CCEECC2958911D9E7A94D352D433F21C /* Debug */,
+				7D8EE37148A47EEA48D1A43DB2A172BB /* Debug */,
 				E1686A70871E80C4A3D06A4D426DA639 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7053,7 +7030,7 @@
 		9335829056535E509D63B20464BF72F3 /* Build configuration list for PBXNativeTarget "RealmSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3BED61FD8E4DF37C9B28658A626026F /* Debug */,
+				8ADF7FBE266546CFD04C79921009C6C7 /* Debug */,
 				9044A1E4038C1B754E332CC40CA373E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7062,7 +7039,7 @@
 		99896B1E9898C4AFF5AFEA733A94A054 /* Build configuration list for PBXNativeTarget "RxRealm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C59EDFE6437D63D080923AEB5E10FEB /* Debug */,
+				1CD0E7E92B68EDB296AE8E42F4AE4399 /* Debug */,
 				E8B3F8A10AD0884EAD2B49B0EEE10434 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7071,7 +7048,7 @@
 		A0BECF7F2EDF75402A680AB87AF78914 /* Build configuration list for PBXNativeTarget "Pods-RealmPlatformTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E5158263B733B2E0C755742C3A7E088C /* Debug */,
+				163D2C0AA233713A45E65BF9488C4F2A /* Debug */,
 				5E3A2FBFE0E6AF48D3158570CD7F446D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7080,7 +7057,7 @@
 		A2A2B33528F6F518D793722D515A1A68 /* Build configuration list for PBXNativeTarget "Pods-Network" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B3F5C17EE83FE77C4A92A8E479A51459 /* Debug */,
+				867B48A287F1C7A1098F3E147B28AE26 /* Debug */,
 				8B372FD185799391000B5C7B52979240 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7089,7 +7066,7 @@
 		A34C7283AFDE698624D18E2862C5957F /* Build configuration list for PBXNativeTarget "Pods-CleanArchitectureRxSwiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FBB36D5D014B21C93EAEC2970C5EF9EE /* Debug */,
+				3FB895B06898D7663F632392F6B4E3E2 /* Debug */,
 				0A022B7CBF02FC9EEA484A9F0F0D0392 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7098,7 +7075,7 @@
 		AA1898118276A5A5BBF8A15F958E9C4F /* Build configuration list for PBXNativeTarget "RxSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FFC2FA855282FC1AD60AB723C86E9F49 /* Debug */,
+				7BFC36FB038E2F3A05FA35C11F997484 /* Debug */,
 				F5F56A5CB9364647FE8EA1A28514A8DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7107,7 +7084,7 @@
 		C422E6D5D4D1CBA93636F30E9C630E16 /* Build configuration list for PBXNativeTarget "AlamofireObjectMapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6CBB7B9A3380C2C8794ADD000D15565F /* Debug */,
+				924EC7857D7DC07A62A4F014928C73DA /* Debug */,
 				32E4132E9D7000066247C1FC71F69EB0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7116,7 +7093,7 @@
 		CFE3967339D9E1F8C7672E9A33C1D4EE /* Build configuration list for PBXNativeTarget "Pods-DomainTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7CB04A5E0A5807CE01DEBF9B39ED6709 /* Debug */,
+				30086AFDC60BD7EB868F4ADF40488D16 /* Debug */,
 				1515F577E03C064CAB6E115A863892C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7125,7 +7102,7 @@
 		D93F204EE2DE13D63924386AAB362AA2 /* Build configuration list for PBXNativeTarget "Pods-CleanArchitectureRxSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DB6E688E826C14622CCC279A8B785C03 /* Debug */,
+				7391300233B4A066A746C5EAABB06C36 /* Debug */,
 				2FC3FB86048580A607BE3F8DDCE7623B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7134,7 +7111,7 @@
 		DAEB725935707646801E7352E0037C64 /* Build configuration list for PBXNativeTarget "Pods-CoreDataPlatform" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A2279EF5403AEC4B875253A6FF27AFA4 /* Debug */,
+				933C0D3356BEA46C025E1D45165C7CC6 /* Debug */,
 				E8F374F24AC0A7F8CEE0F081B40C2A5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -7143,7 +7120,7 @@
 		EFC80F30E9F21DF4B195270284D4B34F /* Build configuration list for PBXNativeTarget "ObjectMapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				76DEB85E50BEE55A29B2C1336F7DFD65 /* Debug */,
+				8498AB073C5C300F0AF8AEC53624E3CB /* Debug */,
 				5F4BB85B35670C53E82013C40A1042E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

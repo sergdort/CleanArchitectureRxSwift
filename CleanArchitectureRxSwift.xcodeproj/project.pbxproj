@@ -548,6 +548,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		25707C6E1F23745700F852F7 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		25897AF71E58BD9100D3563C = {
 			isa = PBXGroup;
 			children = (
@@ -976,13 +983,14 @@
 		BD107F4A1E7298690043D900 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				25707C6E1F23745700F852F7 /* Persistence */,
 				BD107F671E72A0DC0043D900 /* API */,
 				BD107F731E72B1790043D900 /* Entries */,
 				BD50EEF31E7AD99400CBEBD4 /* Network */,
 				BC8D07711E9309B200B4D96A /* Utils */,
+				515F94BB8B79F597BACF0614 /* UseCases */,
 				BD107F4C1E7298690043D900 /* Info.plist */,
 				BD107F4B1E7298690043D900 /* Network.h */,
-				515F94BB8B79F597BACF0614 /* UseCases */,
 			);
 			path = Network;
 			sourceTree = "<group>";
