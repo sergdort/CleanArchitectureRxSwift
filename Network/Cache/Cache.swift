@@ -121,12 +121,9 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
                 observer(.completed)
                 return Disposables.create()
             }
-            let domainObjects = objects.map { obj in
-                return obj.asDomain()
-            }
-            observer(MaybeEvent.success(domainObjects))
-            return Disposables.create()
-            }.subscribeOn(chacheScheduler)
+            observer(MaybeEvent.success(objects.map { $0.asDomain() }))
+                return Disposables.create()
+        }.subscribeOn(chacheScheduler)
     }
     
     private func directoryURL() -> URL? {
