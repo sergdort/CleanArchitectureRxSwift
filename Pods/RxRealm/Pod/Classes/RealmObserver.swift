@@ -17,14 +17,14 @@ class RealmObserver<E>: ObserverType {
     var realm: Realm?
     var configuration: Realm.Configuration?
     
-    let binding: (Realm, E) -> Void
+    let binding: (Realm?, E, Error?) -> Void
     
-    init(realm: Realm, binding: @escaping (Realm, E) -> Void) {
+    init(realm: Realm, binding: @escaping (Realm?, E, Error?) -> Void) {
         self.realm = realm
         self.binding = binding
     }
 
-    init(configuration: Realm.Configuration, binding: @escaping (Realm, E) -> Void) {
+    init(configuration: Realm.Configuration, binding: @escaping (Realm?, E, Error?) -> Void) {
         self.configuration = configuration
         self.binding = binding
     }
@@ -37,8 +37,12 @@ class RealmObserver<E>: ObserverType {
         case .next(let element):
             //this will "cache" the realm on this thread, until completed/errored
             if let configuration = configuration, realm == nil {
-                let realm = try! Realm(configuration: configuration)
-                binding(realm, element)
+                do {
+                    let realm = try Realm(configuration: configuration)
+                    binding(realm, element, nil)
+                } catch let e {
+                    binding(nil, element, e)
+                }
                 return;
             }
             
@@ -46,7 +50,7 @@ class RealmObserver<E>: ObserverType {
                 fatalError("No realm in RealmObserver at time of a .Next event")
             }
             
-            binding(realm, element)
+            binding(realm, element, nil)
         
         case .error:
             realm = nil

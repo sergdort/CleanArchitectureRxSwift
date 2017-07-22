@@ -38,6 +38,10 @@ class Results;
 class SortDescriptor;
 template <typename T> class ThreadSafeReference;
 
+namespace _impl {
+class ListNotifier;
+}
+
 class List {
 public:
     List() noexcept;
@@ -65,10 +69,15 @@ public:
 
     void add(size_t target_row_ndx);
     void insert(size_t list_ndx, size_t target_row_ndx);
+    void set(size_t row_ndx, size_t target_row_ndx);
+
+    void add(RowExpr row);
+    void insert(size_t list_ndx, RowExpr row);
+    void set(size_t row_ndx, RowExpr row);
+
     void move(size_t source_ndx, size_t dest_ndx);
     void remove(size_t list_ndx);
     void remove_all();
-    void set(size_t row_ndx, size_t target_row_ndx);
     void swap(size_t ndx1, size_t ndx2);
 
     void delete_all();
@@ -79,19 +88,34 @@ public:
     // Return a Results representing a snapshot of this List.
     Results snapshot() const;
 
+    // Get the min/max/average/sum of the given column
+    // All but sum() returns none when there are zero matching rows
+    // sum() returns 0, except for when it returns none
+    // Throws UnsupportedColumnTypeException for sum/average on timestamp or non-numeric column
+    // Throws OutOfBoundsIndexException for an out-of-bounds column
+    util::Optional<Mixed> max(size_t column);
+    util::Optional<Mixed> min(size_t column);
+    util::Optional<Mixed> average(size_t column);
+    util::Optional<Mixed> sum(size_t column);
+
     bool operator==(List const& rgt) const noexcept;
 
     NotificationToken add_notification_callback(CollectionChangeCallback cb) &;
 
-    // These are implemented in object_accessor.hpp
     template <typename ValueType, typename ContextType>
-    void add(ContextType ctx, ValueType value);
+    void add(ContextType& ctx, ValueType value, bool update=false);
 
     template <typename ValueType, typename ContextType>
-    void insert(ContextType ctx, ValueType value, size_t list_ndx);
+    void insert(ContextType& ctx, size_t list_ndx, ValueType value, bool update=false);
 
     template <typename ValueType, typename ContextType>
-    void set(ContextType ctx, ValueType value, size_t list_ndx);
+    void set(ContextType& ctx, size_t list_ndx, ValueType value, bool update=false);
+
+    template <typename ValueType, typename ContextType>
+    size_t find(ContextType& ctx, ValueType value);
+
+    template<typename Context>
+    auto get(Context&, size_t row_ndx) const;
 
     // The List object has been invalidated (due to the Realm being invalidated,
     // or the containing object being deleted)
@@ -113,12 +137,48 @@ private:
     std::shared_ptr<Realm> m_realm;
     mutable const ObjectSchema* m_object_schema = nullptr;
     LinkViewRef m_link_view;
-    _impl::CollectionNotifier::Handle<_impl::CollectionNotifier> m_notifier;
+    _impl::CollectionNotifier::Handle<_impl::ListNotifier> m_notifier;
 
     void verify_valid_row(size_t row_ndx, bool insertion = false) const;
+    void validate(RowExpr row) const;
 
     friend struct std::hash<List>;
 };
+
+template <typename ValueType, typename ContextType>
+void List::add(ContextType& ctx, ValueType value, bool update)
+{
+    verify_attached();
+    add(ctx.template unbox<RowExpr>(value, true, update));
+}
+
+template <typename ValueType, typename ContextType>
+void List::insert(ContextType& ctx, size_t list_ndx, ValueType value, bool update)
+{
+    verify_attached();
+    insert(list_ndx, ctx.template unbox<RowExpr>(value, true, update));
+}
+
+template <typename ValueType, typename ContextType>
+void List::set(ContextType& ctx, size_t list_ndx, ValueType value, bool update)
+{
+    verify_attached();
+    set(list_ndx, ctx.template unbox<RowExpr>(value, true, update));
+}
+
+template <typename ValueType, typename ContextType>
+size_t List::find(ContextType& ctx, ValueType value)
+{
+    verify_attached();
+    return find(ctx.template unbox<RowExpr>(value));
+}
+
+template<typename Context>
+auto List::get(Context& ctx, size_t row_ndx) const
+{
+    return ctx.box(get(row_ndx));
+}
+
 } // namespace realm
 
 namespace std {

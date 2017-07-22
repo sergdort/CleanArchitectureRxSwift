@@ -109,6 +109,9 @@ struct SyncSession::State {
     // Returns true iff the session should ask the binding to get a token for `bind()`.
     virtual bool revive_if_needed(std::unique_lock<std::mutex>&, SyncSession&) const { return false; }
 
+    // Perform any work needed to respond to the application regaining network connectivity.
+    virtual void handle_reconnect(std::unique_lock<std::mutex>&, SyncSession&) const { };
+
     // The user that owns this session has been logged out, and the session should take appropriate action.
     virtual void log_out(std::unique_lock<std::mutex>&, SyncSession&) const { }
 
@@ -152,8 +155,10 @@ struct sync_session_states::WaitingForAccessToken : public SyncSession::State {
         }
         if (session.m_session_has_been_bound) {
             session.m_session->refresh(std::move(access_token));
+            session.m_session->cancel_reconnect_delay();
         } else {
-            session.m_session->bind(*session.m_server_url, std::move(access_token));
+            session.m_session->bind(*session.m_server_url, std::move(access_token),
+                                    session.m_config.client_validate_ssl, session.m_config.ssl_trust_certificate_path);
             session.m_session_has_been_bound = true;
         }
 
@@ -184,6 +189,14 @@ struct sync_session_states::WaitingForAccessToken : public SyncSession::State {
     {
         session.m_deferred_close = false;
         return false;
+    }
+
+    void handle_reconnect(std::unique_lock<std::mutex>& lock, SyncSession& session) const override
+    {
+        // Ask the binding to retry getting the token for this session.
+        std::shared_ptr<SyncSession> session_ptr = session.shared_from_this();
+        lock.unlock();
+        session.m_config.bind_session_handler(session_ptr->m_realm_path, session_ptr->m_config, session_ptr);
     }
 
     void nonsync_transact_notify(std::unique_lock<std::mutex>&,
@@ -224,6 +237,10 @@ struct sync_session_states::Active : public SyncSession::State {
                               const util::Optional<std::string>&) const override
     {
         session.m_session->refresh(std::move(access_token));
+        // Cancel the session's reconnection delay. This is important if the
+        // token is being refreshed as a response to a 202 (token expired)
+        // error, or similar non-fatal sync errors.
+        session.m_session->cancel_reconnect_delay();
     }
 
     bool access_token_expired(std::unique_lock<std::mutex>& lock, SyncSession& session) const override
@@ -295,6 +312,9 @@ struct sync_session_states::Dying : public SyncSession::State {
         }
         // If the error isn't fatal, don't change state, but don't
         // allow it to be reported either.
+        // FIXME: What if the token expires while a session is dying?
+        // Should we allow the token to be refreshed so that changes
+        // can finish being uploaded?
         return true;
     }
 
@@ -413,6 +433,7 @@ void SyncSession::handle_error(SyncError error)
             // Connection level errors
             case ProtocolError::connection_closed:
             case ProtocolError::other_error:
+            case ProtocolError::pong_timeout:
                 // Not real errors, don't need to be reported to the binding.
                 return;
             case ProtocolError::unknown_message:
@@ -423,7 +444,7 @@ void SyncSession::handle_error(SyncError error)
             case ProtocolError::reuse_of_session_ident:
             case ProtocolError::bound_in_other_session:
             case ProtocolError::bad_message_order:
-            case ProtocolError::pong_timeout:
+            case ProtocolError::malformed_http_request:
                 break;
             // Session errors
             case ProtocolError::session_closed:
@@ -619,7 +640,7 @@ void SyncSession::create_sync_session()
     // Set up the wrapped progress handler callback
     auto wrapped_progress_handler = [this, weak_self](uint_fast64_t downloaded, uint_fast64_t downloadable,
                                                       uint_fast64_t uploaded, uint_fast64_t uploadable,
-                                                      bool is_fresh) {
+                                                      bool is_fresh, uint_fast64_t /*snapshot_version*/) {
         if (auto self = weak_self.lock()) {
             handle_progress_update(downloaded, downloadable, uploaded, uploadable, is_fresh);
         }
@@ -661,6 +682,12 @@ void SyncSession::revive_if_needed()
     }
     if (handler)
         handler.value()(m_realm_path, m_config, shared_from_this());
+}
+
+void SyncSession::handle_reconnect()
+{
+    std::unique_lock<std::mutex> lock(m_state_mutex);
+    m_state->handle_reconnect(lock, *this);
 }
 
 void SyncSession::log_out()

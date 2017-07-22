@@ -33,6 +33,7 @@
 #import "RLMUtil.hpp"
 
 #import "object.hpp"
+#import "shared_realm.hpp"
 
 using namespace realm;
 
@@ -186,12 +187,16 @@ id RLMCreateManagedAccessor(Class cls, __unsafe_unretained RLMRealm *realm, RLMC
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    value = RLMCoerceToNil(value);
     RLMProperty *property = _objectSchema[key];
     if (Ivar ivar = property.swiftIvar) {
-        if (property.type == RLMPropertyTypeArray && [value conformsToProtocol:@protocol(NSFastEnumeration)]) {
+        if (property.type == RLMPropertyTypeArray && (!value || [value conformsToProtocol:@protocol(NSFastEnumeration)])) {
             RLMArray *array = [object_getIvar(self, ivar) _rlmArray];
             [array removeAllObjects];
-            [array addObjects:validatedObjectForProperty(value, property, RLMSchema.partialSharedSchema)];
+
+            if (value) {
+                [array addObjects:validatedObjectForProperty(value, property, RLMSchema.partialSharedSchema)];
+            }
         }
         else if (property.optional) {
             RLMOptionalBase *optional = object_getIvar(self, ivar);

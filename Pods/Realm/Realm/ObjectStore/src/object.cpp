@@ -21,6 +21,7 @@
 #include "impl/object_notifier.hpp"
 #include "impl/realm_coordinator.hpp"
 #include "object_schema.hpp"
+#include "object_store.hpp"
 #include "util/format.hpp"
 
 using namespace realm;
@@ -49,11 +50,14 @@ ReadOnlyPropertyException::ReadOnlyPropertyException(const std::string& object_t
 : std::logic_error(util::format("Cannot modify read-only property '%1.%2'", object_type, property_name))
 , object_type(object_type), property_name(property_name) {}
 
-Object::Object(SharedRealm r, ObjectSchema const& s, BasicRowExpr<Table> const& o)
+Object::Object(SharedRealm r, ObjectSchema const& s, RowExpr const& o)
 : m_realm(std::move(r)), m_object_schema(&s), m_row(o) { }
 
-Object::Object(SharedRealm r, ObjectSchema const& s, Row const& o)
-: m_realm(std::move(r)), m_object_schema(&s), m_row(o) { }
+Object::Object(SharedRealm r, StringData object_type, size_t ndx)
+: m_realm(std::move(r))
+, m_object_schema(&*m_realm->schema().find(object_type))
+, m_row(ObjectStore::table_for_object_type(m_realm->read_group(), object_type)->get(ndx))
+{ }
 
 Object::Object() = default;
 Object::~Object() = default;
@@ -62,11 +66,12 @@ Object::Object(Object&&) = default;
 Object& Object::operator=(Object const&) = default;
 Object& Object::operator=(Object&&) = default;
 
-NotificationToken Object::add_notification_block(CollectionChangeCallback callback) &
+NotificationToken Object::add_notification_callback(CollectionChangeCallback callback) &
 {
-    if (!m_notifier)
+    if (!m_notifier) {
         m_notifier = std::make_shared<_impl::ObjectNotifier>(m_row, m_realm);
-    _impl::RealmCoordinator::register_notifier(m_notifier);
+        _impl::RealmCoordinator::register_notifier(m_notifier);
+    }
     return {m_notifier, m_notifier->add_callback(std::move(callback))};
 }
 
@@ -78,7 +83,7 @@ void Object::verify_attached() const
     }
 }
 
-Property const& Object::property_for_name(std::string const& prop_name) const
+Property const& Object::property_for_name(StringData prop_name) const
 {
     auto prop = m_object_schema->property_for_name(prop_name);
     if (!prop) {

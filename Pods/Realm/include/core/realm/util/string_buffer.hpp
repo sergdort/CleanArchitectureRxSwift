@@ -36,9 +36,6 @@ namespace util {
 class StringBuffer {
 public:
     StringBuffer() noexcept;
-    ~StringBuffer() noexcept
-    {
-    }
 
     std::string str() const;
 

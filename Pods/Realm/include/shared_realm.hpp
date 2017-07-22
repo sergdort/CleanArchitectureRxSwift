@@ -127,13 +127,23 @@ public:
     // functions which take a Schema from within the migration function.
     using MigrationFunction = std::function<void (SharedRealm old_realm, SharedRealm realm, Schema&)>;
 
+    // A callback function called when opening a SharedRealm when no cached
+    // version of this Realm exists. It is passed the total bytes allocated for
+    // the file (file size) and the total bytes used by data in the file.
+    // Return `true` to indicate that an attempt to compact the file should be made
+    // if it is possible to do so.
+    // Won't compact the file if another process is accessing it.
+    //
+    // WARNING / FIXME: compact() should NOT be exposed publicly on Windows
+    // because it's not crash safe! It may corrupt your database if something fails
+    using ShouldCompactOnLaunchFunction = std::function<bool (uint64_t total_bytes, uint64_t used_bytes)>;
+
     struct Config {
         // Path and binary data are mutually exclusive
         std::string path;
         BinaryData realm_data;
         // User-supplied encryption key. Must be either empty or 64 bytes.
         std::vector<char> encryption_key;
-
 
         bool in_memory = false;
         SchemaMode schema_mode = SchemaMode::Automatic;
@@ -145,6 +155,17 @@ public:
         util::Optional<Schema> schema;
         uint64_t schema_version = -1;
         MigrationFunction migration_function;
+
+        // A callback function called when opening a SharedRealm when no cached
+        // version of this Realm exists. It is passed the total bytes allocated for
+        // the file (file size) and the total bytes used by data in the file.
+        // Return `true` to indicate that an attempt to compact the file should be made
+        // if it is possible to do so.
+        // Won't compact the file if another process is accessing it.
+        //
+        // WARNING / FIXME: compact() should NOT be exposed publicly on Windows
+        // because it's not crash safe! It may corrupt your database if something fails
+        ShouldCompactOnLaunchFunction should_compact_on_launch_function;
 
         bool read_only() const { return schema_mode == SchemaMode::ReadOnly; }
 
@@ -208,12 +229,17 @@ public:
     bool is_in_transaction() const noexcept;
     bool is_in_read_transaction() const { return !!m_group; }
 
+    bool is_in_migration() const noexcept { return m_in_migration; }
+
     bool refresh();
     void set_auto_refresh(bool auto_refresh) { m_auto_refresh = auto_refresh; }
     bool auto_refresh() const { return m_auto_refresh; }
     void notify();
 
     void invalidate();
+
+    // WARNING / FIXME: compact() should NOT be exposed publicly on Windows
+    // because it's not crash safe! It may corrupt your database if something fails
     bool compact();
     void write_copy(StringData path, BinaryData encryption_key);
     OwnedBinaryData write_copy();
@@ -316,6 +342,11 @@ private:
     // True while sending the notifications caused by advancing the read
     // transaction version, to avoid recursive notifications where possible
     bool m_is_sending_notifications = false;
+
+    // True while we're performing a schema migration via this Realm instance
+    // to allow for different behavior (such as allowing modifications to
+    // primary key values)
+    bool m_in_migration = false;
 
     void begin_read(VersionID);
 

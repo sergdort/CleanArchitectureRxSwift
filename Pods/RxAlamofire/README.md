@@ -113,7 +113,7 @@ _ = request(.get, stringURL)
 
 
 // MARK: Alamofire manager
-// same methods with with any alamofire manager
+// same methods with any alamofire manager
 
 let manager = Manager.sharedInstance
 

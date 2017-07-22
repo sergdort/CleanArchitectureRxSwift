@@ -76,30 +76,6 @@ public:
         /// all logging happens on behalf of the thread that executes run().
         util::Logger* logger = nullptr;
 
-        /// verify_servers_ssl_certificate controls whether the server certificate
-        /// is verified for SSL connections. It should always be true in production.
-        ///
-        /// A server certificate is verified by first checking that the
-        /// certificate has a valid signature chain back to a trust/anchor certificate,
-        /// and secondly checking that the host name of the Realm URL matches
-        /// a host name contained in the certificate.
-        /// The host name of the certificate is stored in either Common Name or
-        /// the Alternative Subject Name (DNS section).
-        ///
-        /// From the point of view of OpenSSL, setting verify_servers_ssl_certificate
-        /// to false means calling `SSL_set_verify()` with `SSL_VERIFY_NONE`.
-        /// Setting verify_servers_ssl_certificate to true means calling `SSL_set_verify()`
-        /// with `SSL_VERIFY_PEER`, and setting the host name using the function
-        /// X509_VERIFY_PARAM_set1_host() (OpenSSL version 1.0.2 or newer).
-        /// For other platforms, an equivalent procedure is followed.
-        bool verify_servers_ssl_certificate = true;
-
-        /// ssl_trust_certificate_path is the path of a trust/anchor certificate
-        /// used by the client to verify the server certificate.
-        /// If ssl_trust_certificate_path is None (default), the default device
-        /// trust/anchor store is used.
-        util::Optional<std::string> ssl_trust_certificate_path; // default None
-
         /// Use ports 80 and 443 by default instead of 7800 and 7801
         /// respectively. Ideally, these default ports should have been made
         /// available via a different URI scheme instead (http/https or ws/wss).
@@ -227,7 +203,8 @@ public:
                                  std::uint_fast64_t downloadable_bytes,
                                  std::uint_fast64_t uploaded_bytes,
                                  std::uint_fast64_t uploadable_bytes,
-                                 std::uint_fast64_t progress_version);
+                                 std::uint_fast64_t progress_version,
+                                 std::uint_fast64_t snapshot_version);
     using WaitOperCompletionHandler = std::function<void(std::error_code)>;
 
     class Config {
@@ -484,13 +461,41 @@ public:
     /// \param server_port If zero, use the default port for the specified
     /// protocol. See \ref Protocol for information on default ports.
     ///
+    /// \param verify_servers_ssl_certificate controls whether the server
+    /// certificate is verified for SSL connections. It should generally be true
+    /// in production. The default value of verify_servers_ssl_certificate is
+    /// true.
+    ///
+    /// A server certificate is verified by first checking that the
+    /// certificate has a valid signature chain back to a trust/anchor certificate,
+    /// and secondly checking that the host name of the Realm URL matches
+    /// a host name contained in the certificate.
+    /// The host name of the certificate is stored in either Common Name or
+    /// the Alternative Subject Name (DNS section).
+    ///
+    /// From the point of view of OpenSSL, setting verify_servers_ssl_certificate
+    /// to false means calling `SSL_set_verify()` with `SSL_VERIFY_NONE`.
+    /// Setting verify_servers_ssl_certificate to true means calling `SSL_set_verify()`
+    /// with `SSL_VERIFY_PEER`, and setting the host name using the function
+    /// X509_VERIFY_PARAM_set1_host() (OpenSSL version 1.0.2 or newer).
+    /// For other platforms, an equivalent procedure is followed.
+    ///
+    /// \param ssl_trust_certificate_path is the path of a trust/anchor
+    /// certificate used by the client to verify the server certificate.
+    /// If ssl_trust_certificate_path is None (default), the default device
+    /// trust/anchor store is used.
+    ///
     /// \param protocol See \ref Protocol.
     ///
     /// \throw BadServerUrl if the specified server URL is malformed.
-    void bind(std::string server_url, std::string signed_user_token);
+    void bind(std::string server_url, std::string signed_user_token,
+            bool verify_servers_ssl_certificate = true,
+            util::Optional<std::string> ssl_trust_certificate_path = util::none);
     void bind(std::string server_address, std::string server_path,
-              std::string signed_user_token, port_type server_port = 0,
-              Protocol protocol = Protocol::realm);
+            std::string signed_user_token, port_type server_port = 0,
+            Protocol protocol = Protocol::realm,
+            bool verify_servers_ssl_certificate = true,
+            util::Optional<std::string> ssl_trust_certificate_path = util::none);
     /// @}
 
     /// \brief Refresh the user token associated with this session.

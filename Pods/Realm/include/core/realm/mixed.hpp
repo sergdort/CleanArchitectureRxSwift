@@ -24,14 +24,13 @@
 #include <cstddef> // size_t
 #include <cstring>
 
-#include <realm/util/assert.hpp>
-#include <realm/util/meta.hpp>
-#include <realm/utilities.hpp>
+#include <realm/binary_data.hpp>
 #include <realm/data_type.hpp>
 #include <realm/olddatetime.hpp>
 #include <realm/string_data.hpp>
-#include <realm/binary_data.hpp>
-#include <realm/column_timestamp.hpp>
+#include <realm/timestamp.hpp>
+#include <realm/util/assert.hpp>
+#include <realm/utilities.hpp>
 
 namespace realm {
 

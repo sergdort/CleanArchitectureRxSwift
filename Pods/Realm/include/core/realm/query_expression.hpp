@@ -127,13 +127,14 @@ The Columns class encapsulates all this into a simple class that, for any type T
 #ifndef REALM_QUERY_EXPRESSION_HPP
 #define REALM_QUERY_EXPRESSION_HPP
 
-#include <realm/column_type_traits.hpp>
 #include <realm/column_link.hpp>
 #include <realm/column_linklist.hpp>
-#include <realm/link_view.hpp>
-#include <realm/util/optional.hpp>
-#include <realm/impl/sequential_getter.hpp>
 #include <realm/column_table.hpp>
+#include <realm/column_type_traits.hpp>
+#include <realm/impl/sequential_getter.hpp>
+#include <realm/link_view.hpp>
+#include <realm/query_operators.hpp>
+#include <realm/util/optional.hpp>
 
 #include <numeric>
 
@@ -250,46 +251,6 @@ struct Pow {
         return v * v;
     }
     typedef T type;
-};
-
-// This is not supported in the general case
-template <class T>
-struct Size;
-
-template <>
-struct Size<StringData> {
-    int64_t operator()(StringData v) const
-    {
-        return v.size();
-    }
-    typedef StringData type;
-};
-
-template <>
-struct Size<BinaryData> {
-    int64_t operator()(BinaryData v) const
-    {
-        return v.size();
-    }
-    typedef BinaryData type;
-};
-
-template <>
-struct Size<ConstTableRef> {
-    int64_t operator()(ConstTableRef v) const
-    {
-        return v->size();
-    }
-    typedef ConstTableRef type;
-};
-
-template <>
-struct Size<ConstLinkViewRef> {
-    int64_t operator()(ConstLinkViewRef v) const
-    {
-        return v->size();
-    }
-    typedef ConstLinkViewRef type;
 };
 
 // Finds a common type for T1 and T2 according to C++ conversion/promotion in arithmetic (float + int => float, etc)

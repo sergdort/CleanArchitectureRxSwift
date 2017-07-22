@@ -19,22 +19,18 @@
 #ifndef REALM_STRING_HPP
 #define REALM_STRING_HPP
 
-#include <cstddef>
-#include <algorithm>
-#include <string>
-#include <ostream>
-#include <cstring>
-#include <array>
-#include <vector>
-
-#include <cfloat>
-#include <cmath>
-
+#include <realm/null.hpp>
 #include <realm/util/features.h>
 #include <realm/util/optional.hpp>
-#include <realm/utilities.hpp>
-#include <realm/null.hpp>
-#include <realm/owned_data.hpp>
+
+#include <algorithm>
+#include <array>
+#include <cfloat>
+#include <cmath>
+#include <cstddef>
+#include <cstring>
+#include <ostream>
+#include <string>
 
 namespace realm {
 

@@ -75,6 +75,10 @@ public:
     /// Lock the mutex. If the mutex is already locked, wait for it to be unlocked.
     void lock();
 
+    /// Non-blocking attempt to lock the mutex. Returns true if the lock is obtained.
+    /// If the lock can not be obtained return false immediately.
+    bool try_lock();
+
     /// Unlock the mutex
     void unlock();
 
@@ -260,6 +264,27 @@ inline void InterprocessMutex::lock()
 #else
     REALM_ASSERT(m_shared_part);
     m_shared_part->lock([]() {});
+#endif
+}
+
+inline bool InterprocessMutex::try_lock()
+{
+#ifdef REALM_ROBUST_MUTEX_EMULATION
+    std::unique_lock<Mutex> mutex_lock(m_lock_info->m_local_mutex, std::try_to_lock_t());
+    if (!mutex_lock.owns_lock()) {
+        return false;
+    }
+    bool success = m_lock_info->m_file.try_lock_exclusive();
+    if (success) {
+        mutex_lock.release();
+        return true;
+    }
+    else {
+        return false;
+    }
+#else
+    REALM_ASSERT(m_shared_part);
+    return m_shared_part->try_lock([]() {});
 #endif
 }
 

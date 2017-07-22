@@ -496,6 +496,7 @@ void RealmCoordinator::clean_up_dead_notifiers()
         if (m_notifiers.empty() && m_notifier_sg) {
             REALM_ASSERT_3(m_notifier_sg->get_transact_stage(), ==, SharedGroup::transact_Reading);
             m_notifier_sg->end_read();
+            m_notifier_skip_version = {0, 0};
         }
     }
     if (swap_remove(m_new_notifiers) && m_advancer_sg) {
@@ -693,6 +694,7 @@ void RealmCoordinator::run_async_notifiers()
     lock.unlock();
 
     if (skip_version.version) {
+        REALM_ASSERT(!notifiers.empty());
         REALM_ASSERT(version >= skip_version);
         IncrementalChangeInfo change_info(*m_notifier_sg, notifiers);
         for (auto& notifier : notifiers)
@@ -772,8 +774,21 @@ void RealmCoordinator::advance_to_ready(Realm& realm)
     auto& sg = Realm::Internal::get_shared_group(realm);
     if (notifiers) {
         auto version = notifiers.version();
-        if (version && *version <= sg->get_version_of_current_transaction())
-            return;
+        if (version) {
+            auto current_version = sg->get_version_of_current_transaction();
+            // Notifications are out of date, so just discard
+            // This should only happen if begin_read() was used to change the
+            // read version outside of our control
+            if (*version < current_version)
+                return;
+            // While there is a newer version, notifications are for the current
+            // version so just deliver them without advancing
+            if (*version == current_version) {
+                notifiers.deliver(*sg);
+                notifiers.after_advance();
+                return;
+            }
+        }
     }
 
     transaction::advance(sg, realm.m_binding_context.get(), notifiers);

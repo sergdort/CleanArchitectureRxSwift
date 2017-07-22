@@ -90,9 +90,13 @@ bool DeepChangeChecker::check_outgoing_links(size_t table_ndx,
     // Check if we're already checking if the destination of the link is
     // modified, and if not add it to the stack
     auto already_checking = [&](size_t col) {
-        for (auto p = m_current_path.begin(); p < m_current_path.begin() + depth; ++p) {
-            if (p->table == table_ndx && p->row == row_ndx && p->col == col)
-                return true;
+        auto end = m_current_path.begin() + depth;
+        auto match = std::find_if(m_current_path.begin(), end, [&](auto& p) {
+            return p.table == table_ndx && p.row == row_ndx && p.col == col;
+        });
+        if (match != end) {
+            for (; match < end; ++match) match->depth_exceeded = true;
+            return true;
         }
         m_current_path[depth] = {table_ndx, row_ndx, col, false};
         return false;

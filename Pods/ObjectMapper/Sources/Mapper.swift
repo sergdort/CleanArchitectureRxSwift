@@ -106,8 +106,22 @@ public final class Mapper<N: BaseMappable> {
 				object.mapping(map: map)
 				return object
 			}
-		} else if N.self is ImmutableMappable.Type { // Check if object is ImmutableMappable
-			assert(false, "'ImmutableMappable' type requires throwing version of function \(#function)  - use 'try' before \(#function)")
+		} else if let klass = N.self as? ImmutableMappable.Type { // Check if object is ImmutableMappable
+			do {
+				return try klass.init(map: map) as? N
+			} catch let error {
+				#if DEBUG
+				let exception: NSException
+				if let mapError = error as? MapError {
+					exception = NSException(name: .init(rawValue: "MapError"), reason: mapError.description, userInfo: nil)
+				} else {
+					exception = NSException(name: .init(rawValue: "ImmutableMappableError"), reason: error.localizedDescription, userInfo: nil)
+				}
+				exception.raise()
+				#else
+				NSLog("\(error)")
+				#endif
+			}
 		} else {
 			// Ensure BaseMappable is not implemented directly
 			assert(false, "BaseMappable should not be implemented directly. Please implement Mappable, StaticMappable or ImmutableMappable")
@@ -145,7 +159,7 @@ public final class Mapper<N: BaseMappable> {
 	}
 	
 	/// Maps an array of JSON dictionary to an array of Mappable objects
-	public func mapArray(JSONArray: [[String: Any]]) -> [N]? {
+	public func mapArray(JSONArray: [[String: Any]]) -> [N] {
 		// map every element in JSON array to type N
 		let result = JSONArray.flatMap(map)
 		return result
@@ -228,9 +242,8 @@ public final class Mapper<N: BaseMappable> {
 		if let JSONArray = JSONObject as? [[[String: Any]]] {
 			var objectArray = [[N]]()
 			for innerJSONArray in JSONArray {
-				if let array = mapArray(JSONArray: innerJSONArray){
-					objectArray.append(array)
-				}
+				let array = mapArray(JSONArray: innerJSONArray)
+				objectArray.append(array)
 			}
 			
 			if objectArray.isEmpty == false {

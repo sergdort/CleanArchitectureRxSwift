@@ -101,10 +101,12 @@ namespace sync {
 //
 //  17 Added PING and PONG messages. It is used for rtt monitoring and dead
 //     connection detection by both the client and the server.
+//
+//  18 Enhanced the session_ident to accept values of size up to at least 63 bits.
 
 constexpr int get_current_protocol_version() noexcept
 {
-    return 17;
+    return 18;
 }
 
 /// \brief Protocol errors discovered by the server, and reported to the client
@@ -127,7 +129,8 @@ enum class ProtocolError {
     reuse_of_session_ident       = 107, // Overlapping reuse of session identifier (BIND)
     bound_in_other_session       = 108, // Client file bound in other session (IDENT)
     bad_message_order            = 109, // Bad input message order
-    pong_timeout                 = 110, // Pong timeout
+    pong_timeout                 = 110, // Pong timeout (FIXME: Should have been added to Client::Error instead)
+    malformed_http_request       = 111, // HTTP request is malformed
 
     // Session level errors
     session_closed               = 200, // Session closed (no error)
@@ -137,7 +140,7 @@ enum class ProtocolError {
     illegal_realm_path           = 204, // Illegal Realm path (BIND)
     no_such_realm                = 205, // No such Realm (BIND)
     permission_denied            = 206, // Permission denied (BIND, REFRESH)
-    bad_server_file_ident        = 207, // Bad server file identifier (IDENT)
+    bad_server_file_ident        = 207, // Bad server file identifier (IDENT) (obsolete!)
     bad_client_file_ident        = 208, // Bad client file identifier (IDENT)
     bad_server_version           = 209, // Bad server version (IDENT, UPLOAD)
     bad_client_version           = 210, // Bad client version (IDENT, UPLOAD)
@@ -175,7 +178,7 @@ namespace sync {
 namespace protocol {
 
 using OutputBuffer = util::ResettableExpandableBufferOutputStream;
-using session_ident_type = uint_fast16_t;
+using session_ident_type = uint_fast64_t;
 using file_ident_type = uint_fast64_t;
 using version_type = uint_fast64_t;
 using timestamp_type  = uint_fast64_t;
@@ -505,23 +508,17 @@ public:
     // Messages sent by the server to the client
 
     void make_alloc_message(OutputBuffer& out, session_ident_type session_ident,
-                            file_ident_type server_file_ident, file_ident_type client_file_ident,
-                            int_fast64_t client_file_ident_secret);
+                            file_ident_type server_file_ident,
+                            file_ident_type client_file_ident,
+                            std::int_fast64_t client_file_ident_secret);
 
     void make_unbound_message(OutputBuffer& out, session_ident_type session_ident);
 
 
-    class ChangesetInfo {
-    public:
+    struct ChangesetInfo {
         version_type server_version;
         version_type client_version;
         HistoryEntry entry;
-
-        ChangesetInfo(version_type server_version, version_type client_version, HistoryEntry entry):
-            server_version(server_version),
-            client_version(client_version),
-            entry(entry)
-        {}
     };
 
     void make_download_message(int protocol_version, OutputBuffer& out, session_ident_type session_ident,
@@ -531,7 +528,7 @@ public:
                                int_fast64_t latest_server_session_ident,
                                version_type latest_client_version,
                                uint_fast64_t downloadable_bytes,
-                               const std::vector<ChangesetInfo>& changeset_infos);
+                               std::size_t num_changesets, BinaryData body);
 
     void make_error_message(OutputBuffer& out, ProtocolError error_code,
                             const char* message, size_t message_size,
@@ -567,7 +564,7 @@ public:
         return;
 
     bad_syntax:
-        logger.error("Bad syntax in ping message '%1'",
+        logger.error("Bad syntax in PING message '%1'",
                      StringData(data, size));
         connection.handle_protocol_error(Error::bad_syntax);
         return;
@@ -698,8 +695,9 @@ public:
             header_size = size;
 
             connection.receive_ident_message(session_ident, server_file_ident, client_file_ident,
-                                             client_file_ident_secret, scan_server_version, scan_client_version,
-                                             latest_server_version, latest_server_session_ident); // Throws
+                                             client_file_ident_secret, scan_server_version,
+                                             scan_client_version, latest_server_version,
+                                             latest_server_session_ident); // Throws
             return;
         }
         if (message_type == "unbind") {
@@ -757,6 +755,8 @@ public:
         return;
     }
 
+    void insert_single_changeset_download_message(OutputBuffer& out, const ChangesetInfo& changeset_info);
+
 private:
     static constexpr size_t s_max_head_size              =  256;
     static constexpr size_t s_max_signed_user_token_size = 2048;
@@ -771,9 +771,7 @@ private:
 
     // Outputbuffer to use for internal purposes such as creating the
     // download body.
-    OutputBuffer m_output_buffer;
-
-    void insert_single_changeset_download_message(OutputBuffer& out, const ChangesetInfo& changeset_info);
+    OutputBuffer m_output_buffer;                                              
 };
 
 } // namespace protocol

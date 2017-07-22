@@ -1,31 +1,31 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.0)
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
-  - Nimble (6.1.0)
-  - ObjectMapper (2.2.5)
+  - Nimble (7.0.1)
+  - ObjectMapper (2.2.8)
   - QueryKit (0.13.0)
-  - Realm (2.5.0):
-    - Realm/Headers (= 2.5.0)
-  - Realm/Headers (2.5.0)
-  - RealmSwift (2.5.0):
-    - Realm (= 2.5.0)
-  - RxAlamofire (3.0.2):
-    - RxAlamofire/Core (= 3.0.2)
-  - RxAlamofire/Core (3.0.2):
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
+  - RxAlamofire (3.0.3):
+    - RxAlamofire/Core (= 3.0.3)
+  - RxAlamofire/Core (3.0.3):
     - Alamofire (~> 4.0)
     - RxSwift (~> 3.0)
-  - RxBlocking (3.3.1):
-    - RxSwift (~> 3.3)
-  - RxCocoa (3.3.1):
-    - RxSwift (~> 3.3)
-  - RxRealm (0.5.2):
-    - RealmSwift (~> 2.4)
-    - RxSwift (~> 3.1)
-  - RxSwift (3.3.1)
-  - RxTest (3.3.1):
-    - RxSwift (~> 3.3)
+  - RxBlocking (3.6.1):
+    - RxSwift (~> 3.6)
+  - RxCocoa (3.6.1):
+    - RxSwift (~> 3.6)
+  - RxRealm (0.6.0):
+    - RealmSwift (~> 2.5)
+    - RxSwift (~> 3.2)
+  - RxSwift (3.6.1)
+  - RxTest (3.6.1):
+    - RxSwift (~> 3.6)
 
 DEPENDENCIES:
   - Alamofire
@@ -43,20 +43,20 @@ DEPENDENCIES:
   - RxTest (~> 3.0)
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
-  Nimble: c53e6903fee94041b90ded74f135820437d8bf59
-  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
   QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
-  Realm: 62abce501668580092d2be9b6ba7324a3d5f906a
-  RealmSwift: 9f1a8f624f2f153410115c2cb7d486be9976565d
-  RxAlamofire: bc53604b29fd2d220cfaa490c736cc4500819f34
-  RxBlocking: c5918ecb86b8c205a8ccc6d1ff2abb338ddc50a0
-  RxCocoa: 7dcb7a1860fc9cd0e23dae67ab105fc2916670b6
-  RxRealm: df024f04e64c3a9723dab63a6ec8621b3db6473f
-  RxSwift: 8fc9f2de6275a9101d518444e00bf32f1a42caac
-  RxTest: f4e7360033fafa743f2f85097efa958402ed442a
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  RxAlamofire: 5eb39188c4917ad98127c0ecb4878a61b7517003
+  RxBlocking: 4f4bd5732e8b952e54ae8a57739bcfb645de12bc
+  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
+  RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
+  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
+  RxTest: 1d00348a7848c91ab5bf5d197d2378aa6b2bb356
 
-PODFILE CHECKSUM: '048e4f9ed7e8f8ff423ddfbcf8b3349cc175b774'
+PODFILE CHECKSUM: fa9f0770597d1a764b8214e2441c9b92040e2c10
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

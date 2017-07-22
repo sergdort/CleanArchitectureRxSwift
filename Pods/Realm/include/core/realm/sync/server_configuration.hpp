@@ -53,6 +53,19 @@ Configuration build_configuration(int argc, char* argv[]);
 Configuration load_configuration(std::string configuration_file_path);
 
 } // namespace config
+
+
+namespace sync {
+
+/// Initialise the directory structure as required (create missing directory
+/// structure) for correct operation of the server. This function is supposed to
+/// be executed prior to instantiating the \c Server object.
+///
+/// Note: This function also handles migration of server-side Realm files from
+/// the legacy format (see _impl::ensure_legacy_migration_0()).
+void prepare_server_directory(const config::Configuration&, util::Logger&);
+
+} // namespace sync
 } // namespace realm
 
 #endif // REALM_SYNC_SERVER_CONFIGURATION_HPP

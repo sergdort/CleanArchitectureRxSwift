@@ -138,15 +138,14 @@ public:
     /// Must not be called while run() is executing.
     uint_fast64_t errors_seen() const noexcept;
 
-    /// Initialise the directory structure as required for correct operation of
-    /// the server. This is a static function, as it should be run on the \a
-    /// root_path prior to instantiating the \c Server object.
-    static void init_directory_structure(const std::string& root_path, util::Logger& logger);
-
-    // A connection which has not been sending any messages or pings for
-    // `idle_timeout_ms` is considered idle and will be dropped by the server.
+    /// A connection which has not been sending any messages or pings for
+    /// `idle_timeout_ms` is considered idle and will be dropped by the server.
     void set_idle_timeout_ms(uint_fast64_t idle_timeout_ms);
 
+    /// Close all connections with error code ProtocolError::connection_closed.
+    ///
+    /// This function exists mainly for debugging purposes.
+    void close_connections();
 
 private:
     class Implementation;

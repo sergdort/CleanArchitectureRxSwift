@@ -19,14 +19,14 @@
 #ifndef REALM_BINARY_DATA_HPP
 #define REALM_BINARY_DATA_HPP
 
-#include <cstddef>
-#include <algorithm>
-#include <string>
-#include <ostream>
-
+#include <realm/owned_data.hpp>
 #include <realm/util/features.h>
 #include <realm/utilities.hpp>
-#include <realm/owned_data.hpp>
+
+#include <algorithm>
+#include <cstddef>
+#include <ostream>
+#include <string>
 
 namespace realm {
 
