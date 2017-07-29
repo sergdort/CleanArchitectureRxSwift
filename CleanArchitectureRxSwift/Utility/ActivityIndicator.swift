@@ -2,65 +2,42 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-private struct ActivityToken<E> : ObservableConvertibleType, Disposable {
-    private let _source: Observable<E>
-    private let _dispose: Cancelable
-
-    init(source: Observable<E>, disposeAction: @escaping () -> ()) {
-        _source = source
-        _dispose = Disposables.create(with: disposeAction)
-    }
-
-    func dispose() {
-        _dispose.dispose()
-    }
-
-    func asObservable() -> Observable<E> {
-        return _source
-    }
-}
-
-/**
-Enables monitoring of sequence computation.
-
-If there is at least one sequence computation in progress, `true` will be sent.
-When all activities complete `false` will be sent.
-*/
-public class ActivityIndicator : SharedSequenceConvertibleType {
+public class ActivityIndicator: SharedSequenceConvertibleType {
     public typealias E = Bool
     public typealias SharingStrategy = DriverSharingStrategy
-
+    
     private let _lock = NSRecursiveLock()
-    private let _variable = Variable(0)
+    private let _variable = Variable(false)
     private let _loading: SharedSequence<SharingStrategy, Bool>
-
+    
     public init() {
         _loading = _variable.asDriver()
-                .map { $0 > 0 }
-                .distinctUntilChanged()
+            .distinctUntilChanged()
     }
-
+    
     fileprivate func trackActivityOfObservable<O: ObservableConvertibleType>(_ source: O) -> Observable<O.E> {
-        return Observable.using({ () -> ActivityToken<O.E> in
-            self.increment()
-            return ActivityToken(source: source.asObservable(), disposeAction: self.decrement)
-        }) { t in
-            return t.asObservable()
-        }
+        return source.asObservable()
+            .do(onNext: { _ in
+                self.sendStopLoading()
+            }, onError: { _ in
+                self.sendStopLoading()
+            }, onCompleted: {
+                self.sendStopLoading()
+            }, onSubscribe: subscribed)
     }
-
-    private func increment() {
+    
+    private func subscribed() {
         _lock.lock()
-        _variable.value = _variable.value + 1
+        _variable.value = true
         _lock.unlock()
     }
-
-    private func decrement() {
+    
+    private func sendStopLoading() {
         _lock.lock()
-        _variable.value = _variable.value - 1
+        _variable.value = false
         _lock.unlock()
     }
-
+    
     public func asSharedSequence() -> SharedSequence<SharingStrategy, E> {
         return _loading
     }
