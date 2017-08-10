@@ -10,9 +10,9 @@ import Foundation
 import Domain
 
 final class PostItemViewModel   {
-    var title:String
-    var subtitle : String
-    var post: Post
+    let title:String
+    let subtitle : String
+    let post: Post
     init (with post:Post) {
         self.post = post
         self.title = post.title.uppercased()

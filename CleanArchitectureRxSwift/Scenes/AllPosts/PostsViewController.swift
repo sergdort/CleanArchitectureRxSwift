@@ -37,7 +37,7 @@ class PostsViewController: UIViewController {
         let output = viewModel.transform(input: input)
         //Bind Posts to UITableView
         output.posts.drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { tv, viewModel, cell in
-            cell.bind(to: viewModel)
+            cell.bind(viewModel)
 
         }.addDisposableTo(disposeBag)
         //Connect Create Post to UI
