@@ -12,7 +12,7 @@ final class PostsViewModel: ViewModelType {
     }
     struct Output {
         let fetching: Driver<Bool>
-        let posts: Driver<[Post]>
+        let posts: Driver<[PostItemViewModel]>
         let createPost: Driver<Void>
         let selectedPost: Driver<Post>
         let error: Driver<Error>
@@ -34,13 +34,14 @@ final class PostsViewModel: ViewModelType {
                 .trackActivity(activityIndicator)
                 .trackError(errorTracker)
                 .asDriverOnErrorJustComplete()
+                .map { $0.map { PostItemViewModel(with: $0) } }
         }
         
         let fetching = activityIndicator.asDriver()
         let errors = errorTracker.asDriver()
         let selectedPost = input.selection
             .withLatestFrom(posts) { (indexPath, posts) -> Post in
-                return posts[indexPath.row]
+                return posts[indexPath.row].post
             }
             .do(onNext: navigator.toPost)
         let createPost = input.createPostTrigger

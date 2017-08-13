@@ -36,9 +36,9 @@ class PostsViewController: UIViewController {
                                        selection: tableView.rx.itemSelected.asDriver())
         let output = viewModel.transform(input: input)
         //Bind Posts to UITableView
-        output.posts.drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { tv, item, cell in
-            cell.titleLabel.text = item.title
-            cell.detailsLabel.text = item.body
+        output.posts.drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { tv, viewModel, cell in
+            cell.bind(viewModel)
+
         }.addDisposableTo(disposeBag)
         //Connect Create Post to UI
         
