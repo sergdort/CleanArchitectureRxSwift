@@ -45,11 +45,8 @@ UseCases are protocols which do one specific thing:
 
 ```swift
 
-public protocol AllPostsUseCase {
+public protocol PostsUseCase {
     func posts() -> Observable<[Post]>
-}
-
-public protocol SavePostUseCase {
     func save(post: Post) -> Observable<Void>
 }
 
@@ -84,13 +81,18 @@ final class RMPost: Object {
 The `Platform` also contains concrete implementations of your use cases, repositories or any services that are defined in the `Domain`.
 
 ```swift
-final class SavePostUseCase: Domain.SavePostUseCase {
+final class PostsUseCase: Domain.PostsUseCase {
+    
     private let repository: AbstractRepository<Post>
 
     init(repository: AbstractRepository<Post>) {
         self.repository = repository
     }
 
+    func posts() -> Observable<[Post]> {
+        return repository.query(sortDescriptors: [Post.CoreDataType.uid.descending()])
+    }
+    
     func save(post: Post) -> Observable<Void> {
         return repository.save(entity: post)
     }
@@ -135,12 +137,8 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
         postRepository = Repository<Post>(context: coreDataStack.context)
     }
 
-    public func getAllPostsUseCase() -> AllPostsUseCase {
-        return CDAllPostsUseCase(repository: postRepository)
-    }
-
-    public func getCreatePostUseCase() -> SavePostUseCase {
-        return CDSavePostUseCase(repository: postRepository)
+    public func makePostsUseCase() -> Domain.PostsUseCase {
+        return PostsUseCase(repository: postRepository)
     }
 }
 ```
