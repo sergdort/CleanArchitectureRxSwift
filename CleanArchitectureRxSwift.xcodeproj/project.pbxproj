@@ -17,7 +17,6 @@
 		25897B091E58BD9100D3563C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25897B071E58BD9100D3563C /* Main.storyboard */; };
 		25897B0B1E58BD9100D3563C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25897B0A1E58BD9100D3563C /* Assets.xcassets */; };
 		25897B0E1E58BD9100D3563C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25897B0C1E58BD9100D3563C /* LaunchScreen.storyboard */; };
-		25897B191E58BD9100D3563C /* CleanArchitectureRxSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B181E58BD9100D3563C /* CleanArchitectureRxSwiftTests.swift */; };
 		25897B311E58BF0D00D3563C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25897B281E58BF0D00D3563C /* Domain.framework */; };
 		25897B381E58BF0D00D3563C /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25897B371E58BF0D00D3563C /* DomainTests.swift */; };
 		25897B3A1E58BF0D00D3563C /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = 25897B2A1E58BF0D00D3563C /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -78,6 +77,9 @@
 		515F9BD6155258BD0C04DF36 /* RMLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F96DF719A053AEF410368 /* RMLocation.swift */; };
 		515F9CD8F2B13D0328B77B6C /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F977CB3763872350F7874 /* Realm+Ext.swift */; };
 		515F9DBB950E2ABDB8D7895B /* RMPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F988220373D06226F4EDE /* RMPost.swift */; };
+		7752FCB51F716D650079522C /* PostsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB41F716D650079522C /* PostsViewModelTests.swift */; };
+		7752FCB71F716D7A0079522C /* AllPostsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB61F716D7A0079522C /* AllPostsUseCaseMock.swift */; };
+		7752FCB91F716D940079522C /* PostsNavigatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB81F716D940079522C /* PostsNavigatorMock.swift */; };
 		515F9EA01C8D63D03B41FF8F /* PostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9DAA48376FC95A9D91B5 /* PostsUseCase.swift */; };
 		7BA4DC961F3AEA380043DAB6 /* PostItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA4DC951F3AEA380043DAB6 /* PostItemViewModel.swift */; };
 		7DFB155E3444551C4DB34AAC /* Pods_CleanArchitectureRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A6B74019E724CAD9CA96DC /* Pods_CleanArchitectureRxSwift.framework */; };
@@ -283,7 +285,6 @@
 		25897B0D1E58BD9100D3563C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25897B0F1E58BD9100D3563C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25897B141E58BD9100D3563C /* CleanArchitectureRxSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureRxSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25897B181E58BD9100D3563C /* CleanArchitectureRxSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanArchitectureRxSwiftTests.swift; sourceTree = "<group>"; };
 		25897B1A1E58BD9100D3563C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25897B281E58BF0D00D3563C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25897B2A1E58BF0D00D3563C /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
@@ -355,6 +356,9 @@
 		6FC0A7F85D212DE861F0D4F5 /* Pods-Network.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Network.release.xcconfig"; path = "Pods/Target Support Files/Pods-Network/Pods-Network.release.xcconfig"; sourceTree = "<group>"; };
 		71C4CC5892A6E3601D801729 /* Pods-CoreDataPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatform.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreDataPlatform/Pods-CoreDataPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7752FCB41F716D650079522C /* PostsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewModelTests.swift; sourceTree = "<group>"; };
+		7752FCB61F716D7A0079522C /* AllPostsUseCaseMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCaseMock.swift; sourceTree = "<group>"; };
+		7752FCB81F716D940079522C /* PostsNavigatorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigatorMock.swift; sourceTree = "<group>"; };
 		7BA4DC951F3AEA380043DAB6 /* PostItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItemViewModel.swift; sourceTree = "<group>"; };
 		84A5797E91E6FA5FA24A4896 /* Pods-CleanArchitectureRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitectureRxSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		8C5EFC85E3DC2D413D89C8F9 /* Pods_Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -633,7 +637,7 @@
 		25897B171E58BD9100D3563C /* CleanArchitectureRxSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				25897B181E58BD9100D3563C /* CleanArchitectureRxSwiftTests.swift */,
+				7752FCB21F716D410079522C /* Scenes */,
 				25897B1A1E58BD9100D3563C /* Info.plist */,
 			);
 			path = CleanArchitectureRxSwiftTests;
@@ -963,6 +967,24 @@
 				515F977CB3763872350F7874 /* Realm+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7752FCB21F716D410079522C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7752FCB31F716D4A0079522C /* AllPosts */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		7752FCB31F716D4A0079522C /* AllPosts */ = {
+			isa = PBXGroup;
+			children = (
+				7752FCB41F716D650079522C /* PostsViewModelTests.swift */,
+				7752FCB61F716D7A0079522C /* AllPostsUseCaseMock.swift */,
+				7752FCB81F716D940079522C /* PostsNavigatorMock.swift */,
+			);
+			path = AllPosts;
 			sourceTree = "<group>";
 		};
 		A3C0A06A8E4F121C929B96B4 /* Pods */ = {
@@ -1334,6 +1356,7 @@
 					};
 					25897B131E58BD9100D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
@@ -1901,7 +1924,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25897B191E58BD9100D3563C /* CleanArchitectureRxSwiftTests.swift in Sources */,
+				7752FCB51F716D650079522C /* PostsViewModelTests.swift in Sources */,
+				7752FCB91F716D940079522C /* PostsNavigatorMock.swift in Sources */,
+				7752FCB71F716D7A0079522C /* AllPostsUseCaseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2274,10 +2299,12 @@
 			baseConfigurationReference = 3D9EA43A0DD207CAFEADD07C /* Pods-CleanArchitectureRxSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CleanArchitectureRxSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
@@ -2288,6 +2315,7 @@
 			baseConfigurationReference = A6A063DE6BDC13E3B800BB80 /* Pods-CleanArchitectureRxSwiftTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CleanArchitectureRxSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwiftTests;
