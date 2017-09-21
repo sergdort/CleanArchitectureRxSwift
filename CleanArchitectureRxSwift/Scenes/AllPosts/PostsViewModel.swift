@@ -18,10 +18,10 @@ final class PostsViewModel: ViewModelType {
         let error: Driver<Error>
     }
 
-    private let useCase: AllPostsUseCase
+    private let useCase: PostsUseCase
     private let navigator: PostsNavigator
     
-    init(useCase: AllPostsUseCase, navigator: PostsNavigator) {
+    init(useCase: PostsUseCase, navigator: PostsNavigator) {
         self.useCase = useCase
         self.navigator = navigator
     }

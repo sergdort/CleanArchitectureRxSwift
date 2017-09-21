@@ -22,14 +22,14 @@ class DefaultPostsNavigator: PostsNavigator {
     
     func toPosts() {
         let vc = storyBoard.instantiateViewController(ofType: PostsViewController.self)
-        vc.viewModel = PostsViewModel(useCase: services.makeAllPostsUseCase(),
+        vc.viewModel = PostsViewModel(useCase: services.makePostsUseCase(),
                                       navigator: self)
         navigationController.pushViewController(vc, animated: true)
     }
 
     func toCreatePost() {
         let navigator = DefaultCreatePostNavigator(navigationController: navigationController)
-        let viewModel = CreatePostViewModel(createPostUseCase: services.makeCreatePostUseCase(),
+        let viewModel = CreatePostViewModel(createPostUseCase: services.makePostsUseCase(),
                 navigator: navigator)
         let vc = storyBoard.instantiateViewController(ofType: CreatePostViewController.self)
         vc.viewModel = viewModel
@@ -39,7 +39,7 @@ class DefaultPostsNavigator: PostsNavigator {
     
     func toPost(_ post: Post) {
         let vc = storyBoard.instantiateViewController(ofType: EditPostViewController.self)
-        let viewModel = EditPostViewModel(post: post, useCase: services.makeCreatePostUseCase())
+        let viewModel = EditPostViewModel(post: post, useCase: services.makePostsUseCase())
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
     }

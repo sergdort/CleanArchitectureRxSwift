@@ -2,7 +2,7 @@ import Foundation
 import Domain
 import RxSwift
 
-final class AllPostsUseCase: Domain.AllPostsUseCase {
+final class PostsUseCase: Domain.PostsUseCase {
     private let network: PostsNetwork
     private let cache: AbstractCache<Post>
 
@@ -22,6 +22,11 @@ final class AllPostsUseCase: Domain.AllPostsUseCase {
             }
         
         return fetchPosts.concat(stored)
+    }
+    
+    func save(post: Post) -> Observable<Void> {
+        return network.createPost(post: post)
+            .map { _ in }
     }
 }
 

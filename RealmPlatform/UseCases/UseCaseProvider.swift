@@ -10,14 +10,8 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
         self.configuration = configuration
     }
 
-    public func makeAllPostsUseCase() -> Domain.AllPostsUseCase {
+    public func makePostsUseCase() -> Domain.PostsUseCase {
         let repository = Repository<Post>(configuration: configuration)
-        return AllPostsUseCase(repository: repository)
+        return PostsUseCase(repository: repository)
     }
-
-    public func makeCreatePostUseCase() -> Domain.SavePostUseCase {
-        let repository = Repository<Post>(configuration: configuration)
-        return SavePostUseCase(repository: repository)
-    }
-
 }
