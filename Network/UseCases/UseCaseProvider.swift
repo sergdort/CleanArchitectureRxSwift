@@ -8,12 +8,8 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
         networkProvider = NetworkProvider()
     }
 
-    public func makeAllPostsUseCase() -> Domain.AllPostsUseCase {
-        return AllPostsUseCase(network: networkProvider.makePostsNetwork(),
+    public func makePostsUseCase() -> Domain.PostsUseCase {
+        return PostsUseCase(network: networkProvider.makePostsNetwork(),
                                cache: Cache<Post>(path: "allPosts"))
-    }
-
-    public func makeCreatePostUseCase() -> Domain.SavePostUseCase {
-        return SavePostUseCase(network: networkProvider.makePostsNetwork())
     }
 }

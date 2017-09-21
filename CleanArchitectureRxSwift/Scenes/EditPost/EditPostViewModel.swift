@@ -4,9 +4,9 @@ import RxCocoa
 
 final class EditPostViewModel: ViewModelType {
     private let post: Post
-    private let useCase: SavePostUseCase
+    private let useCase: PostsUseCase
 
-    init(post: Post, useCase: SavePostUseCase) {
+    init(post: Post, useCase: PostsUseCase) {
         self.post = post
         self.useCase = useCase
     }

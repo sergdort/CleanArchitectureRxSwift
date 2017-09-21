@@ -9,11 +9,7 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
         postRepository = Repository<Post>(context: coreDataStack.context)
     }
 
-    public func makeAllPostsUseCase() -> AllPostsUseCase {
-        return CDAllPostsUseCase(repository: postRepository)
-    }
-
-    public func makeCreatePostUseCase() -> SavePostUseCase {
-        return CDSavePostUseCase(repository: postRepository)
+    public func makePostsUseCase() -> Domain.PostsUseCase {
+        return PostsUseCase(repository: postRepository)
     }
 }

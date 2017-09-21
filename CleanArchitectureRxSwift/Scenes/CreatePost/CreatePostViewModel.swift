@@ -10,10 +10,10 @@ import RxCocoa
 import Domain
 
 final class CreatePostViewModel: ViewModelType {
-    private let createPostUseCase: SavePostUseCase
+    private let createPostUseCase: PostsUseCase
     private let navigator: CreatePostNavigator
 
-    init(createPostUseCase: SavePostUseCase, navigator: CreatePostNavigator) {
+    init(createPostUseCase: PostsUseCase, navigator: CreatePostNavigator) {
         self.createPostUseCase = createPostUseCase
         self.navigator = navigator
     }

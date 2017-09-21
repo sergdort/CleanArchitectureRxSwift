@@ -10,7 +10,5 @@ import Foundation
 
 public protocol UseCaseProvider {
     
-    func makeAllPostsUseCase() -> AllPostsUseCase
-    
-    func makeCreatePostUseCase() -> SavePostUseCase
+    func makePostsUseCase() -> PostsUseCase
 }
