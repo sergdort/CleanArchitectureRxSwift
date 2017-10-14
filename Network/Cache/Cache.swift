@@ -39,7 +39,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
     }
 
     private let path: String
-    private let chacheScheduler = SerialDispatchQueueScheduler(internalSerialQueueName: "com.CleanAchitecture.Network.Cache.queue")
+    private let cacheScheduler = SerialDispatchQueueScheduler(internalSerialQueueName: "com.CleanAchitecture.Network.Cache.queue")
 
     init(path: String) {
         self.path = path
@@ -64,7 +64,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
             }
             
             return Disposables.create()
-        }.subscribeOn(chacheScheduler)
+        }.subscribeOn(cacheScheduler)
     }
 
     override func save(objects: [T]) -> Completable {
@@ -85,7 +85,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
             }
             
             return Disposables.create()
-        }.subscribeOn(chacheScheduler)
+        }.subscribeOn(cacheScheduler)
     }
 
     override func fetch(withID id: String) -> Maybe<T> {
@@ -106,7 +106,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
             }
             observer(MaybeEvent<T>.success(object.asDomain()))
             return Disposables.create()
-        }.subscribeOn(chacheScheduler)
+        }.subscribeOn(cacheScheduler)
     }
 
     override func fetchObjects() -> Maybe<[T]> {
@@ -123,7 +123,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
             }
             observer(MaybeEvent.success(objects.map { $0.asDomain() }))
                 return Disposables.create()
-        }.subscribeOn(chacheScheduler)
+        }.subscribeOn(cacheScheduler)
     }
     
     private func directoryURL() -> URL? {
