@@ -10,9 +10,9 @@ import Domain
 import RxSwift
 
 public final class AlbumsNetwork {
-    private let network: Network<Album>
+    private let network: MyNetwork<Album>
 
-    init(network: Network<Album>) {
+    init(network: MyNetwork<Album>) {
         self.network = network
     }
 

@@ -10,9 +10,9 @@ import Domain
 import RxSwift
 
 public final class PhotosNetwork {
-    private let network: Network<Photo>
+    private let network: MyNetwork<Photo>
 
-    init(network: Network<Photo>) {
+    init(network: MyNetwork<Photo>) {
         self.network = network
     }
 

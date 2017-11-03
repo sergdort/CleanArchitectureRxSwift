@@ -13,7 +13,7 @@ import RxAlamofire
 import RxSwift
 import ObjectMapper
 
-final class Network<T: ImmutableMappable> {
+final class MyNetwork<T: ImmutableMappable> {
 
     private let endPoint: String
     private let scheduler: ConcurrentDispatchQueueScheduler

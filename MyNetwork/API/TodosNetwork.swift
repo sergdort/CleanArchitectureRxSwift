@@ -10,9 +10,9 @@ import Domain
 import RxSwift
 
 public final class TodosNetwork {
-    private let network: Network<Todo>
+    private let network: MyNetwork<Todo>
 
-    init(network: Network<Todo>) {
+    init(network: MyNetwork<Todo>) {
         self.network = network
     }
 

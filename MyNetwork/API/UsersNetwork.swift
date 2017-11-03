@@ -10,9 +10,9 @@ import Domain
 import RxSwift
 
 public final class UsersNetwork {
-    private let network: Network<User>
+    private let network: MyNetwork<User>
 
-    init(network: Network<User>) {
+    init(network: MyNetwork<User>) {
         self.network = network
     }
 
