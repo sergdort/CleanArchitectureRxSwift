@@ -16,32 +16,32 @@ final class NetworkProvider {
     }
 
     public func makeAlbumsNetwork() -> AlbumsNetwork {
-        let network = Network<Album>(apiEndpoint)
+        let network = MyNetwork<Album>(apiEndpoint)
         return AlbumsNetwork(network: network)
     }
 
     public func makeCommentsNetwork() -> CommentsNetwork {
-        let network = Network<Comment>(apiEndpoint)
+        let network = MyNetwork<Comment>(apiEndpoint)
         return CommentsNetwork(network: network)
     }
 
     public func makePhotosNetwork() -> PhotosNetwork {
-        let network = Network<Photo>(apiEndpoint)
+        let network = MyNetwork<Photo>(apiEndpoint)
         return PhotosNetwork(network: network)
     }
 
     public func makePostsNetwork() -> PostsNetwork {
-        let network = Network<Post>(apiEndpoint)
+        let network = MyNetwork<Post>(apiEndpoint)
         return PostsNetwork(network: network)
     }
 
     public func makeTodosNetwork() -> TodosNetwork {
-        let network = Network<Todo>(apiEndpoint)
+        let network = MyNetwork<Todo>(apiEndpoint)
         return TodosNetwork(network: network)
     }
 
     public func makeUsersNetwork() -> UsersNetwork {
-        let network = Network<User>(apiEndpoint)
+        let network = MyNetwork<User>(apiEndpoint)
         return UsersNetwork(network: network)
     }
 }

@@ -10,9 +10,9 @@ import Domain
 import RxSwift
 
 public final class CommentsNetwork {
-    private let network: Network<Comment>
+    private let network: MyNetwork<Comment>
 
-    init(network: Network<Comment>) {
+    init(network: MyNetwork<Comment>) {
         self.network = network
     }
 
