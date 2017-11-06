@@ -4,10 +4,11 @@ import RxSwift
 import Realm
 import RealmSwift
 
-final class PostsUseCase: Domain.PostsUseCase {
-    private let repository: AbstractRepository<Post>
+final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
 
-    init(repository: AbstractRepository<Post>) {
+    private let repository: Repository
+
+    init(repository: Repository) {
         self.repository = repository
     }
 
@@ -17,5 +18,9 @@ final class PostsUseCase: Domain.PostsUseCase {
     
     func save(post: Post) -> Observable<Void> {
         return repository.save(entity: post)
+    }
+
+    func delete(post: Post) -> Observable<Void> {
+        return repository.delete(entity: post)
     }
 }

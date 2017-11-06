@@ -1,22 +1,17 @@
 import Foundation
 import CoreData
 import RxSwift
+import QueryKit
 
-func abstractMethod() -> Never {
-    fatalError("abstract method")
+protocol AbstractRepository {
+    associatedtype T
+    func query(with predicate: NSPredicate?,
+               sortDescriptors: [NSSortDescriptor]?) -> Observable<[T]>
+    func save(entity: T) -> Observable<Void>
+    func delete(entity: T) -> Observable<Void>
 }
 
-class AbstractRepository<T> {
-    func query(with predicate: NSPredicate? = nil,
-               sortDescriptors: [NSSortDescriptor]? = nil) -> Observable<[T]> {
-        abstractMethod()
-    }
-    func save(entity: T) -> Observable<Void> {
-        abstractMethod()
-    }
-}
-
-final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T == T.CoreDataType.DomainType {
+final class Repository<T: CoreDataRepresentable>: AbstractRepository where T == T.CoreDataType.DomainType {
     private let context: NSManagedObjectContext
     private let scheduler: ContextScheduler
 
@@ -25,7 +20,7 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
         self.scheduler = ContextScheduler(context: context)
     }
 
-    override func query(with predicate: NSPredicate? = nil,
+    func query(with predicate: NSPredicate? = nil,
                         sortDescriptors: [NSSortDescriptor]? = nil) -> Observable<[T]> {
         let request = T.CoreDataType.fetchRequest()
         request.predicate = predicate
@@ -35,10 +30,17 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository<T> where T 
             .subscribeOn(scheduler)
     }
 
-    override func save(entity: T) -> Observable<Void> {
+    func save(entity: T) -> Observable<Void> {
         return entity.sync(in: context)
             .mapToVoid()
             .flatMapLatest(context.rx.save)
             .subscribeOn(scheduler)
     }
+
+    func delete(entity: T) -> Observable<Void> {
+        return entity.sync(in: context)
+            .map({$0 as! NSManagedObject})
+            .flatMapLatest(context.rx.delete)
+    }
+
 }

@@ -36,10 +36,11 @@ class DefaultPostsNavigator: PostsNavigator {
         let nc = UINavigationController(rootViewController: vc)
         navigationController.present(nc, animated: true, completion: nil)
     }
-    
+
     func toPost(_ post: Post) {
+        let navigator = DefaultEditPostNavigator(navigationController: navigationController)
+        let viewModel = EditPostViewModel(post: post, useCase: services.makePostsUseCase(), navigator: navigator)
         let vc = storyBoard.instantiateViewController(ofType: EditPostViewController.self)
-        let viewModel = EditPostViewModel(post: post, useCase: services.makePostsUseCase())
         vc.viewModel = viewModel
         navigationController.pushViewController(vc, animated: true)
     }

@@ -8,6 +8,7 @@ final class RMPost: Object {
     dynamic var userId: String = ""
     dynamic var title: String = ""
     dynamic var body: String = ""
+    dynamic var createdAt: String = ""
 
     override class func primaryKey() -> String? {
         return "uid"
@@ -19,6 +20,7 @@ extension RMPost {
     static var body: Attribute<String> { return Attribute("body")}
     static var userId: Attribute<String> { return Attribute("userId")}
     static var uid: Attribute<String> { return Attribute("uid")}
+    static var createdAt: Attribute<String> { return Attribute("createdAt")}
 }
 
 extension RMPost: DomainConvertibleType {
@@ -26,7 +28,8 @@ extension RMPost: DomainConvertibleType {
         return Post(body: body,
                     title: title,
                     uid: uid,
-                    userId: userId)
+                    userId: userId,
+                    createdAt: createdAt)
     }
 }
 
@@ -37,6 +40,7 @@ extension Post: RealmRepresentable {
             object.userId = userId
             object.title = title
             object.body = body
+            object.createdAt = createdAt
         }
     }
 }

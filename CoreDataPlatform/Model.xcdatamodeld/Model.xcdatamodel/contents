@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDAddress" representedClassName=".CDAddress" syncable="YES">
         <attribute name="city" attributeType="String" syncable="YES"/>
         <attribute name="street" attributeType="String" syncable="YES"/>
@@ -40,6 +40,7 @@
     </entity>
     <entity name="CDPost" representedClassName=".CDPost" syncable="YES">
         <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="uid" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="userId" attributeType="String" syncable="YES"/>
@@ -67,7 +68,7 @@
         <element name="CDCompany" positionX="-18" positionY="45" width="128" height="105"/>
         <element name="CDLocation" positionX="-36" positionY="27" width="128" height="90"/>
         <element name="CDPhoto" positionX="0" positionY="54" width="128" height="120"/>
-        <element name="CDPost" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="CDPost" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="CDTodo" positionX="18" positionY="63" width="128" height="105"/>
         <element name="CDUser" positionX="36" positionY="81" width="128" height="165"/>
     </elements>

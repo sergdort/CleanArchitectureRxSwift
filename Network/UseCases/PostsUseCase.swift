@@ -2,11 +2,11 @@ import Foundation
 import Domain
 import RxSwift
 
-final class PostsUseCase: Domain.PostsUseCase {
+final class PostsUseCase<Cache>: Domain.PostsUseCase where Cache: AbstractCache, Cache.T == Post {
     private let network: PostsNetwork
-    private let cache: AbstractCache<Post>
+    private let cache: Cache
 
-    init(network: PostsNetwork, cache: AbstractCache<Post>) {
+    init(network: PostsNetwork, cache: Cache) {
         self.network = network
         self.cache = cache
     }
@@ -27,6 +27,10 @@ final class PostsUseCase: Domain.PostsUseCase {
     func save(post: Post) -> Observable<Void> {
         return network.createPost(post: post)
             .map { _ in }
+    }
+
+    func delete(post: Post) -> Observable<Void> {
+        return network.deletePost(postId: post.uid).map({_ in})
     }
 }
 

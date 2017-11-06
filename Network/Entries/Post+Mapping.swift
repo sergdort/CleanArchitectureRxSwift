@@ -17,6 +17,7 @@ extension Post: ImmutableMappable, Identifiable {
         title = try map.value("title")
         uid = try map.value("id", using: UidTransform())
         userId = try map.value("userId", using: UidTransform())
+        createdAt = (try? map.value("createdAt", using: UidTransform())) ?? ""
     }
 }
 
@@ -32,17 +33,20 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
         static let title = "title"
         static let uid = "uid"
         static let userId = "userId"
+        static let createdAt = "createdAt"
     }
     let body: String
     let title: String
     let uid: String
     let userId: String
-    
+    let createdAt: String
+
     init(with domain: Post) {
         self.body = domain.body
         self.title = domain.title
         self.uid = domain.uid
         self.userId = domain.userId
+        self.createdAt = domain.createdAt
     }
     
     init?(coder aDecoder: NSCoder) {
@@ -50,7 +54,8 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
             let body = aDecoder.decodeObject(forKey: Keys.body) as? String,
             let title = aDecoder.decodeObject(forKey: Keys.title) as? String,
             let uid = aDecoder.decodeObject(forKey: Keys.uid) as? String,
-            let userId = aDecoder.decodeObject(forKey: Keys.userId) as? String
+            let userId = aDecoder.decodeObject(forKey: Keys.userId) as? String,
+            let createdAt = aDecoder.decodeObject(forKey: Keys.createdAt) as? String
         else {
             return nil
         }
@@ -58,6 +63,7 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
         self.title = title
         self.uid = uid
         self.userId = userId
+        self.createdAt = createdAt
     }
     
     func encode(with aCoder: NSCoder) {
@@ -65,12 +71,14 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
         aCoder.encode(title, forKey: Keys.title)
         aCoder.encode(uid, forKey: Keys.uid)
         aCoder.encode(userId, forKey: Keys.userId)
+        aCoder.encode(createdAt, forKey: Keys.createdAt)
     }
     
     func asDomain() -> Post {
         return Post(body: body,
                     title: title,
                     uid: uid,
-                    userId: userId)
+                    userId: userId,
+                    createdAt: createdAt)
     }
 }

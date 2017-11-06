@@ -4,31 +4,16 @@ import RealmSwift
 import RxSwift
 import RxRealm
 
-func abstractMethod() -> Never {
-    fatalError("abstract method")
-}
-
-class AbstractRepository<T> {
-
-    func queryAll() -> Observable<[T]> {
-        abstractMethod()
-    }
-
+protocol AbstractRepository {
+    associatedtype T
+    func queryAll() -> Observable<[T]>
     func query(with predicate: NSPredicate,
-               sortDescriptors: [NSSortDescriptor] = []) -> Observable<[T]> {
-        abstractMethod()
-    }
-
-    func save(entity: T) -> Observable<Void> {
-        abstractMethod()
-    }
-
-    func delete(entity: T) -> Observable<Void> {
-        abstractMethod()
-    }
+               sortDescriptors: [NSSortDescriptor]) -> Observable<[T]>
+    func save(entity: T) -> Observable<Void>
+    func delete(entity: T) -> Observable<Void>
 }
 
-final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T.RealmType.DomainType, T.RealmType: Object {
+final class Repository<T:RealmRepresentable>: AbstractRepository where T == T.RealmType.DomainType, T.RealmType: Object {
     private let configuration: Realm.Configuration
     private let scheduler: RunLoopThreadScheduler
 
@@ -43,7 +28,7 @@ final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T
         print("File 📁 url: \(RLMRealmPathForFile("default.realm"))")
     }
 
-    override func queryAll() -> Observable<[T]> {
+    func queryAll() -> Observable<[T]> {
         return Observable.deferred {
                     let realm = self.realm
                     let objects = realm.objects(T.RealmType.self)
@@ -54,7 +39,7 @@ final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T
                 .subscribeOn(scheduler)
     }
 
-    override func query(with predicate: NSPredicate,
+    func query(with predicate: NSPredicate,
                         sortDescriptors: [NSSortDescriptor] = []) -> Observable<[T]> {
         return Observable.deferred {
                     let realm = self.realm
@@ -70,18 +55,16 @@ final class Repository<T:RealmRepresentable>: AbstractRepository<T> where T == T
                 .subscribeOn(scheduler)
     }
 
-    override func save(entity: T) -> Observable<Void> {
+    func save(entity: T) -> Observable<Void> {
         return Observable.deferred {
-            let realm = self.realm
-            return realm.rx.save(entity: entity)
+            return self.realm.rx.save(entity: entity)
         }.subscribeOn(scheduler)
     }
 
-    override func delete(entity: T) -> Observable<Void> {
+    func delete(entity: T) -> Observable<Void> {
         return Observable.deferred {
             return self.realm.rx.delete(entity: entity)
-        }
-        .subscribeOn(scheduler)
+        }.subscribeOn(scheduler)
     }
 
 }

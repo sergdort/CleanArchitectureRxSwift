@@ -20,5 +20,5 @@ extension CDPost {
     @NSManaged public var title: String?
     @NSManaged public var uid: String?
     @NSManaged public var userId: String?
-
+    @NSManaged public var createdAt: String?
 }
