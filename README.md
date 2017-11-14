@@ -239,6 +239,9 @@ The example app is Post/TODOs app which uses `Realm`, `CoreData` and `Network` a
 | -------- | ----- | ------- |
 |![](Architecture/CoreData.gif) | ![](Architecture/Realm.gif) | ![](Architecture/Network.gif) |
 
+### Modularization
+
+The corner stone of **Clean Architecture** is modularization, as you can hide implementation detail under `internal` access layer. Further read of this topic [here](https://github.com/microfeatures/guidelines)
 
 ### TODO:
 
