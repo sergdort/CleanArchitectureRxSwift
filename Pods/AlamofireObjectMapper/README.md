@@ -7,7 +7,7 @@ AlamofireObjectMapper
 
 An extension to [Alamofire](https://github.com/Alamofire/Alamofire) which automatically converts JSON response data into swift objects using [ObjectMapper](https://github.com/Hearst-DD/ObjectMapper/). 
 
-#Usage
+# Usage
 
 Given a URL which returns weather data in the following form:
 ```
@@ -35,6 +35,8 @@ Given a URL which returns weather data in the following form:
 
 You can use the extension as the follows:
 ```swift
+import AlamofireObjectMapper
+
 let URL = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/d8bb95982be8a11a2308e779bb9a9707ebe42ede/sample_json"
 Alamofire.request(URL).responseObject { (response: DataResponse<WeatherResponse>) in
 
@@ -53,6 +55,8 @@ Alamofire.request(URL).responseObject { (response: DataResponse<WeatherResponse>
 The `WeatherResponse` object in the completion handler is a custom object which you define. The only requirement is that the object must conform to [ObjectMapper's](https://github.com/Hearst-DD/ObjectMapper/) `Mappable` protocol. In the above example, the `WeatherResponse` object looks like the following:
 
 ```swift
+import ObjectMapper
+
 class WeatherResponse: Mappable {
     var location: String?
     var threeDayForecast: [Forecast]?
@@ -94,7 +98,24 @@ The `responseObject` function has 3 optional parameters and a required completio
 - `mapToObject`: An object to perform the mapping on to
 - `completionHandler`: A closure to be executed once the request has finished and the data has been mapped by ObjectMapper.
 
-###KeyPath
+### Easy Mapping of Nested Objects
+
+AlamofireObjectMapper supports dot notation within keys for easy mapping of nested objects. Given the following JSON String:
+```json
+"distance" : {
+     "text" : "102 ft",
+     "value" : 31
+}
+```
+You can access the nested objects as follows:
+```swift
+func mapping(map: Map) {
+    distance <- map["distance.value"]
+}
+```
+[See complete documentation](https://github.com/Hearst-DD/ObjectMapper#easy-mapping-of-nested-objects)
+
+### KeyPath
 
 The `keyPath` variable is used to drill down into a JSON response and only map the data found at that `keyPath`. It supports nested values such as `data.weather` to drill down several levels in a JSON response.
 ```swift
@@ -116,7 +137,7 @@ Alamofire.request(URL).responseObject(keyPath: "data") { (response: DataResponse
 }
 ```
 
-#Array Responses
+# Array Responses
 If you have an endpoint that returns data in `Array` form you can map it with the following function:
 ```swift
 public func responseArray<T: Mappable>(queue queue: dispatch_queue_t? = nil, keyPath: String? = nil, completionHandler: DataResponse<[T]> -> Void) -> Self
@@ -159,7 +180,7 @@ Alamofire.request(URL).responseArray { (response: DataResponse<[Forecast]>) in
 
 ```
 
-#Installation
+# Installation
 AlamofireObjectMapper can be added to your project using [CocoaPods](https://cocoapods.org/) by adding the following line to your Podfile:
 ```
 pod 'AlamofireObjectMapper', '~> 4.0'
