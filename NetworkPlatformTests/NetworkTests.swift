@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Network
+@testable import NetworkPlatform
 
 class NetworkTests: XCTestCase {
     

@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////
 //
-// Copyright 2016 Realm Inc.
+// Copyright 2017 Realm Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,21 +16,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
-#import "RLMSyncUtil_Private.h"
+#ifndef REALM_OS_FEATURE_CHECKS_HPP
+#define REALM_OS_FEATURE_CHECKS_HPP
 
-NS_ASSUME_NONNULL_BEGIN
+#include <realm/version.hpp>
 
-@interface RLMSyncErrorResponseModel : NSObject RLM_SYNC_UNINITIALIZABLE
+#ifndef REALM_VERSION_MAJOR
+#define REALM_VERSION_MAJOR REALM_VER_MAJOR
+#endif
 
-@property (nonatomic, readonly, assign) NSInteger status;
-@property (nonatomic, readonly, assign) NSInteger code;
-@property (nonatomic, readonly, copy) NSString *title;
-@property (nonatomic, readonly, copy) NSString *hint;
+#define REALM_HAVE_COMPOSABLE_DISTINCT (REALM_VERSION_MAJOR > 2)
 
-- (instancetype)initWithDictionary:(NSDictionary *)jsonDictionary;
+#if REALM_ENABLE_SYNC
 
-@end
+#include <realm/sync/version.hpp>
+#define REALM_HAVE_SYNC_STABLE_IDS (REALM_SYNC_VER_MAJOR > 1)
 
+#else
 
-NS_ASSUME_NONNULL_END
+#define REALM_HAVE_SYNC_STABLE_IDS 0
+
+#endif // REALM_ENABLE_SYNC
+
+#endif // REALM_OS_FEATURE_CHECKS_HPP

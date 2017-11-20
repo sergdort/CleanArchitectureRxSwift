@@ -1,6 +1,6 @@
 import Foundation
 import Domain
-import Network
+import NetworkPlatform
 import CoreDataPlatform
 import RealmPlatform
 
@@ -9,12 +9,12 @@ final class Application {
 
     private let coreDataUseCaseProvider: Domain.UseCaseProvider
     private let realmUseCaseProvider: Domain.UseCaseProvider
-    private let networkUseCaseProvider: Network.UseCaseProvider
+    private let networkUseCaseProvider: NetworkPlatform.UseCaseProvider
 
     private init() {
         self.coreDataUseCaseProvider = CoreDataPlatform.UseCaseProvider()
         self.realmUseCaseProvider = RealmPlatform.UseCaseProvider()
-        self.networkUseCaseProvider = Network.UseCaseProvider()
+        self.networkUseCaseProvider = NetworkPlatform.UseCaseProvider()
     }
 
     func configureMainInterface(in window: UIWindow) {

@@ -34,14 +34,14 @@ private func setValue(_ value: Any, map: Map) {
 
 private func setValue(_ value: Any, key: String, checkForNestedKeys: Bool, delimiter: String, dictionary: inout [String : Any]) {
 	if checkForNestedKeys {
-		let keyComponents = ArraySlice(key.components(separatedBy: delimiter).filter { !$0.isEmpty }.map { $0.characters })
+		let keyComponents = ArraySlice(key.components(separatedBy: delimiter).filter { !$0.isEmpty }.map { $0 })
 		setValue(value, forKeyPathComponents: keyComponents, dictionary: &dictionary)
 	} else {
 		dictionary[key] = value
 	}
 }
 
-private func setValue(_ value: Any, forKeyPathComponents components: ArraySlice<String.CharacterView.SubSequence>, dictionary: inout [String : Any]) {
+private func setValue(_ value: Any, forKeyPathComponents components: ArraySlice<String>, dictionary: inout [String : Any]) {
 	if components.isEmpty {
 		return
 	}
@@ -141,13 +141,13 @@ internal final class ToJSON {
 		}
 	}
 	
-	class func objectSet<N: BaseMappable>(_ field: Set<N>, map: Map) where N: Hashable {
+	class func objectSet<N: BaseMappable>(_ field: Set<N>, map: Map) {
 		let JSONObjects = Mapper(context: map.context, shouldIncludeNilValues: map.shouldIncludeNilValues).toJSONSet(field)
 		
 		setValue(JSONObjects, map: map)
 	}
 	
-	class func optionalObjectSet<N: BaseMappable>(_ field: Set<N>?, map: Map) where N: Hashable {
+	class func optionalObjectSet<N: BaseMappable>(_ field: Set<N>?, map: Map) {
 		if let field = field {
 			objectSet(field, map: map)
 		}

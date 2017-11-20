@@ -96,7 +96,7 @@ public struct RealmChangeset {
     public let updated: [Int]
 }
 
-public extension ObservableType where E: NotificationEmitter, E.ElementType: Object {
+public extension ObservableType where E: NotificationEmitter {
 
     @available(*, deprecated, renamed: "collection(from:synchronousStart:)")
     public static func from(_ collection: E, scheduler: ImmediateSchedulerType = CurrentThreadScheduler.instance) -> Observable<E> {
