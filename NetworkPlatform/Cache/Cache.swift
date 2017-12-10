@@ -1,28 +1,15 @@
 import Foundation
 import RxSwift
 
-func abstractMethod() -> Never {
-    fatalError("abstract method")
+protocol AbstractCache {
+    associatedtype T
+    func save(object: T) -> Completable
+    func save(objects: [T]) -> Completable
+    func fetch(withID id: String) -> Maybe<T>
+    func fetchObjects() -> Maybe<[T]>
 }
 
-class AbstractCache<T> {
-    func save(object: T) -> Completable {
-        abstractMethod()
-    }
-    func save(objects: [T]) -> Completable {
-        abstractMethod()
-    }
-
-    func fetch(withID id: String) -> Maybe<T> {
-        abstractMethod()
-    }
-
-    func fetchObjects() -> Maybe<[T]> {
-        abstractMethod()
-    }
-}
-
-final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainType {
+final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
     enum Error: Swift.Error {
         case saveObject(T)
         case saveObjects([T])
@@ -45,7 +32,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
         self.path = path
     }
 
-    override func save(object: T) -> Completable {
+    func save(object: T) -> Completable {
         return Completable.create { (observer) -> Disposable in
             guard let url = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -67,7 +54,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
         }.subscribeOn(cacheScheduler)
     }
 
-    override func save(objects: [T]) -> Completable {
+    func save(objects: [T]) -> Completable {
         return Completable.create { (observer) -> Disposable in
             guard let directoryURL = self.directoryURL() else {
                 observer(.completed)
@@ -88,7 +75,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
         }.subscribeOn(cacheScheduler)
     }
 
-    override func fetch(withID id: String) -> Maybe<T> {
+    func fetch(withID id: String) -> Maybe<T> {
         return Maybe<T>.create { (observer) -> Disposable in
             guard let url = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -109,7 +96,7 @@ final class Cache<T: Encodable>: AbstractCache<T> where T == T.Encoder.DomainTyp
         }.subscribeOn(cacheScheduler)
     }
 
-    override func fetchObjects() -> Maybe<[T]> {
+    func fetchObjects() -> Maybe<[T]> {
         return Maybe<[T]>.create { (observer) -> Disposable in
             guard let directoryURL = self.directoryURL() else {
                 observer(.completed)

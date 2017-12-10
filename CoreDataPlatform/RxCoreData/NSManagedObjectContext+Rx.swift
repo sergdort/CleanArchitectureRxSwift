@@ -37,6 +37,16 @@ extension Reactive where Base: NSManagedObjectContext {
         }
     }
 
+    func delete<T: NSManagedObject>(entity: T) -> Observable<Void> {
+        return Observable.create { observer in
+            self.base.delete(entity)
+            observer.onNext()
+            return Disposables.create()
+        }.flatMapLatest {
+            self.save()
+        }
+    }
+
     func first<T: NSFetchRequestResult>(ofType: T.Type = T.self, with predicate: NSPredicate) -> Observable<T?> {
         return Observable.deferred {
             let entityName = String(describing: T.self)

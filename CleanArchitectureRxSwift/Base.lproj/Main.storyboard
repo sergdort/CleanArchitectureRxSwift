@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wsn-Eu-k9m" id="54K-Ut-RUc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="irm-SF-QMY">
@@ -224,9 +225,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FpO-rx-nwd">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="wmL-GG-UqC"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Edit" id="wmL-GG-UqC"/>
+                            <barButtonItem systemItem="trash" id="uEG-LJ-KaS" userLabel="Delete Button"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="uEG-LJ-KaS" id="NO6-Dy-opq"/>
                         <outlet property="detailsTextView" destination="vu6-3Q-g43" id="0CY-zu-MDS"/>
                         <outlet property="editButton" destination="wmL-GG-UqC" id="cmt-p1-9HO"/>
                         <outlet property="titleTextField" destination="Z0e-ow-m8L" id="7Xb-cG-ojy"/>

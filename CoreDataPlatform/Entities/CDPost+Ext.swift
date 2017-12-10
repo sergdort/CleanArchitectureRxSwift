@@ -18,6 +18,7 @@ extension CDPost {
     static var body: Attribute<String> { return Attribute("body")}
     static var userId: Attribute<String> { return Attribute("userId")}
     static var uid: Attribute<String> { return Attribute("uid")}
+    static var createdAt: Attribute<String> { return Attribute("createdAt")}
 }
 
 extension CDPost: DomainConvertibleType {
@@ -25,7 +26,8 @@ extension CDPost: DomainConvertibleType {
         return Post(body: body!,
                     title: title!,
                     uid: uid!,
-                    userId: userId!)
+                    userId: userId!,
+                    createdAt: createdAt!)
     }
 }
 
@@ -43,5 +45,6 @@ extension Post: CoreDataRepresentable {
         entity.title = title
         entity.body = body
         entity.userId = userId
+        entity.createdAt = createdAt
     }
 }

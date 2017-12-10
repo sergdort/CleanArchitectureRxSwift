@@ -87,6 +87,7 @@
 		8A148DC8CA606C8F34807082 /* Pods_NetworkPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763D40E220B6FF96E969B284 /* Pods_NetworkPlatform.framework */; };
 		8B0507E0C0AB1064B7372844 /* Pods_RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006BDFA0A26FDD0EBA50E777 /* Pods_RealmPlatform.framework */; };
 		9CBC9DB91790C744BC17C099 /* Pods_CleanArchitectureRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550BE321D44EC009D885BBE1 /* Pods_CleanArchitectureRxSwiftTests.framework */; };
+		B60A97CE1FB0C17600009C51 /* EditPostNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60A97CD1FB0C17600009C51 /* EditPostNavigator.swift */; };
 		BC8D07731E9309D000B4D96A /* UidTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D07721E9309D000B4D96A /* UidTransform.swift */; };
 		BCD8C8AC1E73421300F79E3E /* Address+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AB1E73421300F79E3E /* Address+Mapping.swift */; };
 		BCD8C8AE1E73421E00F79E3E /* Album+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C8AD1E73421E00F79E3E /* Album+Mapping.swift */; };
@@ -375,6 +376,7 @@
 		A8E1F5AE93A531609690A036 /* Pods-RealmPlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0092014AEC057C48B9745EA /* Pods-DomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DomainTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B5764703F1E249BEDFC31014 /* Pods_DomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B60A97CD1FB0C17600009C51 /* EditPostNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostNavigator.swift; sourceTree = "<group>"; };
 		BA0D3602A9ABB65C8AF19365 /* Pods_RealmPlatformTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmPlatformTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC15FAFCFFF7EB7017614B45 /* Pods-NetworkPlatformTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlatformTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkPlatformTests/Pods-NetworkPlatformTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC8D07721E9309D000B4D96A /* UidTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UidTransform.swift; sourceTree = "<group>"; };
@@ -567,13 +569,6 @@
 				25707C701F23802C00F852F7 /* Encodable.swift */,
 			);
 			path = Encodable;
-			sourceTree = "<group>";
-		};
-		25707C721F23807C00F852F7 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Repository;
 			sourceTree = "<group>";
 		};
 		25707C731F2380E500F852F7 /* Cache */ = {
@@ -892,6 +887,7 @@
 		515F9401ED57113EEF898228 /* EditPost */ = {
 			isa = PBXGroup;
 			children = (
+				B60A97CD1FB0C17600009C51 /* EditPostNavigator.swift */,
 				2526A7151E5A2CD30078870E /* EditPostViewController.swift */,
 				515F9ACD2D474324015B691C /* EditPostViewModel.swift */,
 			);
@@ -1033,7 +1029,6 @@
 			isa = PBXGroup;
 			children = (
 				25707C731F2380E500F852F7 /* Cache */,
-				25707C721F23807C00F852F7 /* Repository */,
 				BD107F671E72A0DC0043D900 /* API */,
 				BD107F731E72B1790043D900 /* Entries */,
 				BD50EEF31E7AD99400CBEBD4 /* Network */,
@@ -2031,6 +2026,7 @@
 				515F977483234BB090F6D704 /* PostsViewController.swift in Sources */,
 				515F9083DB52FEDFEE97A5E6 /* PostsViewModel.swift in Sources */,
 				515F9590146BEE2A0626CFF1 /* PostTableViewCell.swift in Sources */,
+				B60A97CE1FB0C17600009C51 /* EditPostNavigator.swift in Sources */,
 				515F95CFED58045AB6B168A4 /* CreatePostViewController.swift in Sources */,
 				7BA4DC961F3AEA380043DAB6 /* PostItemViewModel.swift in Sources */,
 				515F9625B58BCFB77F4AF678 /* CreatePostNavigator.swift in Sources */,
