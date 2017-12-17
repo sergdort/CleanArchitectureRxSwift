@@ -9,7 +9,7 @@ final class Application {
 
     private let coreDataUseCaseProvider: Domain.UseCaseProvider
     private let realmUseCaseProvider: Domain.UseCaseProvider
-    private let networkUseCaseProvider: NetworkPlatform.UseCaseProvider
+    private let networkUseCaseProvider: Domain.UseCaseProvider
 
     private init() {
         self.coreDataUseCaseProvider = CoreDataPlatform.UseCaseProvider()
