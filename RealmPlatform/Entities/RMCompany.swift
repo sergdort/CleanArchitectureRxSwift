@@ -13,9 +13,9 @@ import Realm
 
 final class RMCompany: Object {
 
-    dynamic var bs: String = ""
-    dynamic var catchPhrase: String = ""
-    dynamic var name: String = ""
+    @objc dynamic var bs: String = ""
+    @objc dynamic var catchPhrase: String = ""
+    @objc dynamic var name: String = ""
 }
 
 extension RMCompany {

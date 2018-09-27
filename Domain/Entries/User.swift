@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct User {
+public struct User: Codable {
 
     public let address: Address
     public let company: Company
@@ -35,6 +35,35 @@ public struct User {
         self.uid = uid
         self.username = username
         self.website = website
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case address
+        case company
+        case email
+        case name
+        case phone
+        case uid
+        case username
+        case website
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        address = try container.decode(Address.self, forKey: .address)
+        company = try container.decode(Company.self, forKey: .company)
+        email = try container.decode(String.self, forKey: .email)
+        name = try container.decode(String.self, forKey: .name)
+        phone = try container.decode(String.self, forKey: .phone)
+        username = try container.decode(String.self, forKey: .username)
+        website = try container.decode(String.self, forKey: .website)
+
+        if let uid = try container.decodeIfPresent(Int.self, forKey: .uid) {
+            self.uid = "\(uid)"
+        } else {
+            uid = try container.decodeIfPresent(String.self, forKey: .uid) ?? ""
+        }
     }
 }
 

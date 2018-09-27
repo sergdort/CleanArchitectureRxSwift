@@ -7,17 +7,18 @@
 //
 
 import Domain
-import ObjectMapper
 
-extension Post: ImmutableMappable, Identifiable {
+extension Post: Identifiable {}
 
-    // JSON -> Object
-    public init(map: Map) throws {
-        body = try map.value("body")
-        title = try map.value("title")
-        uid = try map.value("id", using: UidTransform())
-        userId = try map.value("userId", using: UidTransform())
-        createdAt = (try? map.value("createdAt", using: UidTransform())) ?? ""
+extension Post {
+    func toJSON() -> [String: Any] {
+        return [
+            "body": body,
+            "title": title,
+            "uid": uid,
+            "userId": userId,
+            "createdAt": createdAt
+        ]
     }
 }
 

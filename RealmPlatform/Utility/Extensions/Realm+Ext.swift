@@ -25,7 +25,7 @@ extension Reactive where Base: Realm {
                 try self.base.write {
                     self.base.add(entity.asRealm(), update: update)
                 }
-                observer.onNext()
+                observer.onNext(())
                 observer.onCompleted()
             } catch {
                 observer.onError(error)
@@ -43,7 +43,7 @@ extension Reactive where Base: Realm {
                     self.base.delete(object)
                 }
 
-                observer.onNext()
+                observer.onNext(())
                 observer.onCompleted()
             } catch {
                 observer.onError(error)

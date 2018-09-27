@@ -13,10 +13,10 @@ import Realm
 
 final class RMTodo: Object {
 
-    dynamic var completed: Bool = false
-    dynamic var title: String = ""
-    dynamic var uid: String = ""
-    dynamic var userId: String = ""
+    @objc dynamic var completed: Bool = false
+    @objc dynamic var title: String = ""
+    @objc dynamic var uid: String = ""
+    @objc dynamic var userId: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"

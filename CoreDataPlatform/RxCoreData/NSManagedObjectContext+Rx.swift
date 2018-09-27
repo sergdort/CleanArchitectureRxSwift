@@ -29,7 +29,7 @@ extension Reactive where Base: NSManagedObjectContext {
         return Observable.create { observer in
             do {
                 try self.base.save()
-                observer.onNext()
+                observer.onNext(())
             } catch {
                 observer.onError(error)
             }
@@ -40,7 +40,7 @@ extension Reactive where Base: NSManagedObjectContext {
     func delete<T: NSManagedObject>(entity: T) -> Observable<Void> {
         return Observable.create { observer in
             self.base.delete(entity)
-            observer.onNext()
+            observer.onNext(())
             return Disposables.create()
         }.flatMapLatest {
             self.save()
@@ -61,7 +61,7 @@ extension Reactive where Base: NSManagedObjectContext {
         }
     }
     
-    func sync<C: CoreDataRepresentable, P: Persistable>(entity: C,
+    func sync<C: CoreDataRepresentable, P>(entity: C,
                 update: @escaping (P) -> Void) -> Observable<P> where C.CoreDataType == P {
         let predicate: NSPredicate = P.primaryAttribute == entity.uid
         return first(ofType: P.self, with: predicate)

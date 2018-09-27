@@ -11,9 +11,8 @@ import Alamofire
 import Domain
 import RxAlamofire
 import RxSwift
-import ObjectMapper
 
-final class Network<T: ImmutableMappable> {
+final class Network<T: Decodable> {
 
     private let endPoint: String
     private let scheduler: ConcurrentDispatchQueueScheduler
@@ -26,22 +25,22 @@ final class Network<T: ImmutableMappable> {
     func getItems(_ path: String) -> Observable<[T]> {
         let absolutePath = "\(endPoint)/\(path)"
         return RxAlamofire
-            .json(.get, absolutePath)
+            .data(.get, absolutePath)
             .debug()
             .observeOn(scheduler)
-            .map({ json -> [T] in
-                return try Mapper<T>().mapArray(JSONObject: json)
+            .map({ data -> [T] in
+                return try JSONDecoder().decode([T].self, from: data)
             })
     }
 
     func getItem(_ path: String, itemId: String) -> Observable<T> {
         let absolutePath = "\(endPoint)/\(path)/\(itemId)"
         return RxAlamofire
-            .request(.get, absolutePath)
+            .data(.get, absolutePath)
             .debug()
             .observeOn(scheduler)
-            .map({ json -> T in
-                return try Mapper<T>().map(JSONObject: json)
+            .map({ data -> T in
+                return try JSONDecoder().decode(T.self, from: data)
             })
     }
 
@@ -51,8 +50,9 @@ final class Network<T: ImmutableMappable> {
             .request(.post, absolutePath, parameters: parameters)
             .debug()
             .observeOn(scheduler)
-            .map({ json -> T in
-                return try Mapper<T>().map(JSONObject: json)
+            .data()
+            .map({ data -> T in
+                return try JSONDecoder().decode(T.self, from: data)
             })
     }
 
@@ -62,8 +62,9 @@ final class Network<T: ImmutableMappable> {
             .request(.put, absolutePath, parameters: parameters)
             .debug()
             .observeOn(scheduler)
-            .map({ json -> T in
-                return try Mapper<T>().map(JSONObject: json)
+            .data()
+            .map({ data -> T in
+                return try JSONDecoder().decode(T.self, from: data)
             })
     }
 
@@ -73,8 +74,9 @@ final class Network<T: ImmutableMappable> {
             .request(.delete, absolutePath)
             .debug()
             .observeOn(scheduler)
-            .map({ json -> T in
-                return try Mapper<T>().map(JSONObject: json)
+            .data()
+            .map({ data -> T in
+                return try JSONDecoder().decode(T.self, from: data)
             })
     }
 }

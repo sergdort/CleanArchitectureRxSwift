@@ -1,17 +1,17 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '11.0'
 
 def rx_swift
-    pod 'RxSwift', '~> 3.0'
+    pod 'RxSwift', '~> 4.0'
 end
 
 def rx_cocoa
-    pod 'RxCocoa', '~> 3.0'
+    pod 'RxCocoa', '~> 4.0'
 end
 
 def test_pods
-    pod 'RxTest', '~> 3.0'
-    pod 'RxBlocking', '~> 3.0'
+    pod 'RxTest'
+    pod 'RxBlocking'
     pod 'Nimble'
 end
 
@@ -59,8 +59,6 @@ target 'NetworkPlatform' do
     rx_swift
     pod 'Alamofire'
     pod 'RxAlamofire'
-    pod 'ObjectMapper'
-    pod 'AlamofireObjectMapper'
 
     target 'NetworkPlatformTests' do
         inherit! :search_paths
@@ -73,10 +71,10 @@ target 'RealmPlatform' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   rx_swift
-  pod 'RxRealm'
+  pod 'RxRealm', '~> 0.7.1'
   pod 'QueryKit'
-  pod 'RealmSwift'
-  pod 'Realm'
+  pod 'RealmSwift', '~> 3.10'
+  pod 'Realm', '~> 3.10'
 
   target 'RealmPlatformTests' do
     inherit! :search_paths

@@ -1,6 +1,0 @@
-framework module QueryKit {
-  umbrella header "QueryKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -13,11 +13,11 @@ import Realm
 
 final class RMAddress: Object {
 
-    dynamic var city: String = ""
-    dynamic var geo: RMLocation?
-    dynamic var street: String = ""
-    dynamic var suite: String = ""
-    dynamic var zipcode: String = ""
+    @objc dynamic var city: String = ""
+    @objc dynamic var geo: RMLocation?
+    @objc dynamic var street: String = ""
+    @objc dynamic var suite: String = ""
+    @objc dynamic var zipcode: String = ""
 }
 
 extension RMAddress {

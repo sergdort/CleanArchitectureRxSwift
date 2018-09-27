@@ -19,7 +19,7 @@ class PostsViewController: UIViewController {
     private func configureTableView() {
         tableView.refreshControl = UIRefreshControl()
         tableView.estimatedRowHeight = 64
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func bindViewModel() {
@@ -38,8 +38,7 @@ class PostsViewController: UIViewController {
         //Bind Posts to UITableView
         output.posts.drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { tv, viewModel, cell in
             cell.bind(viewModel)
-
-        }.addDisposableTo(disposeBag)
+        }.disposed(by: disposeBag)
         //Connect Create Post to UI
         
         output.fetching

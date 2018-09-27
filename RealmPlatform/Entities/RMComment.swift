@@ -13,11 +13,11 @@ import Realm
 
 final class RMComment: Object {
 
-    dynamic var body: String = ""
-    dynamic var email: String = ""
-    dynamic var name: String = ""
-    dynamic var postId: String = ""
-    dynamic var uid: String = ""
+    @objc dynamic var body: String = ""
+    @objc dynamic var email: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var postId: String = ""
+    @objc dynamic var uid: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"
