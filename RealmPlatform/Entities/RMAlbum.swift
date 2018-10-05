@@ -13,9 +13,9 @@ import Realm
 
 final class RMAlbum: Object {
 
-    dynamic var title: String = ""
-    dynamic var uid: String = ""
-    dynamic var userId: String = ""
+    @objc dynamic var title: String = ""
+    @objc dynamic var uid: String = ""
+    @objc dynamic var userId: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"

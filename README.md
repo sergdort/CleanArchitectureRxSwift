@@ -6,6 +6,14 @@ You can do this by:
 - opening an issue to discuss the current solution, ask a question, propose your solution etc. (also English is not my native language so if you think that something can be corrected please open a PR 😊)
 - opening a PR if you want to fix bugs or improve something
 
+### Instalation
+
+Dependencies in this project are provided via Cocoapods. Please install all dependecies with
+
+`
+pod install
+`
+
 ## High level overview
 ![](Architecture/Modules.png)
 

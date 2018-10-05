@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Company {
+public struct Company: Codable {
     public let bs: String
     public let catchPhrase: String
     public let name: String

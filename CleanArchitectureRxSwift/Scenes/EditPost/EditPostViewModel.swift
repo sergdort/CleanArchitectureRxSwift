@@ -22,9 +22,7 @@ final class EditPostViewModel: ViewModelType {
         let saveTrigger = editing.skip(1) //we dont need initial state
                 .filter { $0 == false }
                 .mapToVoid()
-        let titleAndDetails = Driver.combineLatest(input.title, input.details) {
-            $0
-        }
+        let titleAndDetails = Driver.combineLatest(input.title, input.details)
         let post = Driver.combineLatest(Driver.just(self.post), titleAndDetails) { (post, titleAndDetails) -> Post in
             return Post(body: titleAndDetails.1, title: titleAndDetails.0, uid: post.uid, userId: post.userId, createdAt: post.createdAt)
         }.startWith(self.post)

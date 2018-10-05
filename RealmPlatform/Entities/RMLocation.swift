@@ -5,8 +5,8 @@ import RealmSwift
 import Realm
 
 final class RMLocation: Object {
-    dynamic var latitude: Double = 0
-    dynamic var longitude: Double = 0
+    @objc dynamic var latitude: Double = 0
+    @objc dynamic var longitude: Double = 0
 }
 
 extension RMLocation {

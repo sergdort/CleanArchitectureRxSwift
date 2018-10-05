@@ -19,9 +19,7 @@ final class CreatePostViewModel: ViewModelType {
     }
 
     func transform(input: Input) -> Output {
-        let titleAndDetails = Driver.combineLatest(input.title, input.details) {
-            $0
-        }
+        let titleAndDetails = Driver.combineLatest(input.title, input.details)
         let activityIndicator = ActivityIndicator()
 
         let canSave = Driver.combineLatest(titleAndDetails, activityIndicator.asDriver()) {

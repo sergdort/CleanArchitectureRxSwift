@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Comment {
+public struct Comment: Codable {
     public let body: String
     public let email: String
     public let name: String

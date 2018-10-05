@@ -13,14 +13,14 @@ import Realm
 
 final class RMUser: Object {
 
-    dynamic var address: RMAddress?
-    dynamic var company: RMCompany?
-    dynamic var email: String = ""
-    dynamic var name: String = ""
-    dynamic var phone: String = ""
-    dynamic var uid: String = ""
-    dynamic var username: String = ""
-    dynamic var website: String = ""
+    @objc dynamic var address: RMAddress?
+    @objc dynamic var company: RMCompany?
+    @objc dynamic var email: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var phone: String = ""
+    @objc dynamic var uid: String = ""
+    @objc dynamic var username: String = ""
+    @objc dynamic var website: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"

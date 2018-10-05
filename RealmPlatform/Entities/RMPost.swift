@@ -4,11 +4,11 @@ import RealmSwift
 import Realm
 
 final class RMPost: Object {
-    dynamic var uid: String = ""
-    dynamic var userId: String = ""
-    dynamic var title: String = ""
-    dynamic var body: String = ""
-    dynamic var createdAt: String = ""
+    @objc dynamic var uid: String = ""
+    @objc dynamic var userId: String = ""
+    @objc dynamic var title: String = ""
+    @objc dynamic var body: String = ""
+    @objc dynamic var createdAt: String = ""
 
     override class func primaryKey() -> String? {
         return "uid"

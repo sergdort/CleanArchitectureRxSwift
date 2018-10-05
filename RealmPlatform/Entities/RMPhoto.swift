@@ -12,11 +12,11 @@ import RealmSwift
 import Realm
 
 final class RMPhoto: Object {
-    dynamic var albumId: String = ""
-    dynamic var thumbnailUrl: String = ""
-    dynamic var title: String = ""
-    dynamic var uid: String = ""
-    dynamic var url: String = ""
+    @objc dynamic var albumId: String = ""
+    @objc dynamic var thumbnailUrl: String = ""
+    @objc dynamic var title: String = ""
+    @objc dynamic var uid: String = ""
+    @objc dynamic var url: String = ""
     
     override class func primaryKey() -> String? {
         return "uid"

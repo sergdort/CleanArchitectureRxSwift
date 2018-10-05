@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Todo {
+public struct Todo: Decodable {
     public let completed: Bool
     public let title: String
     public let uid: String
@@ -22,6 +22,32 @@ public struct Todo {
         self.title = title
         self.uid = uid
         self.userId = userId
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case completed
+        case title
+        case uid
+        case userId
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        completed = try container.decode(Bool.self, forKey: .completed)
+        title = try container.decode(String.self, forKey: .title)
+
+        if let userId = try container.decodeIfPresent(Int.self, forKey: .userId) {
+            self.userId = "\(userId)"
+        } else {
+            userId = try container.decode(String.self, forKey: .userId)
+        }
+
+        if let uid = try container.decodeIfPresent(Int.self, forKey: .uid) {
+            self.uid = "\(uid)"
+        } else {
+            uid = try container.decodeIfPresent(String.self, forKey: .uid) ?? ""
+        }
     }
 }
 

@@ -23,11 +23,10 @@ final class EditPostViewController: UIViewController {
                     message: "Are you sure you want to delete this post?",
                     preferredStyle: .alert
                 )
-
-                [("Yes", UIAlertActionStyle.destructive, { _ -> () in observer.onNext() }),
-                 ("No", UIAlertActionStyle.cancel, { _ -> () in observer.onCompleted() })]
-                .map({ UIAlertAction(title: $0, style: $1, handler: $2) })
-                .forEach(alert.addAction)
+                let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> () in observer.onNext(()) })
+                let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> () in observer.onNext(()) })
+                alert.addAction(yesAction)
+                alert.addAction(noAction)
 
                 self.present(alert, animated: true, completion: nil)
 
@@ -51,7 +50,7 @@ final class EditPostViewController: UIViewController {
         output.save.drive(),
         output.error.drive(errorBinding),
         output.delete.drive()]
-        .forEach({$0.addDisposableTo(disposeBag)})
+            .forEach({$0.disposed(by: disposeBag)})
     }
 
     var postBinding: UIBindingObserver<EditPostViewController, Post> {
@@ -68,7 +67,7 @@ final class EditPostViewController: UIViewController {
                                           message: "Something went wrong",
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss",
-                                       style: UIAlertActionStyle.cancel,
+                                       style: UIAlertAction.Style.cancel,
                                        handler: nil)
             alert.addAction(action)
             vc.present(alert, animated: true, completion: nil)

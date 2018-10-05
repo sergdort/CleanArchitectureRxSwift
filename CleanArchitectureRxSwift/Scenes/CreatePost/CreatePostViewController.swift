@@ -23,8 +23,8 @@ final class CreatePostViewController: UIViewController {
         let output = viewModel.transform(input: input)
         
         output.dismiss.drive()
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         output.saveEnabled.drive(saveButton.rx.isEnabled)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 }
