@@ -2,25 +2,29 @@ PODS:
   - Alamofire (4.7.3)
   - Nimble (7.3.1)
   - QueryKit (0.13.0)
-  - Realm (3.10.0):
-    - Realm/Headers (= 3.10.0)
-  - Realm/Headers (3.10.0)
-  - RealmSwift (3.10.0):
-    - Realm (= 3.10.0)
+  - Realm (3.11.1):
+    - Realm/Headers (= 3.11.1)
+  - Realm/Headers (3.11.1)
+  - RealmSwift (3.11.1):
+    - Realm (= 3.11.1)
   - RxAlamofire (4.3.0):
     - RxAlamofire/Core (= 4.3.0)
   - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
-  - RxBlocking (4.3.1):
+  - RxAtomic (4.4.0)
+  - RxBlocking (4.4.0):
+    - RxAtomic (~> 4.4)
     - RxSwift (~> 4.0)
-  - RxCocoa (4.3.1):
+  - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
-  - RxRealm (0.7.5):
+  - RxRealm (0.7.6):
     - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
-  - RxTest (4.3.1):
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - RxTest (4.4.0):
+    - RxAtomic (~> 4.4)
     - RxSwift (~> 4.0)
 
 DEPENDENCIES:
@@ -44,6 +48,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - RxAlamofire
+    - RxAtomic
     - RxBlocking
     - RxCocoa
     - RxRealm
@@ -54,14 +59,15 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
-  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
-  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
+  Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
+  RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
-  RxBlocking: 64c051285261ca2339481e91b5f70eb06b03660a
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
-  RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  RxTest: ea97a208826906f3904c0debdd09575ebcbfe216
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxRealm: 5379eddd74f8d617ca7681d1f8d144af25b432b0
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxTest: 19d03286bdc0a3aaea5d61d4cde31fdf4bb8a5ba
 
 PODFILE CHECKSUM: 8587d87d88ab80217209b0a3b29c2c6130be8755
 
