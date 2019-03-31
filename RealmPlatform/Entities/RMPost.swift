@@ -1,4 +1,3 @@
-import QueryKit
 import Domain
 import RealmSwift
 import Realm
@@ -13,14 +12,6 @@ final class RMPost: Object {
     override class func primaryKey() -> String? {
         return "uid"
     }
-}
-
-extension RMPost {
-    static var title: Attribute<String> { return Attribute("title")}
-    static var body: Attribute<String> { return Attribute("body")}
-    static var userId: Attribute<String> { return Attribute("userId")}
-    static var uid: Attribute<String> { return Attribute("uid")}
-    static var createdAt: Attribute<String> { return Attribute("createdAt")}
 }
 
 extension RMPost: DomainConvertibleType {

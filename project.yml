@@ -19,16 +19,6 @@ targets:
       - carthage: RxTest
       - carthage: RxBlocking
       - target: Domain
-  CleanArchitectureRxSwift:
-    type: application
-    platform: iOS
-    deploymentTarget: "12.0"
-    sources: [CleanArchitectureRxSwift]
-    dependencies:
-      - target: Domain
-      - target: NetworkPlatform
-      - carthage: RxSwift
-      - carthage: RxCocoa
   NetworkPlatform:
     type: framework
     platform: iOS
@@ -40,3 +30,25 @@ targets:
       - carthage: RxAlamofire
       - carthage: Alamofire
       - carthage: RxAtomic
+  RealmPlatform:
+    type: framework
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources: [RealmPlatform]
+    dependencies:
+      - target: Domain
+      - carthage: RxSwift
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: RxRealm  
+  CleanArchitectureRxSwift:
+      type: application
+      platform: iOS
+      deploymentTarget: "12.0"
+      sources: [CleanArchitectureRxSwift]
+      dependencies:
+        - target: Domain
+        - target: NetworkPlatform
+        - target: RealmPlatform
+        - carthage: RxSwift
+        - carthage: RxCocoa  
