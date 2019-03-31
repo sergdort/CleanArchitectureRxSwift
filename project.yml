@@ -1,0 +1,42 @@
+name: CleanArchitectureRxSwift
+options:
+  bundleIdPrefix: com.clean
+targets:
+  Domain:
+    type: framework
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources: [Domain]
+    dependencies:
+      - carthage: RxSwift
+  DomainTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources:
+      - path: DomainTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - target: Domain
+  CleanArchitectureRxSwift:
+    type: application
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources: [CleanArchitectureRxSwift]
+    dependencies:
+      - target: Domain
+      - target: NetworkPlatform
+      - carthage: RxSwift
+      - carthage: RxCocoa
+  NetworkPlatform:
+    type: framework
+    platform: iOS
+    deploymentTarget: "12.0"
+    sources: [NetworkPlatform]
+    dependencies:
+      - target: Domain
+      - carthage: RxSwift
+      - carthage: RxAlamofire
+      - carthage: Alamofire
+      - carthage: RxAtomic
