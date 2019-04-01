@@ -33,6 +33,17 @@ targets:
       - carthage: RxAlamofire
       - carthage: Alamofire
       - carthage: RxAtomic
+  NetworkPlatformTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: NetworkPlatformTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - carthage: RxCocoa  
+      - target: NetworkPlatform
   RealmPlatform:
     type: framework
     platform: iOS
@@ -44,6 +55,16 @@ targets:
       - carthage: Realm
       - carthage: RealmSwift
       - carthage: RxRealm  
+  RealmPlatformTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: RealmPlatformTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - target: RealmPlatform
   CleanArchitectureRxSwift:
       type: application
       platform: iOS
@@ -55,3 +76,13 @@ targets:
         - target: RealmPlatform
         - carthage: RxSwift
         - carthage: RxCocoa  
+  CleanArchitectureRxSwiftTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: CleanArchitectureRxSwiftTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - target: CleanArchitectureRxSwift
