@@ -1,18 +1,21 @@
 name: CleanArchitectureRxSwift
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
 options:
   bundleIdPrefix: com.clean
 targets:
   Domain:
     type: framework
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "11.0"
     sources: [Domain]
     dependencies:
       - carthage: RxSwift
   DomainTests:
     type: bundle.unit-test
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "11.0"
     sources:
       - path: DomainTests
     dependencies:
@@ -22,7 +25,7 @@ targets:
   NetworkPlatform:
     type: framework
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "11.0"
     sources: [NetworkPlatform]
     dependencies:
       - target: Domain
@@ -33,7 +36,7 @@ targets:
   RealmPlatform:
     type: framework
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "11.0"
     sources: [RealmPlatform]
     dependencies:
       - target: Domain
@@ -44,7 +47,7 @@ targets:
   CleanArchitectureRxSwift:
       type: application
       platform: iOS
-      deploymentTarget: "12.0"
+      deploymentTarget: "11.0"
       sources: [CleanArchitectureRxSwift]
       dependencies:
         - target: Domain
