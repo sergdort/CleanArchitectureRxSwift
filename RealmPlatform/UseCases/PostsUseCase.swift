@@ -1,11 +1,10 @@
-import Foundation
 import Domain
-import RxSwift
+import Foundation
 import Realm
 import RealmSwift
+import RxSwift
 
 final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
-
     private let repository: Repository
 
     init(repository: Repository) {
@@ -15,7 +14,7 @@ final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: Abst
     func posts() -> Observable<[Post]> {
         return repository.queryAll()
     }
-    
+
     func save(post: Post) -> Observable<Void> {
         return repository.save(entity: post)
     }

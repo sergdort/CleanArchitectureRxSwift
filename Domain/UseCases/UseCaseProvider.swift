@@ -9,6 +9,5 @@
 import Foundation
 
 public protocol UseCaseProvider {
-    
     func makePostsUseCase() -> PostsUseCase
 }

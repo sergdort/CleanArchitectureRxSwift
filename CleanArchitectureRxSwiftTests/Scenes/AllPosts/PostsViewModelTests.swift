@@ -1,144 +1,143 @@
 @testable import CleanArchitectureRxSwift
 import Domain
-import XCTest
-import RxSwift
-import RxCocoa
 import RxBlocking
+import RxCocoa
+import RxSwift
+import XCTest
 
 enum TestError: Error {
-  case test
+    case test
 }
 
 class PostsViewModelTests: XCTestCase {
+    var allPostUseCase: AllPostsUseCaseMock!
+    var postsNavigator: PostNavigatorMock!
+    var viewModel: PostsViewModel!
 
-  var allPostUseCase: AllPostsUseCaseMock!
-  var postsNavigator: PostNavigatorMock!
-  var viewModel: PostsViewModel!
+    let disposeBag = DisposeBag()
 
-  let disposeBag = DisposeBag()
+    override func setUp() {
+        super.setUp()
 
-  override func setUp() {
-    super.setUp()
+        allPostUseCase = AllPostsUseCaseMock()
+        postsNavigator = PostNavigatorMock()
 
-    allPostUseCase = AllPostsUseCaseMock()
-    postsNavigator = PostNavigatorMock()
+        viewModel = PostsViewModel(useCase: allPostUseCase,
+                                   navigator: postsNavigator)
+    }
 
-    viewModel = PostsViewModel(useCase: allPostUseCase,
-                               navigator: postsNavigator)
-  }
+    func test_transform_triggerInvoked_postEmited() {
+        // arrange
+        let trigger = PublishSubject<Void>()
+        let input = createInput(trigger: trigger)
+        let output = viewModel.transform(input: input)
 
-  func test_transform_triggerInvoked_postEmited() {
-    // arrange
-    let trigger = PublishSubject<Void>()
-    let input = createInput(trigger: trigger)
-    let output = viewModel.transform(input: input)
+        // act
+        output.posts.drive().disposed(by: disposeBag)
+        trigger.onNext()
 
-    // act
-    output.posts.drive().disposed(by: disposeBag)
-    trigger.onNext()
+        // assert
+        XCTAssert(allPostUseCase.posts_Called)
+    }
 
-    // assert
-    XCTAssert(allPostUseCase.posts_Called)
-  }
+    func test_transform_sendPost_trackFetching() {
+        // arrange
+        let trigger = PublishSubject<Void>()
+        let output = viewModel.transform(input: createInput(trigger: trigger))
+        let expectedFetching = [true, false]
+        var actualFetching: [Bool] = []
 
+        // act
+        output.fetching
+            .do(onNext: { actualFetching.append($0) },
+                onSubscribe: { actualFetching.append(true) })
+            .drive()
+            .disposed(by: disposeBag)
+        trigger.onNext()
 
-  func test_transform_sendPost_trackFetching() {
-    // arrange
-    let trigger = PublishSubject<Void>()
-    let output = viewModel.transform(input: createInput(trigger: trigger))
-    let expectedFetching = [true, false]
-    var actualFetching: [Bool] = []
+        // assert
+        XCTAssertEqual(actualFetching, expectedFetching)
+    }
 
-    // act
-    output.fetching
-      .do(onNext: { actualFetching.append($0) },
-          onSubscribe: { actualFetching.append(true) })
-      .drive()
-      .disposed(by: disposeBag)
-    trigger.onNext()
+    func test_transform_postEmitError_trackError() {
+        // arrange
+        let trigger = PublishSubject<Void>()
+        let output = viewModel.transform(input: createInput(trigger: trigger))
+        allPostUseCase.posts_ReturnValue = Observable.error(TestError.test)
 
-    // assert
-    XCTAssertEqual(actualFetching, expectedFetching)
-  }
+        // act
+        output.posts.drive().disposed(by: disposeBag)
+        output.error.drive().disposed(by: disposeBag)
+        trigger.onNext()
+        let error = try! output.error.toBlocking().first()
 
-  func test_transform_postEmitError_trackError() {
-    // arrange
-    let trigger = PublishSubject<Void>()
-    let output = viewModel.transform(input: createInput(trigger: trigger))
-    allPostUseCase.posts_ReturnValue = Observable.error(TestError.test)
+        // assert
+        XCTAssertNotNil(error)
+    }
 
-    // act
-    output.posts.drive().disposed(by: disposeBag)
-    output.error.drive().disposed(by: disposeBag)
-    trigger.onNext()
-    let error = try! output.error.toBlocking().first()
+    func test_transform_triggerInvoked_mapPostsToViewModels() {
+        // arrange
+        let trigger = PublishSubject<Void>()
+        let output = viewModel.transform(input: createInput(trigger: trigger))
+        allPostUseCase.posts_ReturnValue = Observable.just(createPosts())
 
-    // assert
-    XCTAssertNotNil(error)
-  }
+        // act
+        output.posts.drive().disposed(by: disposeBag)
+        trigger.onNext()
+        let posts = try! output.posts.toBlocking().first()!
 
-  func test_transform_triggerInvoked_mapPostsToViewModels() {
-    // arrange
-    let trigger = PublishSubject<Void>()
-    let output = viewModel.transform(input: createInput(trigger: trigger))
-    allPostUseCase.posts_ReturnValue = Observable.just(createPosts())
+        // assert
+        XCTAssertEqual(posts.count, 2)
+    }
 
-    // act
-    output.posts.drive().disposed(by: disposeBag)
-    trigger.onNext()
-    let posts = try! output.posts.toBlocking().first()!
+    func test_transform_selectedPostInvoked_navigateToPost() {
+        // arrange
+        let select = PublishSubject<IndexPath>()
+        let output = viewModel.transform(input: createInput(selection: select))
+        let posts = createPosts()
+        allPostUseCase.posts_ReturnValue = Observable.just(posts)
 
-    // assert
-    XCTAssertEqual(posts.count, 2)
-  }
+        // act
+        output.posts.drive().disposed(by: disposeBag)
+        output.selectedPost.drive().disposed(by: disposeBag)
+        select.onNext(IndexPath(row: 1, section: 0))
 
-  func test_transform_selectedPostInvoked_navigateToPost() {
-    // arrange
-    let select = PublishSubject<IndexPath>()
-    let output = viewModel.transform(input: createInput(selection: select))
-    let posts = createPosts()
-    allPostUseCase.posts_ReturnValue = Observable.just(posts)
+        // assert
+        XCTAssertTrue(postsNavigator.toPost_post_Called)
+        XCTAssertEqual(postsNavigator.toPost_post_ReceivedArguments, posts[1])
+    }
 
-    // act
-    output.posts.drive().disposed(by: disposeBag)
-    output.selectedPost.drive().disposed(by: disposeBag)
-    select.onNext(IndexPath(row: 1, section: 0))
+    func test_transform_createPostInvoked_navigateToCreatePost() {
+        // arrange
+        let create = PublishSubject<Void>()
+        let output = viewModel.transform(input: createInput(createPostTrigger: create))
+        let posts = createPosts()
+        allPostUseCase.posts_ReturnValue = Observable.just(posts)
 
-    // assert
-    XCTAssertTrue(postsNavigator.toPost_post_Called)
-    XCTAssertEqual(postsNavigator.toPost_post_ReceivedArguments, posts[1])
-  }
+        // act
+        output.posts.drive().disposed(by: disposeBag)
+        output.createPost.drive().disposed(by: disposeBag)
+        create.onNext()
 
-  func test_transform_createPostInvoked_navigateToCreatePost() {
-    // arrange
-    let create = PublishSubject<Void>()
-    let output = viewModel.transform(input: createInput(createPostTrigger: create))
-    let posts = createPosts()
-    allPostUseCase.posts_ReturnValue = Observable.just(posts)
+        // assert
+        XCTAssertTrue(postsNavigator.toCreatePost_Called)
+    }
 
-    // act
-    output.posts.drive().disposed(by: disposeBag)
-    output.createPost.drive().disposed(by: disposeBag)
-    create.onNext()
+    private func createInput(trigger: Observable<Void> = Observable.just(),
+                             createPostTrigger: Observable<Void> = Observable.never(),
+                             selection: Observable<IndexPath> = Observable.never())
+        -> PostsViewModel.Input {
+        return PostsViewModel.Input(
+            trigger: trigger.asDriverOnErrorJustComplete(),
+            createPostTrigger: createPostTrigger.asDriverOnErrorJustComplete(),
+            selection: selection.asDriverOnErrorJustComplete()
+        )
+    }
 
-    // assert
-    XCTAssertTrue(postsNavigator.toCreatePost_Called)
-  }
-
-  private func createInput(trigger: Observable<Void> = Observable.just(),
-                           createPostTrigger: Observable<Void> = Observable.never(),
-                           selection: Observable<IndexPath> = Observable.never())
-    -> PostsViewModel.Input {
-      return PostsViewModel.Input(
-        trigger: trigger.asDriverOnErrorJustComplete(),
-        createPostTrigger: createPostTrigger.asDriverOnErrorJustComplete(),
-        selection: selection.asDriverOnErrorJustComplete())
-  }
-
-  private func createPosts() -> [Post] {
-    return [
-      Post(body: "body 1", title: "title 1", uid: "uid 1", userId: "userId 1"),
-      Post(body: "body 2", title: "title 2", uid: "uid 2", userId: "userId 2")
-    ]
-  }
+    private func createPosts() -> [Post] {
+        return [
+            Post(body: "body 1", title: "title 1", uid: "uid 1", userId: "userId 1"),
+            Post(body: "body 2", title: "title 2", uid: "uid 2", userId: "userId 2"),
+        ]
+    }
 }

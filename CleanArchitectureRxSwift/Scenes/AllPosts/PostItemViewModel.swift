@@ -6,16 +6,16 @@
 //  Copyright © 2017 sergdort. All rights reserved.
 //
 
-import Foundation
 import Domain
+import Foundation
 
-final class PostItemViewModel   {
-    let title:String
-    let subtitle : String
+final class PostItemViewModel {
+    let title: String
+    let subtitle: String
     let post: Post
-    init (with post:Post) {
+    init(with post: Post) {
         self.post = post
-        self.title = post.title.uppercased()
-        self.subtitle = post.body
+        title = post.title.uppercased()
+        subtitle = post.body
     }
 }

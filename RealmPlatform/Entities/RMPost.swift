@@ -1,6 +1,6 @@
 import Domain
-import RealmSwift
 import Realm
+import RealmSwift
 
 final class RMPost: Object {
     @objc dynamic var uid: String = ""

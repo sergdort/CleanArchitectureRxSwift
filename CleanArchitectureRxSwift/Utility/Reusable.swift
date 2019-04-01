@@ -1,7 +1,7 @@
 import UIKit
 
 protocol Reusable {
-    static var reuseID: String {get}
+    static var reuseID: String { get }
 }
 
 extension Reusable {

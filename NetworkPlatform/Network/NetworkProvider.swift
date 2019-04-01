@@ -19,5 +19,4 @@ final class NetworkProvider {
         let network = Network<Post>(apiEndpoint)
         return PostsNetwork(network: network)
     }
-
 }
