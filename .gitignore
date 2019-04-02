@@ -91,5 +91,3 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Use XcodeGen to generate this on the fly
-*.xcodeproj/
