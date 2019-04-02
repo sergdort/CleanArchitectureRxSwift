@@ -1,6 +1,6 @@
+import Domain
 import Foundation
 import UIKit
-import Domain
 
 protocol EditPostNavigator {
     func toPosts()

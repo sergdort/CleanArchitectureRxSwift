@@ -16,10 +16,12 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
         case fetchObject(T.Type)
         case fetchObjects(T.Type)
     }
+
     enum FileNames {
         static var objectFileName: String {
             return "\(T.self).dat"
         }
+
         static var objectsFileName: String {
             return "\(T.self)s.dat"
         }
@@ -36,20 +38,20 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
         return Completable.create { (observer) -> Disposable in
             guard let url = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first else {
-                    observer(.completed)
-                    return Disposables.create()
-                }
+                observer(.completed)
+                return Disposables.create()
+            }
             let path = url.appendingPathComponent(self.path)
                 .appendingPathComponent("\(object.uid)")
                 .appendingPathComponent(FileNames.objectFileName)
                 .absoluteString
-            
+
             if NSKeyedArchiver.archiveRootObject(object.encoder, toFile: path) {
                 observer(.completed)
             } else {
                 observer(.error(Error.saveObject(object)))
             }
-            
+
             return Disposables.create()
         }.subscribeOn(cacheScheduler)
     }
@@ -64,13 +66,13 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
                 .appendingPathComponent(FileNames.objectsFileName)
             self.createDirectoryIfNeeded(at: directoryURL)
             do {
-                try NSKeyedArchiver.archivedData(withRootObject: objects.map{ $0.encoder })
+                try NSKeyedArchiver.archivedData(withRootObject: objects.map { $0.encoder })
                     .write(to: path)
                 observer(.completed)
             } catch {
                 observer(.error(error))
             }
-            
+
             return Disposables.create()
         }.subscribeOn(cacheScheduler)
     }
@@ -79,14 +81,14 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
         return Maybe<T>.create { (observer) -> Disposable in
             guard let url = FileManager.default
                 .urls(for: .documentDirectory, in: .userDomainMask).first else {
-                    observer(.completed)
-                    return Disposables.create()
+                observer(.completed)
+                return Disposables.create()
             }
             let path = url.appendingPathComponent(self.path)
                 .appendingPathComponent("\(id)")
                 .appendingPathComponent(FileNames.objectFileName)
                 .absoluteString
-            
+
             guard let object = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? T.Encoder else {
                 observer(.completed)
                 return Disposables.create()
@@ -109,10 +111,10 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
                 return Disposables.create()
             }
             observer(MaybeEvent.success(objects.map { $0.asDomain() }))
-                return Disposables.create()
+            return Disposables.create()
         }.subscribeOn(cacheScheduler)
     }
-    
+
     private func directoryURL() -> URL? {
         return FileManager.default
             .urls(for: .documentDirectory,
@@ -120,7 +122,7 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
             .first?
             .appendingPathComponent(path)
     }
-    
+
     private func createDirectoryIfNeeded(at url: URL) {
         do {
             try FileManager.default.createDirectory(at: url,

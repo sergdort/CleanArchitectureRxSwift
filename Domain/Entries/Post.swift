@@ -59,10 +59,10 @@ public struct Post: Codable {
 
 extension Post: Equatable {
     public static func == (lhs: Post, rhs: Post) -> Bool {
-            return lhs.uid == rhs.uid &&
-                lhs.title == rhs.title && 
-                lhs.body == rhs.body &&
-                lhs.userId == rhs.userId &&
-                lhs.createdAt == rhs.createdAt
+        return lhs.uid == rhs.uid &&
+            lhs.title == rhs.title &&
+            lhs.body == rhs.body &&
+            lhs.userId == rhs.userId &&
+            lhs.createdAt == rhs.createdAt
     }
 }

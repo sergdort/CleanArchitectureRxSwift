@@ -1,0 +1,88 @@
+name: CleanArchitectureRxSwift
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+options:
+  bundleIdPrefix: com.clean
+targets:
+  Domain:
+    type: framework
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: [Domain]
+    dependencies:
+      - carthage: RxSwift
+  DomainTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: DomainTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - target: Domain
+  NetworkPlatform:
+    type: framework
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: [NetworkPlatform]
+    dependencies:
+      - target: Domain
+      - carthage: RxSwift
+      - carthage: RxAlamofire
+      - carthage: Alamofire
+      - carthage: RxAtomic
+  NetworkPlatformTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: NetworkPlatformTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - carthage: RxCocoa  
+      - target: NetworkPlatform
+  RealmPlatform:
+    type: framework
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources: [RealmPlatform]
+    dependencies:
+      - target: Domain
+      - carthage: RxSwift
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: RxRealm  
+  RealmPlatformTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: RealmPlatformTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - target: RealmPlatform
+  CleanArchitectureRxSwift:
+      type: application
+      platform: iOS
+      deploymentTarget: "11.0"
+      sources: [CleanArchitectureRxSwift]
+      dependencies:
+        - target: Domain
+        - target: NetworkPlatform
+        - target: RealmPlatform
+        - carthage: RxSwift
+        - carthage: RxCocoa  
+  CleanArchitectureRxSwiftTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "11.0"
+    sources:
+      - path: CleanArchitectureRxSwiftTests
+    dependencies:
+      - carthage: RxTest
+      - carthage: RxBlocking
+      - target: CleanArchitectureRxSwift

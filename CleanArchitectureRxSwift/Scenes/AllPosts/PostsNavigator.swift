@@ -1,5 +1,5 @@
-import UIKit
 import Domain
+import UIKit
 
 protocol PostsNavigator {
     func toCreatePost()
@@ -19,7 +19,7 @@ class DefaultPostsNavigator: PostsNavigator {
         self.navigationController = navigationController
         self.storyBoard = storyBoard
     }
-    
+
     func toPosts() {
         let vc = storyBoard.instantiateViewController(ofType: PostsViewController.self)
         vc.viewModel = PostsViewModel(useCase: services.makePostsUseCase(),
@@ -30,7 +30,7 @@ class DefaultPostsNavigator: PostsNavigator {
     func toCreatePost() {
         let navigator = DefaultCreatePostNavigator(navigationController: navigationController)
         let viewModel = CreatePostViewModel(createPostUseCase: services.makePostsUseCase(),
-                navigator: navigator)
+                                            navigator: navigator)
         let vc = storyBoard.instantiateViewController(ofType: CreatePostViewController.self)
         vc.viewModel = viewModel
         let nc = UINavigationController(rootViewController: vc)

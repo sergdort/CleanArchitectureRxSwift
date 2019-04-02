@@ -1,5 +1,5 @@
-import Foundation
 import Domain
+import Foundation
 import Realm
 import RealmSwift
 

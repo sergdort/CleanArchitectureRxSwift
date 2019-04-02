@@ -6,20 +6,19 @@
 //  Copyright © 2017 sergdort. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 import Domain
+import Foundation
 import RxAlamofire
 import RxSwift
 
 final class Network<T: Decodable> {
-
     private let endPoint: String
     private let scheduler: ConcurrentDispatchQueueScheduler
 
     init(_ endPoint: String) {
         self.endPoint = endPoint
-        self.scheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))
+        scheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))
     }
 
     func getItems(_ path: String) -> Observable<[T]> {
@@ -29,7 +28,7 @@ final class Network<T: Decodable> {
             .debug()
             .observeOn(scheduler)
             .map({ data -> [T] in
-                return try JSONDecoder().decode([T].self, from: data)
+                try JSONDecoder().decode([T].self, from: data)
             })
     }
 
@@ -40,7 +39,7 @@ final class Network<T: Decodable> {
             .debug()
             .observeOn(scheduler)
             .map({ data -> T in
-                return try JSONDecoder().decode(T.self, from: data)
+                try JSONDecoder().decode(T.self, from: data)
             })
     }
 
@@ -52,7 +51,7 @@ final class Network<T: Decodable> {
             .observeOn(scheduler)
             .data()
             .map({ data -> T in
-                return try JSONDecoder().decode(T.self, from: data)
+                try JSONDecoder().decode(T.self, from: data)
             })
     }
 
@@ -64,7 +63,7 @@ final class Network<T: Decodable> {
             .observeOn(scheduler)
             .data()
             .map({ data -> T in
-                return try JSONDecoder().decode(T.self, from: data)
+                try JSONDecoder().decode(T.self, from: data)
             })
     }
 
@@ -76,7 +75,7 @@ final class Network<T: Decodable> {
             .observeOn(scheduler)
             .data()
             .map({ data -> T in
-                return try JSONDecoder().decode(T.self, from: data)
+                try JSONDecoder().decode(T.self, from: data)
             })
     }
 }

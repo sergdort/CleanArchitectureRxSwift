@@ -3,11 +3,10 @@
 // Copyright (c) 2017 sergdort. All rights reserved.
 //
 
-
-import Foundation
-import RxSwift
-import RxCocoa
 import Domain
+import Foundation
+import RxCocoa
+import RxSwift
 
 final class CreatePostViewModel: ViewModelType {
     private let createPostUseCase: PostsUseCase
@@ -23,22 +22,22 @@ final class CreatePostViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
 
         let canSave = Driver.combineLatest(titleAndDetails, activityIndicator.asDriver()) {
-            return !$0.0.isEmpty && !$0.1.isEmpty && !$1
+            !$0.0.isEmpty && !$0.1.isEmpty && !$1
         }
 
         let save = input.saveTrigger.withLatestFrom(titleAndDetails)
-                .map { (title, content) in
-                    return Post(body: content, title: title)
-                }
-                .flatMapLatest { [unowned self] in
-                    return self.createPostUseCase.save(post: $0)
-                            .trackActivity(activityIndicator)
-                            .asDriverOnErrorJustComplete()
-                }
+            .map { title, content in
+                Post(body: content, title: title)
+            }
+            .flatMapLatest { [unowned self] in
+                self.createPostUseCase.save(post: $0)
+                    .trackActivity(activityIndicator)
+                    .asDriverOnErrorJustComplete()
+            }
 
         let dismiss = Driver.of(save, input.cancelTrigger)
-                .merge()
-                .do(onNext: navigator.toPosts)
+            .merge()
+            .do(onNext: navigator.toPosts)
 
         return Output(dismiss: dismiss, saveEnabled: canSave)
     }

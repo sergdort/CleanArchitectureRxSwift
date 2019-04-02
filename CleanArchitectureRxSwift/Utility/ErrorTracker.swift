@@ -3,10 +3,9 @@
 // Copyright (c) 2017 sergdort. All rights reserved.
 //
 
-
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 final class ErrorTracker: SharedSequenceConvertibleType {
     typealias SharingStrategy = DriverSharingStrategy
@@ -27,7 +26,7 @@ final class ErrorTracker: SharedSequenceConvertibleType {
     private func onError(_ error: Error) {
         _subject.onNext(error)
     }
-    
+
     deinit {
         _subject.onCompleted()
     }

@@ -3,13 +3,11 @@
 // Copyright (c) 2017 sergdort. All rights reserved.
 //
 
-
+import Domain
 import Foundation
 import UIKit
-import Domain
 
 protocol CreatePostNavigator {
-
     func toPosts()
 }
 

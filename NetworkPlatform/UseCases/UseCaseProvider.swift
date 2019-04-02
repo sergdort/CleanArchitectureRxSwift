@@ -1,5 +1,5 @@
-import Foundation
 import Domain
+import Foundation
 
 public final class UseCaseProvider: Domain.UseCaseProvider {
     private let networkProvider: NetworkProvider
@@ -10,6 +10,6 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
 
     public func makePostsUseCase() -> Domain.PostsUseCase {
         return PostsUseCase(network: networkProvider.makePostsNetwork(),
-                               cache: Cache<Post>(path: "allPosts"))
+                            cache: Cache<Post>(path: "allPosts"))
     }
 }

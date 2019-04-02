@@ -17,7 +17,7 @@ extension Post {
             "title": title,
             "uid": uid,
             "userId": userId,
-            "createdAt": createdAt
+            "createdAt": createdAt,
         ]
     }
 }
@@ -36,6 +36,7 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
         static let userId = "userId"
         static let createdAt = "createdAt"
     }
+
     let body: String
     let title: String
     let uid: String
@@ -43,13 +44,13 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
     let createdAt: String
 
     init(with domain: Post) {
-        self.body = domain.body
-        self.title = domain.title
-        self.uid = domain.uid
-        self.userId = domain.userId
-        self.createdAt = domain.createdAt
+        body = domain.body
+        title = domain.title
+        uid = domain.uid
+        userId = domain.userId
+        createdAt = domain.createdAt
     }
-    
+
     init?(coder aDecoder: NSCoder) {
         guard
             let body = aDecoder.decodeObject(forKey: Keys.body) as? String,
@@ -66,7 +67,7 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
         self.userId = userId
         self.createdAt = createdAt
     }
-    
+
     func encode(with aCoder: NSCoder) {
         aCoder.encode(body, forKey: Keys.body)
         aCoder.encode(title, forKey: Keys.title)
@@ -74,7 +75,7 @@ final class NETPost: NSObject, NSCoding, DomainConvertibleType {
         aCoder.encode(userId, forKey: Keys.userId)
         aCoder.encode(createdAt, forKey: Keys.createdAt)
     }
-    
+
     func asDomain() -> Post {
         return Post(body: body,
                     title: title,
