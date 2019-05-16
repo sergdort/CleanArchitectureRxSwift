@@ -80,7 +80,7 @@
 		515F9EA01C8D63D03B41FF8F /* PostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515F9DAA48376FC95A9D91B5 /* PostsUseCase.swift */; };
 		59CE6AAC086B5C1AC880DB70 /* Pods_NetworkPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF991A848BB04AAFE03A804 /* Pods_NetworkPlatformTests.framework */; };
 		7752FCB51F716D650079522C /* PostsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB41F716D650079522C /* PostsViewModelTests.swift */; };
-		7752FCB71F716D7A0079522C /* AllPostsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB61F716D7A0079522C /* AllPostsUseCaseMock.swift */; };
+		7752FCB71F716D7A0079522C /* PostsUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB61F716D7A0079522C /* PostsUseCaseMock.swift */; };
 		7752FCB91F716D940079522C /* PostsNavigatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7752FCB81F716D940079522C /* PostsNavigatorMock.swift */; };
 		7BA4DC961F3AEA380043DAB6 /* PostItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA4DC951F3AEA380043DAB6 /* PostItemViewModel.swift */; };
 		7DFB155E3444551C4DB34AAC /* Pods_CleanArchitectureRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A6B74019E724CAD9CA96DC /* Pods_CleanArchitectureRxSwift.framework */; };
@@ -143,7 +143,6 @@
 		BD50EEFF1E7ADDDD00CBEBD4 /* UsersNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD50EEFE1E7ADDDD00CBEBD4 /* UsersNetwork.swift */; };
 		BD50EF011E7AF37C00CBEBD4 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD50EF001E7AF37C00CBEBD4 /* NetworkProvider.swift */; };
 		DE96287CF168CFC64A0DE642 /* Pods_RealmPlatformTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0D3602A9ABB65C8AF19365 /* Pods_RealmPlatformTests.framework */; };
-		E7CC1C376C9850FDBA8F3DE1 /* Pods_NetworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691DFEEB0D7480A716D51CF9 /* Pods_NetworkTests.framework */; };
 		F19EF3D1A8721CEAEA65EE12 /* Pods_CoreDataPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9A3A93769D5899CBDCA89F /* Pods_CoreDataPlatform.framework */; };
 /* End PBXBuildFile section */
 
@@ -354,7 +353,7 @@
 		763D40E220B6FF96E969B284 /* Pods_NetworkPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		771F87FDB28A5E6EC32A9841 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7752FCB41F716D650079522C /* PostsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewModelTests.swift; sourceTree = "<group>"; };
-		7752FCB61F716D7A0079522C /* AllPostsUseCaseMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPostsUseCaseMock.swift; sourceTree = "<group>"; };
+		7752FCB61F716D7A0079522C /* PostsUseCaseMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsUseCaseMock.swift; sourceTree = "<group>"; };
 		7752FCB81F716D940079522C /* PostsNavigatorMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsNavigatorMock.swift; sourceTree = "<group>"; };
 		7BA4DC951F3AEA380043DAB6 /* PostItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostItemViewModel.swift; sourceTree = "<group>"; };
 		81E26E9003A18D1FDD392578 /* Pods-NetworkPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlatform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkPlatform/Pods-NetworkPlatform.debug.xcconfig"; sourceTree = "<group>"; };
@@ -518,7 +517,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD107F521E7298690043D900 /* NetworkPlatform.framework in Frameworks */,
-				E7CC1C376C9850FDBA8F3DE1 /* Pods_NetworkTests.framework in Frameworks */,
 				59CE6AAC086B5C1AC880DB70 /* Pods_NetworkPlatformTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -962,7 +960,7 @@
 			isa = PBXGroup;
 			children = (
 				7752FCB41F716D650079522C /* PostsViewModelTests.swift */,
-				7752FCB61F716D7A0079522C /* AllPostsUseCaseMock.swift */,
+				7752FCB61F716D7A0079522C /* PostsUseCaseMock.swift */,
 				7752FCB81F716D940079522C /* PostsNavigatorMock.swift */,
 			);
 			path = AllPosts;
@@ -1360,6 +1358,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1483,10 +1482,10 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/QueryKit/QueryKit.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
@@ -1497,8 +1496,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QueryKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
@@ -1508,7 +1507,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanArchitectureRxSwift/Pods-CleanArchitectureRxSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1E57CD4E628D91D6EA26728B /* [CP] Check Pods Manifest.lock */ = {
@@ -1535,8 +1534,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-DomainTests/Pods-DomainTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -1544,7 +1542,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
@@ -1552,7 +1549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DomainTests/Pods-DomainTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DomainTests/Pods-DomainTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D5A32A95B40355B4FA7628D /* [CP] Check Pods Manifest.lock */ = {
@@ -1579,28 +1576,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NetworkPlatformTests/Pods-NetworkPlatformTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkPlatformTests/Pods-NetworkPlatformTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NetworkPlatformTests/Pods-NetworkPlatformTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetworkPlatformTests/Pods-NetworkPlatformTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4D40437EE66B816D743E97B5 /* [CP] Check Pods Manifest.lock */ = {
@@ -1645,26 +1636,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
-				"${BUILT_PRODUCTS_DIR}/QueryKit/QueryKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QueryKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoreDataPlatformTests/Pods-CoreDataPlatformTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99D05AF51EAFBA63AB33FF1A /* [CP] Embed Pods Frameworks */ = {
@@ -1673,8 +1660,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitectureRxSwiftTests/Pods-CleanArchitectureRxSwiftTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-CleanArchitectureRxSwiftTests/Pods-CleanArchitectureRxSwiftTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
@@ -1682,7 +1668,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
@@ -1690,7 +1675,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanArchitectureRxSwiftTests/Pods-CleanArchitectureRxSwiftTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CleanArchitectureRxSwiftTests/Pods-CleanArchitectureRxSwiftTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9DDCC75CAD78374C078CD054 /* [CP] Check Pods Manifest.lock */ = {
@@ -1735,32 +1720,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
-				"${BUILT_PRODUCTS_DIR}/QueryKit/QueryKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QueryKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D0775CFF21514545A5358821 /* [CP] Check Pods Manifest.lock */ = {
@@ -1851,7 +1826,7 @@
 			files = (
 				7752FCB51F716D650079522C /* PostsViewModelTests.swift in Sources */,
 				7752FCB91F716D940079522C /* PostsNavigatorMock.swift in Sources */,
-				7752FCB71F716D7A0079522C /* AllPostsUseCaseMock.swift in Sources */,
+				7752FCB71F716D7A0079522C /* PostsUseCaseMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2525,9 +2500,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC15FAFCFFF7EB7017614B45 /* Pods-NetworkPlatformTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = NetworkTests/Info.plist;
+				INFOPLIST_FILE = NetworkPlatformTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.NetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2540,9 +2514,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 426939EA03F41A859CEFCA16 /* Pods-NetworkPlatformTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = NetworkTests/Info.plist;
+				INFOPLIST_FILE = NetworkPlatformTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.NetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
