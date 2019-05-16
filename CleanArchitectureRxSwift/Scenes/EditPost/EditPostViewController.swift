@@ -17,22 +17,25 @@ final class EditPostViewController: UIViewController {
         super.viewDidLoad()
 
         let deleteTrigger = deleteButton.rx.tap.flatMap {
-            return Observable<Void>.create { observer in
+            return Observable<Bool>.create { observer in
 
-                let alert = UIAlertController(title: "Delete Post",
-                    message: "Are you sure you want to delete this post?",
-                    preferredStyle: .alert
-                )
-                let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> () in observer.onNext(()) })
-                let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> () in observer.onNext(()) })
-                alert.addAction(yesAction)
-                alert.addAction(noAction)
+              let alert = UIAlertController(title: "Delete Post",
+                                            message: "Are you sure you want to delete this post?",
+                                            preferredStyle: .alert)
+              let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> () in observer.onNext(true) })
+              let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> () in observer.onNext(false) })
+              alert.addAction(yesAction)
+              alert.addAction(noAction)
 
-                self.present(alert, animated: true, completion: nil)
+              self.present(alert, animated: true, completion: nil)
 
-                return Disposables.create()
+              return Disposables.create {
+                alert.dismiss(animated:false, completion: nil)
+              }
             }
-        }
+          }
+          .filter({ $0 })
+          .mapToVoid()
 
         let input = EditPostViewModel.Input(
             editTrigger: editButton.rx.tap.asDriver(),
