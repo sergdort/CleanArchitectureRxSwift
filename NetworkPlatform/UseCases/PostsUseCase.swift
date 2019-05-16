@@ -35,7 +35,7 @@ final class PostsUseCase<Cache>: Domain.PostsUseCase where Cache: AbstractCache,
 }
 
 struct MapFromNever: Error {}
-extension ObservableType where E == Never {
+extension ObservableType where Element == Never {
     func map<T>(to: T.Type) -> Observable<T> {
         return self.flatMap { _ in
             return Observable<T>.error(MapFromNever())

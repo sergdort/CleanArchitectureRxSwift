@@ -11,7 +11,7 @@ enum TestError: Error {
 
 class PostsViewModelTests: XCTestCase {
 
-  var allPostUseCase: AllPostsUseCaseMock!
+  var allPostUseCase: PostsUseCaseMock!
   var postsNavigator: PostNavigatorMock!
   var viewModel: PostsViewModel!
 
@@ -20,7 +20,7 @@ class PostsViewModelTests: XCTestCase {
   override func setUp() {
     super.setUp()
 
-    allPostUseCase = AllPostsUseCaseMock()
+    allPostUseCase = PostsUseCaseMock()
     postsNavigator = PostNavigatorMock()
 
     viewModel = PostsViewModel(useCase: allPostUseCase,
@@ -35,7 +35,7 @@ class PostsViewModelTests: XCTestCase {
 
     // act
     output.posts.drive().disposed(by: disposeBag)
-    trigger.onNext()
+    trigger.onNext(())
 
     // assert
     XCTAssert(allPostUseCase.posts_Called)
@@ -55,7 +55,7 @@ class PostsViewModelTests: XCTestCase {
           onSubscribe: { actualFetching.append(true) })
       .drive()
       .disposed(by: disposeBag)
-    trigger.onNext()
+    trigger.onNext(())
 
     // assert
     XCTAssertEqual(actualFetching, expectedFetching)
@@ -70,7 +70,7 @@ class PostsViewModelTests: XCTestCase {
     // act
     output.posts.drive().disposed(by: disposeBag)
     output.error.drive().disposed(by: disposeBag)
-    trigger.onNext()
+    trigger.onNext(())
     let error = try! output.error.toBlocking().first()
 
     // assert
@@ -85,7 +85,7 @@ class PostsViewModelTests: XCTestCase {
 
     // act
     output.posts.drive().disposed(by: disposeBag)
-    trigger.onNext()
+    trigger.onNext(())
     let posts = try! output.posts.toBlocking().first()!
 
     // assert
@@ -119,13 +119,13 @@ class PostsViewModelTests: XCTestCase {
     // act
     output.posts.drive().disposed(by: disposeBag)
     output.createPost.drive().disposed(by: disposeBag)
-    create.onNext()
+    create.onNext(())
 
     // assert
     XCTAssertTrue(postsNavigator.toCreatePost_Called)
   }
 
-  private func createInput(trigger: Observable<Void> = Observable.just(),
+  private func createInput(trigger: Observable<Void> = Observable.just(()),
                            createPostTrigger: Observable<Void> = Observable.never(),
                            selection: Observable<IndexPath> = Observable.never())
     -> PostsViewModel.Input {
@@ -137,8 +137,8 @@ class PostsViewModelTests: XCTestCase {
 
   private func createPosts() -> [Post] {
     return [
-      Post(body: "body 1", title: "title 1", uid: "uid 1", userId: "userId 1"),
-      Post(body: "body 2", title: "title 2", uid: "uid 2", userId: "userId 2")
+      Post(body: "body 1", title: "title 1", uid: "uid 1", userId: "userId 1", createdAt: "created at 1"),
+      Post(body: "body 2", title: "title 2", uid: "uid 2", userId: "userId 2", createdAt: "created at 2")
     ]
   }
 }
