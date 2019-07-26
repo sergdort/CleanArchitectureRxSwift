@@ -24,7 +24,7 @@ final class EditPostViewController: UIViewController {
                     preferredStyle: .alert
                 )
                 let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { _ -> () in observer.onNext(()) })
-                let noAction = UIAlertAction(title: "No", style: .cancel, handler: { _ -> () in observer.onNext(()) })
+                let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
                 alert.addAction(yesAction)
                 alert.addAction(noAction)
 
