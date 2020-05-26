@@ -36,8 +36,7 @@ final class CreatePostViewModel: ViewModelType {
                             .asDriverOnErrorJustComplete()
                 }
 
-        let dismiss = Driver.of(save, input.cancelTrigger)
-                .merge()
+        let dismiss = Driver.merge(save, input.cancelTrigger)
                 .do(onNext: navigator.toPosts)
 
         return Output(dismiss: dismiss, saveEnabled: canSave)
