@@ -3,11 +3,11 @@ platform :ios, '11.0'
 inhibit_all_warnings!
 
 def rx_swift
-    pod 'RxSwift', '~> 5.0'
+    pod 'RxSwift'
 end
 
 def rx_cocoa
-    pod 'RxCocoa', '~> 5.0'
+    pod 'RxCocoa'
 end
 
 def test_pods
@@ -72,10 +72,10 @@ target 'RealmPlatform' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   rx_swift
-  pod 'RxRealm', '~> 1.0.0'
+  pod 'RxRealm'
   pod 'QueryKit'
-  pod 'RealmSwift', '~> 3.15'
-  pod 'Realm', '~> 3.15'
+  pod 'RealmSwift'
+  pod 'Realm'
 
   target 'RealmPlatformTests' do
     inherit! :search_paths

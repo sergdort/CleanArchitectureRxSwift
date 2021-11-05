@@ -1300,54 +1300,62 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = sergdort;
 				TargetAttributes = {
 					25897AFF1E58BD9100D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = BU4T5Z97JD;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 					25897B131E58BD9100D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
 					25897B271E58BF0D00D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 					25897B2F1E58BF0D00D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
 					25897B4A1E58BF3600D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 					25897B521E58BF3600D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
 					25897B6C1E58BF4600D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 					25897B741E58BF4600D3563C = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
 					BD107F481E7298690043D900 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 					};
 					BD107F501E7298690043D900 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 25897AFF1E58BD9100D3563C;
 					};
@@ -1355,10 +1363,9 @@
 			};
 			buildConfigurationList = 25897AFB1E58BD9100D3563C /* Build configuration list for PBXProject "CleanArchitectureRxSwift" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -2066,6 +2073,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2123,6 +2131,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -2181,7 +2190,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2197,7 +2206,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2212,7 +2221,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Debug;
@@ -2227,7 +2236,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CleanArchitectureRxSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Release;
@@ -2248,7 +2257,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2271,7 +2280,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2286,7 +2295,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.DomainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Debug;
@@ -2299,7 +2308,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.DomainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Release;
@@ -2320,7 +2329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CoreDataPlatform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2343,7 +2352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CoreDataPlatform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2358,7 +2367,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CoreDataPlatformTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Debug;
@@ -2371,7 +2380,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.CoreDataPlatformTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Release;
@@ -2392,7 +2401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.RealmPlatform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2415,7 +2424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.RealmPlatform;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2430,7 +2439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.RealmPlatformTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Debug;
@@ -2443,7 +2452,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergdort.RealmPlatformTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Release;
@@ -2465,7 +2474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.Network;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2489,7 +2498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.Network;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2505,7 +2514,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.NetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Debug;
@@ -2519,7 +2528,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayastrebov.NetworkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureRxSwift.app/CleanArchitectureRxSwift";
 			};
 			name = Release;
