@@ -11,7 +11,7 @@ extension Object {
     }
 }
 
-extension SortDescriptor {
+extension RealmSwift.SortDescriptor {
     init(sortDescriptor: NSSortDescriptor) {
         self.init(keyPath: sortDescriptor.key ?? "", ascending: sortDescriptor.ascending)
     }
