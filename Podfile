@@ -3,11 +3,11 @@ platform :ios, '11.0'
 inhibit_all_warnings!
 
 def rx_swift
-    pod 'RxSwift'
+    pod 'RxSwift', '~> 6.2.0'
 end
 
 def rx_cocoa
-    pod 'RxCocoa'
+    pod 'RxCocoa', '~> 6.2.0'
 end
 
 def test_pods

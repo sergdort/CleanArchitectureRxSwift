@@ -27,14 +27,14 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository where T == 
         request.sortDescriptors = sortDescriptors
         return context.rx.entities(fetchRequest: request)
             .mapToDomain()
-            .subscribeOn(scheduler)
+            .subscribe(on: scheduler)
     }
 
     func save(entity: T) -> Observable<Void> {
         return entity.sync(in: context)
             .mapToVoid()
             .flatMapLatest(context.rx.save)
-            .subscribeOn(scheduler)
+            .subscribe(on: scheduler)
     }
 
     func delete(entity: T) -> Observable<Void> {
