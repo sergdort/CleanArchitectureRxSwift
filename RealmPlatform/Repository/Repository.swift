@@ -57,13 +57,13 @@ final class Repository<T:RealmRepresentable>: AbstractRepository where T == T.Re
     func save(entity: T) -> Observable<Void> {
         return Observable.deferred {
             return self.realm.rx.save(entity: entity)
-        }.subscribeOn(scheduler)
+        }.subscribe(on: scheduler)
     }
 
     func delete(entity: T) -> Observable<Void> {
         return Observable.deferred {
             return self.realm.rx.delete(entity: entity)
-        }.subscribeOn(scheduler)
+        }.subscribe(on: scheduler)
     }
 
 }

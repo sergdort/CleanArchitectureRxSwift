@@ -51,7 +51,7 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
             }
             
             return Disposables.create()
-        }.subscribeOn(cacheScheduler)
+        }.subscribe(on: cacheScheduler)
     }
 
     func save(objects: [T]) -> Completable {
@@ -72,7 +72,7 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
             }
             
             return Disposables.create()
-        }.subscribeOn(cacheScheduler)
+        }.subscribe(on: cacheScheduler)
     }
 
     func fetch(withID id: String) -> Maybe<T> {
@@ -93,7 +93,7 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
             }
             observer(MaybeEvent<T>.success(object.asDomain()))
             return Disposables.create()
-        }.subscribeOn(cacheScheduler)
+        }.subscribe(on: cacheScheduler)
     }
 
     func fetchObjects() -> Maybe<[T]> {
@@ -110,7 +110,7 @@ final class Cache<T: Encodable>: AbstractCache where T == T.Encoder.DomainType {
             }
             observer(MaybeEvent.success(objects.map { $0.asDomain() }))
                 return Disposables.create()
-        }.subscribeOn(cacheScheduler)
+        }.subscribe(on: cacheScheduler)
     }
     
     private func directoryURL() -> URL? {

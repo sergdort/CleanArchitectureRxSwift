@@ -27,7 +27,7 @@ final class Network<T: Decodable> {
         return RxAlamofire
             .data(.get, absolutePath)
             .debug()
-            .observeOn(scheduler)
+            .observe(on: scheduler)
             .map({ data -> [T] in
                 return try JSONDecoder().decode([T].self, from: data)
             })
@@ -38,7 +38,7 @@ final class Network<T: Decodable> {
         return RxAlamofire
             .data(.get, absolutePath)
             .debug()
-            .observeOn(scheduler)
+            .observe(on: scheduler)
             .map({ data -> T in
                 return try JSONDecoder().decode(T.self, from: data)
             })
@@ -49,7 +49,7 @@ final class Network<T: Decodable> {
         return RxAlamofire
             .request(.post, absolutePath, parameters: parameters)
             .debug()
-            .observeOn(scheduler)
+            .observe(on: scheduler)
             .data()
             .map({ data -> T in
                 return try JSONDecoder().decode(T.self, from: data)
@@ -61,7 +61,7 @@ final class Network<T: Decodable> {
         return RxAlamofire
             .request(.put, absolutePath, parameters: parameters)
             .debug()
-            .observeOn(scheduler)
+            .observe(on: scheduler)
             .data()
             .map({ data -> T in
                 return try JSONDecoder().decode(T.self, from: data)
@@ -73,7 +73,7 @@ final class Network<T: Decodable> {
         return RxAlamofire
             .request(.delete, absolutePath)
             .debug()
-            .observeOn(scheduler)
+            .observe(on: scheduler)
             .data()
             .map({ data -> T in
                 return try JSONDecoder().decode(T.self, from: data)
