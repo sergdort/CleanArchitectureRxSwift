@@ -14,6 +14,8 @@ Dependencies in this project are provided via Cocoapods. Please install all depe
 pod install
 `
 
+> You can run this script `(exec_pod_install.sh)` in 'scripts' folder that help you install all dependecies
+
 ## High level overview
 ![](Architecture/Modules.png)
 
