@@ -1,18 +1,21 @@
 # Uncomment the next line to define a global platform for your project
+source 'https://cdn.cocoapods.org/'
 platform :ios, '11.0'
 inhibit_all_warnings!
-
+install! 'cocoapods',
+  :warn_for_unused_master_specs_repo => false
+  
 def rx_swift
-    pod 'RxSwift', '~> 6.2.0'
+    pod 'RxSwift', '~> 6.5.0'
 end
 
 def rx_cocoa
-    pod 'RxCocoa', '~> 6.2.0'
+    pod 'RxCocoa', '~> 6.5.0'
 end
 
 def test_pods
-    pod 'RxTest'
-    pod 'RxBlocking'
+    pod 'RxTest', '~> 6.5.0'
+    pod 'RxBlocking', '~> 6.5.0'
     pod 'Nimble'
 end
 

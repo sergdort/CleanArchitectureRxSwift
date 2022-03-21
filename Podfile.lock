@@ -1,30 +1,32 @@
 PODS:
-  - Alamofire (4.9.1)
-  - Nimble (8.0.4)
-  - QueryKit (0.13.0)
-  - Realm (3.21.0):
-    - Realm/Headers (= 3.21.0)
-  - Realm/Headers (3.21.0)
-  - RealmSwift (3.21.0):
-    - Realm (= 3.21.0)
-  - RxAlamofire (5.1.0):
-    - RxAlamofire/Core (= 5.1.0)
-  - RxAlamofire/Core (5.1.0):
-    - Alamofire (~> 4.8)
-    - RxSwift (~> 5.0)
-  - RxBlocking (5.0.1):
-    - RxSwift (~> 5)
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRealm (1.0.0):
-    - RealmSwift (~> 3.14)
-    - RxSwift (~> 5.0)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
-  - RxTest (5.0.1):
-    - RxSwift (~> 5)
+  - Alamofire (5.4.4)
+  - Nimble (9.2.1)
+  - QueryKit (0.14.1)
+  - Realm (10.19.0):
+    - Realm/Headers (= 10.19.0)
+  - Realm/Headers (10.19.0)
+  - RealmSwift (10.19.0):
+    - Realm (= 10.19.0)
+  - RxAlamofire (6.1.1):
+    - RxAlamofire/Core (= 6.1.1)
+  - RxAlamofire/Core (6.1.1):
+    - Alamofire (~> 5.4)
+    - RxSwift (~> 6.0)
+  - RxBlocking (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRealm (5.0.3):
+    - Realm (~> 10.7)
+    - RealmSwift (~> 10.7)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - RxTest (6.5.0):
+    - RxSwift (= 6.5.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -33,11 +35,11 @@ DEPENDENCIES:
   - Realm
   - RealmSwift
   - RxAlamofire
-  - RxBlocking
-  - RxCocoa
+  - RxBlocking (~> 6.5.0)
+  - RxCocoa (~> 6.5.0)
   - RxRealm
-  - RxSwift
-  - RxTest
+  - RxSwift (~> 6.5.0)
+  - RxTest (~> 6.5.0)
 
 SPEC REPOS:
   trunk:
@@ -55,19 +57,19 @@ SPEC REPOS:
     - RxTest
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
-  QueryKit: 406c42b9b4eb5f8dab380a9e5bd9ef656542d1f4
-  Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
-  RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
-  RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
-  RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRealm: 1e81dcfca1fb50c3e9b3e1f8102bc875c5156a2e
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
-  RxTest: 0132f952a61da82d5233abedaa559df91e5330e5
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  QueryKit: 60dae8ff75d5805f9c703c68c0ef4294c9dd7de6
+  Realm: 869ab2a7e3bdfa6bf06d8723251539f504e6f602
+  RealmSwift: f1f51c4a02fe826e5cea623b5441992f06bdc942
+  RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
+  RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRealm: d9fedf16e3ead54b0be2077d2ff4a1b2dc27be39
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
 
-PODFILE CHECKSUM: efde7176cca4ec4ae4bf4bdfab66242806d4eeb6
+PODFILE CHECKSUM: d101cde98e63ea675aa146e2295c455b4394cba2
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.2
