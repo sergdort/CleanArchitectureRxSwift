@@ -3,6 +3,9 @@ import Domain
 import RxSwift
 
 final class PostsUseCase<Cache>: Domain.PostsUseCase where Cache: AbstractCache, Cache.T == Post {
+  
+    
+    
     private let network: PostsNetwork
     private let cache: Cache
 
@@ -32,6 +35,11 @@ final class PostsUseCase<Cache>: Domain.PostsUseCase where Cache: AbstractCache,
     func delete(post: Post) -> Observable<Void> {
         return network.deletePost(postId: post.uid).map({_ in})
     }
+    
+    func getList(apiRequest: APIRequest) -> Observable<[UniversityModel]> {
+        return network.getList(apiRequest: apiRequest)
+    }
+    
 }
 
 struct MapFromNever: Error {}

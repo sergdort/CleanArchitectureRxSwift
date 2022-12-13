@@ -44,6 +44,7 @@ final class PostsViewModel: ViewModelType {
                 return posts[indexPath.row].post
             }
             .do(onNext: navigator.toPost)
+                
         let createPost = input.createPostTrigger
             .do(onNext: navigator.toCreatePost)
         

@@ -12,6 +12,11 @@ import Domain
 import RxAlamofire
 import RxSwift
 
+enum ErrorDefine: Int, Error {
+    case unAuthorized = 401
+    case notFound = 404
+}
+
 final class Network<T: Decodable> {
 
     private let endPoint: String
@@ -67,6 +72,7 @@ final class Network<T: Decodable> {
                 return try JSONDecoder().decode(T.self, from: data)
             })
     }
+    
 
     func deleteItem(_ path: String, itemId: String) -> Observable<T> {
         let absolutePath = "\(endPoint)/\(path)/\(itemId)"
@@ -79,4 +85,23 @@ final class Network<T: Decodable> {
                 return try JSONDecoder().decode(T.self, from: data)
             })
     }
+    
+    func send<T: Codable>(urlRequest: URLRequest) -> Observable<T> {
+        return Observable.create { obs -> Disposable in
+         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+             guard (error == nil) else {return obs.onError(error ?? ErrorDefine.notFound)}
+             if let data = data {
+                 do {
+                     guard let obj = try? JSONDecoder().decode(T.self, from: data)  else {return obs.onError(error ?? ErrorDefine.notFound)}
+                     obs.onNext(obj)
+                 }
+             }
+         }
+         task.resume()
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
 }

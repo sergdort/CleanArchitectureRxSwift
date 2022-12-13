@@ -3,6 +3,11 @@ import Domain
 import RxSwift
 
 final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
+    func getList(apiRequest: Domain.APIRequest) -> RxSwift.Observable<[Domain.UniversityModel]> {
+        return .just([])
+    }
+    
+    
     
     private let repository: Repository
 
@@ -21,4 +26,8 @@ final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: Abst
     func delete(post: Post) -> Observable<Void> {
         return repository.delete(entity: post)
     }
+    
+//    func getList(apiRequest: Domain.APIRequest) -> RxSwift.Observable<[Domain.UniversityModel]> {
+//        return repository.query(with: <#T##NSPredicate?#>, sortDescriptors: <#T##[NSSortDescriptor]?#>)
+//    }
 }

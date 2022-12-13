@@ -12,6 +12,8 @@ protocol AbstractRepository {
 }
 
 final class Repository<T: CoreDataRepresentable>: AbstractRepository where T == T.CoreDataType.DomainType {
+  
+    
     private let context: NSManagedObjectContext
     private let scheduler: ContextScheduler
 

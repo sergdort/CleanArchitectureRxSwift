@@ -34,7 +34,9 @@ class PostsViewController: UIViewController {
         let input = PostsViewModel.Input(trigger: Driver.merge(viewWillAppear, pull),
                                        createPostTrigger: createPostButton.rx.tap.asDriver(),
                                        selection: tableView.rx.itemSelected.asDriver())
+        
         let output = viewModel.transform(input: input)
+        
         //Bind Posts to UITableView
         output.posts.drive(tableView.rx.items(cellIdentifier: PostTableViewCell.reuseID, cellType: PostTableViewCell.self)) { tv, viewModel, cell in
             cell.bind(viewModel)

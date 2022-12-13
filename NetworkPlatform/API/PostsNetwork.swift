@@ -31,4 +31,11 @@ public final class PostsNetwork {
     public func deletePost(postId: String) -> Observable<Post> {
         return network.deleteItem("posts", itemId: postId)
     }
+    
+    public func getList(apiRequest: APIRequest) -> Observable<[UniversityModel]> {
+        let baseURL = URL(string: "http://universities.hipolabs.com/")!
+        let request = apiRequest.request(with: baseURL)
+//        let rq = URLRequest(url: URL(string: "")!)
+        return network.send(urlRequest: request)
+    }
 }

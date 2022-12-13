@@ -5,6 +5,10 @@ import Realm
 import RealmSwift
 
 final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
+    func getList(apiRequest: Domain.APIRequest) -> RxSwift.Observable<[Domain.UniversityModel]> {
+        return .just([])
+    }
+    
 
     private let repository: Repository
 

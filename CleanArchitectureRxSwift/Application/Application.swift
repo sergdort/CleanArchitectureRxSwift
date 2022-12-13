@@ -39,9 +39,9 @@ final class Application {
         networkNavigationController.tabBarItem = UITabBarItem(title: "Network",
                 image: UIImage(named: "Toolbox"),
                 selectedImage: nil)
-        let networkNavigator = DefaultPostsNavigator(services: networkUseCaseProvider,
-                navigationController: networkNavigationController,
-                storyBoard: storyboard)
+//        let networkNavigator = DefaultPostsNavigator(services: networkUseCaseProvider,
+//                navigationController: networkNavigationController,
+//                storyBoard: storyboard)
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
@@ -49,10 +49,15 @@ final class Application {
                 rmNavigationController,
                 networkNavigationController
         ]
-        window.rootViewController = tabBarController
+        let universityController = UniversityViewController(nibName: "UniversityViewController", bundle: .main)
+        
+        let universityNavigator = DefaultUniversityNavigator(navigationController: networkNavigationController, service: networkUseCaseProvider)
+        window.rootViewController = networkNavigationController
 
         cdNavigator.toPosts()
         rmNavigator.toPosts()
-        networkNavigator.toPosts()
+//        networkNavigator.toPosts()
+        universityNavigator.routerToNewFeed()
+//        universityNavigator.toNewFeed()
     }
 }
