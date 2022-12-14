@@ -39,9 +39,9 @@ final class Application {
         networkNavigationController.tabBarItem = UITabBarItem(title: "Network",
                 image: UIImage(named: "Toolbox"),
                 selectedImage: nil)
-//        let networkNavigator = DefaultPostsNavigator(services: networkUseCaseProvider,
-//                navigationController: networkNavigationController,
-//                storyBoard: storyboard)
+        let networkNavigator = DefaultPostsNavigator(services: networkUseCaseProvider,
+                navigationController: networkNavigationController,
+                storyBoard: storyboard)
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
@@ -49,15 +49,22 @@ final class Application {
                 rmNavigationController,
                 networkNavigationController
         ]
-        let universityController = UniversityViewController(nibName: "UniversityViewController", bundle: .main)
+//        let universityController = UniversityViewController(nibName: "UniversityViewController", bundle: .main)
         
+//        universityController.viewModel = .
         let universityNavigator = DefaultUniversityNavigator(navigationController: networkNavigationController, service: networkUseCaseProvider)
+        
+        let flexiloanVC = GSXFlexiLoanHomeVC(nibName: "GSXFlexiLoanHomeVC", bundle: .main)
+        
+        let flexiRouter = GSXHomeRouter(services: networkUseCaseProvider, navigationController: networkNavigationController)
+        
         window.rootViewController = networkNavigationController
 
         cdNavigator.toPosts()
         rmNavigator.toPosts()
 //        networkNavigator.toPosts()
-        universityNavigator.routerToNewFeed()
+        flexiRouter.routerToGSXHome()
+//        universityNavigator.routerToNewFeed()
 //        universityNavigator.toNewFeed()
     }
 }

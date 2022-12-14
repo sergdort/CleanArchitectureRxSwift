@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A27587E29498038002B8FF5 /* FlexiLoanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27587B29497EBE002B8FF5 /* FlexiLoanModel.swift */; };
+		0A27588029498C6F002B8FF5 /* GSXHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27587F29498C6F002B8FF5 /* GSXHomeRouter.swift */; };
+		0A2758852949BDAA002B8FF5 /* GSXFlexiBorrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2758832949BDAA002B8FF5 /* GSXFlexiBorrowViewController.swift */; };
+		0A2758862949BDAA002B8FF5 /* GSXFlexiBorrowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A2758842949BDAA002B8FF5 /* GSXFlexiBorrowViewController.xib */; };
+		0A2758882949C506002B8FF5 /* GSXFlexiBorrowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2758872949C506002B8FF5 /* GSXFlexiBorrowViewModel.swift */; };
 		0A56DD532948374300AFD75B /* UniversityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56DD512948374300AFD75B /* UniversityViewController.swift */; };
 		0A56DD542948374300AFD75B /* UniversityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A56DD522948374300AFD75B /* UniversityViewController.xib */; };
 		0A56DD572948377100AFD75B /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A56DD552948377100AFD75B /* MovieTableViewCell.xib */; };
@@ -16,6 +21,9 @@
 		0A56DD5F29484D6F00AFD75B /* UniversityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56DD5B294837DE00AFD75B /* UniversityModel.swift */; };
 		0A56DD6229484E8400AFD75B /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56DD6029484E3100AFD75B /* APIRequest.swift */; };
 		0A56DD6429486AD000AFD75B /* UniversityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56DD6329486AD000AFD75B /* UniversityRequest.swift */; };
+		0A56DD682949749A00AFD75B /* GSXFlexiLoanHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56DD662949749A00AFD75B /* GSXFlexiLoanHomeVC.swift */; };
+		0A56DD692949749A00AFD75B /* GSXFlexiLoanHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A56DD672949749A00AFD75B /* GSXFlexiLoanHomeVC.xib */; };
+		0A56DD6B294977CA00AFD75B /* GSXFlexiLoanHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56DD6A294977CA00AFD75B /* GSXFlexiLoanHomeViewModel.swift */; };
 		2526A7141E59F8260078870E /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526A7131E59F8260078870E /* ErrorTracker.swift */; };
 		2526A7161E5A2CD30078870E /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2526A7151E5A2CD30078870E /* EditPostViewController.swift */; };
 		256289FC1E91829500A7731C /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256289FB1E91829500A7731C /* UseCaseProvider.swift */; };
@@ -271,6 +279,12 @@
 		07BECD54B799E689F7DF0941 /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		081D23F2DCF9DBA930AB0FE7 /* Pods-RealmPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		09A6B74019E724CAD9CA96DC /* Pods_CleanArchitectureRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitectureRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A27587B29497EBE002B8FF5 /* FlexiLoanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexiLoanModel.swift; sourceTree = "<group>"; };
+		0A27587F29498C6F002B8FF5 /* GSXHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSXHomeRouter.swift; sourceTree = "<group>"; };
+		0A2758812949AC38002B8FF5 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0A2758832949BDAA002B8FF5 /* GSXFlexiBorrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSXFlexiBorrowViewController.swift; sourceTree = "<group>"; };
+		0A2758842949BDAA002B8FF5 /* GSXFlexiBorrowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSXFlexiBorrowViewController.xib; sourceTree = "<group>"; };
+		0A2758872949C506002B8FF5 /* GSXFlexiBorrowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSXFlexiBorrowViewModel.swift; sourceTree = "<group>"; };
 		0A56DD512948374300AFD75B /* UniversityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityViewController.swift; sourceTree = "<group>"; };
 		0A56DD522948374300AFD75B /* UniversityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UniversityViewController.xib; sourceTree = "<group>"; };
 		0A56DD552948377100AFD75B /* MovieTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
@@ -280,6 +294,9 @@
 		0A56DD5D29483ABC00AFD75B /* UniversityNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNavigator.swift; sourceTree = "<group>"; };
 		0A56DD6029484E3100AFD75B /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		0A56DD6329486AD000AFD75B /* UniversityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityRequest.swift; sourceTree = "<group>"; };
+		0A56DD662949749A00AFD75B /* GSXFlexiLoanHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSXFlexiLoanHomeVC.swift; sourceTree = "<group>"; };
+		0A56DD672949749A00AFD75B /* GSXFlexiLoanHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GSXFlexiLoanHomeVC.xib; sourceTree = "<group>"; };
+		0A56DD6A294977CA00AFD75B /* GSXFlexiLoanHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSXFlexiLoanHomeViewModel.swift; sourceTree = "<group>"; };
 		0D4A3B45078CD8ACCC1314EC /* Pods-RealmPlatformTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatformTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealmPlatformTests/Pods-RealmPlatformTests.release.xcconfig"; sourceTree = "<group>"; };
 		2526A7131E59F8260078870E /* ErrorTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		2526A7151E5A2CD30078870E /* EditPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
@@ -542,6 +559,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A27587D29497EC7002B8FF5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A27587B29497EBE002B8FF5 /* FlexiLoanModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0A2758822949BD76002B8FF5 /* GSXFlexiLoanBorrow */ = {
+			isa = PBXGroup;
+			children = (
+				0A2758832949BDAA002B8FF5 /* GSXFlexiBorrowViewController.swift */,
+				0A2758842949BDAA002B8FF5 /* GSXFlexiBorrowViewController.xib */,
+				0A2758872949C506002B8FF5 /* GSXFlexiBorrowViewModel.swift */,
+			);
+			path = GSXFlexiLoanBorrow;
+			sourceTree = "<group>";
+		};
 		0A56DD502948372500AFD75B /* University */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,6 +591,19 @@
 				0A56DD6329486AD000AFD75B /* UniversityRequest.swift */,
 			);
 			path = University;
+			sourceTree = "<group>";
+		};
+		0A56DD652949742C00AFD75B /* GSXFlexiLoan */ = {
+			isa = PBXGroup;
+			children = (
+				0A2758822949BD76002B8FF5 /* GSXFlexiLoanBorrow */,
+				0A27587D29497EC7002B8FF5 /* Models */,
+				0A56DD662949749A00AFD75B /* GSXFlexiLoanHomeVC.swift */,
+				0A56DD672949749A00AFD75B /* GSXFlexiLoanHomeVC.xib */,
+				0A56DD6A294977CA00AFD75B /* GSXFlexiLoanHomeViewModel.swift */,
+				0A27587F29498C6F002B8FF5 /* GSXHomeRouter.swift */,
+			);
+			path = GSXFlexiLoan;
 			sourceTree = "<group>";
 		};
 		23C0DA07B3F46EB59E072F7E /* Frameworks */ = {
@@ -596,6 +644,7 @@
 		25897AF71E58BD9100D3563C = {
 			isa = PBXGroup;
 			children = (
+				0A2758812949AC38002B8FF5 /* MyPlayground.playground */,
 				2534B40F1F745F59001997C9 /* README.md */,
 				25897B021E58BD9100D3563C /* CleanArchitectureRxSwift */,
 				25897B171E58BD9100D3563C /* CleanArchitectureRxSwiftTests */,
@@ -865,6 +914,7 @@
 		515F903025B664C6A43D7962 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0A56DD652949742C00AFD75B /* GSXFlexiLoan */,
 				0A56DD502948372500AFD75B /* University */,
 				515F94479B9C0EF5329F9428 /* AllPosts */,
 				515F9B161E41C7D130E180EF /* CreatePost */,
@@ -1429,10 +1479,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				25897B0E1E58BD9100D3563C /* LaunchScreen.storyboard in Resources */,
+				0A56DD692949749A00AFD75B /* GSXFlexiLoanHomeVC.xib in Resources */,
 				0A56DD572948377100AFD75B /* MovieTableViewCell.xib in Resources */,
 				25897B0B1E58BD9100D3563C /* Assets.xcassets in Resources */,
 				0A56DD542948374300AFD75B /* UniversityViewController.xib in Resources */,
 				25897B091E58BD9100D3563C /* Main.storyboard in Resources */,
+				0A2758862949BDAA002B8FF5 /* GSXFlexiBorrowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,9 +1847,12 @@
 				25897BFB1E58CB8F00D3563C /* Reusable.swift in Sources */,
 				25897BF21E58CB8E00D3563C /* Application.swift in Sources */,
 				25897BF91E58CB8F00D3563C /* Observable+Ext.swift in Sources */,
+				0A27588029498C6F002B8FF5 /* GSXHomeRouter.swift in Sources */,
 				25897BF71E58CB8F00D3563C /* ActivityIndicator.swift in Sources */,
+				0A2758852949BDAA002B8FF5 /* GSXFlexiBorrowViewController.swift in Sources */,
 				25897B041E58BD9100D3563C /* AppDelegate.swift in Sources */,
 				2526A7141E59F8260078870E /* ErrorTracker.swift in Sources */,
+				0A2758882949C506002B8FF5 /* GSXFlexiBorrowViewModel.swift in Sources */,
 				25897BFC1E58CB8F00D3563C /* ViewModelType.swift in Sources */,
 				515F94853EF21BD13D636584 /* PostsNavigator.swift in Sources */,
 				515F977483234BB090F6D704 /* PostsViewController.swift in Sources */,
@@ -1808,8 +1863,10 @@
 				0A56DD5E29483ABC00AFD75B /* UniversityNavigator.swift in Sources */,
 				0A56DD532948374300AFD75B /* UniversityViewController.swift in Sources */,
 				B60A97CE1FB0C17600009C51 /* EditPostNavigator.swift in Sources */,
+				0A56DD682949749A00AFD75B /* GSXFlexiLoanHomeVC.swift in Sources */,
 				515F95CFED58045AB6B168A4 /* CreatePostViewController.swift in Sources */,
 				7BA4DC961F3AEA380043DAB6 /* PostItemViewModel.swift in Sources */,
+				0A56DD6B294977CA00AFD75B /* GSXFlexiLoanHomeViewModel.swift in Sources */,
 				515F9625B58BCFB77F4AF678 /* CreatePostNavigator.swift in Sources */,
 				2526A7161E5A2CD30078870E /* EditPostViewController.swift in Sources */,
 				515F9850E701F4ECCC669D9B /* CreatePostViewModel.swift in Sources */,
@@ -1831,6 +1888,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A27587E29498038002B8FF5 /* FlexiLoanModel.swift in Sources */,
 				25897BC61E58C42D00D3563C /* PostsUseCase.swift in Sources */,
 				25897BC91E58C42D00D3563C /* Location.swift in Sources */,
 				0A56DD6229484E8400AFD75B /* APIRequest.swift in Sources */,

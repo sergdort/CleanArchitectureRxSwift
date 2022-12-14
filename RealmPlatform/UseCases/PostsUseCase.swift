@@ -5,6 +5,15 @@ import Realm
 import RealmSwift
 
 final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: AbstractRepository, Repository.T == Post {
+    
+    func getFlexiLoan() -> RxSwift.Observable<Domain.FlexiLoanModel> {
+        
+        return .just(FlexiLoanModel.init())
+        
+    }
+    
+  
+    
     func getList(apiRequest: Domain.APIRequest) -> RxSwift.Observable<[Domain.UniversityModel]> {
         return .just([])
     }
@@ -27,4 +36,5 @@ final class PostsUseCase<Repository>: Domain.PostsUseCase where Repository: Abst
     func delete(post: Post) -> Observable<Void> {
         return repository.delete(entity: post)
     }
+    
 }

@@ -20,8 +20,6 @@ protocol UniversityNavigator: AnyObject {
 //DefaultCreatePostNavigator
 class DefaultUniversityNavigator: UniversityNavigator {
     
-   
-    
     private let navigationController: UINavigationController
     private let services: UseCaseProvider
 

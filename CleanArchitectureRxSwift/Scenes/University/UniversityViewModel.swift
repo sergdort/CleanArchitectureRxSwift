@@ -36,10 +36,7 @@ class UniversityViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
-        
-        input.searchText.asObservable().subscribe { text in
-            print("key world \(text)")
-        }
+
         
         let listUniversity = input.searchText.map { UniversityRequest(name: $0)}.flatMapLatest { request in
             return self.useCase.getList(apiRequest: request).trackActivity(activityIndicator).trackError(errorTracker).asDriverOnErrorJustComplete()

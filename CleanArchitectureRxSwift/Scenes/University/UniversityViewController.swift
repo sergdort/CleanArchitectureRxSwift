@@ -58,6 +58,7 @@ class UniversityViewController: UIViewController {
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
             .mapToVoid()
             .asDriverOnErrorJustComplete()
+        
         let pull = tableView.refreshControl!.rx
             .controlEvent(.valueChanged)
             .asDriver()

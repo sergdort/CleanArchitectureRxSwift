@@ -35,7 +35,12 @@ public final class PostsNetwork {
     public func getList(apiRequest: APIRequest) -> Observable<[UniversityModel]> {
         let baseURL = URL(string: "http://universities.hipolabs.com/")!
         let request = apiRequest.request(with: baseURL)
-//        let rq = URLRequest(url: URL(string: "")!)
+        return network.send(urlRequest: request)
+    }
+    
+    public func getFlexiloan() -> Observable<FlexiLoanModel> {
+        let baseURL = URL(string: "https://codedeman.github.io/ssd_api/gsx-flexiloan.json")!
+        let request  = URLRequest(url: baseURL)
         return network.send(urlRequest: request)
     }
 }

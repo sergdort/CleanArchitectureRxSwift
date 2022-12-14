@@ -26,9 +26,11 @@ final class EditPostViewModel: ViewModelType {
         let post = Driver.combineLatest(Driver.just(self.post), titleAndDetails) { (post, titleAndDetails) -> Post in
             return Post(body: titleAndDetails.1, title: titleAndDetails.0, uid: post.uid, userId: post.userId, createdAt: post.createdAt)
         }.startWith(self.post)
+        
         let editButtonTitle = editing.map { editing -> String in
             return editing == true ? "Save" : "Edit"
         }
+        
         let savePost = saveTrigger.withLatestFrom(post)
                 .flatMapLatest { post in
                     return self.useCase.save(post: post)
