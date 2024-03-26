@@ -1,45 +1,43 @@
 PODS:
-  - Alamofire (5.4.4)
-  - Nimble (9.2.1)
+  - Alamofire (5.9.0)
+  - Nimble (10.0.0)
   - QueryKit (0.14.1)
-  - Realm (10.19.0):
-    - Realm/Headers (= 10.19.0)
-  - Realm/Headers (10.19.0)
-  - RealmSwift (10.19.0):
-    - Realm (= 10.19.0)
+  - Realm (10.49.1):
+    - Realm/Headers (= 10.49.1)
+  - Realm/Headers (10.49.1)
+  - RealmSwift (10.49.1):
+    - Realm (= 10.49.1)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
   - RxAlamofire/Core (6.1.1):
     - Alamofire (~> 5.4)
     - RxSwift (~> 6.0)
-  - RxBlocking (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxCocoa (6.5.0):
-    - RxRelay (= 6.5.0)
-    - RxSwift (= 6.5.0)
-  - RxRealm (5.0.3):
-    - Realm (~> 10.7)
-    - RealmSwift (~> 10.7)
-    - RxCocoa (~> 6.0)
-    - RxSwift (~> 6.0)
-  - RxRelay (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxSwift (6.5.0)
-  - RxTest (6.5.0):
-    - RxSwift (= 6.5.0)
+  - RxBlocking (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
+  - RxRealm (5.0.7):
+    - Realm (~> 10.44)
+    - RealmSwift (~> 10.44)
+    - RxCocoa (~> 6.1)
+    - RxSwift (~> 6.1)
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxSwift (6.6.0)
+  - RxTest (6.6.0):
+    - RxSwift (= 6.6.0)
 
 DEPENDENCIES:
   - Alamofire
   - Nimble
   - QueryKit
-  - Realm
-  - RealmSwift
   - RxAlamofire
-  - RxBlocking (~> 6.5.0)
-  - RxCocoa (~> 6.5.0)
-  - RxRealm
-  - RxSwift (~> 6.5.0)
-  - RxTest (~> 6.5.0)
+  - RxBlocking (~> 6.6.0)
+  - RxCocoa (~> 6.6.0)
+  - RxRealm (from `https://github.com/RxSwiftCommunity/RxRealm.git`)
+  - RxSwift (~> 6.6.0)
+  - RxTest (~> 6.6.0)
 
 SPEC REPOS:
   trunk:
@@ -51,25 +49,33 @@ SPEC REPOS:
     - RxAlamofire
     - RxBlocking
     - RxCocoa
-    - RxRealm
     - RxRelay
     - RxSwift
     - RxTest
 
+EXTERNAL SOURCES:
+  RxRealm:
+    :git: https://github.com/RxSwiftCommunity/RxRealm.git
+
+CHECKOUT OPTIONS:
+  RxRealm:
+    :commit: 1b2dd1932a7fa5900dfe24a4e9d12b4fc9340bef
+    :git: https://github.com/RxSwiftCommunity/RxRealm.git
+
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
-  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  Alamofire: 02b772c9910e8eba1a079227c32fbd9e46c90a24
+  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   QueryKit: 60dae8ff75d5805f9c703c68c0ef4294c9dd7de6
-  Realm: 869ab2a7e3bdfa6bf06d8723251539f504e6f602
-  RealmSwift: f1f51c4a02fe826e5cea623b5441992f06bdc942
+  Realm: 1fab4a224fd7a294eca142a0efe8b54546290fbf
+  RealmSwift: 7c3a9c001161eb01b96b171ad965a9c498b962b0
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
-  RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
-  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
-  RxRealm: d9fedf16e3ead54b0be2077d2ff4a1b2dc27be39
-  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
-  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
-  RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
+  RxBlocking: fbd1f8501443024f686e556f36dac79b0d5f4d7c
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  RxRealm: 647ea8aa604d42dbfc95a21151cc12e8cfb80742
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
+  RxTest: a23f26bb53a5e146a0a69db4f0fa0b69001ce7f4
 
-PODFILE CHECKSUM: d101cde98e63ea675aa146e2295c455b4394cba2
+PODFILE CHECKSUM: 3ba6b9cf3dd84f53154af8a419b2850f7619b4d4
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.15.2
