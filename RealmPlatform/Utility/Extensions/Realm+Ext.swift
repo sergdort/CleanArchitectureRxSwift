@@ -16,7 +16,7 @@ extension RealmSwift.SortDescriptor {
         self.init(keyPath: sortDescriptor.key ?? "", ascending: sortDescriptor.ascending)
     }
 }
-extension Realm: ReactiveCompatible {}
+
 extension Reactive where Base == Realm {
     func save<R: RealmRepresentable>(entity: R, update: Bool = true) -> Observable<Void> where R.RealmType: Object  {
         return Observable.create { observer in
