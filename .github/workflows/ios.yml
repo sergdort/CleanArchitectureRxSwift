@@ -1,34 +1,32 @@
 name: iOS Build
 
 on:
+  push:
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - master
+    branches: [ "master" ]
 
 jobs:
   build:
     runs-on: macos-latest
-
     steps:
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.1.0'
+        
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install Tuist
         run: |
-          mise install tuist
+          brew tap tuist/tuist
+          brew install --formula tuist@4.16.1
 
-      - name: Generate Project with Tuist
+      - name: Tuist Install
         run: |
           tuist install
-          tuist generate
-
-      - name: Select Xcode version
-        run: sudo xcode-select -switch /Applications/Xcode.app
 
       - name: Build iOS App
         run: |
-          xcodebuild build \
-            -workspace ModernCleanArchtecture.xcworkspace \
-            -scheme Example \
-            -configuration Debug \
-            -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+          tuist build Example --generate --platform iOS
+          
