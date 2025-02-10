@@ -1,0 +1,18 @@
+fragment GQLDiscoverMedia on Media {
+      id
+      startDate {
+        ...FuzzyDateFragmet
+      }
+      endDate {
+        ...FuzzyDateFragmet
+      }
+      coverImage {
+        large
+      }
+      title {
+        english
+        native
+      }
+      description
+      averageScore
+}

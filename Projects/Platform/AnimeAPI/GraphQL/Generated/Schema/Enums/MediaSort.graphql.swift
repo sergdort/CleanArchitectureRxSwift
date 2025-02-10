@@ -1,0 +1,45 @@
+// @generated
+// This file was automatically generated and should not be edited.
+
+import ApolloAPI
+
+/// Media sort enums
+public enum MediaSort: String, EnumType {
+  case id = "ID"
+  case idDesc = "ID_DESC"
+  case titleRomaji = "TITLE_ROMAJI"
+  case titleRomajiDesc = "TITLE_ROMAJI_DESC"
+  case titleEnglish = "TITLE_ENGLISH"
+  case titleEnglishDesc = "TITLE_ENGLISH_DESC"
+  case titleNative = "TITLE_NATIVE"
+  case titleNativeDesc = "TITLE_NATIVE_DESC"
+  case type = "TYPE"
+  case typeDesc = "TYPE_DESC"
+  case format = "FORMAT"
+  case formatDesc = "FORMAT_DESC"
+  case startDate = "START_DATE"
+  case startDateDesc = "START_DATE_DESC"
+  case endDate = "END_DATE"
+  case endDateDesc = "END_DATE_DESC"
+  case score = "SCORE"
+  case scoreDesc = "SCORE_DESC"
+  case popularity = "POPULARITY"
+  case popularityDesc = "POPULARITY_DESC"
+  case trending = "TRENDING"
+  case trendingDesc = "TRENDING_DESC"
+  case episodes = "EPISODES"
+  case episodesDesc = "EPISODES_DESC"
+  case duration = "DURATION"
+  case durationDesc = "DURATION_DESC"
+  case status = "STATUS"
+  case statusDesc = "STATUS_DESC"
+  case chapters = "CHAPTERS"
+  case chaptersDesc = "CHAPTERS_DESC"
+  case volumes = "VOLUMES"
+  case volumesDesc = "VOLUMES_DESC"
+  case updatedAt = "UPDATED_AT"
+  case updatedAtDesc = "UPDATED_AT_DESC"
+  case searchMatch = "SEARCH_MATCH"
+  case favourites = "FAVOURITES"
+  case favouritesDesc = "FAVOURITES_DESC"
+}

@@ -1,0 +1,11 @@
+query PaginatedMedia($page: Int, $perPage: Int, $mediaSort: [MediaSort], $type: MediaType, , $genreIn: [String]) {
+  Page(page: $page, perPage: $perPage) {
+    media(sort: $mediaSort, type: $type, genre_in: $genreIn) {
+        ...GQLDiscoverMedia
+    }
+    pageInfo {
+      currentPage
+      hasNextPage
+    }
+  }
+}

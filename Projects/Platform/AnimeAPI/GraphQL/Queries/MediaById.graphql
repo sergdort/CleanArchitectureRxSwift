@@ -1,0 +1,43 @@
+query MediaById($mediaId: Int) {
+  Media(id: $mediaId) {
+    id
+    coverImage {
+      large
+    }
+    duration
+    startDate {
+      ...FuzzyDateFragmet
+    }
+    genres
+    popularity
+    averageScore
+    description
+    bannerImage
+    characters {
+      nodes {
+        image {
+          medium
+        }
+        name {
+          full
+        }
+        id
+      }
+    }
+    type
+    title {
+      english
+    }
+    trailer {
+      site
+      id
+    }
+    recommendations(page: 0, perPage: 15) {
+      nodes {
+        mediaRecommendation {
+          ...GQLDiscoverMedia
+        }
+      }
+    }
+  }
+}
