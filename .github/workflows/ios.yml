@@ -1,0 +1,34 @@
+name: iOS Build
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Tuist
+        run: |
+          mise install tuist
+
+      - name: Generate Project with Tuist
+        run: |
+          tuist install
+          tuist generate
+
+      - name: Select Xcode version
+        run: sudo xcode-select -switch /Applications/Xcode.app
+
+      - name: Build iOS App
+        run: |
+          xcodebuild build \
+            -workspace ModernCleanArchtecture.xcworkspace \
+            -scheme Example \
+            -configuration Debug \
+            -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
