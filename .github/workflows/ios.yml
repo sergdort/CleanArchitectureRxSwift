@@ -28,5 +28,5 @@ jobs:
 
       - name: Build iOS App
         run: |
-          tuist build Example --generate --platform iOS
+          tuist build Example --generate --clean --no-binary-cache --platform iOS
           
