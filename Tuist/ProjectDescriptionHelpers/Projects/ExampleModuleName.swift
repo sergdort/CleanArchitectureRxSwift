@@ -10,7 +10,7 @@ extension ExampleModuleName {
     case .Example:
       return .target(
         name: rawValue,
-        destinations: .iOS,
+        destinations: [.iPhone],
         product: .app,
         bundleId: "com.sergdort.\(rawValue)",
         infoPlist: .file(path: .relativeToManifest("Info.plist")),
