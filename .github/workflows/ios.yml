@@ -20,7 +20,7 @@ jobs:
       - name: Install Tuist
         run: |
           brew tap tuist/tuist
-          brew install --formula tuist@4.16.1
+          brew install --formula tuist@4.41.0
 
       - name: Tuist Install
         run: |
